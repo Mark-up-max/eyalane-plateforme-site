@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos d'EYALANE - Notre Histoire et Notre Vision</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8; /* Arrière-plan principal */
+            color: #333;
+        }
+        .btn-primary {
+            background-color: #075985; /* Couleur d'accent pour les CTA */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #054a6e; /* Teinte plus foncée au survol */
+        }
+        .navbar-link {
+            color: #075985;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar-link:hover {
+            color: #054a6e;
+        }
+        .section-heading {
+            color: #075985;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-3xl font-bold text-blue-800">EYALANE</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="navbar-link">Accueil</a>
+                <a href="sangmelima.html" class="navbar-link">Découvrir Sangmélima</a>
+                <a href="about.html" class="navbar-link">À Propos de Nous</a>
+                <a href="contact.html" class="navbar-link">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button class="text-blue-800 focus:outline-none" id="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"></div>
+    <div id="mobile-menu" class="fixed top-0 right-0 w-64 h-full bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <div class="p-6">
+            <button class="absolute top-4 right-4 text-gray-600 focus:outline-none" id="close-mobile-menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <nav class="flex flex-col space-y-4 mt-8">
+                <a href="index.html" class="navbar-link text-lg">Accueil</a>
+                <a href="sangmelima.html" class="navbar-link text-lg">Découvrir Sangmélima</a>
+                <a href="about.html" class="navbar-link text-lg">À Propos de Nous</a>
+                <a href="contact.html" class="navbar-link text-lg">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="py-16">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl md:text-5xl font-bold text-center mb-12 section-heading">À Propos d'EYALANE</h1>
+
+            <section class="mb-12 p-8 bg-white rounded-lg shadow-lg">
+                <h2 class="text-3xl font-semibold mb-6 section-heading">Nom et Identité</h2>
+                <p class="text-lg leading-relaxed">
+                    Éyalane est une startup camerounaise basée à Douala, créée pour révolutionner l’accès au tourisme, à l’hospitalité, aux événements et au lifestyle local. Le nom **« Éyalane »**, inspiré du terme béti/éwondo signifiant **« réponse »**, reflète notre ambition d’offrir une solution complète aux besoins des voyageurs et des entreprises locales. En combinant une plateforme numérique innovante et un magazine papier localisé par ville, Éyalane se positionne comme un acteur clé pour promouvoir le patrimoine culturel et économique du Cameroun.
+                </p>
+            </section>
+
+            <section class="mb-12 p-8 bg-white rounded-lg shadow-lg">
+                <h2 class="text-3xl font-semibold mb-6 section-heading">Statut Juridique</h2>
+                <p class="text-lg leading-relaxed">
+                    Éyalane est constituée sous la forme d’une **Société par Actions Simplifiée (SAS)**, un modèle flexible adapté aux startups, permettant une gouvernance claire et l’intégration d’investisseurs. Un pacte d’actionnaires sera établi pour sécuriser les intérêts des fondateurs et des partenaires financiers, garantissant une transparence et une structure propice à la levée de fonds.
+                </p>
+            </section>
+
+            <section class="mb-12 p-8 bg-white rounded-lg shadow-lg">
+                <h2 class="text-3xl font-semibold mb-6 section-heading">Notre Mission</h2>
+                <p class="text-lg leading-relaxed">
+                    Promouvoir le tourisme et le lifestyle camerounais à travers une plateforme numérique tout-en-un et des magazines locaux, en connectant voyageurs, touristes internationaux et entreprises (restaurants, hôtels, organisateurs d’événements) dans chaque ville. Éyalane vise à rendre les expériences locales accessibles, authentiques et fluides, tout en soutenant la digitalisation des acteurs économiques.
+                </p>
+            </section>
+
+            <section class="mb-12 p-8 bg-white rounded-lg shadow-lg">
+                <h2 class="text-3xl font-semibold mb-6 section-heading">Notre Vision</h2>
+                <p class="text-lg leading-relaxed">
+                    Devenir la référence pour le tourisme domestique et le lifestyle en Afrique centrale d’ici 5 ans, en commençant par le Cameroun, avec une expansion prévue au Gabon, au Tchad et au-delà. Éyalane aspire à valoriser les richesses culturelles des villes camerounaises (Douala, Yaoundé, Kribi, Bamenda) et à positionner le Cameroun comme une destination touristique incontournable.
+                </p>
+            </section>
+
+            <section class="mb-12 p-8 bg-white rounded-lg shadow-lg">
+                <h2 class="text-3xl font-semibold mb-6 section-heading">Nos Valeurs</h2>
+                <ul class="list-disc list-inside text-lg leading-relaxed space-y-3">
+                    <li>**Authenticité** : Mettre en avant des expériences locales et culturelles uniques.</li>
+                    <li>**Accessibilité** : Offrir des solutions adaptées au contexte africain, notamment via l’intégration de Mobile Money et une version USSD pour les zones à faible connectivité.</li>
+                    <li>**Communauté** : Créer des ponts entre voyageurs, entreprises et communautés locales.</li>
+                    <li>**Découverte locale** : Célébrer la diversité des villes camerounaises à travers des récits immersifs.</li>
+                    <li>**Promotion culturelle** : Valoriser le patrimoine, les traditions et le lifestyle camerounais.</li>
+                </ul>
+            </section>
+
+            <section class="mb-12 p-8 bg-white rounded-lg shadow-lg">
+                <h2 class="text-3xl font-semibold mb-6 section-heading">L'Équipe Fondatrice</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-medium mb-2 text-gray-800">BIKOE Noah</h3>
+                        <p class="text-lg font-semibold text-blue-700 mb-2">Fondateur et Directeur Général</p>
+                        <p class="text-base leading-relaxed">
+                            Passionné de slam et de poésie, BIKOE Noah apporte une expertise en storytelling et communication culturelle, idéale pour créer un contenu engageant pour le magazine et la plateforme. Avec une vision entrepreneuriale, il pilote la stratégie globale et les partenariats locaux.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-medium mb-2 text-gray-800">ENGUENE MBALA Mark</h3>
+                        <p class="text-lg font-semibold text-blue-700 mb-2">Responsable Technique</p>
+                        <p class="text-base leading-relaxed">
+                            Expert en développement web/mobile, ENGUENE MBALA Mark est chargé de la création de la plateforme numérique et de l’intégration des paiements via Mobile Money.
+                        </p>
+                    </div>
+                </div>
+                <p class="text-lg leading-relaxed mt-6">
+                    L’équipe d’Éyalane est portée par une vision commune et des compétences complémentaires, assurant une synergie parfaite pour le développement du projet.
+                </p>
+            </section>
+
+            <section class="mb-12 p-8 bg-white rounded-lg shadow-lg">
+                <h2 class="text-3xl font-semibold mb-6 section-heading">Notre Engagement Local</h2>
+                <p class="text-lg leading-relaxed">
+                    Basée à Yaoundé, Éyalane s’inscrit dans l’écosystème entrepreneurial camerounais, en collaborant avec des réseaux comme Cameroon Angel Network (CAN) et des incubateurs comme ActivSpaces. Notre ancrage local nous permet de comprendre les besoins des utilisateurs et des entreprises, tout en tirant parti des opportunités de financement comme le fonds Timbuktoo de l’UNDP.
+                </p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center md:flex md:justify-between md:items-center">
+            <p>&copy; 2025 EYALANE. Tous droits réservés.</p>
+            <div class="flex justify-center md:justify-end space-x-4 mt-4 md:mt-0">
+                <a href="https://facebook.com/eyalane" target="_blank" class="text-white hover:text-blue-400">Facebook</a>
+                <a href="https://instagram.com/eyalane" target="_blank" class="text-white hover:text-blue-400">Instagram</a>
+                <a href="https://tiktok.com/@eyalane" target="_blank" class="text-white hover:text-blue-400">TikTok</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gestion du menu mobile (à répliquer sur toutes les pages)
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+
+        if (mobileMenuButton && mobileMenu && mobileMenuOverlay && closeMobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenuOverlay.classList.remove('hidden');
+            });
+
+            closeMobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenuOverlay.classList.add('hidden');
+            });
+
+            mobileMenuOverlay.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenuOverlay.classList.add('hidden');
+            });
+        }
+    </script>
+</body>
+</html>

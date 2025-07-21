@@ -1,0 +1,2056 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EYALANE - Votre Boussole pour le Tourisme Authentique au Cameroun</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FDFBF8;
+            color: #333;
+        }
+        
+        .btn-primary {
+            background-color: #075985;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .btn-primary:hover {
+            background-color: #054a6e;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(7, 89, 133, 0.3);
+        }
+        
+        .navbar-link {
+            color: #075985;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .navbar-link:hover {
+            color: #054a6e;
+            transform: translateY(-2px);
+        }
+        
+        .navbar-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #075985;
+            transition: width 0.3s ease;
+        }
+        
+        .navbar-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero-carousel {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+        }
+        
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .carousel-slide.active {
+            opacity: 1;
+        }
+        
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #075985;
+            box-shadow: 0 0 0 3px rgba(7, 89, 133, 0.1);
+        }
+        
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 10;
+            display: none;
+        }
+        
+        .search-suggestions.show {
+            display: block;
+            animation: fadeInUp 0.3s ease;
+        }
+        
+        .suggestion-item {
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #f7fafc;
+        }
+        
+        .suggestion-item:hover {
+            background-color: #f7fafc;
+            transform: translateX(5px);
+        }
+        
+        .city-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .city-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .city-gallery {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .city-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .city-card:hover .city-image {
+            transform: scale(1.1);
+        }
+        
+        .followers-stack {
+            display: flex;
+            margin-left: -0.5rem;
+        }
+        
+        .follower-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-left: -0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .follower-avatar:hover {
+            transform: scale(1.2);
+            z-index: 10;
+        }
+        
+        .region-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .region-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 25px;
+            background: white;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .region-btn:hover, .region-btn.active {
+            background: orange;
+            color: white;
+            border-color: #075985;
+            transform: translateY(-2px);
+        }
+        
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 0.75rem 1.5rem;
+            background: white;
+            color: #075985;
+            border: 1px solid #075985;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn:hover {
+            background: orange;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-carousel {
+                height: 50vh;
+            }
+            
+            .cities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .region-selector {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .category-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        .group:hover .group-hover\:opacity-100 {
+        opacity: 1 !important;
+    }
+
+    .group:hover .group-hover\:visible {
+        visibility: visible !important;
+    }
+
+    /* Alternative plus robuste pour le dropdown */
+    .dropdown-menu {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        pointer-events: none;
+    }
+
+    .dropdown-trigger:hover .dropdown-menu,
+    .dropdown-menu:hover {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    select {
+    background-image: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+/* Animations pour les liens */
+footer a {
+    position: relative;
+}
+
+footer a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+}
+
+footer a:hover::before {
+    width: 100%;
+}
+
+/* Responsive pour le footer */
+@media (max-width: 768px) {
+    .footer-links {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .footer-selectors {
+        justify-content: center;
+    }
+}
+
+
+
+/* Section Magazine LE KIOSQUE */
+.kiosque-section {
+    width: 100%;
+    background: white;
+    padding: 4rem 2rem;
+    margin: 2rem 0;
+}
+
+.kiosque-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.kiosque-left {
+    padding-right: 2rem;
+}
+
+.kiosque-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #2d3436;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.kiosque-description {
+    color: #636e72;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.kiosque-link {
+    color: #0984e3;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.kiosque-link:hover {
+    text-decoration: underline;
+}
+
+.magazines-carousel {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+
+.magazines-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 100%;
+}
+
+.magazine-card {
+    min-width: 280px;
+    height: 380px;
+    margin-right: 20px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.magazine-card:hover {
+    transform: scale(1.05);
+}
+
+.magazine-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.magazine-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 2rem 1.5rem 1.5rem;
+}
+
+.magazine-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.magazine-date {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.carousel-btn {
+    background: #ddd;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background: #0984e3;
+    color: white;
+}
+
+.carousel-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.carousel-indicator {
+    width: 40px;
+    height: 40px;
+    background: #0984e3;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .kiosque-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .kiosque-title {
+        font-size: 2rem;
+    }
+    
+    .magazine-card {
+        min-width: 250px;
+        height: 340px;
+    }
+}
+
+
+
+        /* Section Newsletter */
+.newsletter-section {
+    width: 80%;
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+    padding: 3rem 2rem;
+    margin: 3rem 10% 3rem 10%;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.newsletter-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.newsletter-content {
+    flex: 1;
+    color: white;
+}
+
+.newsletter-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.newsletter-description {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    opacity: 0.95;
+    margin-bottom: 0;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 0;
+    max-width: 400px;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 50px 0 0 50px;
+    font-size: 1rem;
+    outline: none;
+    background: white;
+    color: #333;
+}
+
+.newsletter-input::placeholder {
+    color: #999;
+}
+
+.newsletter-btn {
+    background: white;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 0 50px 50px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    min-width: 60px;
+}
+
+.newsletter-btn:hover {
+    background: #f8f9fa;
+    transform: translateX(2px);
+}
+
+.newsletter-btn svg {
+    width: 20px;
+    height: 20px;
+    color: #e67e22;
+}
+
+/* Cercles décoratifs pour la newsletter */
+.newsletter-decoration {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: -50px;
+    right: 10%;
+}
+
+.newsletter-decoration::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    bottom: -80px;
+    left: 120px;
+}
+
+/* Modale de confirmation */
+.newsletter-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.newsletter-modal.show {
+    display: flex;
+}
+
+.modal-newsletter-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 500px;
+    margin: 1rem;
+    text-align: center;
+    position: relative;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.success-icon {
+    width: 60px;
+    height: 60px;
+    background: #27ae60;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.success-icon svg {
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2d3436;
+    margin-bottom: 1rem;
+}
+
+.modal-text {
+    color: #636e72;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.modal-btn {
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.modal-btn:hover {
+    background: #d35400;
+}
+
+@media (max-width: 768px) {
+    .newsletter-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .newsletter-title {
+        font-size: 1.5rem;
+    }
+    
+    .newsletter-form {
+        max-width: 100%;
+    }
+}
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="bg-white p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-3xl text-gray-900">éyalane explorer</span>
+            </div>
+            
+            <!-- Menu principal -->
+            <div class="hidden md:flex items-center space-x-6">
+                <!-- Dropdown Destinations -->
+                <div class="relative group">
+                    <button class="navbar-link flex items-center space-x-1">
+                        <span>Destinations</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                        <div class="py-2">
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Adamaoua">Adamaoua</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Centre">Centre</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Est">Est</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Extrême-Nord">Extrême-Nord</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Littoral">Littoral</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Nord">Nord</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Nord-Ouest">Nord-Ouest</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Ouest">Ouest</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Sud">Sud</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Sud-Ouest">Sud-Ouest</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="explorer.html" class="navbar-link">Explorer</a>
+                <a href="lifestyle.html" class="navbar-link">Lifestyle</a>
+            </div>
+            
+            <!-- Menu mobile -->
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-blue-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Barre de catégories -->
+    <div class="bg-white py-3 border-b border-blue-100">
+        <div class="container mx-auto px-6">
+            <div class="category-nav">
+                <a href="restaurants.html" class="category-btn group relative overflow-hidden">
+                    <span class="relative z-10 flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-5 5-7-7-5 5V6l5-5 7 7 5-5v8z"></path>
+                        </svg>
+                        <span>Hôtels</span>
+                    </span>
+                </a>
+                <a href="restaurants.html" class="category-btn group relative overflow-hidden">
+                    <span class="relative z-10 flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-5 5-7-7-5 5V6l5-5 7 7 5-5v8z"></path>
+                        </svg>
+                        <span>Restaurants</span>
+                    </span>
+                </a>
+                <a href="activites.html" class="category-btn group relative overflow-hidden">
+                    <span class="relative z-10 flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                        </svg>
+                        <span>Activités</span>
+                    </span>
+                </a>
+                <a href="evenements.html" class="category-btn group relative overflow-hidden">
+                    <span class="relative z-10 flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>Événements</span>
+                    </span>
+                </a>
+                <a href="blog.html" class="category-btn group relative overflow-hidden">
+                    <span class="relative z-10 flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                        <span>Blog</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>  
+
+
+
+    <!-- Hero Section avec Carousel -->
+    <section class="hero-carousel">
+        <div class="carousel-slide active" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwTlPYQ3CVxPIsJcddITkgW0RaY2vJ_RVxzw&s');">
+        </div>
+        <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVP85xzveNs_q5tgyW50g5bDIZktKo3HR5Cg&s');">
+        </div>
+        <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMoJBMuwtdMmHPG_HJd609PI4kMz1vjMifjA&s');">
+        </div>
+        
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+            <div class="text-center text-white px-6">
+                <h1 class="text-4xl md:text-6xl mb-8 fade-in">
+                    Trouvez les bons endroits au bon moment
+                </h1>
+                
+                <!-- Barre de recherche -->
+                <div class="search-container mt-8">
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        placeholder="Rechercher une ville..." 
+                        class="search-input"
+                        autocomplete="off"
+                    >
+                    <div id="search-suggestions" class="search-suggestions"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Section des régions et villes -->
+    <section id="cities-section" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl text-center mb-12 text-green font-semibold">
+                Découvrez nos destinations
+            </h2>
+            
+            <!-- Sélecteur de régions -->
+            <div class="region-selector">
+                <button class="region-btn active" data-region="Sud">Sud</button>
+                <button class="region-btn" data-region="Centre">Centre</button>
+                <button class="region-btn" data-region="Littoral">Littoral</button>
+                <button class="region-btn" data-region="Ouest">Ouest</button>
+                <button class="region-btn" data-region="Nord-Ouest">Nord-Ouest</button>
+                <button class="region-btn" data-region="Sud-Ouest">Sud-Ouest</button>
+                <button class="region-btn" data-region="Est">Est</button>
+                <button class="region-btn" data-region="Adamaoua">Adamaoua</button>
+                <button class="region-btn" data-region="Nord">Nord</button>
+                <button class="region-btn" data-region="Extrême-Nord">Extrême-Nord</button>
+            </div>
+            
+            <!-- Grille des villes -->
+            <div id="cities-grid" class="cities-grid">
+                <!-- Les villes seront chargées dynamiquement -->
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Section publicitaire -->
+    <div class="bg-white py-4">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center">
+                <div class="w-full">
+                    <img 
+                        src="pubEyalane.png" 
+                        alt="Publicité Eyalane" 
+                        class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                        loading="lazy"
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Section LE KIOSQUE -->
+<section class="kiosque-section">
+    <div class="kiosque-container">
+        <div class="kiosque-left">
+            <h2 class="kiosque-title">LE KIOSQUE</h2>
+            <p class="kiosque-description">
+                Retrouvez ici toutes les publications de Fougères Agglomération.
+            </p>
+            <a href="#" class="kiosque-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.16.21 2.34.21 3.5 0 5.16-1 9-5.45 9-11V7l-10-5z"/>
+                </svg>
+                Les comptes-rendus du Conseil
+            </a>
+        </div>
+        
+        <div class="magazines-carousel">
+            <div class="magazines-track" id="magazines-track">
+                <div class="magazine-card">
+                    <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=280&h=380&fit=crop" 
+                         alt="Magazine EYALANE" class="magazine-cover">
+                    <div class="magazine-overlay">
+                        <div class="magazine-title">Mag' Agglomération</div>
+                        <div class="magazine-date">Janvier 2025</div>
+                    </div>
+                </div>
+                
+                <div class="magazine-card">
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=280&h=380&fit=crop" 
+                         alt="L'Agglo Solidaire" class="magazine-cover">
+                    <div class="magazine-overlay">
+                        <div class="magazine-title">L'Agglo Solidaire</div>
+                        <div class="magazine-date">Décembre 2024</div>
+                    </div>
+                </div>
+                
+                <div class="magazine-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=280&h=380&fit=crop" 
+                         alt="Guide Pratique" class="magazine-cover">
+                    <div class="magazine-overlay">
+                        <div class="magazine-title">Guide Pratique</div>
+                        <div class="magazine-date">Novembre 2024</div>
+                    </div>
+                </div>
+                
+                <div class="magazine-card">
+                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=280&h=380&fit=crop" 
+                         alt="Magazine Culture" class="magazine-cover">
+                    <div class="magazine-overlay">
+                        <div class="magazine-title">Culture & Vous</div>
+                        <div class="magazine-date">Octobre 2024</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="carousel-controls">
+        <button class="carousel-btn" id="prev-mag" onclick="scrollMagazines(-1)">‹</button>
+        <div class="carousel-indicator" id="mag-indicator">1</div>
+        <button class="carousel-btn" id="next-mag" onclick="scrollMagazines(1)">›</button>
+    </div>
+</section>
+
+
+
+ <!-- Section Newsletter -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <div class="newsletter-content">
+                <h2 class="newsletter-title">LETTRE D'INFORMATION</h2>
+                <p class="newsletter-description">
+                    Inscrivez-vous à notre newsletter pour rester informé de l'actualité de Fougères Agglomération.
+                </p>
+            </div>
+            <form class="newsletter-form" id="newsletter-form">
+                <input 
+                    type="email" 
+                    class="newsletter-input" 
+                    placeholder="Votre adresse email"
+                    id="newsletter-email"
+                    required
+                >
+                <button type="submit" class="newsletter-btn">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+        <div class="newsletter-decoration"></div>
+    </section>
+
+
+
+    <!-- Modale de confirmation -->
+    <div class="newsletter-modal" id="newsletter-modal">
+        <div class="modal-newsletter-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="success-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+            </div>
+            <h3 class="modal-title">Inscription réussie !</h3>
+            <p class="modal-text">
+                Merci pour votre inscription à notre newsletter. Un email de confirmation vous a été envoyé à l'adresse <strong id="confirm-email"></strong>.
+                <br><br>
+                Vous recevrez bientôt nos dernières actualités et événements de Sangmélima.
+            </p>
+            <button class="modal-btn" id="modal-ok">Parfait !</button>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 border-t border-gray-200">
+    <!-- Section principale du footer -->
+        <div class="container mx-auto px-6 py-8">
+            <!-- Logo et description -->
+            <div class="flex flex-col lg:flex-row justify-between items-start space-y-8 lg:space-y-0">
+                <div class="lg:w-1/3">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <!-- Logo EYALANE avec icône -->
+                        <div class="bg-gradient-to-r from-blue-800 to-blue-600 p-2 rounded-full">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <span class="text-2xl text-green">éyalane explorer</span>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        EYALANE ne garantit pas la disponibilité des prix affichés sur nos sites et applications. 
+                        Des conditions et restrictions telles que, entre autres, des durées de voyage imposées ou 
+                        des dates de fermeture peuvent...
+                    </p>
+                    <button class="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center space-x-1 transition-colors">
+                        <span>Plus</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Liens et sélecteurs -->
+                <div class="lg:w-2/3 flex flex-col space-y-6">
+                    <!-- Sélecteurs de devise et pays -->
+                    <div class="flex flex-wrap gap-4 justify-start lg:justify-end">
+                        <!-- Sélecteur de devise -->
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 text-sm font-medium text-gray-700 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer">
+                                <option value="eur">FCFA</option>
+                                <option value="usd">$ USD</option>
+                            </select>
+                            <svg class="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        
+                        <!-- Sélecteur de pays -->
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 text-sm font-medium text-gray-700 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer">
+                                <option value="cm">🇨🇲 Cameroun</option>
+                            </select>
+                            <svg class="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <!-- Liens légaux -->
+                    <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm justify-start lg:justify-end">
+                        <a href="/conditions" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Conditions d'utilisation
+                        </a>
+                        <a href="/confidentialite" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Confidentialité et utilisation des cookies
+                        </a>
+                        <a href="/accord-cookies" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Accord d'utilisation des cookies
+                        </a>
+                        <a href="/plan-du-site" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Plan du site
+                        </a>
+                        <a href="/fonctionnement" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Fonctionnement du site
+                        </a>
+                        <a href="/contact" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Contactez-nous
+                        </a>
+                        <a href="/accessibilite" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Politique d'accessibilité
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Barre de copyright -->
+        <div class="bg-gray-50 border-t border-gray-200">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="flex items-center space-x-4">
+                        <p class="text-sm text-gray-600">
+                            © 2025 Eyalane LLC Tous droits réservés.
+                        </p>
+                    </div>
+                    
+                    <!-- Réseaux sociaux -->
+                    <div class="flex items-center space-x-4">
+                        <span class="text-sm text-gray-500">Suivez-nous :</span>
+                        <a href="https://facebook.com/eyalane" target="_blank" 
+                        class="text-gray-600 hover:text-blue-600 transition-colors p-2 rounded-full hover:bg-blue-50">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com/eyalane" target="_blank" 
+                        class="text-gray-600 hover:text-pink-600 transition-colors p-2 rounded-full hover:bg-pink-50">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987c6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.348-1.051-2.348-2.348s1.051-2.348 2.348-2.348 2.348 1.051 2.348 2.348S9.746 16.988 8.449 16.988zM12.017 16.988c-1.297 0-2.348-1.051-2.348-2.348s1.051-2.348 2.348-2.348 2.348 1.051 2.348 2.348S13.314 16.988 12.017 16.988zM15.585 16.988c-1.297 0-2.348-1.051-2.348-2.348s1.051-2.348 2.348-2.348 2.348 1.051 2.348 2.348S16.882 16.988 15.585 16.988z"/>
+                            </svg>
+                        </a>
+                        <a href="https://tiktok.com/@eyalane" target="_blank" 
+                        class="text-gray-600 hover:text-black transition-colors p-2 rounded-full hover:bg-gray-100">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Données des villes par région
+        const citiesData = {
+            "Sud": [
+                {
+                    name: "Sangmélima",
+                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s",
+                    followers: 1247,
+                    description: "Capitale de la région du Sud, riche en culture et tradition"
+                },
+                {
+                    name: "Ebolowa",
+                    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    followers: 892,
+                    description: "Ville dynamique au cœur de la forêt équatoriale"
+                },
+                {
+                    name: "Kribi",
+                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrsnoKsWYGVwFPXjiNXUHlnNSm0EjAFgpu3g&s",
+                    followers: 2156,
+                    description: "Station balnéaire aux plages magnifiques"
+                }
+            ],
+            "Centre": [
+                {
+                    name: "Yaoundé",
+                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQAudOk1Z4SsENi9WfB2rQeepH-7YyWdcbMg&s",
+                    followers: 5432,
+                    description: "Capitale politique aux sept collines"
+                },
+                {
+                    name: "Mbalmayo",
+                    image: "https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    followers: 678,
+                    description: "Ville paisible aux portes de la forêt"
+                }
+            ],
+            "Littoral": [
+                {
+                    name: "Douala",
+                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnfjdWMkeEZEKlNHcTS7yTj1ioer7hplpitA&s",
+                    followers: 6789,
+                    description: "Capitale économique et port principal"
+                },
+                {
+                    name: "Limbe",
+                    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    followers: 1543,
+                    description: "Ville balnéaire aux plages de sable noir"
+                }
+            ],
+            "Ouest": [
+                {
+                    name: "Bafoussam",
+                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFSL-5nbhkVQThydz_PKQLHY0Mtn5343TexQ&s",
+                    followers: 2341,
+                    description: "Centre des hauts plateaux de l'Ouest"
+                },
+                {
+                    name: "Dschang",
+                    image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    followers: 1876,
+                    description: "Ville universitaire au climat tempéré"
+                }
+            ],
+            "Nord-Ouest": [
+                {
+                    name: "Bamenda",
+                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMoJBMuwtdMmHPG_HJd609PI4kMz1vjMifjA&s",
+                    followers: 3214,
+                    description: "Ville aux mille collines"
+                }
+            ],
+            "Sud-Ouest": [
+                {
+                    name: "Buea",
+                    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    followers: 2567,
+                    description: "Ville aux pieds du Mont Cameroun"
+                }
+            ],
+            "Est": [
+                {
+                    name: "Bertoua",
+                    image: "https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    followers: 1432,
+                    description: "Porte d'entrée vers la forêt équatoriale"
+                }
+            ],
+            "Adamaoua": [
+                {
+                    name: "Ngaoundéré",
+                    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    followers: 1987,
+                    description: "Ville des hauts plateaux de l'Adamaoua"
+                }
+            ],
+            "Nord": [
+                {
+                    name: "Garoua",
+                    image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    followers: 2234,
+                    description: "Capitale du Grand Nord"
+                }
+            ],
+            "Extrême-Nord": [
+                {
+                    name: "Maroua",
+                    image: "https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    followers: 1654,
+                    description: "Ville aux traditions ancestrales"
+                }
+            ]
+        };
+
+
+
+        // Carousel d'images
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 5000);
+
+
+
+        // Fonction pour générer les avatars des followers
+        function generateFollowerAvatars(count) {
+            const avatars = [];
+            for (let i = 0; i < Math.min(count, 5); i++) {
+                avatars.push(`https://images.unsplash.com/photo-${1500000000000 + i * 1000000}?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80`);
+            }
+            return avatars;
+        }
+
+
+
+        // Fonction pour créer une carte de ville
+        function generateFollowerAvatars(count) {
+            const realAvatars = [
+                "https://images.unsplash.com/photo-1494790108755-2616b612b977?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80", // Femme souriante
+                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80", // Homme avec barbe
+                "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80", // Femme blonde
+                "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80", // Homme en costume
+                "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80", // Femme cheveux courts
+                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80", // Homme souriant
+                "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80", // Femme brune
+                "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80"  // Homme casual
+            ];
+            
+            const avatars = [];
+            const maxAvatars = Math.min(count > 1000 ? 5 : 3, realAvatars.length);
+            
+            for (let i = 0; i < maxAvatars; i++) {
+                avatars.push(realAvatars[i]);
+            }
+            return avatars;
+        }
+
+
+
+        // Fonction pour charger les villes d'une région
+        function loadCities(region) {
+            const citiesGrid = document.getElementById('cities-grid');
+            const cities = citiesData[region] || [];
+            
+            citiesGrid.innerHTML = cities.map(city => createCityCard(city)).join('');
+        }
+
+
+
+        // Fonction pour scroller vers la section des villes
+        function scrollToCities() {
+            document.getElementById('cities-section').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+
+
+        // Gestion des boutons de région
+        document.querySelectorAll('.region-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Retirer la classe active de tous les boutons
+                document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
+                // Ajouter la classe active au bouton cliqué
+                btn.classList.add('active');
+                
+                const region = btn.dataset.region;
+                loadCities(region);
+            });
+        });
+
+
+
+        // Gestion du dropdown de navigation
+        document.querySelectorAll('.region-dropdown-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const region = btn.dataset.region;
+                
+                // Mettre à jour le bouton actif
+                document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
+                document.querySelector(`[data-region="${region}"]`).classList.add('active');
+                
+                // Charger les villes et scroller
+                loadCities(region);
+                scrollToCities();
+            });
+        });
+
+
+
+        // Fonction de recherche
+        function searchCities(query) {
+            const allCities = [];
+            Object.values(citiesData).forEach(regionCities => {
+                allCities.push(...regionCities);
+            });
+            
+            return allCities.filter(city => 
+                city.name.toLowerCase().includes(query.toLowerCase())
+            );
+        }
+
+
+
+        // Gestion de la barre de recherche
+        const searchInput = document.getElementById('search-input');
+        const searchSuggestions = document.getElementById('search-suggestions');
+        
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.trim();
+            
+            if (query.length > 0) {
+                const results = searchCities(query);
+                
+                if (results.length > 0) {
+                    searchSuggestions.innerHTML = results.map(city => `
+                        <div class="suggestion-item" data-city="${city.name}">
+                            <div class="font-semibold">${city.name}</div>
+                            <div class="text-sm text-gray-500">${city.description}</div>
+                        </div>
+                    `).join('');
+                    searchSuggestions.classList.add('show');
+                } else {
+                    searchSuggestions.innerHTML = '<div class="suggestion-item">Aucune ville trouvée</div>';
+                    searchSuggestions.classList.add('show');
+                }
+            } else {
+                searchSuggestions.classList.remove('show');
+            }
+        });
+
+
+
+        // Gestion des suggestions
+        searchSuggestions.addEventListener('click', (e) => {
+            const suggestionItem = e.target.closest('.suggestion-item');
+            if (suggestionItem && suggestionItem.dataset.city) {
+                const cityName = suggestionItem.dataset.city;
+                
+                // Trouver la région de la ville
+                let targetRegion = null;
+                for (const [region, cities] of Object.entries(citiesData)) {
+                    if (cities.some(city => city.name === cityName)) {
+                        targetRegion = region;
+                        break;
+                    }
+                }
+                
+                if (targetRegion) {
+                    // Mettre à jour le bouton actif
+                    document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelector(`[data-region="${targetRegion}"]`).classList.add('active');
+                    
+                    // Charger les villes et scroller
+                    loadCities(targetRegion);
+                    scrollToCities();
+                }
+                
+                // Fermer les suggestions
+                searchSuggestions.classList.remove('show');
+                searchInput.value = '';
+            }
+        });
+
+
+
+        // Fermer les suggestions quand on clique ailleurs
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchSuggestions.contains(e.target)) {
+                searchSuggestions.classList.remove('show');
+            }
+        });
+
+
+
+        // Gestion du menu mobile
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'md:hidden bg-white shadow-lg absolute top-full left-0 right-0 z-50';
+        mobileMenu.style.display = 'none';
+        mobileMenu.innerHTML = `
+            <div class="px-4 py-2">
+                <div class="space-y-2">
+                    <div class="py-2">
+                        <span class="font-semibold text-blue-800">Destinations</span>
+                        <div class="ml-4 mt-2 space-y-1">
+                            ${Object.keys(citiesData).map(region => `
+                                <button class="mobile-region-btn block w-full text-left py-1 px-2 hover:bg-gray-100" data-region="${region}">${region}</button>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <a href="explorer.html" class="block py-2 text-blue-800">Explorer</a>
+                    <a href="lifestyle.html" class="block py-2 text-blue-800">Lifestyle</a>
+                </div>
+            </div>
+        `;
+        
+        document.querySelector('nav .container').appendChild(mobileMenu);
+
+
+
+        // Toggle menu mobile
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                if (mobileMenu.style.display === 'none' || mobileMenu.style.display === '') {
+                    mobileMenu.style.display = 'block';
+                    mobileMenu.style.animation = 'fadeInUp 0.3s ease';
+                } else {
+                    mobileMenu.style.display = 'none';
+                }
+            });
+        }
+
+
+
+        // Gestion des boutons de région mobile
+        document.querySelectorAll('.mobile-region-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const region = btn.dataset.region;
+                
+                // Mettre à jour le bouton actif
+                document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
+                document.querySelector(`[data-region="${region}"]`).classList.add('active');
+                
+                // Charger les villes et scroller
+                loadCities(region);
+                scrollToCities();
+                
+                // Fermer le menu mobile
+                mobileMenu.style.display = 'none';
+            });
+        });
+
+
+
+        // Fermer le menu mobile quand on clique ailleurs
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.style.display = 'none';
+            }
+        });
+
+
+
+        // Gestion de la recherche avec autocomplétion avancée
+        function createSearchSuggestion(city, region) {
+            return `
+                <div class="suggestion-item" data-city="${city.name}" data-region="${region}">
+                    <div class="flex items-center space-x-3">
+                        <img src="${city.image}" alt="${city.name}" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <div class="font-semibold text-gray-800">${city.name}</div>
+                            <div class="text-sm text-gray-500">${region} • ${city.followers.toLocaleString()} followers</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+
+
+        // Mise à jour de la fonction de recherche
+        function searchCities(query) {
+            const results = [];
+            Object.entries(citiesData).forEach(([region, cities]) => {
+                cities.forEach(city => {
+                    if (city.name.toLowerCase().includes(query.toLowerCase()) || 
+                        city.description.toLowerCase().includes(query.toLowerCase())) {
+                        results.push({ city, region });
+                    }
+                });
+            });
+            return results;
+        }
+
+
+
+        // Mise à jour du gestionnaire d'événements pour la recherche
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.trim();
+            
+            if (query.length > 0) {
+                const results = searchCities(query);
+                
+                if (results.length > 0) {
+                    searchSuggestions.innerHTML = results.map(({ city, region }) => 
+                        createSearchSuggestion(city, region)
+                    ).join('');
+                    searchSuggestions.classList.add('show');
+                } else {
+                    searchSuggestions.innerHTML = `
+                        <div class="suggestion-item">
+                            <div class="text-center py-4">
+                                <div class="text-gray-500">Aucune ville trouvée pour "${query}"</div>
+                                <div class="text-sm text-gray-400 mt-1">Essayez avec un autre terme</div>
+                            </div>
+                        </div>
+                    `;
+                    searchSuggestions.classList.add('show');
+                }
+            } else {
+                searchSuggestions.classList.remove('show');
+            }
+        });
+
+
+
+        // Animation des cartes de ville au scroll
+        function animateCardsOnScroll() {
+            const cards = document.querySelectorAll('.city-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        }
+
+
+
+        // Fonction pour générer un nombre aléatoire de followers
+        function generateRandomFollowers() {
+            return Math.floor(Math.random() * 3000) + 500;
+        }
+
+
+
+        // Mise à jour de la fonction createCityCard avec animations
+        function createCityCardWithAnimation(city, delay = 0) {
+            const avatars = generateFollowerAvatars(city.followers);
+            
+            return `
+                <div class="city-card fade-in" style="animation-delay: ${delay}ms">
+                    <div class="city-gallery">
+                        <img src="${city.image}" alt="${city.name}" class="city-image" loading="lazy">
+                        <div class="absolute top-3 right-3 bg-white bg-opacity-90 px-2 py-1 rounded-full text-xs font-semibold text-gray-600">
+                            ${city.followers.toLocaleString()}
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 text-blue-800">${city.name}</h3>
+                        <p class="text-gray-600 mb-4 line-clamp-2">${city.description}</p>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="followers-stack">
+                                    ${avatars.map((avatar, index) => 
+                                        `<img src="${avatar}" alt="Follower" class="follower-avatar" 
+                                              style="z-index: ${5-index}">`
+                                    ).join('')}
+                                </div>
+                                <span class="text-sm text-gray-500">
+                                    ${city.followers.toLocaleString()} followers
+                                </span>
+                            </div>
+                            <button class="btn-primary text-sm px-4 py-2 follow-btn bg-green-600 hover:bg-green-700" data-city="${city.name}">
+                                Suivre
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+
+
+        // Mise à jour de la fonction loadCities avec animations
+        function loadCities(region) {
+            const citiesGrid = document.getElementById('cities-grid');
+            const cities = citiesData[region] || [];
+            
+            // Animation de sortie
+            citiesGrid.style.opacity = '0';
+            citiesGrid.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                citiesGrid.innerHTML = cities.map((city, index) => 
+                    createCityCardWithAnimation(city, index * 100)
+                ).join('');
+                
+                // Animation d'entrée
+                citiesGrid.style.opacity = '1';
+                citiesGrid.style.transform = 'translateY(0)';
+                
+                // Animer les cartes individuellement
+                setTimeout(() => {
+                    animateCardsOnScroll();
+                    setupFollowButtons();
+                }, 100);
+            }, 300);
+        }
+
+
+
+        // Gestion des boutons "Suivre"
+        function setupFollowButtons() {
+            document.querySelectorAll('.follow-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const cityName = btn.dataset.city;
+                    
+                    if (btn.textContent === 'Suivre') {
+                        btn.textContent = 'Suivi';
+                        btn.classList.add('bg-green-600', 'hover:bg-green-700');
+                        btn.classList.remove('bg-blue-800', 'hover:bg-blue-700');
+                        
+                        // Animation de succès
+                        btn.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            btn.style.transform = 'scale(1)';
+                        }, 150);
+                        
+                        console.log(`Vous suivez maintenant ${cityName}`);
+                    } else {
+                        btn.textContent = 'Suivre';
+                        btn.classList.remove('bg-green-600', 'hover:bg-green-700');
+                        btn.classList.add('bg-blue-800', 'hover:bg-blue-700');
+                        console.log(`Vous ne suivez plus ${cityName}`);
+                    }
+                });
+            });
+        }
+
+
+
+        // Fonction de recherche avec filtrage en temps réel
+        function filterCitiesRealTime(query) {
+            const allCards = document.querySelectorAll('.city-card');
+            let visibleCount = 0;
+            
+            allCards.forEach(card => {
+                const cityName = card.querySelector('h3').textContent.toLowerCase();
+                const cityDesc = card.querySelector('p').textContent.toLowerCase();
+                const searchTerm = query.toLowerCase();
+                
+                if (cityName.includes(searchTerm) || cityDesc.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeInUp 0.4s ease';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+
+
+            // Afficher un message si aucune ville trouvée
+            const citiesGrid = document.getElementById('cities-grid');
+            let noResultsMsg = document.querySelector('.no-results-message');
+            
+            if (visibleCount === 0 && query.length > 0) {
+                if (!noResultsMsg) {
+                    noResultsMsg = document.createElement('div');
+                    noResultsMsg.className = 'no-results-message col-span-full text-center py-12';
+                    noResultsMsg.innerHTML = `
+                        <div class="text-6xl mb-4">🔍</div>
+                        <h3 class="text-2xl font-semibold text-gray-600 mb-2">Aucune ville trouvée</h3>
+                        <p class="text-gray-500">Essayez avec un autre terme de recherche</p>
+                    `;
+                    citiesGrid.appendChild(noResultsMsg);
+                }
+                noResultsMsg.style.display = 'block';
+            } else if (noResultsMsg) {
+                noResultsMsg.style.display = 'none';
+            }
+        }
+
+
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            // Charger les villes par défaut (Sud)
+            loadCities('Sud');
+            
+            // Configuration des transitions CSS
+            document.getElementById('cities-grid').style.transition = 'all 0.3s ease';
+            
+            console.log('EYALANE plateforme initialisée avec succès!');
+        });
+
+
+
+        // Gestion du redimensionnement de la fenêtre
+        window.addEventListener('resize', () => {
+            // Réajuster le carousel si nécessaire
+            const heroSection = document.querySelector('.hero-carousel');
+            if (window.innerWidth < 768) {
+                heroSection.style.height = '50vh';
+            } else {
+                heroSection.style.height = '70vh';
+            }
+        });
+
+
+
+        let currentMagIndex = 0;
+const totalMagazines = 4;
+
+function scrollMagazines(direction) {
+    const track = document.getElementById('magazines-track');
+    const indicator = document.getElementById('mag-indicator');
+    const cardWidth = 300; // 280px + 20px margin
+    
+    currentMagIndex += direction;
+    
+    if (currentMagIndex < 0) currentMagIndex = totalMagazines - 1;
+    if (currentMagIndex >= totalMagazines) currentMagIndex = 0;
+    
+    track.style.transform = `translateX(-${currentMagIndex * cardWidth}px)`;
+    indicator.textContent = currentMagIndex + 1;
+}
+
+
+
+// Système Newsletter avec EmailJS - Version corrigée
+// Configuration EmailJS
+const EMAILJS_CONFIG = {
+    publicKey: "kNI6EJbQQRNksClFW", // Remplacer par votre clé publique EmailJS
+    serviceId: "service_mesdt3p", // Remplacer par votre service ID
+    templateId: "template_g4fhvw7" // Remplacer par votre template ID
+};
+
+// Stockage en mémoire des abonnements (remplace localStorage)
+let newsletterSubscriptions = [];
+
+// Attendre que le DOM soit chargé avant d'initialiser
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Initialisation du système newsletter...');
+    
+    // Initialiser EmailJS si configuré
+    if (EMAILJS_CONFIG.publicKey !== "YOUR_PUBLIC_KEY") {
+        emailjs.init(EMAILJS_CONFIG.publicKey);
+        console.log('EmailJS initialisé');
+    } else {
+        console.warn('EmailJS non configuré - mode simulation activé');
+    }
+
+    // Vérifier que tous les éléments existent
+    const form = document.getElementById('newsletter-form');
+    const emailInput = document.getElementById('newsletter-email');
+    const submitBtn = document.querySelector('.newsletter-btn');
+    const modal = document.getElementById('newsletter-modal');
+    const confirmEmail = document.getElementById('confirm-email');
+    const modalClose = document.getElementById('modal-close');
+    const modalOk = document.getElementById('modal-ok');
+
+    // Vérification des éléments critiques
+    if (!form) {
+        console.error('Élément #newsletter-form non trouvé');
+        return;
+    }
+    if (!emailInput) {
+        console.error('Élément #newsletter-email non trouvé');
+        return;
+    }
+    if (!submitBtn) {
+        console.error('Élément .newsletter-btn non trouvé');
+        return;
+    }
+
+    // Gestion du formulaire newsletter
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        handleNewsletterSubmission();
+    });
+
+    function handleNewsletterSubmission() {
+        const email = emailInput.value.trim();
+        
+        console.log('Tentative d\'inscription avec l\'email:', email);
+        
+        // Validation de l'email
+        if (!email || !isValidEmail(email)) {
+            console.error('Email invalide:', email);
+            alert('Veuillez entrer une adresse email valide');
+            return;
+        }
+
+        // Vérifier si déjà inscrit
+        if (isAlreadySubscribed(email)) {
+            console.warn('Email déjà inscrit:', email);
+            alert('Cette adresse email est déjà inscrite à notre newsletter');
+            return;
+        }
+
+        // Désactiver le bouton et afficher le loader
+        submitBtn.disabled = true;
+        const originalContent = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<div class="loader"></div>';
+        
+        // Style du loader
+        if (!document.getElementById('loader-style')) {
+            const style = document.createElement('style');
+            style.id = 'loader-style';
+            style.textContent = `
+                .loader {
+                    width: 20px;
+                    height: 20px;
+                    border: 2px solid #e67e22;
+                    border-top: 2px solid transparent;
+                    border-radius: 50%;
+                    animation: spin 1s linear infinite;
+                    margin: 0 auto;
+                }
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Fonction de réinitialisation du bouton
+        function resetButton() {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalContent;
+        }
+
+        // Envoyer l'email selon la configuration
+        if (EMAILJS_CONFIG.publicKey !== "YOUR_PUBLIC_KEY") {
+            sendEmailWithEmailJS(email, resetButton);
+        } else {
+            simulateEmailSending(email, resetButton);
+        }
+    }
+
+    function sendEmailWithEmailJS(email, resetButton) {
+        const templateParams = {
+            to_email: email,
+            user_name: email.split('@')[0],
+            message: 'Bienvenue dans notre newsletter EYALANE ! Vous recevrez désormais toutes nos actualités sur Sangmélima.'
+        };
+
+        emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, templateParams)
+            .then(function(response) {
+                console.log('Email envoyé avec succès!', response.status, response.text);
+                handleSuccessfulSubmission(email);
+            })
+            .catch(function(error) {
+                console.error('Erreur lors de l\'envoi de l\'email:', error);
+                // En cas d'échec EmailJS, continuer quand même (comme dans votre code original)
+                console.log('Simulation du succès malgré l\'erreur EmailJS');
+                handleSuccessfulSubmission(email);
+            })
+            .finally(function() {
+                resetButton();
+            });
+    }
+
+    function simulateEmailSending(email, resetButton) {
+        console.log('Mode simulation - envoi d\'email pour:', email);
+        
+        // Simuler un délai d'envoi
+        setTimeout(() => {
+            handleSuccessfulSubmission(email);
+            resetButton();
+        }, 1500);
+    }
+
+    function handleSuccessfulSubmission(email) {
+        console.log('Traitement du succès pour:', email);
+        
+        // Sauvegarder l'abonnement
+        saveSubscription(email);
+        
+        // Afficher la modale de succès
+        showSuccessModal(email);
+        
+        // Reset du formulaire
+        form.reset();
+        
+        console.log('Inscription finalisée avec succès');
+    }
+
+    // Fonction de validation email
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    // Vérifier si l'email est déjà inscrit
+    function isAlreadySubscribed(email) {
+        return newsletterSubscriptions.some(subscription => 
+            subscription.email.toLowerCase() === email.toLowerCase()
+        );
+    }
+
+    // Sauvegarder l'abonnement en mémoire
+    function saveSubscription(email) {
+        const subscription = {
+            email: email,
+            date: new Date().toISOString(),
+            status: 'active'
+        };
+        
+        newsletterSubscriptions.push(subscription);
+        console.log('Abonnement sauvegardé:', subscription);
+        console.log('Total abonnements:', newsletterSubscriptions.length);
+    }
+
+    // Afficher la modale de succès
+    function showSuccessModal(email) {
+        console.log('Affichage de la modale pour:', email);
+        
+        if (confirmEmail) {
+            confirmEmail.textContent = email;
+        } else {
+            console.warn('Élément #confirm-email non trouvé');
+        }
+        
+        if (modal) {
+            modal.classList.add('show');
+        } else {
+            console.warn('Élément #newsletter-modal non trouvé');
+            // Fallback avec alert si la modale n'existe pas
+            alert(`Inscription réussie ! Email confirmé : ${email}`);
+        }
+    }
+
+    // Fermer la modale
+    function closeModal() {
+        if (modal) {
+            modal.classList.remove('show');
+            console.log('Modale fermée');
+        }
+    }
+
+    // Gestion des événements de la modale (avec vérification d'existence)
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+    
+    if (modalOk) {
+        modalOk.addEventListener('click', closeModal);
+    }
+    
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
+
+    // Fermer la modale avec la touche Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('show')) {
+            closeModal();
+        }
+    });
+
+    console.log('Système newsletter initialisé avec succès');
+});
+
+// Fonctions utilitaires pour le débogage (accessibles dans la console)
+function getNewsletterSubscriptions() {
+    return newsletterSubscriptions;
+}
+
+function clearNewsletterSubscriptions() {
+    newsletterSubscriptions = [];
+    console.log('Abonnements effacés');
+}
+    </script>
+</body>
+</html>

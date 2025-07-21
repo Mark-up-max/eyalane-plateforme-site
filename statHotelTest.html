@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eyalane - Firebase Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for better look */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #4a5568;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #718096;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="flex h-screen">
+        <!-- Barre latérale gauche -->
+        <nav class="bg-white w-64 flex-shrink-0 border-r border-gray-200 flex flex-col justify-between custom-scrollbar overflow-y-auto">
+            <div>
+                <div class="p-2">
+                    <button class="w-full flex items-center justify-between bg-blue-100 text-blue-700 font-semibold py-2 px-3 rounded-lg text-sm">
+                        <span class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                            Vue d'ensemble...
+                        </span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </button>
+                </div>
+
+                <div class="px-4 mt-4">
+                    <h3 class="text-xs text-gray-500 font-semibold uppercase tracking-wider">Raccourcis de projet</h3>
+                    <ul class="mt-2 space-y-1 text-sm">
+                        <!-- Menu Items -->
+                        <li><a href="#" class="flex items-center py-1.5 px-2 rounded-md hover:bg-gray-100"><svg class="w-5 h-5 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H5v-2H3v-2H1v-4a6 6 0 016-6h4a6 6 0 016 6z"></path></svg>Authentication</a></li>
+                        <li><a href="#" class="flex items-center py-1.5 px-2 rounded-md hover:bg-gray-100"><svg class="w-5 h-5 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>App Check</a></li>
+                        <li><a href="#" class="flex items-center py-1.5 px-2 rounded-md hover:bg-gray-100"><svg class="w-5 h-5 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>Dynamic Links</a></li>
+                        <li><a href="#" class="flex items-center py-1.5 px-2 rounded-md hover:bg-gray-100"><svg class="w-5 h-5 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path></svg>Hosting</a></li>
+                        <li><a href="#" class="flex items-center py-1.5 px-2 rounded-md hover:bg-gray-100"><svg class="w-5 h-5 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 7v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V7M8 7V5c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v2M12 11v4"></path></svg>Firestore Database</a></li>
+                        <li><a href="#" class="flex items-center py-1.5 px-2 rounded-md hover:bg-gray-100"><svg class="w-5 h-5 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>Storage</a></li>
+                        <li><a href="#" class="flex items-center py-1.5 px-2 rounded-md hover:bg-gray-100"><svg class="w-5 h-5 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l-4 4-4-4 4-4"></path></svg>Functions</a></li>
+                        <li><a href="#" class="flex items-center py-1.5 px-2 rounded-md hover:bg-gray-100"><svg class="w-5 h-5 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 008 10.172V5L7 4z"></path></svg>App Hosting</a></li>
+                        <li><a href="#" class="flex items-center py-1.5 px-2 rounded-md hover:bg-gray-100"><svg class="w-5 h-5 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>Machine Learning</a></li>
+                    </ul>
+                </div>
+                
+                <div class="px-4 mt-6">
+                    <h3 class="text-xs text-gray-500 font-semibold uppercase tracking-wider">Outils de développement associés</h3>
+                    <ul class="mt-2 space-y-1 text-sm">
+                        <li><a href="#" class="flex items-center py-1.5 px-2 rounded-md bg-gray-100 font-medium"><svg class="w-5 h-5 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l-4 4-4-4 4-4"></path></svg>Firebase Studio <svg class="w-4 h-4 ml-auto text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="p-4 border-t border-gray-200">
+                <div class="flex items-center justify-between text-sm">
+                    <div>
+                        <p class="font-semibold">Spark</p>
+                        <p class="text-gray-500">Sans frais (0 $/mois)</p>
+                    </div>
+                    <button class="text-blue-600 font-semibold bg-blue-100 px-3 py-1 rounded-md hover:bg-blue-200 text-xs">Mettre à niveau <span class="text-purple-600">NOUVEAU</span></button>
+                </div>
+                <button class="mt-4 w-full text-left text-gray-500 hover:text-gray-800">
+                    <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Contenu principal et barre latérale droite -->
+        <div class="flex-1 flex">
+            <!-- Contenu principal -->
+            <main class="flex-1 overflow-y-auto custom-scrollbar">
+                <header class="p-6">
+                    <div class="flex items-center">
+                        <h1 class="text-xl font-semibold text-gray-900">Eyalane</h1>
+                        <svg class="w-5 h-5 ml-1 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </div>
+                </header>
+
+                <div class="px-6">
+                    <!-- Bannière principale -->
+                    <div id="promo-banner" class="bg-gray-800 text-white rounded-xl p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h2 class="text-2xl font-bold">Eyalane</h2>
+                                <div class="flex items-center space-x-4 mt-2 text-sm">
+                                    <span class="bg-gray-700 px-3 py-1 rounded-full">Mode de facturation Spark</span>
+                                    <button class="flex items-center space-x-2 bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded-full">
+                                        <svg class="w-4 h-4 text-purple-400" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0L9.414 1.414L14.586 6.586L16 8L14.586 9.414L9.414 14.586L8 16L6.586 14.586L1.414 9.414L0 8L1.414 6.586L6.586 1.414L8 0Z"/></svg>
+                                        <span>Vous débutez ? Parlez de votre projet à Gemini</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <button id="close-banner-btn" class="text-gray-400 hover:text-white">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            </button>
+                        </div>
+
+                        <div class="flex items-center space-x-2 mb-6 border-b border-gray-700">
+                            <button class="py-2 px-3 text-sm font-medium border-b-2 border-blue-500 text-white">2 applications</button>
+                            <button class="py-2 px-3 text-sm font-medium text-gray-400 hover:text-white">EyalaneBD</button>
+                            <button class="py-2 px-3 text-sm font-medium text-gray-400 hover:text-white">EyalaneWeb</button>
+                            <button class="py-2 px-3 text-sm font-medium text-gray-400 hover:text-white">+ Ajouter une application</button>
+                        </div>
+
+                        <div class="bg-gray-900/50 rounded-lg p-6 flex items-center justify-between">
+                            <div>
+                                <h3 class="text-lg font-bold">Testez une application exemple Gemini 2.5</h3>
+                                <p class="text-gray-300 mt-1 max-w-md">Découvrez l'API Gemini et son fonctionnement en testant un exemple d'application optimisée par l'IA</p>
+                                <button class="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg">Essayer maintenant</button>
+                            </div>
+                            <div class="w-32 h-32 flex-shrink-0 bg-gradient-to-br from-purple-600 to-blue-500 rounded-full flex items-center justify-center">
+                                <svg class="w-16 h-16 text-white" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0L9.414 1.414L14.586 6.586L16 8L14.586 9.414L9.414 14.586L8 16L6.586 14.586L1.414 9.414L0 8L1.414 6.586L6.586 1.414L8 0Z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section Projets Récents -->
+                    <div class="mt-8">
+                        <div class="bg-gray-800 text-white rounded-xl p-8 relative overflow-hidden">
+                            <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/images/v1/people/woman_light_skin_long_dark_hair_waving.svg" alt="Illustration personnage féminin" class="absolute bottom-0 left-0 w-48 h-auto hidden md:block" style="transform: scaleX(-1);">
+                            <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/images/v1/people/man_dark_skin_short_black_hair_smiling.svg" alt="Illustration personnage masculin" class="absolute bottom-0 right-0 w-48 h-auto hidden md:block">
+                            
+                            <div class="relative z-10">
+                                <h2 class="text-2xl font-semibold mb-6 text-center">Projets récents</h2>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <!-- Carte Créer un projet -->
+                                    <div class="bg-white text-gray-800 rounded-lg p-6 flex flex-col items-center justify-center text-center border-2 border-dashed border-gray-300 hover:border-blue-500 cursor-pointer">
+                                        <div class="w-16 h-16 mb-4">
+                                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.918 84.8327L2.45455 49.9982L22.918 15.1636L43.3815 49.9982L22.918 84.8327Z" fill="#FFC24A"/><path d="M27.082 82.749L47.5455 47.9145L68.009 82.749L27.082 82.749Z" fill="#F4BD41"/><path d="M97.5455 49.9982L77.0819 15.1636H36.1545L56.6181 49.9982L36.1545 84.8327H77.0819L97.5455 49.9982Z" fill="#FFA000"/><path d="M2.45455 50L22.9181 15.1673L27.0819 22.2509L12.2727 48.8327L2.45455 50Z" fill="#FFCA28"/><path d="M68.009 82.749L72.1727 75.6654L57.3636 49.0836L47.5455 47.9164L68.009 82.749Z" fill="#F57C00"/></svg>
+                                        </div>
+                                        <h3 class="font-semibold mb-2">Créer un projet Firebase</h3>
+                                        <button class="text-sm text-blue-600 hover:underline">Voir un projet de démo</button>
+                                    </div>
+                                    
+                                    <!-- Cartes de projet existantes -->
+                                    <div class="bg-white text-gray-800 rounded-lg p-4 flex flex-col justify-between">
+                                        <div>
+                                            <h3 class="font-semibold">Eyalane</h3>
+                                            <p class="text-sm text-gray-500">eyalane-4f2b8</p>
+                                        </div>
+                                        <div class="mt-4 pt-4 border-t border-gray-200 flex items-center text-gray-500">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l-4 4-4-4 4-4"></path></svg>
+                                            <span class="text-xs ml-2">&lt; / &gt;</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white text-gray-800 rounded-lg p-4 flex flex-col justify-between">
+                                        <div>
+                                            <h3 class="font-semibold">hotelapp</h3>
+                                            <p class="text-sm text-gray-500">hotelapp-23004</p>
+                                        </div>
+                                        <div class="mt-4 pt-4 border-t border-gray-200 flex items-center text-gray-500">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l-4 4-4-4 4-4"></path></svg>
+                                            <span class="text-xs ml-2">&lt; / &gt;</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white text-gray-800 rounded-lg p-4 flex flex-col justify-between">
+                                        <div>
+                                            <h3 class="font-semibold">Myfirstproject</h3>
+                                            <p class="text-sm text-gray-500">myfirstproject-272b4</p>
+                                        </div>
+                                        <div class="mt-4 pt-4 border-t border-gray-200 flex items-center text-gray-500">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l-4 4-4-4 4-4"></path></svg>
+                                            <span class="text-xs ml-2">&lt; / &gt;</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white text-gray-800 rounded-lg p-4 flex flex-col justify-between">
+                                        <div>
+                                            <h3 class="font-semibold">sprintmanager</h3>
+                                            <p class="text-sm text-gray-500">sprintmanager-3bb13</p>
+                                        </div>
+                                        <div class="mt-4 pt-4 border-t border-gray-200 flex items-center text-gray-500">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l-4 4-4-4 4-4"></path></svg>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white text-gray-800 rounded-lg p-4 flex flex-col justify-between">
+                                        <div>
+                                            <h3 class="font-semibold">MyFirstProjectWeb</h3>
+                                            <p class="text-sm text-gray-500">myfirstprojectweb-5ec24</p>
+                                        </div>
+                                        <div class="mt-4 pt-4 border-t border-gray-200 flex items-center text-gray-500">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l-4 4-4-4 4-4"></path></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Section Créer -->
+                    <div class="mt-8">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-lg font-semibold">Créer</h2>
+                            <button class="text-gray-500 hover:text-gray-800">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                            </button>
+                        </div>
+
+                        <div class="mt-4 bg-white rounded-xl border border-gray-200 p-6">
+                            <h3 class="font-semibold">Firestore</h3>
+                            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <p class="text-sm text-gray-500">Lectures (actuellement)</p>
+                                    <div class="flex items-baseline space-x-2 mt-1">
+                                        <span class="text-3xl font-bold">0</span>
+                                        <span class="text-sm text-green-600 font-semibold">-100 %</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">Écritures (actuellement)</p>
+                                    <p class="text-3xl font-bold mt-1">0</p>
+                                </div>
+                            </div>
+                            <!-- Graphique statique -->
+                            <div class="mt-6 h-40 w-full">
+                                <svg class="w-full h-full" viewBox="0 0 400 100" preserveAspectRatio="none">
+                                    <line x1="0" y1="95" x2="400" y2="95" stroke="#e5e7eb" stroke-width="1"/>
+                                    <line x1="0" y1="50" x2="400" y2="50" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="4 2"/>
+                                    <line x1="0" y1="5" x2="400" y2="5" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="4 2"/>
+                                    <polyline points="0,95 50,95 100,80 150,95 200,60 250,75 300,95 320,40 350,60 400,95" fill="none" stroke="#4f46e5" stroke-width="2"/>
+                                    <text x="0" y="10" font-size="10" fill="#6b7280">1 k</text>
+                                    <text x="0" y="45" font-size="10" fill="#6b7280">500</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Barre latérale droite -->
+            <aside class="w-16 bg-gray-50 border-l border-gray-200 flex flex-col items-center py-4 space-y-6">
+                <img src="https://placehold.co/40x40/e0e0e0/333?text=A" alt="Avatar de l'utilisateur" class="w-10 h-10 rounded-full cursor-pointer">
+                <button class="text-gray-500 hover:text-gray-800 relative">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                    <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white"></span>
+                </button>
+                <button class="text-gray-500 hover:text-gray-800">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                </button>
+                <button class="text-gray-500 hover:text-gray-800">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </button>
+            </aside>
+        </div>
+    </div>
+
+    <script>
+        // Petit script pour fermer la bannière de promotion
+        const closeBannerBtn = document.getElementById('close-banner-btn');
+        const promoBanner = document.getElementById('promo-banner');
+
+        if (closeBannerBtn && promoBanner) {
+            closeBannerBtn.addEventListener('click', () => {
+                promoBanner.style.display = 'none';
+            });
+        }
+    </script>
+
+</body>
+</html>

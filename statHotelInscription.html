@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - Eyalane</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .step-card {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+        .hidden-step {
+            opacity: 0;
+            transform: translateX(20px);
+            position: absolute;
+            pointer-events: none;
+        }
+        .visible-step {
+            opacity: 1;
+            transform: translateX(0);
+            position: static;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+        <div class="w-full max-w-lg p-8 space-y-8 bg-white rounded-xl shadow-lg">
+            
+            <div class="text-center">
+                 <div class="flex justify-center mx-auto w-16 h-16">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.918 84.8327L2.45455 49.9982L22.918 15.1636L43.3815 49.9982L22.918 84.8327Z" fill="#FFC24A"/><path d="M27.082 82.749L47.5455 47.9145L68.009 82.749L27.082 82.749Z" fill="#F4BD41"/><path d="M97.5455 49.9982L77.0819 15.1636H36.1545L56.6181 49.9982L36.1545 84.8327H77.0819L97.5455 49.9982Z" fill="#FFA000"/><path d="M2.45455 50L22.9181 15.1673L27.0819 22.2509L12.2727 48.8327L2.45455 50Z" fill="#FFCA28"/><path d="M68.009 82.749L72.1727 75.6654L57.3636 49.0836L47.5455 47.9164L68.009 82.749Z" fill="#F57C00"/></svg>
+                </div>
+                <h2 class="mt-6 text-3xl font-bold text-gray-900">
+                    Créer un nouveau compte
+                </h2>
+                <p class="mt-2 text-sm text-gray-600">
+                    Rejoignez la plateforme StatHotel
+                </p>
+            </div>
+
+            <!-- Indicateur d'étapes -->
+            <div class="flex items-center justify-center space-x-4">
+                <div id="step-indicator-1" class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">1</div>
+                <div class="flex-1 h-1 bg-gray-200 rounded-full">
+                    <div id="progress-bar-1" class="h-1 bg-blue-600 rounded-full w-0 transition-all duration-500"></div>
+                </div>
+                <div id="step-indicator-2" class="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center font-bold">2</div>
+                 <div class="flex-1 h-1 bg-gray-200 rounded-full">
+                    <div id="progress-bar-2" class="h-1 bg-blue-600 rounded-full w-0 transition-all duration-500"></div>
+                </div>
+                <div id="step-indicator-3" class="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center font-bold">3</div>
+            </div>
+
+            <div class="relative overflow-hidden">
+                <!-- Étape 1: Informations personnelles -->
+                <div id="step-1" class="step-card visible-step">
+                    <form class="space-y-6">
+                        <input type="text" placeholder="Nom complet" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <input type="email" placeholder="Adresse e-mail" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <input type="password" placeholder="Mot de passe" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <input type="password" placeholder="Confirmer le mot de passe" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="button" onclick="nextStep()" class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">Suivant</button>
+                    </form>
+                </div>
+
+                <!-- Étape 2: Rôle -->
+                <div id="step-2" class="step-card hidden-step">
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-medium text-center text-gray-800">Quel est votre rôle ?</h3>
+                        <div>
+                            <input type="radio" name="role" id="role-minoul" value="MINOUL" class="hidden peer">
+                            <label for="role-minoul" class="block cursor-pointer p-4 border border-gray-300 rounded-md peer-checked:border-blue-600 peer-checked:ring-2 peer-checked:ring-blue-500">MINOUL</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="role" id="role-hotel" value="Hotel" class="hidden peer">
+                            <label for="role-hotel" class="block cursor-pointer p-4 border border-gray-300 rounded-md peer-checked:border-blue-600 peer-checked:ring-2 peer-checked:ring-blue-500">Hôtel</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="role" id="role-region" value="region" class="hidden peer">
+                            <label for="role-region" class="block cursor-pointer p-4 border border-gray-300 rounded-md peer-checked:border-blue-600 peer-checked:ring-2 peer-checked:ring-blue-500">Région</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="role" id="role-departement" value="departement" class="hidden peer">
+                            <label for="role-departement" class="block cursor-pointer p-4 border border-gray-300 rounded-md peer-checked:border-blue-600 peer-checked:ring-2 peer-checked:ring-blue-500">Département</label>
+                        </div>
+                         <div>
+                            <input type="radio" name="role" id="role-arrondissement" value="arrondissement" class="hidden peer">
+                            <label for="role-arrondissement" class="block cursor-pointer p-4 border border-gray-300 rounded-md peer-checked:border-blue-600 peer-checked:ring-2 peer-checked:ring-blue-500">Arrondissement</label>
+                        </div>
+                        <div class="flex justify-between">
+                            <button type="button" onclick="prevStep()" class="py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Précédent</button>
+                            <button type="button" onclick="nextStep()" class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">Suivant</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Étape 3: Localisation -->
+                <div id="step-3" class="step-card hidden-step">
+                     <div class="space-y-4">
+                        <h3 class="text-lg font-medium text-center text-gray-800">Spécifiez votre emplacement</h3>
+                        
+                        <div id="location-fields" class="space-y-4">
+                            <!-- Les champs seront ajoutés dynamiquement ici -->
+                        </div>
+
+                        <div class="flex justify-between">
+                            <button type="button" onclick="prevStep()" class="py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Précédent</button>
+                            <button type="submit" class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700">Créer le compte</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="mt-4 text-center text-sm text-gray-600">
+                Déjà membre ?
+                <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
+                    Se connecter
+                </a>
+            </p>
+        </div>
+    </div>
+
+<script>
+    let currentStep = 1;
+
+    // Données de localisation pour le Cameroun (exemple)
+    const locations = {
+        "Centre": {
+            "Mfoundi": ["Yaoundé I", "Yaoundé II", "Yaoundé III"],
+            "Lekié": ["Monatélé", "Obala"]
+        },
+        "Littoral": {
+            "Wouri": ["Douala I", "Douala II"],
+            "Sanaga-Maritime": ["Edéa", "Dizangué"]
+        },
+        "Ouest": {
+            "Mifi": ["Bafoussam I", "Bafoussam II"],
+            "Noun": ["Foumban", "Magba"]
+        }
+    };
+
+    function updateStepIndicator() {
+        // Reset styles
+        for (let i = 1; i <= 3; i++) {
+            document.getElementById(`step-indicator-${i}`).classList.remove('bg-blue-600', 'text-white');
+            document.getElementById(`step-indicator-${i}`).classList.add('bg-gray-200', 'text-gray-500');
+        }
+        if (currentStep > 1) {
+             document.getElementById('progress-bar-1').classList.add('w-full');
+        } else {
+             document.getElementById('progress-bar-1').classList.remove('w-full');
+        }
+        if (currentStep > 2) {
+             document.getElementById('progress-bar-2').classList.add('w-full');
+        } else {
+            document.getElementById('progress-bar-2').classList.remove('w-full');
+        }
+
+
+        // Set active style
+        for (let i = 1; i <= currentStep; i++) {
+            document.getElementById(`step-indicator-${i}`).classList.add('bg-blue-600', 'text-white');
+            document.getElementById(`step-indicator-${i}`).classList.remove('bg-gray-200', 'text-gray-500');
+        }
+    }
+
+    function showStep(stepNumber) {
+        document.querySelectorAll('.step-card').forEach(card => {
+            card.classList.add('hidden-step');
+            card.classList.remove('visible-step');
+        });
+        document.getElementById(`step-${stepNumber}`).classList.remove('hidden-step');
+        document.getElementById(`step-${stepNumber}`).classList.add('visible-step');
+        updateStepIndicator();
+    }
+
+    function nextStep() {
+        if (currentStep < 3) {
+            if (currentStep === 2) {
+                setupLocationFields();
+            }
+            currentStep++;
+            showStep(currentStep);
+        }
+    }
+
+    function prevStep() {
+        if (currentStep > 1) {
+            currentStep--;
+            showStep(currentStep);
+        }
+    }
+
+    function createSelect(id, label, options) {
+        const wrapper = document.createElement('div');
+        const labelEl = document.createElement('label');
+        labelEl.htmlFor = id;
+        labelEl.className = 'block text-sm font-medium text-gray-700';
+        labelEl.textContent = label;
+        
+        const selectEl = document.createElement('select');
+        selectEl.id = id;
+        selectEl.name = id;
+        selectEl.className = 'mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md';
+        
+        const defaultOption = document.createElement('option');
+        defaultOption.textContent = `Choisir ${label.toLowerCase()}`;
+        selectEl.appendChild(defaultOption);
+
+        options.forEach(opt => {
+            const optionEl = document.createElement('option');
+            optionEl.value = opt;
+            optionEl.textContent = opt;
+            selectEl.appendChild(optionEl);
+        });
+
+        wrapper.appendChild(labelEl);
+        wrapper.appendChild(selectEl);
+        return wrapper;
+    }
+
+    function setupLocationFields() {
+        const role = document.querySelector('input[name="role"]:checked').value;
+        const container = document.getElementById('location-fields');
+        container.innerHTML = ''; // Clear previous fields
+
+        const regions = Object.keys(locations);
+        
+        if (role === 'Hotel' || role === 'arrondissement' || role === 'departement' || role === 'region') {
+            const regionSelect = createSelect('region', 'Région', regions);
+            container.appendChild(regionSelect);
+            
+            const departementSelectContainer = document.createElement('div');
+            const arrondissementSelectContainer = document.createElement('div');
+
+            regionSelect.querySelector('select').addEventListener('change', (e) => {
+                const selectedRegion = e.target.value;
+                departementSelectContainer.innerHTML = '';
+                arrondissementSelectContainer.innerHTML = '';
+                if (selectedRegion && (role === 'Hotel' || role === 'arrondissement' || role === 'departement')) {
+                    const departements = Object.keys(locations[selectedRegion]);
+                    const departementSelect = createSelect('departement', 'Département', departements);
+                    departementSelectContainer.appendChild(departementSelect);
+
+                    departementSelect.querySelector('select').addEventListener('change', (e_dep) => {
+                        const selectedDepartement = e_dep.target.value;
+                        arrondissementSelectContainer.innerHTML = '';
+                        if(selectedDepartement && (role === 'Hotel' || role === 'arrondissement')) {
+                            const arrondissements = locations[selectedRegion][selectedDepartement];
+                            const arrondissementSelect = createSelect('arrondissement', 'Arrondissement', arrondissements);
+                            arrondissementSelectContainer.appendChild(arrondissementSelect);
+                        }
+                    });
+                }
+            });
+
+            container.appendChild(departementSelectContainer);
+            container.appendChild(arrondissementSelectContainer);
+        } else if (role === 'MINOUL') {
+             container.innerHTML = '<p class="text-sm text-center text-gray-500">Aucun emplacement requis pour ce rôle.</p>';
+        }
+    }
+    
+    // Initial setup
+    showStep(currentStep);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2625 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Découvrir Sangmélima - EYALANE</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+        }
+        .navbar-link {
+            color: #075985;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar-link:hover {
+            color: #054a6e;
+        }
+        .section-heading {
+            color: #075985;
+        }
+        /* Styles pour le carrousel d'images sous la navigation */
+        .image-carousel-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden; /* Cache les images qui dépassent */
+            border-radius: 1rem; /* Bords arrondis */
+            margin: 0 auto 1.5rem auto; /* Marge en bas, centrage, pas de marge en haut car la localisation est au-dessus */
+            max-width: 1200px; /* Largeur maximale pour le centrage */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Ombre légère */
+        }
+        .image-carousel-container {
+            display: flex; /* Permet aux images de s'aligner horizontalement */
+            transition: transform 0.5s ease-in-out; /* Animation de défilement */
+            scroll-behavior: smooth; /* Défilement doux */
+            -webkit-overflow-scrolling: touch; /* Pour un défilement doux sur iOS */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+        }
+        .image-carousel-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera*/
+        }
+        .carousel-image {
+            min-width: 100%; /* Chaque image prend 100% de la largeur du conteneur parent pour le défilement */
+            height: 400px; /* Hauteur fixe pour toutes les images du carrousel */
+            object-fit: cover; /* Assure que l'image couvre la zone sans distorsion */
+        }
+        .scroll-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6); /* Fond plus opaque pour les boutons */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            opacity: 0; /* Cachés par défaut */
+            transition: opacity 0.3s ease;
+            font-size: 2rem; /* Taille plus grande pour les flèches */
+            line-height: 1; /* Pour centrer le caractère */
+            border-radius: 9999px; /* Bords très arrondis (cercle) */
+            z-index: 10; /* S'assure qu'ils sont au-dessus des images */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px; /* Largeur fixe pour le bouton */
+            height: 50px; /* Hauteur fixe pour le bouton */
+        }
+        .scroll-button.left {
+            left: 10px;
+        }
+        .scroll-button.right {
+            right: 10px;
+        }
+        .image-carousel-wrapper:hover .scroll-button {
+            opacity: 1; /* Affiche les boutons au survol du conteneur */
+        }
+        .scroll-button:focus {
+            outline: none;
+        }
+        /* Styles pour la navigation de localisation (breadcrumb) */
+        .location-breadcrumb {
+            max-width: 1200px; /* Aligné avec le carrousel */
+            margin: 0.5rem auto 0.5rem auto; /* Marge au-dessus du carrousel */
+            padding: 0 1.5rem; /* Padding pour les petits écrans */
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .location-breadcrumb a {
+            color: #075985;
+            text-decoration: none;
+        }
+        .location-breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .location-breadcrumb span {
+            margin: 0 0.4rem;
+        }
+
+
+        
+        /* Styles pour la nouvelle section de navigation (onglets) */
+        .page-navigation-tabs {
+            max-width: 1200px;
+            margin: 1.5rem auto 0.5rem auto; /* Marge au-dessus de la localisation */
+            padding: 0 1.5rem;
+            border-bottom: 1px solid #e5e7eb; /* Ligne de séparation */
+            display: flex;
+            overflow-x: auto; /* Défilement horizontal si trop d'onglets */
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .page-navigation-tabs::-webkit-scrollbar {
+            display: none;
+        }
+        .page-navigation-tabs a {
+            flex-shrink: 0; /* Empêche les liens de se réduire */
+            padding: 0.75rem 1.25rem;
+            color: #666;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .page-navigation-tabs a:hover {
+            color: #075985;
+            border-color: #075985;
+        }
+        .page-navigation-tabs a.active {
+            color: #075985;
+            border-color: #075985;
+            font-weight: 600;
+        }
+
+
+
+
+        /* Styles pour la section "Explorez Sangmélima" */
+        .explore-sangmelima-section {
+            max-width: 1200px;
+            margin: 3rem auto auto auto; /* Marge généreuse au-dessus et en dessous */
+            padding: 0 1.5rem; /* Marge latérale */
+        }
+        .explore-sangmelima-section h2 {
+            color: #1a4d2e; /* Couleur verte foncée comme dans l'image */
+            font-size: 2rem; /* Grande taille de texte */
+            font-weight: 700;
+            line-height: 1.2;
+            display: inline-block; /* Permet au bouton "Enregistrer" de s'aligner */
+        }
+        .save-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #1a4d2e; /* Bordure verte foncée */
+            border-radius: 9999px; /* Forme pilule */
+            color: #1a4d2e;
+            font-weight: 500;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .save-button:hover {
+            background-color: #1a4d2e;
+            color: #ffffff;
+        }
+        .save-button svg {
+            margin-right: 0.2rem;
+        }
+        .explore-sangmelima-section p {
+            color: #555;
+            line-height: 1.6;
+            margin-top: auto;
+            margin-bottom: 1rem;
+        }
+        .explore-sangmelima-section .read-more-link {
+            color: #1a4d2e; /* Couleur verte foncée */
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .explore-sangmelima-section .read-more-link:hover {
+            text-decoration: underline;
+        }
+        .revenue-info {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 2rem;
+        }
+        .revenue-info a {
+            color: #1a4d2e;
+            text-decoration: none;
+        }
+        .revenue-info a:hover {
+            text-decoration: underline;
+        }
+
+
+
+
+        /* Styles spécifiques pour les cartes des restaurants (inspiré de image_caa7f7.jpg) */
+        .restaurant-card {
+            background-color: #fff;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+            overflow: hidden; /* Pour que l'image arrondie ne dépasse pas */
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .restaurant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .restaurant-card-image-container {
+            position: relative;
+            width: 100%;
+            height: 180px; /* Hauteur fixe pour les images des cartes */
+            overflow: hidden;
+        }
+        .restaurant-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .restaurant-card-badge {
+            position: absolute;
+            top: 0.75rem;
+            left: 0.75rem;
+            background-color: #34D399; /* Vert clair pour le badge */
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 5;
+        }
+        .restaurant-card-favorite {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 9999px; /* rounded-full */
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+        }
+        .restaurant-card-favorite svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #EF4444; /* Rouge pour le cœur */
+        }
+        .restaurant-card-content {
+            padding: 1rem;
+        }
+        .restaurant-card-title {
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600; /* font-semibold */
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+        .restaurant-card-rating {
+            display: flex;
+            align-items: center;
+            font-size: 0.875rem; /* text-sm */
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        .restaurant-card-stars {
+            color: #FBBF24; /* Jaune pour les étoiles */
+            margin-right: 0.25rem;
+        }
+        .restaurant-card-price-cuisine {
+            font-size: 0.875rem;
+            color: #555;
+        }
+        .restaurant-card-price-cuisine span:first-child {
+            font-weight: 500;
+        }
+        .restaurant-card-price-cuisine span:last-child {
+            color: #777;
+        }
+
+
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 100; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+
+        /* Styles pour le défilement automatique du carrousel principal */
+            @keyframes autoScroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+            }
+
+            .image-carousel-container.auto-scroll {
+                animation: autoScroll 30s linear infinite;
+            }
+
+            .image-carousel-container.auto-scroll:hover {
+                animation-play-state: paused;
+            }
+
+
+
+            /* Styles pour la phrase au-dessus du carrousel */
+            .carousel-title {
+                text-align: center;
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #1a4d2e;
+                margin: 2rem auto 1.5rem auto;
+                max-width: 1200px;
+                padding: 0 1.5rem;
+            }
+
+
+
+            /* Styles pour la barre de recherche */
+            .search-bar-container {
+                max-width: 600px;
+                margin: 1rem auto 2rem auto;
+                padding: 0 1.5rem;
+                position: relative;
+            }
+
+            .search-input {
+                width: 100%;
+                padding: 1rem 1.5rem 1rem 3rem;
+                border: 2px solid #e5e7eb;
+                border-radius: 9999px;
+                font-size: 1.1rem;
+                outline: none;
+                transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .search-input:focus {
+                border-color: #1a4d2e;
+                box-shadow: 0 0 0 3px rgba(26, 77, 46, 0.1);
+            }
+
+            .search-icon {
+                position: absolute;
+                left: 2.5rem;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #666;
+            }
+
+
+
+            /* Styles pour le contexte de recherche */
+            .search-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                z-index: 1000;
+                display: none;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .search-overlay.show {
+                display: flex;
+                opacity: 1;
+                align-items: flex-start;
+                justify-content: center;
+                padding-top: 5rem;
+            }
+
+            .search-context {
+                background: white;
+                width: 90%;
+                max-width: 800px;
+                max-height: 80vh;
+                border-radius: 1rem;
+                box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+                overflow: hidden;
+                transform: translateY(-20px);
+                transition: transform 0.3s ease;
+            }
+
+            .search-overlay.show .search-context {
+                transform: translateY(0);
+            }
+
+            .search-context-header {
+                padding: 1.5rem;
+                border-bottom: 1px solid #e5e7eb;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .search-context-input {
+                flex: 1;
+                border: none;
+                outline: none;
+                font-size: 1.2rem;
+                padding: 0.5rem 1rem;
+                border-radius: 0.5rem;
+                background-color: #f9fafb;
+            }
+
+            .close-search-btn {
+                padding: 0.5rem;
+                border-radius: 0.5rem;
+                cursor: pointer;
+                color: #666;
+                transition: color 0.2s ease;
+            }
+
+            .close-search-btn:hover {
+                color: #333;
+            }
+
+            .search-results {
+                padding: 1rem;
+                max-height: 60vh;
+                overflow-y: auto;
+            }
+
+            .search-loading {
+                text-align: center;
+                padding: 2rem;
+                color: #666;
+            }
+
+            .search-result-item {
+                display: flex;
+                padding: 1rem;
+                border-radius: 0.5rem;
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+            }
+
+            .search-result-item:hover {
+                background-color: #f9fafb;
+            }
+
+            .search-result-image {
+                width: 80px;
+                height: 80px;
+                border-radius: 0.5rem;
+                object-fit: cover;
+                margin-right: 1rem;
+            }
+
+            .search-result-content {
+                flex: 1;
+            }
+
+            .search-result-title {
+                font-weight: 600;
+                color: #333;
+                margin-bottom: 0.25rem;
+            }
+
+            .search-result-category {
+                font-size: 0.875rem;
+                color: #1a4d2e;
+                font-weight: 500;
+                margin-bottom: 0.25rem;
+            }
+
+            .search-result-rating {
+                font-size: 0.875rem;
+                color: #666;
+            }
+
+
+
+            /* Styles pour les sections événements et agenda */
+            .events-agenda-section {
+                max-width: 1200px;
+                margin: 3rem auto;
+                padding: 0 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                font-weight: 700;
+                color: #1a4d2e;
+                margin-bottom: 1.5rem;
+                margin-top: 3rem;
+            }
+
+            .events-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .event-card {
+                background: white;
+                border-radius: 1rem;
+                overflow: hidden;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .event-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+            }
+
+            .event-image {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+
+            .event-content {
+                padding: 1.5rem;
+            }
+
+            .event-date {
+                background-color: #1a4d2e;
+                color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 9999px;
+                font-size: 0.875rem;
+                font-weight: 600;
+                display: inline-block;
+                margin-bottom: 1rem;
+            }
+
+            .event-date-coeur {
+                background-color: #df4721;
+                color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 9999px;
+                font-size: 0.875rem;
+                font-weight: 600;
+                display: inline-block;
+                margin-bottom: 1rem;
+            }
+
+            .event-title {
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: #333;
+                margin-bottom: 0.5rem;
+            }
+
+            .event-description {
+                color: #666;
+                line-height: 1.6;
+            }
+
+            .agenda-container {
+                background: white;
+                border-radius: 1rem;
+                
+            }
+
+            .agenda-item {
+                display: flex;
+                padding: 1rem 0;
+                border-bottom: 1px solid #e5e7eb;
+            }
+
+            .agenda-item:last-child {
+                border-bottom: none;
+            }
+
+            .agenda-date {
+                min-width: 80px;
+                text-align: center;
+                margin-right: 1.5rem;
+            }
+
+            .agenda-day {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #1a4d2e;
+            }
+
+            .agenda-month {
+                font-size: 0.875rem;
+                color: #666;
+                text-transform: uppercase;
+            }
+
+            .agenda-content {
+                flex: 1;
+            }
+
+            .agenda-event-title {
+                font-weight: 600;
+                color: #333;
+                margin-bottom: 0.25rem;
+            }
+
+            .agenda-event-time {
+                font-size: 0.875rem;
+                color: #666;
+            }
+            .hero-carousel {
+            position: relative;
+            height: 90vh;
+            overflow: hidden;
+        }
+        
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+
+
+        /* Styles pour la section À LA UNE et L'AGENDA */
+        .news-agenda-section {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+            background: #f8f9fa;
+            border-radius: 1rem;
+            padding: 2rem 1.5rem;
+        }
+
+        .news-agenda-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .news-agenda-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .section-half {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .section-title-main {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin: 0;
+        }
+
+        .see-all-link {
+            color: #666;
+            font-size: 0.875rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .see-all-link:hover {
+            color: #1a4d2e;
+        }
+
+
+
+        /* Styles pour À LA UNE */
+        .main-news-card {
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .main-news-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .news-image-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+
+        .news-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .news-badge.forbidden {
+            background: #ef4444;
+            color: white;
+        }
+
+        .news-overlay {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+        }
+
+        .news-date {
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .news-excerpt {
+            color: #666;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+
+        .secondary-news {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .small-news-card {
+            display: flex;
+            gap: 1rem;
+            cursor: pointer;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .small-news-card:hover {
+            background-color: #f3f4f6;
+        }
+
+        .small-news-image {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 0.375rem;
+            flex-shrink: 0;
+        }
+
+        .small-news-content {
+            flex: 1;
+        }
+
+        .small-news-category {
+            font-size: 0.75rem;
+            color: #1a4d2e;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .small-news-title {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #333;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+
+
+        /* Styles pour L'AGENDA */
+        .main-agenda-card {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(135deg, #ff7f00 0%, #ff5722 100%);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .main-agenda-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .agenda-date-large {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            color: white;
+            text-align: center;
+        }
+
+        .agenda-day-large {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .agenda-month-large {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .agenda-gradient-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        }
+
+        .agenda-main-content {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            right: 1rem;
+            color: white;
+        }
+
+        .agenda-main-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .agenda-main-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .small-agenda-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .small-agenda-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: #f8f9fa;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .small-agenda-card:hover {
+            background-color: #e9ecef;
+        }
+
+        .small-agenda-date {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            text-align: center;
+            min-width: 60px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .small-day {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ff7f00;
+            line-height: 1;
+        }
+
+        .small-month {
+            display: block;
+            font-size: 0.75rem;
+            color: #666;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .small-agenda-content {
+            flex: 1;
+        }
+
+        .small-agenda-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #333;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+
+
+        /* Container principal */
+.news-agenda-section {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+.news-agenda-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+/* Section L'AGENDA */
+.agenda-section {
+    width: 100%;
+    background-color: white;
+    padding: 3rem 4rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    margin: 2rem 0; /* Ajouter de l'espacement avec les sections précédentes */
+    border-radius: 12px;
+}
+
+
+/* Header */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    z-index: 2;
+    position: relative;
+}
+
+.section-title-main {
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.see-all-link {
+    color: white;
+    font-size: 0.9rem;
+    text-decoration: none;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.see-all-link:hover {
+    opacity: 1;
+}
+
+/* Layout du contenu */
+.agenda-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+
+
+/* Carte principale */
+.main-agenda-card {
+    position: relative;
+    height: 300px;
+    border-radius: 1rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.main-agenda-card:hover {
+    transform: translateY(-5px);
+}
+
+.agenda-main-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800&h=300&fit=crop');
+    background-size: cover;
+    background-position: center;
+}
+
+.agenda-date-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: white;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+}
+
+.agenda-day {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #333;
+    line-height: 1;
+}
+
+.agenda-month {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #666;
+    margin-top: 2px;
+}
+
+.agenda-main-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 3rem 2rem 2rem 2rem;
+    color: white;
+}
+
+.agenda-category {
+    background: #ff7f00;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.3rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.agenda-main-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+
+
+/* Grille des événements secondaires */
+.secondary-agenda-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .secondary-agenda-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* Cartes secondaires */
+.small-agenda-card {
+    position: relative;
+    height: 200px;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.small-agenda-card:hover {
+    transform: translateY(-3px);
+}
+
+.small-agenda-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.small-agenda-image.paul-mirabel {
+    background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop');
+}
+
+.small-agenda-image.lily-comedy {
+    background-image: url('https://images.unsplash.com/photo-1594736797933-d0401ba4ac60?w=300&h=200&fit=crop');
+}
+
+.small-agenda-image.calogero {
+    background-image: url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=200&fit=crop');
+}
+
+.small-agenda-date {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: white;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.small-day {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #333;
+    line-height: 1;
+}
+
+.small-month {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #666;
+    margin-top: 1px;
+}
+
+.small-agenda-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    color: white;
+}
+
+.small-agenda-category {
+    background: #ff7f00;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.2rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.3px;
+}
+
+.small-agenda-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .agenda-section {
+        padding: 2rem 1.5rem;
+    }
+    
+    .section-title-main {
+        font-size: 1.8rem;
+    }
+    
+    .agenda-main-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .agenda-section {
+        padding: 1.5rem 1rem;
+    }
+    
+    .main-agenda-card {
+        height: 250px;
+    }
+    
+    .agenda-main-title {
+        font-size: 1.5rem;
+    }
+    
+    .small-agenda-card {
+        height: 180px;
+    }
+    
+    .red-circle {
+        width: 80px;
+        height: 80px;
+        top: 10px;
+        right: 30px;
+    }
+    
+    .yellow-circle {
+        width: 120px;
+        height: 120px;
+        bottom: -60px;
+        right: -60px;
+    }
+}
+
+
+
+
+
+.news-agenda-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        .news-agenda-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Article principal à gauche */
+        .main-article {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .main-article:hover {
+            transform: translateY(-5px);
+        }
+
+        .main-image-container {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .forbidden-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #ff4757;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .date-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .main-content {
+            padding: 25px;
+        }
+
+        .main-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2d3436;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .main-excerpt {
+            color: #636e72;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Articles secondaires à droite */
+        .secondary-articles {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .secondary-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .secondary-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border-left-color: #0984e3;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .card-image {
+            width: 80px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .card-date {
+            color: #74b9ff;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3436;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .card-excerpt {
+            color: #636e72;
+            font-size: 14px;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Styles pour les différentes catégories d'articles */
+        .secondary-card:nth-child(1) {
+            border-left-color: #00b894;
+        }
+
+        .secondary-card:nth-child(2) {
+            border-left-color: #fdcb6e;
+        }
+
+        .secondary-card:nth-child(3) {
+            border-left-color: #6c5ce7;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .news-agenda-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .main-title {
+                font-size: 20px;
+            }
+            
+            .card-title {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .main-content {
+                padding: 20px;
+            }
+            
+            .secondary-card {
+                padding: 15px;
+            }
+            
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .card-image {
+                width: 100%;
+                height: 120px;
+            }
+        }
+
+
+
+        /* Styles pour les témoignages */
+@media (min-width: 768px) {
+    .testimonial-card {
+        min-width: 50%;
+    }
+}
+
+.testimonial-dot.bg-blue-600 {
+    transform: scale(1.2);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Animation fluide pour les témoignages */
+#testimonialsSlider {
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Barre de Navigation -->
+    <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-3xl font-bold text-blue-800">EYALANE</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="navbar-link">Accueil</a>
+                <a href="sangmelima.html" class="navbar-link">Découvrir Sangmélima</a>
+                <a href="about.html" class="navbar-link">À Propos de Nous</a>
+                <a href="contact.html" class="navbar-link">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button class="text-blue-800 focus:outline-none" id="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Overlay et Menu Mobile (gestion JS plus bas) -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"></div>
+    <div id="mobile-menu" class="fixed top-0 right-0 w-64 h-full bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <div class="p-6">
+            <button class="absolute top-4 right-4 text-gray-600 focus:outline-none" id="close-mobile-menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <nav class="flex flex-col space-y-4 mt-8">
+                <a href="index.html" class="navbar-link text-lg">Accueil</a>
+                <a href="sangmelima.html" class="navbar-link text-lg">Découvrir Sangmélima</a>
+                <a href="about.html" class="navbar-link text-lg">À Propos de Nous</a>
+                <a href="contact.html" class="navbar-link text-lg">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+
+
+    <!-- Nouvelle Section de Navigation (onglets) -->
+    <section class="page-navigation-tabs">
+        <a href="#restaurants-section" class="active">Restaurants</a>
+        <a href="#accommodations-section">Hôtels</a>
+        <a href="#activities-section">Activités</a>
+        <a href="#activities-section">Evènementiels</a>
+        <a href="#activities-section">Blog</a>
+    </section>
+
+
+
+    <!-- Navigation de Localisation (Breadcrumb) -->
+    <div class="location-breadcrumb">
+        <a href="index.html">Cameroun</a>
+        <span>&gt;</span>
+        <a href="#">Sud</a>
+        <span>&gt;</span>
+        <span>Sangmélima</span>
+    </div>
+
+
+
+    <!-- Section Carrousel d'Images -->
+    <section class="hero-carousel">
+        <div class="carousel-slide active" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwTlPYQ3CVxPIsJcddITkgW0RaY2vJ_RVxzw&s');">
+        </div>
+        <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVP85xzveNs_q5tgyW50g5bDIZktKo3HR5Cg&s');">
+        </div>
+        <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMoJBMuwtdMmHPG_HJd609PI4kMz1vjMifjA&s');">
+        </div>
+        
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+            <div class="text-center text-white px-6">
+                <h2 class="carousel-title">La belle dans tous ses états</h2>
+
+                <!-- Barre de recherche -->
+                <div class="search-bar-container">
+                    <div class="relative">
+                        <svg class="search-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <input type="text" class="search-input" placeholder="Rechercher restaurants, hôtels, activités..." id="main-search-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Section Carrousel d'Images (modification pour le défilement automatique) -->
+        <div class="image-carousel-container auto-scroll" id="top-image-carousel">
+            <!-- Garder les mêmes images mais doubler la liste pour un défilement continu -->
+        </div>
+        <button class="scroll-button left" onclick="scrollTopCarousel(-1)">&lt;</button>
+        <button class="scroll-button right" onclick="scrollTopCarousel(1)">&gt;</button>
+     
+
+        
+
+    <!-- Nouvelle Section "Explorez Sangmélima" -->
+    <section class="explore-sangmelima-section">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-green-800">Explorez Sangmélima</h2>
+            <a href="#" class="save-button">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+                </svg>
+                Enregistrer
+            </a>
+        </div>
+        <p>
+            Bienvenue à Sangmélima, le joyau du Sud Cameroun ! Connue pour ses paysages verdoyants, sa culture vibrante et l'hospitalité de ses habitants, Sangmélima est une invitation à la découverte. Laissez-vous charmer par les rives paisibles du Nyong, l'effervescence de ses marchés colorés et la richesse de son patrimoine. Que vous soyez en quête d'aventure, de détente ou d'immersion culturelle, Sangmélima a tant à offrir.
+        </p>
+        <p class="mt-4">
+            <a href="#" class="read-more-link">Découvrez nos recommandations pour une expérience inoubliable.</a>
+        </p>
+    </section>
+
+
+
+    <section class="news-agenda-section">
+        <h2 class="section-title">A la une à Sangmélima</h2>
+        <div class="news-agenda-container">
+            <!-- Article principal à gauche -->
+            <div class="main-article" onclick="goToArticle('baignade-interdite')">
+                <div class="main-image-container">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=300&fit=crop" 
+                         alt="Rivière interdite" class="main-image">
+                    <div class="forbidden-badge">BAIGNADE INTERDITE</div>
+                    <div class="date-badge">16/07/2025</div>
+                </div>
+                <div class="main-content">
+                    <h3 class="main-title">Baignade interdite à la base de loisirs de Chênedet</h3>
+                    <p class="main-excerpt">Suite aux dernières analyses faites dans l'eau, la base de loisirs de Chênedet ferme sa baignade jusqu'à nouvel ordre (cyanobactéries).</p>
+                </div>
+            </div>
+
+            <!-- Articles secondaires à droite -->
+            <div class="secondary-articles">
+                <div class="secondary-card" onclick="goToArticle('enfants-accueillis')">
+                    <div class="card-header">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=80&fit=crop" 
+                             alt="Enfants à la base de loisirs" class="card-image">
+                        <div class="card-content">
+                            <div class="card-date">10/07/2025</div>
+                            <h4 class="card-title">750 enfants accueillis cet été à Chênedet</h4>
+                        </div>
+                    </div>
+                    <p class="card-excerpt">La base de loisirs de Chênedet, propriété de Fougères Agglomération, propose toute l'année une large gamme d'activités : accrobranche, équitation...</p>
+                </div>
+
+                <div class="secondary-card" onclick="goToArticle('covoiturage-solidaire')">
+                    <div class="card-header">
+                        <img src="https://images.unsplash.com/photo-1549737221-31c4fdc9beb8?w=100&h=80&fit=crop" 
+                             alt="Service de covoiturage" class="card-image">
+                        <div class="card-content">
+                            <div class="card-date">8/07/2025</div>
+                            <h4 class="card-title">Fougères Agglomération lance un service de covoiturage solidaire</h4>
+                        </div>
+                    </div>
+                    <p class="card-excerpt">Fougères Agglomération s'associe à l'association Atchoum pour mettre en place un dispositif de covoiturage solidaire à destination des habitants du...</p>
+                </div>
+
+                <div class="secondary-card" onclick="goToArticle('aquatis-horaires')">
+                    <div class="card-header">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=100&h=80&fit=crop" 
+                             alt="Centre aquatique" class="card-image">
+                        <div class="card-content">
+                            <div class="card-date">7/07/2025</div>
+                            <h4 class="card-title">L'Aquatis passe aux horaires d'été</h4>
+                        </div>
+                    </div>
+                    <p class="card-excerpt">Le centre aquatique L'Aquatis sera ouvert pendant les vacances d'été, du lundi 7 juillet au dimanche 31 août. L'ensemble des...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="news-agenda-section">
+            <div class="section-half agenda-section">
+                <div class="agenda-content">
+                    <!-- Événement principal -->
+                    <div class="main-agenda-card" onclick="goToEvent('duplex-concert')">
+                        <div class="agenda-main-image"></div>
+                        <div class="agenda-date-badge">
+                            <span class="agenda-day">07</span>
+                            <span class="agenda-month">Déc</span>
+                        </div>
+                        <div class="agenda-main-overlay">
+                            <div class="agenda-category">CULTURE</div>
+                            <h3 class="agenda-main-title">LE DUPLEX</h3>
+                        </div>
+                    </div>
+
+                    <!-- Événements secondaires en grille -->
+                    <div class="secondary-agenda-grid">
+                        <div class="small-agenda-card" onclick="goToEvent('paul-mirabel')">
+                            <div class="small-agenda-image paul-mirabel"></div>
+                            <div class="small-agenda-date">
+                                <span class="small-day">12</span>
+                                <span class="small-month">Déc</span>
+                            </div>
+                            <div class="small-agenda-overlay">
+                                <div class="small-agenda-category">CULTURE</div>
+                                <h4 class="small-agenda-title">Paul Mirabel • Par amour</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="small-agenda-card" onclick="goToEvent('lily-comedy')">
+                            <div class="small-agenda-image lily-comedy"></div>
+                            <div class="small-agenda-date">
+                                <span class="small-day">16</span>
+                                <span class="small-month">Jan</span>
+                            </div>
+                            <div class="small-agenda-overlay">
+                                <div class="small-agenda-category">CULTURE</div>
+                                <h4 class="small-agenda-title">Lily & Lily • comédie</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="small-agenda-card" onclick="goToEvent('concert-calogero')">
+                            <div class="small-agenda-image calogero"></div>
+                            <div class="small-agenda-date">
+                                <span class="small-day">20</span>
+                                <span class="small-month">Juin</span>
+                            </div>
+                            <div class="small-agenda-overlay">
+                                <div class="small-agenda-category">CULTURE</div>
+                                <h4 class="small-agenda-title">Concert de Calogero</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cercles décoratifs -->
+                <div class="decorative-circles">
+                    <div class="circle red-circle"></div>
+                    <div class="circle yellow-circle"></div>
+                </div>
+            </div>
+    </section>
+
+
+
+    <!-- Section Événements -->
+    <section class="events-agenda-section">
+        <!-- Agenda -->
+        <h2 class="section-title">Agenda de la Semaine</h2>
+        <div class="agenda-container">
+            <div class="agenda-item">
+                <div class="agenda-date">
+                    <div class="agenda-day">19</div>
+                    <div class="agenda-month">Juil</div>
+                </div>
+                <div class="agenda-content">
+                    <div class="agenda-event-title">Tournoi de Football Local</div>
+                    <div class="agenda-event-time">15h30 - Stade Municipal</div>
+                </div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-date">
+                    <div class="agenda-day">20</div>
+                    <div class="agenda-month">Juil</div>
+                </div>
+                <div class="agenda-content">
+                    <div class="agenda-event-title">Marché Hebdomadaire</div>
+                    <div class="agenda-event-time">06h00 - 18h00 - Centre-ville</div>
+                </div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-date">
+                    <div class="agenda-day">21</div>
+                    <div class="agenda-month">Juil</div>
+                </div>
+                <div class="agenda-content">
+                    <div class="agenda-event-title">Réunion Conseil Municipal</div>
+                    <div class="agenda-event-time">10h00 - Hôtel de Ville</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <main class="max-w-6xl mx-auto">
+        <div class="container mx-auto">
+            <!-- Section Restaurants -->
+            <section id="restaurants-section" class="mb-16 pt-4">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="section-title">Où manger</h2>
+                </div>
+                <div id="restaurants-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Les cartes des restaurants seront insérées ici par JavaScript -->
+                </div>
+            </section>
+
+            <!-- Où Dormir -->
+            <section id="accommodations-section" class="mb-16 pt-4">
+                <h2 class="section-title">Où Dormir</h2>
+                <div id="accommodations-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Les cartes des hébergements seront insérées ici par JavaScript -->
+                </div>
+            </section>
+
+            <!-- À Faire / Zones Touristiques -->
+            <section id="activities-section" class="mb-16 pt-4">
+                <h2 class="section-title">Se divertir</h2>
+                <div id="activities-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Les cartes des activités seront insérées ici par JavaScript -->
+                </div>
+            </section>
+
+             <!-- Section Événements -->
+            <section >
+                <h2 class="section-title">Événements à venir</h2>
+                <div class="events-grid">
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=400&h=200&fit=crop" alt="Festival" class="event-image">
+                        <div class="event-content">
+                            <span class="event-date">15 Août 2025</span>
+                            <h3 class="event-title">Festival des Arts du Sud</h3>
+                            <p class="event-description">Célébration annuelle des traditions artistiques de la région avec danse, musique et artisanat local.</p>
+                        </div>
+                    </div>
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=200&fit=crop" alt="Marché" class="event-image">
+                        <div class="event-content">
+                            <span class="event-date">22 Août 2025</span>
+                            <h3 class="event-title">Grand Marché du Terroir</h3>
+                            <p class="event-description">Découvrez les produits locaux et spécialités culinaires dans une ambiance festive au cœur de la ville.</p>
+                        </div>
+                    </div>
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop" alt="Concert" class="event-image">
+                        <div class="event-content">
+                            <span class="event-date">05 Sep 2025</span>
+                            <h3 class="event-title">Concert au Bord du Nyong</h3>
+                            <p class="event-description">Soirée musicale exceptionnelle avec des artistes locaux sur les rives du fleuve Nyong.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Section publicitaire -->
+    <div class="bg-white py-4">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center">
+                <div class="w-full">
+                    <img 
+                        src="pubEyalane.png" 
+                        alt="Publicité Eyalane" 
+                        class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                        loading="lazy"
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+     <!-- Section Événements -->
+            <section >
+                <h2 class="section-title">Sélection coup de coeur éyalane</h2>
+                <div class="events-grid">
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=400&h=200&fit=crop" alt="Festival" class="event-image">
+                        <div class="event-content">
+                            <span class="event-date-coeur">❤ Coup de coeur</span>
+                            <h3 class="event-title">Festival des Arts du Sud</h3>
+                            <p class="event-description">Célébration annuelle des traditions artistiques de la région avec danse, musique et artisanat local.</p>
+                        </div>
+                    </div>
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=200&fit=crop" alt="Marché" class="event-image">
+                        <div class="event-content">
+                            <span class="event-date-coeur">❤ Coup de coeur</span>
+                            <h3 class="event-title">Grand Marché du Terroir</h3>
+                            <p class="event-description">Découvrez les produits locaux et spécialités culinaires dans une ambiance festive au cœur de la ville.</p>
+                        </div>
+                    </div>
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop" alt="Concert" class="event-image">
+                        <div class="event-content">
+                            <span class="event-date-coeur">❤ Coup de coeur</span>
+                            <h3 class="event-title">Concert au Bord du Nyong</h3>
+                            <p class="event-description">Soirée musicale exceptionnelle avec des artistes locaux sur les rives du fleuve Nyong.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Section des avis clients -->
+            <section class="mb-12 py-16 bg-gradient-to-br from-gray-50 to-white rounded-3xl">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold mb-4 section-heading animate-fade-in">Ce que disent nos clients</h2>
+                        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-green-500 mx-auto rounded-full"></div>
+                    </div>
+                    
+                    <div class="relative">
+                        <!-- Navigation arrows -->
+                        <button id="prevTestimonial" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg hover:bg-white hover:shadow-xl transition-all duration-300 group">
+                            <svg class="w-6 h-6 text-gray-600 group-hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button id="nextTestimonial" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg hover:bg-white hover:shadow-xl transition-all duration-300 group">
+                            <svg class="w-6 h-6 text-gray-600 group-hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        
+                        <!-- Testimonials container -->
+                        <div id="testimonialsContainer" class="overflow-hidden mx-8">
+                            <div id="testimonialsSlider" class="flex transition-transform duration-700 ease-in-out">
+                                <!-- Testimonial 1 -->
+                                <div class="testimonial-card min-w-full md:min-w-1/2 px-4">
+                                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100">
+                                        <div class="flex items-start space-x-6">
+                                            <div class="flex-shrink-0">
+                                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" 
+                                                     alt="Jeffrey Brown" 
+                                                     class="w-16 h-16 rounded-full object-cover ring-4 ring-blue-100">
+                                            </div>
+                                            <div class="flex-1">
+                                                <p class="text-gray-700 text-lg leading-relaxed mb-4 font-medium">
+                                                    "Sangmelima Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices."
+                                                </p>
+                                                <div class="flex items-center justify-between">
+                                                    <div>
+                                                        <h4 class="font-bold text-gray-900 text-lg">Jeffrey Brown</h4>
+                                                        <div class="flex items-center mt-1">
+                                                            <span class="text-amber-400">★★★★★</span>
+                                                            <span class="text-sm text-gray-500 ml-2">Vérifié</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Testimonial 2 -->
+                                <div class="testimonial-card min-w-full md:min-w-1/2 px-4">
+                                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100">
+                                        <div class="flex items-start space-x-6">
+                                            <div class="flex-shrink-0">
+                                                <img src="https://images.unsplash.com/photo-1494790108755-2616b332c647?w=80&h=80&fit=crop&crop=face" 
+                                                     alt="Maria Chen" 
+                                                     class="w-16 h-16 rounded-full object-cover ring-4 ring-blue-100">
+                                            </div>
+                                            <div class="flex-1">
+                                                <p class="text-gray-700 text-lg leading-relaxed mb-4 font-medium">
+                                                    "Sangmelima Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices."
+                                                </p>
+                                                <div class="flex items-center justify-between">
+                                                    <div>
+                                                        <h4 class="font-bold text-gray-900 text-lg">Maria Chen</h4>
+                                                        <div class="flex items-center mt-1">
+                                                            <span class="text-amber-400">★★★★★</span>
+                                                            <span class="text-sm text-gray-500 ml-2">Vérifié</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Testimonial 3 -->
+                                <div class="testimonial-card min-w-full md:min-w-1/2 px-4">
+                                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100">
+                                        <div class="flex items-start space-x-6">
+                                            <div class="flex-shrink-0">
+                                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" 
+                                                     alt="David Wilson" 
+                                                     class="w-16 h-16 rounded-full object-cover ring-4 ring-blue-100">
+                                            </div>
+                                            <div class="flex-1">
+                                                <p class="text-gray-700 text-lg leading-relaxed mb-4 font-medium">
+                                                    "Une expérience authentique à Sangmélima ! Les restaurants recommandés par Eyalane étaient exceptionnels."
+                                                </p>
+                                                <div class="flex items-center justify-between">
+                                                    <div>
+                                                        <h4 class="font-bold text-gray-900 text-lg">David Wilson</h4>
+                                                        <div class="flex items-center mt-1">
+                                                            <span class="text-amber-400">★★★★★</span>
+                                                            <span class="text-sm text-gray-500 ml-2">Vérifié</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Testimonial 4 -->
+                                <div class="testimonial-card min-w-full md:min-w-1/2 px-4">
+                                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100">
+                                        <div class="flex items-start space-x-6">
+                                            <div class="flex-shrink-0">
+                                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" 
+                                                     alt="Sophie Martin" 
+                                                     class="w-16 h-16 rounded-full object-cover ring-4 ring-blue-100">
+                                            </div>
+                                            <div class="flex-1">
+                                                <p class="text-gray-700 text-lg leading-relaxed mb-4 font-medium">
+                                                    "Grâce à Eyalane, j'ai découvert des lieux magnifiques à Sangmélima que je n'aurais jamais trouvés seule."
+                                                </p>
+                                                <div class="flex items-center justify-between">
+                                                    <div>
+                                                        <h4 class="font-bold text-gray-900 text-lg">Sophie Martin</h4>
+                                                        <div class="flex items-center mt-1">
+                                                            <span class="text-amber-400">★★★★★</span>
+                                                            <span class="text-sm text-gray-500 ml-2">Vérifié</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Testimonial 5 -->
+                                <div class="testimonial-card min-w-full md:min-w-1/2 px-4">
+                                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100">
+                                        <div class="flex items-start space-x-6">
+                                            <div class="flex-shrink-0">
+                                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face" 
+                                                     alt="Thomas Dubois" 
+                                                     class="w-16 h-16 rounded-full object-cover ring-4 ring-blue-100">
+                                            </div>
+                                            <div class="flex-1">
+                                                <p class="text-gray-700 text-lg leading-relaxed mb-4 font-medium">
+                                                    "Service impeccable et recommandations parfaites. Eyalane rend le tourisme local accessible et authentique."
+                                                </p>
+                                                <div class="flex items-center justify-between">
+                                                    <div>
+                                                        <h4 class="font-bold text-gray-900 text-lg">Thomas Dubois</h4>
+                                                        <div class="flex items-center mt-1">
+                                                            <span class="text-amber-400">★★★★★</span>
+                                                            <span class="text-sm text-gray-500 ml-2">Vérifié</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Dots indicator -->
+                        <div class="flex justify-center mt-8 space-x-2" id="testimonialDots">
+                            <button class="testimonial-dot w-3 h-3 rounded-full bg-blue-600 transition-all duration-300" data-slide="0"></button>
+                            <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="1"></button>
+                            <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="2"></button>
+                            <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="3"></button>
+                            <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="4"></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modale de Détails -->
+    <div id="detail-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button" id="close-modal">&times;</span>
+            <img id="modal-image" class="w-full h-48 object-cover rounded-lg mb-4" src="" alt="Image de l'établissement">
+            <h3 id="modal-title" class="text-3xl font-bold mb-4 text-blue-800"></h3>
+            <p id="modal-type" class="text-gray-600 mb-2"></p>
+            <p id="modal-price" class="text-gray-600 mb-4"></p>
+            <p id="modal-description" class="text-lg leading-relaxed text-gray-800"></p>
+        </div>
+    </div>
+
+
+    <!-- Contexte de recherche -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-context">
+            <div class="search-context-header">
+                <input type="text" class="search-context-input" placeholder="Que recherchez-vous ?" id="search-context-input">
+                <button class="close-search-btn" id="close-search-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="search-results" id="search-results">
+                <div class="search-loading">Tapez pour rechercher...</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center md:flex md:justify-between md:items-center">
+            <p>&copy; 2025 EYALANE. Tous droits réservés.</p>
+            <div class="flex justify-center md:justify-end space-x-4 mt-4 md:mt-0">
+                <a href="https://facebook.com/eyalane" target="_blank" class="text-white hover:text-blue-400">Facebook</a>
+                <a href="https://instagram.com/eyalane" target="_blank" class="text-white hover:text-blue-400">Instagram</a>
+                <a href="https://tiktok.com/@eyalane" target="_blank" class="text-white hover:text-blue-400">TikTok</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+    // Données d'exemple pour la recherche
+    const establishments = [
+        { id: 1, name: "Restaurant Le Palmier", type: "restaurant", rating: "4.5", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=80&h=80&fit=crop" },
+        { id: 2, name: "Hôtel La Détente", type: "hotel", rating: "4.2", image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=80&h=80&fit=crop" },
+        { id: 3, name: "Lac Municipal", type: "activite", rating: "4.8", image: "https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=80&h=80&fit=crop" },
+        { id: 4, name: "Chez Mama", type: "restaurant", rating: "4.3", image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=80&h=80&fit=crop" },
+        { id: 5, name: "Auberge du Nyong", type: "hotel", rating: "4.0", image: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=80&h=80&fit=crop" }
+    ];
+
+    // Gestion de la recherche
+    const mainSearchInput = document.getElementById('main-search-input');
+    const searchOverlay = document.getElementById('search-overlay');
+    const searchContextInput = document.getElementById('search-context-input');
+    const closeSearchBtn = document.getElementById('close-search-btn');
+    const searchResults = document.getElementById('search-results');
+
+    mainSearchInput.addEventListener('focus', openSearchContext);
+    closeSearchBtn.addEventListener('click', closeSearchContext);
+    searchOverlay.addEventListener('click', (e) => {
+        if (e.target === searchOverlay) closeSearchContext();
+    });
+
+    searchContextInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        if (query.length === 0) {
+            searchResults.innerHTML = '<div class="search-loading">Tapez pour rechercher...</div>';
+            return;
+        }
+        
+        searchResults.innerHTML = '<div class="search-loading">Recherche en cours...</div>';
+        
+        setTimeout(() => {
+            const filtered = establishments.filter(est => 
+                est.name.toLowerCase().includes(query) || est.type.includes(query)
+            );
+            displaySearchResults(filtered);
+        }, 300);
+    });
+
+    function openSearchContext() {
+        searchOverlay.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => searchContextInput.focus(), 100);
+    }
+
+    function closeSearchContext() {
+        searchOverlay.classList.remove('show');
+        document.body.style.overflow = 'auto';
+        mainSearchInput.blur();
+    }
+
+    function displaySearchResults(results) {
+        if (results.length === 0) {
+            searchResults.innerHTML = '<div class="search-loading">Aucun résultat trouvé</div>';
+            return;
+        }
+        
+        const typeMap = {
+            'restaurant': 'Restaurant',
+            'hotel': 'Hébergement',
+            'activite': 'Activité'
+        };
+        
+        searchResults.innerHTML = results.map(item => `
+            <div class="search-result-item" onclick="goToEstablishment(${item.id})">
+                <img src="${item.image}" alt="${item.name}" class="search-result-image">
+                <div class="search-result-content">
+                    <div class="search-result-title">${item.name}</div>
+                    <div class="search-result-category">${typeMap[item.type]}</div>
+                    <div class="search-result-rating">⭐ ${item.rating}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function goToEstablishment(id) {
+        closeSearchContext();
+        // Redirect to establishment page
+        window.location.href = `establishment.html?id=${id}`;
+    }
+
+    // Modification de la fonction existante pour le carrousel automatique
+    function scrollTopCarousel(direction) {
+        const carousel = document.getElementById('top-image-carousel');
+        carousel.classList.remove('auto-scroll');
+        const scrollAmount = carousel.offsetWidth;
+        carousel.scrollLeft += direction * scrollAmount;
+        
+        setTimeout(() => {
+            carousel.classList.add('auto-scroll');
+        }, 2000);
+    }
+    </script>
+
+    <script>
+        // Données (Mock Data pour Sangmélima)
+        const sangmelimaData = {
+            restaurants: [
+                {
+                    name: "Le Saveur du Sud",
+                    type: "Restaurant",
+                    cuisine: "Traditionnelle Camerounaise (Okok, Ndolé)",
+                    priceRange: "€€€",
+                    description: "Un restaurant authentique proposant les spécialités locales dans une ambiance conviviale. Idéal pour découvrir les saveurs du terroir de Sangmélima, avec des plats préparés avec passion.",
+                    imageUrl: "https://media.istockphoto.com/id/1498516775/fr/photo/la-tour-eiffel-%C3%A0-paris-france-au-coucher-du-soleil.jpg?s=612x612&w=0&k=20&c=mvWhEm3nxmDVIFemAmthqdRS7dwzZYiep3rrRohQKjw=",
+                    rating: 4.7,
+                    reviews: 2015,
+                    tags: ["Cuisine Camerounaise", "Traditionnel", "Convivial"],
+                    michelin: true
+                },
+                {
+                    name: "Grill Express",
+                    type: "Restaurant",
+                    cuisine: "Grillades, Fast-food local",
+                    priceRange: "€€",
+                    description: "Idéal pour un repas rapide et savoureux avec des brochettes et poulets braisés. Profitez d'une ambiance décontractée et de plats généreux, parfaits pour une pause déjeuner ou un dîner entre amis.",
+                    imageUrl: "https://placehold.co/400x300/E0E0E0/333333?text=Grill+Express",
+                    rating: 4.5,
+                    reviews: 1324,
+                    tags: ["Grillades", "Rapide", "Local"],
+                    michelin: false
+                },
+                {
+                    name: "La Table de Colette",
+                    type: "Restaurant",
+                    cuisine: "Française, Européenne, Cuisine raffinée",
+                    priceRange: "€€€€",
+                    description: "Un cadre élégant pour une cuisine française et européenne revisitée. Parfait pour une occasion spéciale.",
+                    imageUrl: "https://media.istockphoto.com/id/1498516775/fr/photo/la-tour-eiffel-%C3%A0-paris-france-au-coucher-du-soleil.jpg?s=612x612&w=0&k=20&c=mvWhEm3nxmDVIFemAmthqdRS7dwzZYiep3rrRohQKjw=",
+                    rating: 4.8,
+                    reviews: 1367,
+                    tags: ["Française", "Européenne", "Raffinée"],
+                    michelin: true
+                },
+            ],
+            accommodations: [
+                {
+                    name: "Hôtel La Détente",
+                    type: "Hôtel",
+                    priceRange: "20 000 - 40 000 FCFA/nuit",
+                    description: "Chambres confortables avec climatisation et petit-déjeuner inclus. Cet hôtel offre un cadre moderne et des services de qualité pour un séjour relaxant à Sangmélima, proche des commodités.",
+                    imageUrl: "https://placehold.co/400x300/C0C0C0/333333?text=Hotel+La+Detente",
+                    rating: 4.1,
+                    reviews: 8862,
+                    tags: ["Hôtel", "Confort", "Central"]
+                },
+                {
+                    name: "Auberge du Lac",
+                    type: "Auberge, Gîte",
+                    priceRange: "10 000 - 25 000 FCFA/nuit",
+                    description: "Un cadre paisible près du lac, idéal pour se ressourcer. Cette auberge propose des chambres simples et charmantes, parfaites pour les voyageurs en quête de tranquillité et de nature.",
+                    imageUrl: "https://placehold.co/400x300/B0B0B0/333333?text=Auberge+du+Lac",
+                    rating: 3.9,
+                    reviews: 347,
+                    tags: ["Auberge", "Nature", "Économique"]
+                },
+                {
+                    name: "Résidence Tropicale",
+                    type: "Appart-hôtel",
+                    priceRange: "25 000 - 50 000 FCFA/nuit",
+                    description: "Des appartements spacieux avec cuisine, parfaits pour les longs séjours. Profitez d'une piscine et d'un jardin tropical.",
+                    imageUrl: "https://placehold.co/400x300/A0A0A0/333333?text=Residence+Tropicale",
+                    rating: 4.2,
+                    reviews: 27872,
+                    tags: ["Appart-hôtel", "Piscine", "Famille"]
+                }
+            ],
+            activities: [
+                {
+                    name: "Lac Municipal de Sangmélima",
+                    type: "Site naturel, Loisirs",
+                    description: "Un lac pittoresque offrant des activités de détente et des promenades. Profitez d'une vue magnifique, louez une pirogue ou détendez-vous simplement au bord de l'eau. Un lieu idéal pour toute la famille.",
+                    imageUrl: "https://placehold.co/400x300/909090/333333?text=Lac+Municipal",
+                    tags: ["Nature", "Détente", "Pirogue"]
+                },
+                {
+                    name: "Marché Central de Sangmélima",
+                    type: "Culturel, Shopping",
+                    description: "Plongez dans l'effervescence locale et découvrez l'artisanat et les produits du terroir. Le marché est un lieu vibrant où vous pouvez interagir avec les habitants et trouver des souvenirs uniques.",
+                    imageUrl: "https://placehold.co/400x300/808080/333333?text=Marche+Central",
+                    tags: ["Culturel", "Shopping", "Local"]
+                },
+                {
+                    name: "Cascade de Nkolandom",
+                    type: "Site naturel, Randonnée",
+                    description: "Une magnifique cascade cachée, parfaite pour une petite randonnée et un moment de fraîcheur dans la nature environnante de Sangmélima.",
+                    imageUrl: "https://placehold.co/400x300/707070/333333?text=Cascade+Nkolandom",
+                    tags: ["Nature", "Randonnée", "Aventure"]
+                },
+            ]
+        };
+
+        // --- JavaScript pour le Carrousel d'images en haut ---
+        const topImageCarousel = document.getElementById('top-image-carousel');
+        const carouselImages = topImageCarousel.querySelectorAll('.carousel-image');
+        let currentImageIndex = 0;
+
+        function scrollTopCarousel(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) {
+                currentImageIndex = carouselImages.length - 1;
+            } else if (currentImageIndex >= carouselImages.length) {
+                currentImageIndex = 0;
+            }
+            const scrollDistance = topImageCarousel.clientWidth;
+            topImageCarousel.scrollTo({
+                left: currentImageIndex * scrollDistance,
+                behavior: 'smooth'
+            });
+        }
+
+        // --- JavaScript pour la navigation par onglets (défilement vers les sections) ---
+        document.querySelectorAll('.page-navigation-tabs a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelectorAll('.page-navigation-tabs a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    window.scrollTo({
+                        top: offsetTop - 70, // Soustraire la hauteur de la barre de navigation sticky
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // --- JavaScript pour la génération des cartes et la modale ---
+
+        // Fonction pour générer les cartes (adaptée aux nouveaux designs et à la limite)
+        function generateCards(data, containerId, itemCategory, limit = data.length) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = ''; // Nettoyer le conteneur
+
+            const itemsToDisplay = data.slice(0, limit); // Appliquer la limite
+
+            itemsToDisplay.forEach(item => {
+                let cardHTML = '';
+                let cardClasses = 'bg-white rounded-xl shadow-md cursor-pointer transition-transform duration-200 ease-in-out hover:translate-y-[-5px] hover:shadow-lg';
+
+                if (itemCategory === 'restaurants') {
+                    // Design inspiré de image_caa7f7.jpg pour les restaurants
+                    cardClasses += ' restaurant-card';
+                    cardHTML = `
+                    <a href="index.html">
+                        <div class="restaurant-card-image-container" >
+                            <img src="${item.imageUrl}" alt="${item.name}" class="restaurant-card-image">
+                            ${item.michelin ? '<span class="restaurant-card-badge">2025</span>' : ''}
+                        </div>
+                        <div class="restaurant-card-content">
+                            <h3 class="restaurant-card-title">${item.name}</h3>
+                            <div class="restaurant-card-rating">
+                                <span class="restaurant-card-stars">★★★★★</span>
+                                <span class="ml-1 text-gray-700">${item.rating}</span>
+                                <span class="ml-2 text-gray-500">(${item.reviews})</span>
+                            </div>
+                            <p class="restaurant-card-price-cuisine">
+                                <span class="font-semibold">${item.priceRange}</span> • <span class="text-gray-600">${item.cuisine}</span>
+                            </p>
+                        </div>
+                    </a>
+                    `;
+                } else if (itemCategory === 'accommodations') {
+                    // Design hébergements (peut être adapté plus tard si besoin, pour l'instant simple)
+                    cardClasses += ' restaurant-card';
+                    cardHTML = `
+                        <a href="index.html">
+                        <div class="restaurant-card-image-container" >
+                            <img src="${item.imageUrl}" alt="${item.name}" class="restaurant-card-image">
+                            ${item.michelin ? '<span class="restaurant-card-badge">2025</span>' : ''}
+                        </div>
+                        <div class="restaurant-card-content">
+                            <h3 class="restaurant-card-title">${item.name}</h3>
+                            <div class="restaurant-card-rating">
+                                <span class="restaurant-card-stars">★★★★★</span>
+                                <span class="ml-1 text-gray-700">${item.rating}</span>
+                                <span class="ml-2 text-gray-500">(${item.reviews})</span>
+                            </div>
+                            <p class="restaurant-card-price-cuisine">
+                                <span class="font-semibold">${item.priceRange}</span> • <span class="text-gray-600">${item.cuisine}</span>
+                            </p>
+                        </div>
+                    </a>
+                    `;
+                } else if (itemCategory === 'activities') {
+                    // Design activités (peut être adapté plus tard si besoin, pour l'instant simple)
+                    cardClasses += ' restaurant-card';
+                    cardHTML = `
+                        <a href="index.html">
+                        <div class="restaurant-card-image-container" >
+                            <img src="${item.imageUrl}" alt="${item.name}" class="restaurant-card-image">
+                            ${item.michelin ? '<span class="restaurant-card-badge">2025</span>' : ''}
+                        </div>
+                        <div class="restaurant-card-content">
+                            <h3 class="restaurant-card-title">${item.name}</h3>
+                            <div class="restaurant-card-rating">
+                                <span class="restaurant-card-stars">★★★★★</span>
+                                <span class="ml-1 text-gray-700">${item.rating}</span>
+                                <span class="ml-2 text-gray-500">(${item.reviews})</span>
+                            </div>
+                            <p class="restaurant-card-price-cuisine">
+                                <span class="font-semibold">${item.priceRange}</span> • <span class="text-gray-600">${item.cuisine}</span>
+                            </p>
+                        </div>
+                    </a>
+                    `;
+                }
+                
+                const card = document.createElement('div');
+                card.className = cardClasses;
+                card.innerHTML = cardHTML;
+                
+                card.addEventListener('click', () => openModal(item, itemCategory));
+                container.appendChild(card);
+            });
+        }
+
+        // Fonction pour ouvrir la modale
+        function openModal(item, itemCategory) {
+            const modal = document.getElementById('detail-modal');
+            document.getElementById('modal-image').src = item.imageUrl;
+            document.getElementById('modal-title').textContent = item.name;
+            document.getElementById('modal-description').textContent = item.description;
+
+            const modalType = document.getElementById('modal-type');
+            const modalPrice = document.getElementById('modal-price');
+
+            if (itemCategory === 'restaurants') {
+                modalType.textContent = `Cuisine : ${item.cuisine}`;
+                modalPrice.textContent = `Gamme de prix : ${item.priceRange}`;
+            } else if (itemCategory === 'accommodations') {
+                modalType.textContent = `Type : ${item.type}`;
+                modalPrice.textContent = `Prix : ${item.priceRange}`;
+            } else if (itemCategory === 'activities') {
+                modalType.textContent = `Type : ${item.type}`;
+                modalPrice.textContent = '';
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex'); // Assurez-vous que la modale est en flex pour centrage
+        }
+
+        // Fonction pour fermer la modale
+        document.getElementById('close-modal').addEventListener('click', () => {
+            document.getElementById('detail-modal').classList.add('hidden');
+            document.getElementById('detail-modal').classList.remove('flex');
+        });
+
+        // Fermer la modale si on clique en dehors
+        window.addEventListener('click', (event) => {
+            const modal = document.getElementById('detail-modal');
+            if (event.target === modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        });
+
+        // Générer les cartes au chargement de la page
+        document.addEventListener('DOMContentLoaded', () => {
+            generateCards(sangmelimaData.restaurants, 'restaurants-list', 'restaurants', 6); // Affiche seulement 6 restaurants
+            generateCards(sangmelimaData.accommodations, 'accommodations-list', 'accommodations');
+            generateCards(sangmelimaData.activities, 'activities-list', 'activities');
+        });
+
+        // --- JavaScript pour le menu mobile (toujours présent) ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+
+        if (mobileMenuButton && mobileMenu && mobileMenuOverlay && closeMobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenuOverlay.classList.remove('hidden');
+            });
+
+            closeMobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenuOverlay.classList.add('hidden');
+            });
+
+            mobileMenuOverlay.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenuOverlay.classList.add('hidden');
+            });
+        }
+
+
+        // Carousel d'images
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        setInterval(nextSlide, 5000);
+
+
+        // Fonctions de navigation pour les événements
+        function goToEvent(eventId) {
+            window.location.href = `event.html?id=${eventId}`;
+        }
+
+
+
+        // Gestion du carousel des témoignages
+let currentTestimonial = 0;
+const testimonials = document.querySelectorAll('.testimonial-card');
+const totalTestimonials = testimonials.length;
+const slider = document.getElementById('testimonialsSlider');
+const dots = document.querySelectorAll('.testimonial-dot');
+let autoSlideInterval;
+
+// Fonction pour afficher un témoignage spécifique
+function showTestimonial(index) {
+    currentTestimonial = index;
+    const translateX = -currentTestimonial * (100 / (window.innerWidth >= 768 ? 2 : 1));
+    slider.style.transform = `translateX(${translateX}%)`;
+    
+    // Mise à jour des dots
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('bg-blue-600', i === currentTestimonial);
+        dot.classList.toggle('bg-gray-300', i !== currentTestimonial);
+    });
+}
+
+// Navigation précédent
+document.getElementById('prevTestimonial').addEventListener('click', () => {
+    currentTestimonial = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
+    showTestimonial(currentTestimonial);
+    resetAutoSlide();
+});
+
+// Navigation suivant
+document.getElementById('nextTestimonial').addEventListener('click', () => {
+    currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+    showTestimonial(currentTestimonial);
+    resetAutoSlide();
+});
+
+// Gestion des dots
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        showTestimonial(index);
+        resetAutoSlide();
+    });
+});
+
+// Auto-slide
+function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+        currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+        showTestimonial(currentTestimonial);
+    }, 4000);
+}
+
+function resetAutoSlide() {
+    clearInterval(autoSlideInterval);
+    startAutoSlide();
+}
+
+// Pause au survol
+const testimonialSection = document.querySelector('#testimonialsContainer');
+testimonialSection.addEventListener('mouseenter', () => {
+    clearInterval(autoSlideInterval);
+});
+
+testimonialSection.addEventListener('mouseleave', () => {
+    startAutoSlide();
+});
+
+// Responsive handling
+function handleResize() {
+    showTestimonial(currentTestimonial);
+}
+
+window.addEventListener('resize', handleResize);
+
+// Initialiser
+document.addEventListener('DOMContentLoaded', () => {
+    startAutoSlide();
+    showTestimonial(0);
+});
+    </script>
+</body>
+</html>
