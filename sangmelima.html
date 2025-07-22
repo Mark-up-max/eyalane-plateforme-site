@@ -349,9 +349,8 @@
             /* Styles pour la phrase au-dessus du carrousel */
             .carousel-title {
                 text-align: center;
-                font-size: 2.5rem;
-                font-weight: 700;
-                color: #1a4d2e;
+                font-size: 3rem;
+                color: #ffffff;
                 margin: 2rem auto 1.5rem auto;
                 max-width: 1200px;
                 padding: 0 1.5rem;
@@ -528,7 +527,6 @@
                 font-weight: 700;
                 color: #1a4d2e;
                 margin-bottom: 1.5rem;
-                margin-top: 3rem;
             }
 
             .events-grid {
@@ -1507,15 +1505,111 @@
 #testimonialsSlider {
     transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+
+
+footer a {
+    position: relative;
+}
+
+footer a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+}
+
+footer a:hover::before {
+    width: 100%;
+}
+
+/* Responsive pour le footer */
+@media (max-width: 768px) {
+    .footer-links {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .footer-selectors {
+        justify-content: center;
+    }
+}
+
+
+
+/* Styles pour les transitions fluides */
+.page-content {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.4s ease-in-out;
+}
+
+.page-content.fade-out {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.page-content.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Styles pour les cartes de navigation */
+.navigation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.navigation-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.navigation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border-color: #10b981;
+}
+
+.region-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.region-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #059669;
+    margin-bottom: 1rem;
+}
+
+.region-subtitle {
+    font-size: 1.2rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+}
     </style>
 </head>
+
 <body class="antialiased">
 
     <!-- Barre de Navigation -->
-    <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
+    <nav class="bg-white p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <span class="text-3xl font-bold text-blue-800">EYALANE</span>
+                <span class="text-3xl text-green">éyalane exporer</span>
             </div>
             <div class="hidden md:flex space-x-6">
                 <a href="index.html" class="navbar-link">Accueil</a>
@@ -1563,17 +1657,142 @@
 
 
     <!-- Navigation de Localisation (Breadcrumb) -->
+    <!-- Navigation de Localisation (Breadcrumb) -->
     <div class="location-breadcrumb">
-        <a href="index.html">Cameroun</a>
-        <span>&gt;</span>
-        <a href="#">Sud</a>
-        <span>&gt;</span>
-        <span>Sangmélima</span>
+        <a href="#" onclick="navigateTo('cameroun')" id="cameroun-link">Cameroun</a>
+        <span id="separator1" style="display:none;">&gt;</span>
+        <a href="#" onclick="navigateTo('sud')" id="sud-link" style="display:none;">Sud</a>
+        <span id="separator2" style="display:none;">&gt;</span>
+        <span id="sangmelima-link" style="display:none;">Sangmélima</span>
     </div>
 
 
+<!-- 2. Container pour le contenu dynamique -->
+<div id="dynamic-content" class="page-content">
+    
+    <!-- Page Cameroun -->
+    <div id="cameroun-page" class="content-page" style="display:none;">
+        <div class="container mx-auto px-6 py-8">
+            <div class="region-header">
+                <h1 class="region-title">Cameroun</h1>
+                <p class="region-subtitle">
+                    Découvrez la richesse et la diversité du Cameroun, l'Afrique en miniature. 
+                    Explorez ses différentes régions aux paysages variés et cultures uniques.
+                </p>
+            </div>
+            
+            <div class="navigation-grid">
+                <div class="navigation-card" onclick="navigateTo('sud')">
+                    <h3>Région du Sud</h3>
+                    <p>Forêts tropicales luxuriantes, rivières paisibles et patrimoine culturel riche. Découvrez Sangmélima et ses merveilles.</p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full mr-2">Restaurants</span>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full mr-2">Activités</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full mr-2">Hôtels</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-sm px-3 py-1 rounded-full">Événements</span>
+                    </div>
+                </div>
+                
+                <div class="navigation-card" onclick="alert('Région Centre - Contenu à venir')">
+                    <h3>Région du Centre</h3>
+                    <p>Yaoundé, la capitale politique, et ses environs. Collines verdoyantes et centres administratifs du pays.</p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full mr-2">Restaurants</span>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full mr-2">Activités</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full mr-2">Hôtels</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-sm px-3 py-1 rounded-full">Événements</span>
+                    </div>
+                </div>
+                
+                <div class="navigation-card" onclick="alert('Région du Littoral - Contenu à venir')">
+                    <h3>Région du Littoral</h3>
+                    <p>Douala, capitale économique, et la côte atlantique. Plages, ports et dynamisme commercial.</p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full mr-2">Restaurants</span>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full mr-2">Activités</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full mr-2">Hôtels</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-sm px-3 py-1 rounded-full">Événements</span>
+                    </div>
+                </div>
+                
+                <div class="navigation-card" onclick="alert('Région de l\'Ouest - Contenu à venir')">
+                    <h3>Région de l'Ouest</h3>
+                    <p>Hauts plateaux, traditions Bamiléké et paysages montagneux. Bafoussam et ses chefferies.</p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full mr-2">Restaurants</span>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full mr-2">Activités</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full mr-2">Hôtels</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-sm px-3 py-1 rounded-full">Événements</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- Section Carrousel d'Images -->
+    <!-- Page Région Sud -->
+    <div id="sud-page" class="content-page" style="display:none;">
+        <div class="container mx-auto px-6 py-8">
+            <div class="region-header">
+                <h1 class="region-title">Région du Sud</h1>
+                <p class="region-subtitle">
+                    Plongez au cœur de la forêt équatoriale camerounaise. La région du Sud vous offre 
+                    des paysages préservés et une biodiversité exceptionnelle.
+                </p>
+            </div>
+            
+            <div class="navigation-grid">
+                <div class="navigation-card" onclick="navigateTo('sangmelima')">
+                    <h3>Sangmélima</h3>
+                    <p>Chef-lieu du département de la Dja-et-Lobo, Sangmélima vous séduira par ses rives du Nyong et son hospitalité légendaire.</p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full mr-2">Restaurants</span>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full mr-2">Activités</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full mr-2">Hôtels</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-sm px-3 py-1 rounded-full">Événements</span>
+                    </div>
+                </div>
+                
+                <div class="navigation-card" onclick="alert('Ebolowa - Contenu à venir')">
+                    <h3>Ebolowa</h3>
+                    <p>Capitale de la région du Sud, centre administratif et porte d'entrée vers la Guinée Équatoriale.</p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full mr-2">Restaurants</span>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full mr-2">Activités</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full mr-2">Hôtels</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-sm px-3 py-1 rounded-full">Événements</span>
+                    </div>
+                </div>
+                
+                <div class="navigation-card" onclick="alert('Kribi - Contenu à venir')">
+                    <h3>Kribi</h3>
+                    <p>Station balnéaire réputée avec ses plages de sable fin et ses chutes de la Lobé qui se jettent dans l'océan.</p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full mr-2">Restaurants</span>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full mr-2">Activités</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full mr-2">Hôtels</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-sm px-3 py-1 rounded-full">Événements</span>
+                    </div>
+                </div>
+                
+                <div class="navigation-card" onclick="alert('Ambam - Contenu à venir')">
+                    <h3>Ambam</h3>
+                    <p>Ville frontalière avec le Gabon, point de passage commercial important dans la région forestière.</p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full mr-2">Restaurants</span>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full mr-2">Activités</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full mr-2">Hôtels</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-sm px-3 py-1 rounded-full">Événements</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Sangmélima (contenu existant) -->
+    <div id="sangmelima-page" class="content-page">
+        <!-- Tout le contenu existant de Sangmélima reste ici -->
+        <!-- Section Carrousel d'Images, etc. -->
+          <!-- Section Carrousel d'Images -->
     <section class="hero-carousel">
         <div class="carousel-slide active" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwTlPYQ3CVxPIsJcddITkgW0RaY2vJ_RVxzw&s');">
         </div>
@@ -1801,9 +2020,7 @@
         <div class="container mx-auto">
             <!-- Section Restaurants -->
             <section id="restaurants-section" class="mb-16 pt-4">
-                <div class="flex justify-between items-center mb-8">
                     <h2 class="section-title">Où manger</h2>
-                </div>
                 <div id="restaurants-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- Les cartes des restaurants seront insérées ici par JavaScript -->
                 </div>
@@ -1905,12 +2122,15 @@
                     </div>
                 </div>
             </section>
+
+
+
             <!-- Section des avis clients -->
             <section class="mb-12 py-16 bg-gradient-to-br from-gray-50 to-white rounded-3xl">
                 <div class="container mx-auto px-6">
-                    <div class="text-center mb-12">
-                        <h2 class="text-4xl font-bold mb-4 section-heading animate-fade-in">Ce que disent nos clients</h2>
-                        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-green-500 mx-auto rounded-full"></div>
+                    <div class="mb-12">
+                        <h2 class="section-title">Ce que disent nos clients</h2>
+                        
                     </div>
                     
                     <div class="relative">
@@ -2109,17 +2329,128 @@
             </div>
         </div>
     </div>
+    </div>
+
+</div>
 
 
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6 text-center md:flex md:justify-between md:items-center">
-            <p>&copy; 2025 EYALANE. Tous droits réservés.</p>
-            <div class="flex justify-center md:justify-end space-x-4 mt-4 md:mt-0">
-                <a href="https://facebook.com/eyalane" target="_blank" class="text-white hover:text-blue-400">Facebook</a>
-                <a href="https://instagram.com/eyalane" target="_blank" class="text-white hover:text-blue-400">Instagram</a>
-                <a href="https://tiktok.com/@eyalane" target="_blank" class="text-white hover:text-blue-400">TikTok</a>
+   <!-- Footer -->
+    <footer class="bg-white py-8 border-t border-gray-200">
+    <!-- Section principale du footer -->
+        <div class="container mx-auto px-6 py-8">
+            <!-- Logo et description -->
+            <div class="flex flex-col lg:flex-row justify-between items-start space-y-8 lg:space-y-0">
+                <div class="lg:w-1/3">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <!-- Logo EYALANE avec icône -->
+                        <div class="bg-gradient-to-r from-blue-800 to-blue-600 p-2 rounded-full">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <span class="text-2xl text-green">éyalane explorer</span>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        EYALANE ne garantit pas la disponibilité des prix affichés sur nos sites et applications. 
+                        Des conditions et restrictions telles que, entre autres, des durées de voyage imposées ou 
+                        des dates de fermeture peuvent...
+                    </p>
+                    <button class="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center space-x-1 transition-colors">
+                        <span>Plus</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Liens et sélecteurs -->
+                <div class="lg:w-2/3 flex flex-col space-y-6">
+                    <!-- Sélecteurs de devise et pays -->
+                    <div class="flex flex-wrap gap-4 justify-start lg:justify-end">
+                        <!-- Sélecteur de devise -->
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 text-sm font-medium text-gray-700 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer">
+                                <option value="eur">FCFA</option>
+                                <option value="usd">$ USD</option>
+                            </select>
+                            <svg class="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        
+                        <!-- Sélecteur de pays -->
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 text-sm font-medium text-gray-700 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer">
+                                <option value="cm">🇨🇲 Cameroun</option>
+                            </select>
+                            <svg class="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <!-- Liens légaux -->
+                    <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm justify-start lg:justify-end">
+                        <a href="/conditions" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Conditions d'utilisation
+                        </a>
+                        <a href="/confidentialite" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Confidentialité et utilisation des cookies
+                        </a>
+                        <a href="/accord-cookies" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Accord d'utilisation des cookies
+                        </a>
+                        <a href="/plan-du-site" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Plan du site
+                        </a>
+                        <a href="/fonctionnement" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Fonctionnement du site
+                        </a>
+                        <a href="/contact" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Contactez-nous
+                        </a>
+                        <a href="/accessibilite" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Politique d'accessibilité
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Barre de copyright -->
+        <div class="bg-gray-50 border-t border-gray-200">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="flex items-center space-x-4">
+                        <p class="text-sm text-gray-600">
+                            © 2025 Eyalane LLC Tous droits réservés.
+                        </p>
+                    </div>
+                    
+                    <!-- Réseaux sociaux -->
+                    <div class="flex items-center space-x-4">
+                        <span class="text-sm text-gray-500">Suivez-nous :</span>
+                        <a href="https://facebook.com/eyalane" target="_blank" 
+                        class="text-gray-600 hover:text-blue-600 transition-colors p-2 rounded-full hover:bg-blue-50">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com/eyalane" target="_blank" 
+                        class="text-gray-600 hover:text-pink-600 transition-colors p-2 rounded-full hover:bg-pink-50">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987c6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.348-1.051-2.348-2.348s1.051-2.348 2.348-2.348 2.348 1.051 2.348 2.348S9.746 16.988 8.449 16.988zM12.017 16.988c-1.297 0-2.348-1.051-2.348-2.348s1.051-2.348 2.348-2.348 2.348 1.051 2.348 2.348S13.314 16.988 12.017 16.988zM15.585 16.988c-1.297 0-2.348-1.051-2.348-2.348s1.051-2.348 2.348-2.348 2.348 1.051 2.348 2.348S16.882 16.988 15.585 16.988z"/>
+                            </svg>
+                        </a>
+                        <a href="https://tiktok.com/@eyalane" target="_blank" 
+                        class="text-gray-600 hover:text-black transition-colors p-2 rounded-full hover:bg-gray-100">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
@@ -2619,6 +2950,81 @@ window.addEventListener('resize', handleResize);
 document.addEventListener('DOMContentLoaded', () => {
     startAutoSlide();
     showTestimonial(0);
+});
+
+
+
+// Navigation dynamique
+let currentPage = 'sangmelima'; // Page par défaut
+
+function navigateTo(page) {
+    const content = document.getElementById('dynamic-content');
+    const currentPageEl = document.getElementById(currentPage + '-page');
+    const newPageEl = document.getElementById(page + '-page');
+    
+    // Animation de sortie
+    content.classList.add('fade-out');
+    
+    setTimeout(() => {
+        // Cacher la page actuelle
+        currentPageEl.style.display = 'none';
+        
+        // Afficher la nouvelle page
+        newPageEl.style.display = 'block';
+        
+        // Mettre à jour la navigation breadcrumb
+        updateBreadcrumb(page);
+        
+        // Animation d'entrée
+        content.classList.remove('fade-out');
+        content.classList.add('fade-in');
+        
+        currentPage = page;
+        
+        // Scroll vers le haut
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 200);
+}
+
+function updateBreadcrumb(page) {
+    const camerounLink = document.getElementById('cameroun-link');
+    const separator1 = document.getElementById('separator1');
+    const sudLink = document.getElementById('sud-link');
+    const separator2 = document.getElementById('separator2');
+    const sangmelimaLink = document.getElementById('sangmelima-link');
+    
+    // Reset tous les éléments
+    separator1.style.display = 'none';
+    sudLink.style.display = 'none';
+    separator2.style.display = 'none';
+    sangmelimaLink.style.display = 'none';
+    
+    if (page === 'cameroun') {
+        camerounLink.style.pointerEvents = 'none';
+        camerounLink.style.color = '#6b7280';
+    } else if (page === 'sud') {
+        camerounLink.style.pointerEvents = 'auto';
+        camerounLink.style.color = '#059669';
+        separator1.style.display = 'inline';
+        sudLink.style.display = 'inline';
+        sudLink.style.pointerEvents = 'none';
+        sudLink.style.color = '#6b7280';
+    } else if (page === 'sangmelima') {
+        camerounLink.style.pointerEvents = 'auto';
+        camerounLink.style.color = '#059669';
+        separator1.style.display = 'inline';
+        sudLink.style.display = 'inline';
+        sudLink.style.pointerEvents = 'auto';
+        sudLink.style.color = '#059669';
+        separator2.style.display = 'inline';
+        sangmelimaLink.style.display = 'inline';
+    }
+}
+
+// Modifier votre DOMContentLoaded existant pour inclure :
+document.addEventListener('DOMContentLoaded', () => {
+    updateBreadcrumb('sangmelima');
+    // ... vos autres initialisations existantes
 });
     </script>
 </body>

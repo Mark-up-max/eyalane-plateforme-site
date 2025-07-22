@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactez EYALANE - Informations et Réseaux Sociaux</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8; /* Arrière-plan principal */
+            color: #333;
+        }
+        .btn-primary {
+            background-color: #075985; /* Couleur d'accent pour les CTA */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #054a6e; /* Teinte plus foncée au survol */
+        }
+        .navbar-link {
+            color: #075985;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar-link:hover {
+            color: #054a6e;
+        }
+        .section-heading {
+            color: #075985;
+        }
+        .input-field {
+            @apply w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500;
+        }
+        .hero-section {
+            background-color: white;
+            min-height: 400px;
+        }
+        .rating-stars {
+            color: #10b981;
+        }
+        .info-badge {
+            background-color: rgba(7, 89, 133, 0.1);
+            color: #075985;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .contact-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+        }
+        .action-button {
+            background-color: #10b981;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .action-button:hover {
+            background-color: #059669;
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Section Hero - Informations principales -->
+    <section class="hero-section text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl">
+                <!-- Titre et évaluation -->
+                <div class="flex items-center space-x-2 mb-4">
+                    <h1 class="text-4xl md:text-5xl font-bold">EYALANE</h1>
+                    <span class="text-2xl">•</span>
+                </div>
+                
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-2xl font-bold">4.9</span>
+                        <div class="flex rating-stars text-xl">
+                            ★★★★★
+                        </div>
+                        <span class="underline cursor-pointer">(3399 avis)</span>
+                    </div>
+                    <div class="info-badge bg-white bg-opacity-20 text-white">
+                        N° 1 sur 1866 entreprises à Paris
+                    </div>
+                </div>
+
+                <!-- Informations de contact -->
+                <div class="flex flex-wrap items-center gap-6 mb-8 text-sm">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>63 Rue De Richelieu, 75002 Paris France</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                        </svg>
+                        <span>00 33 1 44 58 94 94</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                        </svg>
+                        <span class="underline cursor-pointer">Contactez EYALANE</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="underline cursor-pointer">Écrire un avis</span>
+                    </div>
+                </div>
+
+                <!-- Boutons d'action -->
+                <div class="flex flex-wrap gap-4">
+                    <button class="btn-primary flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Visiter le site</span>
+                    </button>
+                    <button class="action-button flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Vérifier la disponibilité</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section principale avec images et informations -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Vidéo principale -->
+                <div class="lg:col-span-2">
+                    <div class="rounded-lg overflow-hidden h-96">
+                        <video 
+                            class="w-full h-full object-cover" 
+                            autoplay 
+                            muted 
+                            loop
+                            poster="https://picsum.photos/800/400?random=1"
+                        >
+                            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                            <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4">
+                            Votre navigateur ne supporte pas la lecture vidéo.
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Images secondaires et stats -->
+                <div class="space-y-4">
+                    <!-- Image d'en-tête -->
+                    <div class="rounded-lg overflow-hidden h-24">
+                        <img 
+                            src="https://picsum.photos/400/150?random=5" 
+                            alt="EYALANE Header" 
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+
+                    <!-- Stats cards -->
+                    <div class="contact-card text-center">
+                        <div class="text-3xl font-bold text-gray-700 mb-2">1388</div>
+                        <div class="text-sm text-gray-600">Voyageur</div>
+                    </div>
+                    
+                    <div class="contact-card text-center">
+                        <div class="flex items-center justify-center space-x-2 mb-2">
+                            <span class="text-2xl font-bold text-gray-700">260</span>
+                            <div class="flex space-x-1">
+                                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                                <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-600">Chambre et suite</div>
+                    </div>
+
+                    <!-- Image secondaire 1 -->
+                    <div class="rounded-lg overflow-hidden h-32">
+                        <img 
+                            src="https://picsum.photos/400/200?random=2" 
+                            alt="EYALANE Services" 
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                    </div>
+
+                    <!-- Image secondaire 2 -->
+                    <div class="rounded-lg overflow-hidden h-32">
+                        <img 
+                            src="https://picsum.photos/400/200?random=3" 
+                            alt="EYALANE Équipe" 
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                    </div>
+
+                    <!-- Image secondaire 3 -->
+                    <div class="rounded-lg overflow-hidden h-32">
+                        <img 
+                            src="https://picsum.photos/400/200?random=4" 
+                            alt="EYALANE Bureau" 
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center md:flex md:justify-between md:items-center">
+            <p>&copy; 2025 EYALANE. Tous droits réservés.</p>
+            <div class="flex justify-center md:justify-end space-x-4 mt-4 md:mt-0">
+                <a href="https://facebook.com/eyalane" target="_blank" class="text-white hover:text-blue-400">Facebook</a>
+                <a href="https://instagram.com/eyalane" target="_blank" class="text-white hover:text-blue-400">Instagram</a>
+                <a href="https://tiktok.com/@eyalane" target="_blank" class="text-white hover:text-blue-400">TikTok</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gestion du menu mobile (à répliquer sur toutes les pages)
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+
+        if (mobileMenuButton && mobileMenu && mobileMenuOverlay && closeMobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenuOverlay.classList.remove('hidden');
+            });
+
+            closeMobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenuOverlay.classList.add('hidden');
+            });
+
+            mobileMenuOverlay.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenuOverlay.classList.add('hidden');
+            });
+        }
+
+        // Gestion du formulaire de contact (démonstration sans backend)
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Empêche l'envoi réel du formulaire
+
+                // Afficher le message de succès
+                formMessage.classList.remove('hidden');
+                formMessage.textContent = "Merci pour votre message ! Nous vous recontacterons bientôt. (Ceci est une démonstration)";
+                formMessage.classList.remove('text-red-600');
+                formMessage.classList.add('text-green-600');
+
+                // Réinitialiser le formulaire
+                contactForm.reset();
+
+                // Cacher le message après quelques secondes
+                setTimeout(() => {
+                    formMessage.classList.add('hidden');
+                }, 5000);
+            });
+        }
+
+        // Gestion de la vidéo
+        const video = document.querySelector('video');
+        if (video) {
+            // Assurer la lecture automatique après le chargement
+            video.addEventListener('loadeddata', function() {
+                video.play().catch(e => {
+                    console.log('Lecture automatique bloquée:', e);
+                });
+            });
+            
+            // Contrôles de la vidéo
+            video.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
