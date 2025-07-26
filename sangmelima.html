@@ -82,6 +82,7 @@
         .scroll-button:focus {
             outline: none;
         }
+        
         /* Styles pour la navigation de localisation (breadcrumb) */
         .location-breadcrumb {
             max-width: 1200px; /* Aligné avec le carrousel */
@@ -106,7 +107,7 @@
         /* Styles pour la nouvelle section de navigation (onglets) */
         .page-navigation-tabs {
             max-width: 1200px;
-            margin: 1.5rem auto 0.5rem auto; /* Marge au-dessus de la localisation */
+            margin: auto auto 0.5rem auto; /* Marge au-dessus de la localisation */
             padding: 0 1.5rem;
             border-bottom: 1px solid #e5e7eb; /* Ligne de séparation */
             display: flex;
@@ -156,7 +157,7 @@
         .save-button {
             display: inline-flex;
             align-items: center;
-            padding: 0.75rem 1.5rem;
+            padding: 0.25rem 0.5rem;
             border: 1px solid #1a4d2e; /* Bordure verte foncée */
             border-radius: 9999px; /* Forme pilule */
             color: #1a4d2e;
@@ -641,10 +642,15 @@
                 font-size: 0.875rem;
                 color: #666;
             }
+
             .hero-carousel {
             position: relative;
             height: 90vh;
             overflow: hidden;
+            align-items: center;
+            margin-left: 35px;
+            margin-right: 35px;
+            border-radius: 10px;
         }
         
         .carousel-slide {
@@ -661,6 +667,14 @@
         
         .carousel-slide.active {
             opacity: 1;
+        }
+
+         @media (max-width: 768px) {
+            .hero-carousel {
+            position: relative;
+            height: 90vh;
+            overflow: hidden;
+        }
         }
 
 
@@ -1605,21 +1619,69 @@ footer a:hover::before {
 
 <body class="antialiased">
 
-    <!-- Barre de Navigation -->
+    <!-- Navigation -->
     <nav class="bg-white p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <span class="text-3xl text-green">éyalane exporer</span>
+                <span class="text-3xl text-gray-900">éyalane explorer</span>
             </div>
-            <div class="hidden md:flex space-x-6">
-                <a href="index.html" class="navbar-link">Accueil</a>
-                <a href="sangmelima.html" class="navbar-link">Découvrir Sangmélima</a>
-                <a href="about.html" class="navbar-link">À Propos de Nous</a>
-                <a href="contact.html" class="navbar-link">Contact</a>
+            
+            <!-- Menu principal -->
+            <div class="hidden md:flex items-center space-x-6">
+                <!-- Dropdown Destinations -->
+                <div class="relative group">
+                    <button class="navbar-link flex items-center space-x-1">
+                        <span>Explorer</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                        <div class="py-2">
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Adamaoua">Adamaoua</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Centre">Centre</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Est">Est</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Extrême-Nord">Extrême-Nord</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Littoral">Littoral</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Nord">Nord</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Nord-Ouest">Nord-Ouest</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Ouest">Ouest</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Sud">Sud</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Sud-Ouest">Sud-Ouest</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <button class="navbar-link flex items-center space-x-1">
+                        <span>Lifestyle</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                        <div class="py-2">
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Adamaoua">Adamaoua</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Centre">Centre</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Est">Est</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Extrême-Nord">Extrême-Nord</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Littoral">Littoral</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Nord">Nord</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Nord-Ouest">Nord-Ouest</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Ouest">Ouest</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Sud">Sud</button>
+                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Sud-Ouest">Sud-Ouest</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+            <!-- Menu mobile -->
             <div class="md:hidden">
-                <button class="text-blue-800 focus:outline-none" id="mobile-menu-button">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                <button id="mobile-menu-btn" class="text-blue-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
                 </button>
             </div>
         </div>
@@ -1650,21 +1712,11 @@ footer a:hover::before {
         <a href="#restaurants-section" class="active">Restaurants</a>
         <a href="#accommodations-section">Hôtels</a>
         <a href="#activities-section">Activités</a>
-        <a href="#activities-section">Evènementiels</a>
-        <a href="#activities-section">Blog</a>
+        <a href="#evenement-section">Evènementiels</a>
+        <a href="#coupcoeur-section">Coup de coeur</a>
+        <a href="#blog-section">Blog</a>
     </section>
 
-
-
-    <!-- Navigation de Localisation (Breadcrumb) -->
-    <!-- Navigation de Localisation (Breadcrumb) -->
-    <div class="location-breadcrumb">
-        <a href="#" onclick="navigateTo('cameroun')" id="cameroun-link">Cameroun</a>
-        <span id="separator1" style="display:none;">&gt;</span>
-        <a href="#" onclick="navigateTo('sud')" id="sud-link" style="display:none;">Sud</a>
-        <span id="separator2" style="display:none;">&gt;</span>
-        <span id="sangmelima-link" style="display:none;">Sangmélima</span>
-    </div>
 
 
 <!-- 2. Container pour le contenu dynamique -->
@@ -1967,10 +2019,7 @@ footer a:hover::before {
                 </div>
                 
                 <!-- Cercles décoratifs -->
-                <div class="decorative-circles">
-                    <div class="circle red-circle"></div>
-                    <div class="circle yellow-circle"></div>
-                </div>
+                
             </div>
     </section>
 
@@ -2043,7 +2092,7 @@ footer a:hover::before {
             </section>
 
              <!-- Section Événements -->
-            <section >
+            <section id="evenement-section">
                 <h2 class="section-title">Événements à venir</h2>
                 <div class="events-grid">
                     <div class="event-card">
@@ -2093,7 +2142,7 @@ footer a:hover::before {
 
 
      <!-- Section Événements -->
-            <section >
+            <section id="coupcoeur-section">
                 <h2 class="section-title">Sélection coup de coeur éyalane</h2>
                 <div class="events-grid">
                     <div class="event-card">
@@ -2126,13 +2175,11 @@ footer a:hover::before {
 
 
             <!-- Section des avis clients -->
-            <section class="mb-12 py-16 bg-gradient-to-br from-gray-50 to-white rounded-3xl">
+            <section id="blog-section" class="mb-12 py-16 bg-gradient-to-br from-gray-50 to-white rounded-3xl">
                 <div class="container mx-auto px-6">
                     <div class="mb-12">
-                        <h2 class="section-title">Ce que disent nos clients</h2>
-                        
+                        <h2 class="section-title">Ce que disent nos visiteurs</h2>
                     </div>
-                    
                     <div class="relative">
                         <!-- Navigation arrows -->
                         <button id="prevTestimonial" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg hover:bg-white hover:shadow-xl transition-all duration-300 group">
@@ -2330,7 +2377,6 @@ footer a:hover::before {
         </div>
     </div>
     </div>
-
 </div>
 
 

@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #FDFBF8;
+            background-color: #ffffff;
             color: #333;
         }
         
@@ -56,9 +56,13 @@
         }
         
         .hero-carousel {
+            background-color: white;
             position: relative;
-            height: 70vh;
-            overflow: visible;
+            height: 100vh;
+            overflow: hidden;
+            margin-left: 35px;
+            margin-right: 35px;
+            border-radius: 10px;
         }
         
         .carousel-slide {
@@ -101,7 +105,7 @@
         }
         
         .search-suggestions {
-            position: absolute;
+            position: ;
             top: 100%;
             left: 0;
             right: 0;
@@ -255,16 +259,13 @@
         }
         
         @media (max-width: 768px) {
-            .hero-carousel {
-                height: 50vh;
-            }
             
             .cities-grid {
                 grid-template-columns: 1fr;
             }
             
             .region-selector {
-                flex-direction: column;
+                flex-direction: row;
                 align-items: center;
             }
             
@@ -272,6 +273,11 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .hero-carousel {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
         }
         .group:hover .group-hover\:opacity-100 {
         opacity: 1 !important;
@@ -999,52 +1005,19 @@ footer a:hover::before {
 
 
     <!-- Barre de catégories -->
-    <div class="bg-white py-3 border-b border-blue-100">
-        <div class="container mx-auto px-6">
-            <div class="category-nav">
-                <a href="restaurants.html" class="category-btn group relative overflow-hidden">
-                    <span class="relative z-10 flex items-center space-x-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-5 5-7-7-5 5V6l5-5 7 7 5-5v8z"></path>
-                        </svg>
-                        <span>Hôtels</span>
-                    </span>
-                </a>
-                <a href="restaurants.html" class="category-btn group relative overflow-hidden">
-                    <span class="relative z-10 flex items-center space-x-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-5 5-7-7-5 5V6l5-5 7 7 5-5v8z"></path>
-                        </svg>
-                        <span>Restaurants</span>
-                    </span>
-                </a>
-                <a href="activites.html" class="category-btn group relative overflow-hidden">
-                    <span class="relative z-10 flex items-center space-x-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                        </svg>
-                        <span>Activités</span>
-                    </span>
-                </a>
-                <a href="evenements.html" class="category-btn group relative overflow-hidden">
-                    <span class="relative z-10 flex items-center space-x-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        <span>Événements</span>
-                    </span>
-                </a>
-                <a href="blog.html" class="category-btn group relative overflow-hidden">
-                    <span class="relative z-10 flex items-center space-x-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                        </svg>
-                        <span>Blog</span>
-                    </span>
-                </a>
+     <!-- Sélecteur de régions -->
+            <div class="region-selector">
+                <button class="region-dropdown-btn region-btn active" data-region="Sud">Sud</button>
+                <button class="region-dropdown-btn region-btn" data-region="Centre">Centre</button>
+                <button class="region-dropdown-btn region-btn" data-region="Littoral">Littoral</button>
+                <button class="region-dropdown-btn region-btn" data-region="Ouest">Ouest</button>
+                <button class="region-dropdown-btn region-btn" data-region="Nord-Ouest">Nord-Ouest</button>
+                <button class="region-dropdown-btn region-btn" data-region="Sud-Ouest">Sud-Ouest</button>
+                <button class="region-dropdown-btn region-btn" data-region="Est">Est</button>
+                <button class="region-dropdown-btn region-btn" data-region="Adamaoua">Adamaoua</button>
+                <button class="region-dropdown-btn region-btn" dauta-region="Nord">Nord</button>
+                <button class="region-dropdown-btn region-btn" data-region="Extrême-Nord">Extrême-Nord</button>
             </div>
-        </div>
-    </div>  
 
 
 
@@ -1085,20 +1058,6 @@ footer a:hover::before {
             <h2 class="text-3xl md:text-4xl text-center mb-12 text-green font-semibold">
                 Découvrez nos destinations
             </h2>
-            
-            <!-- Sélecteur de régions -->
-            <div class="region-selector">
-                <button class="region-btn active" data-region="Sud">Sud</button>
-                <button class="region-btn" data-region="Centre">Centre</button>
-                <button class="region-btn" data-region="Littoral">Littoral</button>
-                <button class="region-btn" data-region="Ouest">Ouest</button>
-                <button class="region-btn" data-region="Nord-Ouest">Nord-Ouest</button>
-                <button class="region-btn" data-region="Sud-Ouest">Sud-Ouest</button>
-                <button class="region-btn" data-region="Est">Est</button>
-                <button class="region-btn" data-region="Adamaoua">Adamaoua</button>
-                <button class="region-btn" dauta-region="Nord">Nord</button>
-                <button class="region-btn" data-region="Extrême-Nord">Extrême-Nord</button>
-            </div>
             
             <!-- Grille des villes -->
             <div id="cities-grid" class="cities-grid">
