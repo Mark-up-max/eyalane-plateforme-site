@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord - Mon Hôtel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-icons {
+            font-feature-settings: 'liga';
+        }
+        .sidebar {
+            transition: width 0.3s ease-in-out;
+        }
+        .sidebar-collapsed {
+            width: 5rem;
+        }
+        .sidebar-expanded {
+            width: 16rem;
+        }
+        .sidebar .text-label {
+            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+        }
+        .sidebar-collapsed .text-label {
+            opacity: 0;
+            visibility: hidden;
+            white-space: nowrap;
+        }
+        .sidebar-expanded .text-label {
+            opacity: 1;
+            visibility: visible;
+        }
+        .page-content {
+            display: none;
+        }
+        .page-content.active {
+            display: block;
+        }
+        /* Styles pour les onglets */
+        .tab-link.active {
+            border-color: #3b82f6;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <!-- Barre Latérale de Navigation de l'Hôtel -->
+        <aside id="sidebar" class="sidebar sidebar-expanded bg-white text-gray-800 flex flex-col border-r border-gray-200">
+            <div class="flex items-center justify-between p-4 h-16 border-b border-gray-200">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 flex-shrink-0">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.918 84.8327L2.45455 49.9982L22.918 15.1636L43.3815 49.9982L22.918 84.8327Z" fill="#FFC24A"/><path d="M27.082 82.749L47.5455 47.9145L68.009 82.749L27.082 82.749Z" fill="#F4BD41"/><path d="M97.5455 49.9982L77.0819 15.1636H36.1545L56.6181 49.9982L36.1545 84.8327H77.0819L97.5455 49.9982Z" fill="#FFA000"/><path d="M2.45455 50L22.9181 15.1673L27.0819 22.2509L12.2727 48.8327L2.45455 50Z" fill="#FFCA28"/><path d="M68.009 82.749L72.1727 75.6654L57.3636 49.0836L47.5455 47.9164L68.009 82.749Z" fill="#F57C00"/></svg>
+                    </div>
+                    <span class="text-label ml-3 font-bold text-xl">Mon Hôtel</span>
+                </div>
+            </div>
+
+            <nav id="nav-menu" class="flex-1 px-2 py-4 space-y-2">
+                <a href="#" onclick="showPage('dashboard', this)" class="nav-link flex items-center p-3 rounded-lg bg-blue-100 text-blue-700 font-semibold">
+                    <i class="material-icons">dashboard</i>
+                    <span class="text-label ml-4">Vue d'ensemble</span>
+                </a>
+                <a href="#" onclick="showPage('listing', this)" class="nav-link flex items-center p-3 rounded-lg hover:bg-gray-100">
+                    <i class="material-icons">storefront</i>
+                    <span class="text-label ml-4">Ma Fiche</span>
+                </a>
+                <a href="#" onclick="showPage('stats', this)" class="nav-link flex items-center p-3 rounded-lg hover:bg-gray-100">
+                    <i class="material-icons">bar_chart</i>
+                    <span class="text-label ml-4">Statistiques</span>
+                </a>
+                <a href="#" onclick="showPage('messages', this)" class="nav-link flex items-center p-3 rounded-lg hover:bg-gray-100">
+                    <i class="material-icons">email</i>
+                    <span class="text-label ml-4">Messagerie MINTOUL</span>
+                </a>
+            </nav>
+
+            <div class="p-2 border-t border-gray-200">
+                 <button onclick="toggleSidebar()" class="flex items-center w-full p-3 rounded-lg hover:bg-gray-100">
+                    <i class="material-icons">menu</i>
+                    <span class="text-label ml-4">Réduire</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Contenu Principal -->
+        <div class="flex-1 flex flex-col">
+            <!-- Header -->
+            <header class="flex items-center justify-between h-16 bg-white border-b border-gray-200 px-6 flex-shrink-0">
+                <h1 id="page-title" class="text-xl font-semibold text-gray-800">Vue d'ensemble</h1>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 rounded-full hover:bg-gray-100 relative">
+                        <i class="material-icons text-gray-600">notifications</i>
+                        <span class="absolute top-1 right-1 block h-2 w-2 rounded-full bg-red-500 ring-1 ring-white"></span>
+                    </button>
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/32x32/7c3aed/ffffff?text=H" alt="Avatar Hotel" class="w-8 h-8 rounded-full">
+                        <div class="ml-3 text-sm">
+                            <p class="font-semibold">Hilton Yaoundé</p>
+                            <p class="text-gray-500">hotel.hilton@email.com</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <main class="flex-1 overflow-y-auto p-6">
+                <!-- PAGE: Vue d'ensemble -->
+                <div id="dashboard-page" class="page-content active">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-white p-5 rounded-xl shadow"><div class="flex items-center justify-between"><div><p class="text-sm font-medium text-gray-500">Occupation (Aujourd'hui)</p><p class="text-3xl font-bold text-gray-800">75%</p></div><div class="p-3 bg-blue-100 rounded-full"><i class="material-icons text-blue-600">bed</i></div></div></div>
+                        <div class="bg-white p-5 rounded-xl shadow"><div class="flex items-center justify-between"><div><p class="text-sm font-medium text-gray-500">Arrivées Prévues</p><p class="text-3xl font-bold text-gray-800">12</p></div><div class="p-3 bg-green-100 rounded-full"><i class="material-icons text-green-600">login</i></div></div></div>
+                        <div class="bg-white p-5 rounded-xl shadow"><div class="flex items-center justify-between"><div><p class="text-sm font-medium text-gray-500">Départs Prévus</p><p class="text-3xl font-bold text-gray-800">8</p></div><div class="p-3 bg-red-100 rounded-full"><i class="material-icons text-red-600">logout</i></div></div></div>
+                        <div class="bg-white p-5 rounded-xl shadow"><div class="flex items-center justify-between"><div><p class="text-sm font-medium text-gray-500">Revenu du Jour</p><p class="text-3xl font-bold text-gray-800">1.2M <span class="text-lg font-medium">XAF</span></p></div><div class="p-3 bg-purple-100 rounded-full"><i class="material-icons text-purple-600">payments</i></div></div></div>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mt-6">
+                        <div class="lg:col-span-3 bg-white p-6 rounded-xl shadow"><h3 class="text-lg font-semibold mb-4">Occupation de la semaine</h3><canvas id="weeklyOccupationChart"></canvas></div>
+                        <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow">
+                            <h3 class="text-lg font-semibold mb-4">Notifications du MINTOUL</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start p-4 bg-yellow-50 border border-yellow-200 rounded-lg"><i class="material-icons text-yellow-600 mr-3">warning</i><div><p class="font-semibold text-sm">Document Requis</p><p class="text-sm text-gray-600">Votre attestation d'assurance arrive à expiration. Veuillez la mettre à jour.</p></div></div>
+                                <div class="flex items-start p-4 bg-green-50 border border-green-200 rounded-lg"><i class="material-icons text-green-600 mr-3">check_circle</i><div><p class="font-semibold text-sm">Fiche Validée</p><p class="text-sm text-gray-600">Les modifications sur votre fiche ont été approuvées.</p></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE: Ma Fiche -->
+                <div id="listing-page" class="page-content">
+                    <div class="bg-white rounded-xl shadow">
+                        <div class="border-b border-gray-200">
+                            <nav id="listing-tabs" class="flex -mb-px space-x-8 px-6" aria-label="Tabs">
+                                <a href="#" onclick="showTab('info', this)" class="tab-link active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Informations Générales</a>
+                                <a href="#" onclick="showTab('docs', this)" class="tab-link whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">Documents Officiels</a>
+                                <a href="#" onclick="showTab('gallery', this)" class="tab-link whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">Galerie Photos</a>
+                            </nav>
+                        </div>
+                        <div class="p-6">
+                            <!-- Contenu des onglets -->
+                            <div id="info-tab" class="tab-content active"><h3 class="text-lg font-semibold">Modifier les informations de l'hôtel</h3><p class="mt-4">Formulaire pour éditer le nom, l'adresse, etc.</p></div>
+                            <div id="docs-tab" class="tab-content"><h3 class="text-lg font-semibold">Gérer vos documents</h3><p class="mt-4">Interface pour uploader et voir le statut des documents.</p></div>
+                            <div id="gallery-tab" class="tab-content"><h3 class="text-lg font-semibold">Gérer votre galerie</h3><p class="mt-4">Grille pour ajouter/supprimer des photos.</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE: Statistiques -->
+                <div id="stats-page" class="page-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-xl shadow"><h3 class="text-lg font-semibold mb-4">Revenu Mensuel (XAF)</h3><canvas id="monthlyRevenueChart"></canvas></div>
+                        <div class="bg-white p-6 rounded-xl shadow"><h3 class="text-lg font-semibold mb-4">Origine des clients</h3><canvas id="customerOriginChart"></canvas></div>
+                    </div>
+                </div>
+
+                <!-- PAGE: Messagerie -->
+                <div id="messages-page" class="page-content">
+                    <div class="bg-white rounded-xl shadow"><div class="p-6"><h3 class="text-lg font-semibold">Messagerie MINTOUL</h3><p class="mt-4">Interface de chat pour communiquer avec le MINTOUL.</p></div></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+<script>
+    const hotelPageTitles = {
+        dashboard: "Vue d'ensemble",
+        listing: "Gestion de ma Fiche",
+        stats: "Statistiques et Performances",
+        messages: "Messagerie MINTOUL"
+    };
+
+    let hotelCharts = {};
+
+    function showPage(pageId, navElement) {
+        document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
+        document.getElementById(`${pageId}-page`).classList.add('active');
+        document.getElementById('page-title').textContent = hotelPageTitles[pageId] || "Tableau de Bord";
+        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('bg-blue-100', 'text-blue-700', 'font-semibold'));
+        navElement.classList.add('bg-blue-100', 'text-blue-700', 'font-semibold');
+
+        if (pageId === 'dashboard') initDashboardChart();
+        if (pageId === 'stats') initStatsCharts();
+    }
+
+    function showTab(tabId, tabElement) {
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        document.getElementById(`${tabId}-tab`).classList.add('active');
+        document.querySelectorAll('.tab-link').forEach(link => link.classList.remove('active'));
+        tabElement.classList.add('active');
+    }
+
+    function toggleSidebar() {
+        document.getElementById('sidebar').classList.toggle('sidebar-expanded');
+        document.getElementById('sidebar').classList.toggle('sidebar-collapsed');
+    }
+
+    function initChart(canvasId, config) {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+        if (hotelCharts[canvasId]) {
+            hotelCharts[canvasId].destroy();
+        }
+        hotelCharts[canvasId] = new Chart(canvas.getContext('2d'), config);
+    }
+
+    function initDashboardChart() {
+        initChart('weeklyOccupationChart', {
+            type: 'bar',
+            data: { labels: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'], datasets: [{ label: 'Taux d\'occupation (%)', data: [65, 70, 72, 78, 85, 90, 75], backgroundColor: '#60a5fa' }] },
+            options: { responsive: true }
+        });
+    }
+
+    function initStatsCharts() {
+        initChart('monthlyRevenueChart', {
+            type: 'line',
+            data: { labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'], datasets: [{ label: 'Revenu (Millions XAF)', data: [45, 52, 60, 55, 68, 75], borderColor: '#8b5cf6', tension: 0.1 }] },
+            options: { responsive: true }
+        });
+        initChart('customerOriginChart', {
+            type: 'doughnut',
+            data: { labels: ['National', 'Afrique', 'Europe', 'Asie', 'Amérique'], datasets: [{ data: [60, 20, 15, 3, 2], backgroundColor: ['#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444'] }] },
+            options: { responsive: true }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        showPage('dashboard', document.querySelector('.nav-link'));
+    });
+</script>
+
+</body>
+</html>

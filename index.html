@@ -4,989 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EYALANE - Votre Boussole pour le Tourisme Authentique au Cameroun</title>
+    <link href="index.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #ffffff;
-            color: #333;
-        }
-        
-        .btn-primary {
-            background-color: #075985;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-            transform: translateY(0);
-        }
-        
-        .btn-primary:hover {
-            background-color: #054a6e;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(7, 89, 133, 0.3);
-        }
-        
-        .navbar-link {
-            color: #075985;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .navbar-link:hover {
-            color: #054a6e;
-            transform: translateY(-2px);
-        }
-        
-        .navbar-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #075985;
-            transition: width 0.3s ease;
-        }
-        
-        .navbar-link:hover::after {
-            width: 100%;
-        }
-        
-        .hero-carousel {
-            background-color: white;
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            margin-left: 35px;
-            margin-right: 35px;
-            border-radius: 10px;
-        }
-        
-        .carousel-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .carousel-slide.active {
-            opacity: 1;
-        }
-        
-        .search-container {
-            position: relative;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .search-input {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-        }
-        
-        .search-input:focus {
-            outline: none;
-            border-color: #075985;
-            box-shadow: 0 0 0 3px rgba(7, 89, 133, 0.1);
-        }
-        
-        .search-suggestions {
-            position: ;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            max-height: 250px;
-            overflow-y: auto;
-            z-index: 10;
-            display: none;
-        }
-        
-        .search-suggestions.show {
-            display: block;
-            animation: fadeInUp 0.3s ease;
-        }
-        
-        .suggestion-item {
-            padding: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid #f7fafc;
-        }
-        
-        .suggestion-item:hover {
-            background-color: #f7fafc;
-            transform: translateX(5px);
-        }
-        
-        .city-card {
-            background: white;
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            transform: translateY(0);
-        }
-        
-        .city-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .city-gallery {
-            position: relative;
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .city-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .city-card:hover .city-image {
-            transform: scale(1.1);
-        }
-        
-        .followers-stack {
-            display: flex;
-            margin-left: -0.5rem;
-        }
-        
-        .follower-avatar {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            border: 2px solid white;
-            margin-left: -0.5rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .follower-avatar:hover {
-            transform: scale(1.2);
-            z-index: 10;
-        }
-        
-        .region-selector {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-        
-        .region-btn {
-            padding: 0.5rem 1rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 25px;
-            background: white;
-            color: #64748b;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-        
-        .region-btn:hover, .region-btn.active {
-            background: orange;
-            color: white;
-            border-color: #075985;
-            transform: translateY(-2px);
-        }
-        
-        .category-nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .category-btn {
-            padding: 0.75rem 1.5rem;
-            background: white;
-            color: #075985;
-            border: 1px solid #075985;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .category-btn:hover {
-            background: orange;
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        .cities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .fade-in {
-            animation: fadeInUp 0.6s ease;
-        }
-        
-        @media (max-width: 768px) {
-            
-            .cities-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .region-selector {
-                flex-direction: row;
-                align-items: center;
-            }
-            
-            .category-nav {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero-carousel {
-            margin-left: 0px;
-            margin-right: 0px;
-        }
-        }
-        .group:hover .group-hover\:opacity-100 {
-        opacity: 1 !important;
-    }
-
-    .group:hover .group-hover\:visible {
-        visibility: visible !important;
-    }
-
-    /* Alternative plus robuste pour le dropdown */
-    .dropdown-menu {
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-10px);
-        transition: all 0.3s ease;
-        pointer-events: none;
-    }
-
-    .dropdown-trigger:hover .dropdown-menu,
-    .dropdown-menu:hover {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-
-    select {
-    background-image: none;
-}
-
-select::-ms-expand {
-    display: none;
-}
-
-
-
-/* Animations pour les liens */
-footer a {
-    position: relative;
-}
-
-footer a::before {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: currentColor;
-    transition: width 0.3s ease;
-}
-
-footer a:hover::before {
-    width: 100%;
-}
-
-/* Responsive pour le footer */
-@media (max-width: 768px) {
-    .footer-links {
-        justify-content: center;
-        text-align: center;
-    }
-    
-    .footer-selectors {
-        justify-content: center;
-    }
-}
-
-
-
-/* Section Magazine LE KIOSQUE */
-.kiosque-section {
-    width: 100%;
-    background: white;
-    padding: 4rem 2rem;
-    margin: 2rem 0;
-}
-
-.kiosque-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 4rem;
-    align-items: center;
-}
-
-.kiosque-left {
-    padding-right: 2rem;
-}
-
-.kiosque-title {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: #2d3436;
-    margin-bottom: 1.5rem;
-    letter-spacing: 1px;
-}
-
-.kiosque-description {
-    color: #636e72;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-}
-
-.kiosque-link {
-    color: #0984e3;
-    font-weight: 600;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.kiosque-link:hover {
-    text-decoration: underline;
-}
-
-.magazines-carousel {
-    position: relative;
-    height: 400px;
-    overflow: hidden;
-}
-
-.magazines-track {
-    display: flex;
-    transition: transform 0.5s ease;
-    height: 100%;
-}
-
-.magazine-card {
-    min-width: 280px;
-    height: 380px;
-    margin-right: 20px;
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.magazine-card:hover {
-    transform: scale(1.05);
-}
-
-.magazine-cover {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.magazine-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-    color: white;
-    padding: 2rem 1.5rem 1.5rem;
-}
-
-.magazine-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-.magazine-date {
-    font-size: 0.9rem;
-    opacity: 0.8;
-}
-
-.carousel-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.carousel-btn {
-    background: #ddd;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: #666;
-    transition: all 0.3s ease;
-}
-
-.carousel-btn:hover {
-    background: #0984e3;
-    color: white;
-}
-
-.carousel-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.carousel-indicator {
-    width: 40px;
-    height: 40px;
-    background: #0984e3;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 600;
-}
-
-@media (max-width: 768px) {
-    .kiosque-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .kiosque-title {
-        font-size: 2rem;
-    }
-    
-    .magazine-card {
-        min-width: 250px;
-        height: 340px;
-    }
-}
-
-
-
-        /* Section Newsletter */
-.newsletter-section {
-    width: 80%;
-    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
-    padding: 3rem 2rem;
-    margin: 3rem 10% 3rem 10%;
-    border-radius: 12px;
-    position: relative;
-    overflow: hidden;
-}
-
-.newsletter-container {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    position: relative;
-    z-index: 2;
-}
-
-.newsletter-content {
-    flex: 1;
-    color: white;
-}
-
-.newsletter-title {
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.newsletter-description {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    opacity: 0.95;
-    margin-bottom: 0;
-}
-
-.newsletter-form {
-    display: flex;
-    gap: 0;
-    max-width: 400px;
-}
-
-.newsletter-input {
-    flex: 1;
-    padding: 1rem 1.5rem;
-    border: none;
-    border-radius: 50px 0 0 50px;
-    font-size: 1rem;
-    outline: none;
-    background: white;
-    color: #333;
-}
-
-.newsletter-input::placeholder {
-    color: #999;
-}
-
-.newsletter-btn {
-    background: white;
-    border: none;
-    padding: 1rem 1.5rem;
-    border-radius: 0 50px 50px 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    min-width: 60px;
-}
-
-.newsletter-btn:hover {
-    background: #f8f9fa;
-    transform: translateX(2px);
-}
-
-.newsletter-btn svg {
-    width: 20px;
-    height: 20px;
-    color: #e67e22;
-}
-
-/* Cercles décoratifs pour la newsletter */
-.newsletter-decoration {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    top: -50px;
-    right: 10%;
-}
-
-.newsletter-decoration::after {
-    content: '';
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 50%;
-    bottom: -80px;
-    left: 120px;
-}
-
-/* Modale de confirmation */
-.newsletter-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-}
-
-.newsletter-modal.show {
-    display: flex;
-}
-
-.modal-newsletter-content {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    max-width: 500px;
-    margin: 1rem;
-    text-align: center;
-    position: relative;
-    animation: modalSlideIn 0.3s ease;
-}
-
-@keyframes modalSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-
-.modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #666;
-}
-
-.success-icon {
-    width: 60px;
-    height: 60px;
-    background: #27ae60;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1rem;
-}
-
-.success-icon svg {
-    width: 30px;
-    height: 30px;
-    color: white;
-}
-
-.modal-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #2d3436;
-    margin-bottom: 1rem;
-}
-
-.modal-text {
-    color: #636e72;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
-.modal-btn {
-    background: #e67e22;
-    color: white;
-    border: none;
-    padding: 0.8rem 2rem;
-    border-radius: 25px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.modal-btn:hover {
-    background: #d35400;
-}
-
-@media (max-width: 768px) {
-    .newsletter-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-    }
-    
-    .newsletter-title {
-        font-size: 1.5rem;
-    }
-    
-    .newsletter-form {
-        max-width: 100%;
-    }
-}
-
-
-
-
-
-/* Restaurant Card Styles */
-.restaurant-card {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: white;
-    cursor: pointer;
-    height: 280px;
-}
-
-.restaurant-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.restaurant-image-container {
-    position: relative;
-    height: 100%;
-    width: 100%;
-}
-
-.restaurant-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Location Pin Overlay */
-.location-overlay {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    right: 12px;
-}
-
-.location-pin {
-    display: inline-flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 500;
-    color: #374151;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    max-width: fit-content;
-}
-
-.location-pin svg {
-    margin-right: 4px;
-    color: #ef4444;
-}
-
-.location-text {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 180px;
-}
-
-/* Review Badge */
-.review-badge {
-    position: absolute;
-    bottom: 80px;
-    left: 12px;
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    padding: 8px 12px;
-    border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.reviewer-avatars {
-    display: flex;
-    margin-right: 8px;
-}
-
-.reviewer-avatar {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    border: 2px solid white;
-    object-fit: cover;
-}
-
-.review-count {
-    font-weight: 600;
-    font-size: 14px;
-    color: #111827;
-    margin-right: 4px;
-}
-
-.review-label {
-    font-size: 12px;
-    color: #6b7280;
-    font-weight: 500;
-}
-
-/* Restaurant Info Overlay */
-.restaurant-info-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-    padding: 40px 16px 16px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-.restaurant-details {
-    flex: 1;
-}
-
-.restaurant-name {
-    font-size: 18px;
-    font-weight: 600;
-    color: white;
-    margin-bottom: 4px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.city-description {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 8px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    line-height: 1.4;
-}
-
-.followers-info {
-    display: flex;
-    align-items: center;
-}
-
-.followers-count {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 500;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-/* Favorite Button */
-.favorite-btn {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(8px);
-    border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    color: #6b7280;
-}
-
-.favorite-btn:hover {
-    background: white;
-    color: #ef4444;
-    transform: scale(1.1);
-}
-
-.favorite-btn.favorited {
-    color: #ef4444;
-    background: white;
-}
-
-/* Animation */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .restaurant-card {
-        height: 240px;
-    }
-    
-    .restaurant-name {
-        font-size: 16px;
-    }
-    
-    .review-badge {
-        bottom: 70px;
-        padding: 6px 10px;
-    }
-    
-    .location-text {
-        max-width: 120px;
-    }
-}
-    </style>
 </head>
 
-<body class="antialiased">
 
+<body class="antialiased">
     <!-- Navigation -->
-    <nav class="bg-white p-4 sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <span class="text-3xl text-gray-900">éyalane explorer</span>
+    <nav class="bg-white p-6 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center md:px-14">
+            <div class="flex items-center">
+                <span class="text-3xl md:text-4xl text-green-800 font-bold">éyalane explorer</span>
             </div>
-            
+
             <!-- Menu principal -->
-            <div class="hidden md:flex items-center space-x-6">
-                <!-- Dropdown Destinations -->
-                <div class="relative group">
-                    <button class="navbar-link flex items-center space-x-1">
-                        <span>Destinations</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                        <div class="py-2">
-                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Adamaoua">Adamaoua</button>
-                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Centre">Centre</button>
-                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Est">Est</button>
-                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Extrême-Nord">Extrême-Nord</button>
-                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Littoral">Littoral</button>
-                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Nord">Nord</button>
-                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Nord-Ouest">Nord-Ouest</button>
-                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Ouest">Ouest</button>
-                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Sud">Sud</button>
-                            <button class="region-dropdown-btn block w-full text-left px-4 py-2 hover:bg-gray-100" data-region="Sud-Ouest">Sud-Ouest</button>
-                        </div>
+            <div class="regions-navigation">
+                <!-- Bouton de scroll gauche (externe) -->
+                <button class="scroll-btn" id="scroll-left" title="Défiler vers la gauche">
+                    ‹
+                </button>
+                
+                <!-- Conteneur de scroll -->
+                <div class="regions-scroll-container">
+                    <div class="regions-scroll" id="regions-scroll">
+                        <a href="#" class="navbar-link region-link active" data-region="Sud">Sud</a>
+                        <a href="#" class="navbar-link region-link" data-region="Nord">Nord</a>
+                        <a href="#" class="navbar-link region-link" data-region="Est">Est</a>
+                        <a href="#" class="navbar-link region-link" data-region="Ouest">Ouest</a>
+                        <a href="#" class="navbar-link region-link" data-region="Adamaoua">Adamaoua</a>
+                        <a href="#" class="navbar-link region-link" data-region="Nord-Ouest">Nord-Ouest</a>
+                        <a href="#" class="navbar-link region-link" data-region="Sud-Ouest">Sud-Ouest</a>
+                        <a href="#" class="navbar-link region-link" data-region="Littoral">Littoral</a>
+                        <a href="#" class="navbar-link region-link" data-region="Centre">Centre</a>
+                        <a href="#" class="navbar-link region-link" data-region="Extrême-Nord">Extrême-Nord</a>
                     </div>
                 </div>
                 
+                <!-- Bouton de scroll droite (externe) -->
+                <button class="scroll-btn" id="scroll-right" title="Défiler vers la droite">
+                    ›
+                </button>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <!-- Conteneur scrollable des régions -->
                 <a href="explorer.html" class="navbar-link">Explorer</a>
                 <a href="lifestyle.html" class="navbar-link">Lifestyle</a>
             </div>
@@ -1004,36 +66,35 @@ footer a:hover::before {
 
 
 
-    <!-- Barre de catégories -->
-     <!-- Sélecteur de régions -->
-            <div class="region-selector">
-                <button class="region-dropdown-btn region-btn active" data-region="Sud">Sud</button>
-                <button class="region-dropdown-btn region-btn" data-region="Centre">Centre</button>
-                <button class="region-dropdown-btn region-btn" data-region="Littoral">Littoral</button>
-                <button class="region-dropdown-btn region-btn" data-region="Ouest">Ouest</button>
-                <button class="region-dropdown-btn region-btn" data-region="Nord-Ouest">Nord-Ouest</button>
-                <button class="region-dropdown-btn region-btn" data-region="Sud-Ouest">Sud-Ouest</button>
-                <button class="region-dropdown-btn region-btn" data-region="Est">Est</button>
-                <button class="region-dropdown-btn region-btn" data-region="Adamaoua">Adamaoua</button>
-                <button class="region-dropdown-btn region-btn" dauta-region="Nord">Nord</button>
-                <button class="region-dropdown-btn region-btn" data-region="Extrême-Nord">Extrême-Nord</button>
-            </div>
-
-
-
     <!-- Hero Section avec Carousel -->
     <section class="hero-carousel">
-        <div class="carousel-slide active" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwTlPYQ3CVxPIsJcddITkgW0RaY2vJ_RVxzw&s');">
+        <div class="carousel-track"> 
+            <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s');">
+                <div class="city-name-overlay">Sangmélima</div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwTlPYQ3CVxPIsJcddITkgW0RaY2vJ_RVxzw&s');">
+                <div class="city-name-overlay">Yaoundé</div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s');">
+                <div class="city-name-overlay">Douala</div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s');">
+                <div class="city-name-overlay">Bafoussam</div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s');">
+                <div class="city-name-overlay"></div>
+            </div>
         </div>
-        <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVP85xzveNs_q5tgyW50g5bDIZktKo3HR5Cg&s');">
-        </div>
-        <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMoJBMuwtdMmHPG_HJd609PI4kMz1vjMifjA&s');">
-        </div>
+
+        <div class="carousel-indicators-container"></div>
         
-        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+        <div class="absolute inset-0 flex items-center justify-center">
             <div class="text-center text-white px-6">
-                <h1 class="text-4xl md:text-6xl mb-8 fade-in">
-                    Trouvez les bons endroits au bon moment
+                <h1 class="text-4xl md:text-7xl mb-8 fade-in">
+                    Trouvez le
+                    <span class="font-bold font-poppins">bon endroit</span>
+                     , au 
+                     <span class="text-orange-700 font-bold">bon moment</span>
                 </h1>
                 
                 <!-- Barre de recherche -->
@@ -1042,8 +103,8 @@ footer a:hover::before {
                         type="text" 
                         id="search-input" 
                         placeholder="Rechercher une ville..." 
-                        class="search-input"
-                        autocomplete="off"
+                        class="search-input text-green-700"
+                        autocomplete="on"
                     >
                     <div id="search-suggestions" class="search-suggestions"></div>
                 </div>
@@ -1052,15 +113,16 @@ footer a:hover::before {
     </section>
 
 
+
     <!-- Section des régions et villes -->
-    <section id="cities-section" class="py-16 bg-white">
+    <section id="cities-section" class="cities-section py-16 bg-white z-30">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl text-center mb-12 text-green font-semibold">
-                Découvrez nos destinations
+            <h2 class="text-3xl md:text-4xl text-center mb-auto text-green-700 font-bold">
+                Découvrir par ville
             </h2>
             
             <!-- Grille des villes -->
-            <div id="cities-grid" class="cities-grid">
+            <div id="cities-grid" class="cities-grid items-center">
                 <!-- Les villes seront chargées dynamiquement -->
             </div>
         </div>
@@ -1068,15 +130,308 @@ footer a:hover::before {
 
 
 
+    <section class="mb-16 md:mb-20">
+        <h2 class="text-3xl md:text-4xl text-center mb-8 text-green-700 font-bold">
+            Découvrir par catégorie
+        </h2>
+
+        <div class="container mx-auto px-6 md:w-3/4">
+            <div class="flex gap-2 overflow-x">
+                <div class="flex-shrink-0 navbar-link-destination md:flex-1 md:w-full w-60 h-60 rounded-lg relative">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSueu453MTIDPsXCaAZpbUZr_wTh0cN43tcVQ&s" alt="Meilleures expériences" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-end p-6">
+                        <h3 class="text-white text-2xl font-bold">Activités</h3>
+                    </div>
+                </div>
+                
+                <div class="flex-shrink-0 navbar-link-destination md:flex-1 md:w-full w-60 w-60 h-60 rounded-lg relative">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTToatGn7lQSEyXXFtfIy4OjczZRmr9blQbfw&s" alt="Meilleures attractions" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-end p-6">
+                        <h3 class="text-white text-2xl font-bold">Gastronomie</h3>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 navbar-link-destination md:flex-1 md:w-full w-60 h-60 rounded-lg relative shadow-lg">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpNskHuMYQGNYs2LhD89ekED-YKPjwz4rg6Q&s" alt="Expériences d'une vie" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-end p-6">
+                        <h3 class="text-white text-2xl font-bold">Evènementiels</h3>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 navbar-link-destination md:flex-1 md:w-full w-60 h-60 rounded-lg relative shadow-lg">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTreSQH_FAF3MiqGvlAAnGw1O1GVdxYFpKHBg&s" alt="Histoire et culture" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-end p-6">
+                        <h3 class="text-white text-2xl font-bold">Immobilier</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
     <!-- Section publicitaire -->
-    <div class="bg-white py-4">
+    <div class="bg-white mb-16 md:mb-20">
         <div class="container mx-auto px-6">
             <div class="flex justify-center">
                 <div class="w-full">
                     <img 
                         src="pubEyalane.png" 
                         alt="Publicité Eyalane" 
-                        class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                        class="w-full md:h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                        loading="lazy"
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+     <section class="">
+            <div class="container mx-auto px-6">
+                <div class="justify-between md:px-14 py-8 container items-center flex">
+                    <div>
+                        <h2 class="text-3xl md:text-3xl text-green-900 font-bold">A la une</h2>
+                        <p class="text-1xl md:text-2xl text-black font-semibold">Découvrez la sélection coup de coeur éyalane, qui réunis tout les établisseents recommandé par éyalane</p>
+                    </div>
+                    <h3 class="navbar-link-destination text-2xl md:text-2xl text-green-900 font-bold underline">Tout voir</h3> 
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-2 px-14">
+                    <div class="navbar-link-destination flex-1 w-full rounded-lg relative">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOeiBwqvk5Wp_OcTbovw9z7Ia0Wb5cZ12tCw&s" alt="Ikos Dassia" class="w-full h-72 object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-lg font-bold text-gray-800">Ikos Dassia</h3>
+                            <div class="flex items-center mt-1">
+                                <span class="text-green-600 font-bold mr-2">4,9</span>
+                                <div class="flex">
+                                    <span class="text-green-500">★★★★★</span>
+                                    <span class="text-gray-400 text-sm">(4296)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="navbar-link-destination flex-1 w-full rounded-lg relativeg">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB7cYBgsteFKcZGtCtwx8TszJfYOlE7C611w&s" alt="Voyage Sorgun" class="w-full h-72 object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-lg font-bold text-gray-800">Voyage Sorgun</h3>
+                            <div class="flex items-center mt-1">
+                                <span class="text-green-600 font-bold mr-2">4,8</span>
+                                <div class="flex">
+                                    <span class="text-green-500">★★★★★</span>
+                                    <span class="text-gray-400 text-sm">(10347)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="navbar-link-destination flex-1 w-full rounded-lg relative">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSylxBVi11C6u3NRBjgIGWF4o_g5AJBJOCkZw&s" alt="Voyage Belek Golf & Spa" class="w-full h-72 object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-lg font-bold text-gray-800">Voyage Belek Golf & Spa</h3>
+                            <div class="flex items-center mt-1">
+                                <span class="text-green-600 font-bold mr-2">4,8</span>
+                                <div class="flex">
+                                    <span class="text-green-500">★★★★★</span>
+                                    <span class="text-gray-400 text-sm">(15477)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+         <section class="">
+            <div class="container mx-auto px-6">
+                <div class="justify-between md:px-14 py-8 container items-center flex">
+                <div>
+                    <h2 class="text-3xl md:text-3xl text-green-900 font-bold">Offres spéciales</h2>
+                    <p class="text-1xl md:text-2xl text-black font-semibold">Découvrez la sélection coup de coeur éyalane, qui réunis tout les établisseents recommandé par éyalane</p>
+                </div>
+               <h3 class="navbar-link-destination text-2xl md:text-2xl text-green-900 font-bold underline">Tout voir</h3> 
+            </div>
+                
+                <div class="flex flex-col md:flex-row gap-2 px-14">
+                    <div class="navbar-link-destination flex-1 w-full rounded-lg relative">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOeiBwqvk5Wp_OcTbovw9z7Ia0Wb5cZ12tCw&s" alt="Ikos Dassia" class="w-full h-72 object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-lg font-bold text-gray-800">Ikos Dassia</h3>
+                            <div class="flex items-center mt-1">
+                                <span class="text-green-600 font-bold mr-2">4,9</span>
+                                <div class="flex">
+                                    <span class="text-green-500">★★★★★</span>
+                                    <span class="text-gray-400 text-sm">(4296)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="navbar-link-destination flex-1 w-full rounded-lg relativeg">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB7cYBgsteFKcZGtCtwx8TszJfYOlE7C611w&s" alt="Voyage Sorgun" class="w-full h-72 object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-lg font-bold text-gray-800">Voyage Sorgun</h3>
+                            <div class="flex items-center mt-1">
+                                <span class="text-green-600 font-bold mr-2">4,8</span>
+                                <div class="flex">
+                                    <span class="text-green-500">★★★★★</span>
+                                    <span class="text-gray-400 text-sm">(10347)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="navbar-link-destination flex-1 w-full rounded-lg relative">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSylxBVi11C6u3NRBjgIGWF4o_g5AJBJOCkZw&s" alt="Voyage Belek Golf & Spa" class="w-full h-72 object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-lg font-bold text-gray-800">Voyage Belek Golf & Spa</h3>
+                            <div class="flex items-center mt-1">
+                                <span class="text-green-600 font-bold mr-2">4,8</span>
+                                <div class="flex">
+                                    <span class="text-green-500">★★★★★</span>
+                                    <span class="text-gray-400 text-sm">(15477)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+         <section class="">
+            <div class="container mx-auto px-6">
+                <div class="justify-between md:px-14 py-8 container items-center flex">
+                    <div>
+                        <h2 class="text-3xl md:text-3xl text-green-900 font-bold">Vous aimerez sûrement</h2>
+                        <p class="text-1xl md:text-2xl text-black font-semibold">Découvrez la sélection coup de coeur éyalane, qui réunis tout les établisseents recommandé par éyalane</p>
+                    </div>
+                    <h3 class="navbar-link-destination text-2xl md:text-2xl text-green-900 font-bold underline">Tout voir</h3> 
+                </div>
+                
+                <div class="flex gap-2 overflow-x snap-x snap-mandatory py-1 md:px-14">
+                    <div class="navbar-link-destination flex-1 w-full rounded-lg relative">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOeiBwqvk5Wp_OcTbovw9z7Ia0Wb5cZ12tCw&s" alt="Ikos Dassia" class="w-full h-72 object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-lg font-bold text-gray-800">Ikos Dassia</h3>
+                            <div class="flex items-center mt-1">
+                                <span class="text-green-600 font-bold mr-2">4,9</span>
+                                <div class="flex">
+                                    <span class="text-green-500">★★★★★</span>
+                                    <span class="text-gray-400 text-sm">(4296)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="navbar-link-destination flex-1 w-full rounded-lg relativeg">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB7cYBgsteFKcZGtCtwx8TszJfYOlE7C611w&s" alt="Voyage Sorgun" class="w-full h-72 object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-lg font-bold text-gray-800">Voyage Sorgun</h3>
+                            <div class="flex items-center mt-1">
+                                <span class="text-green-600 font-bold mr-2">4,8</span>
+                                <div class="flex">
+                                    <span class="text-green-500">★★★★★</span>
+                                    <span class="text-gray-400 text-sm">(10347)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="navbar-link-destination flex-1 w-full rounded-lg relative">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSylxBVi11C6u3NRBjgIGWF4o_g5AJBJOCkZw&s" alt="Voyage Belek Golf & Spa" class="w-full h-72 object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-lg font-bold text-gray-800">Voyage Belek Golf & Spa</h3>
+                            <div class="flex items-center mt-1">
+                                <span class="text-green-600 font-bold mr-2">4,8</span>
+                                <div class="flex">
+                                    <span class="text-green-500">★★★★★</span>
+                                    <span class="text-gray-400 text-sm">(15477)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    <section class="">
+        <div class="container mx-auto px-6">
+            <div class="justify-between md:px-14 py-8 container items-center flex">
+                <div>
+                    <h2 class="text-3xl md:text-3xl text-green-900 font-bold">Evènements à venir</h2>
+                    <p class="text-1xl md:text-2xl text-black font-semibold">Découvrez la sélection coup de coeur éyalane, qui réunis tout les établisseents recommandé par éyalane</p>
+                </div>
+                <h3 class="navbar-link-destination text-2xl md:text-2xl text-green-900 font-bold underline">Tout voir</h3> 
+            </div>
+
+            <div class="flex gap-2 overflow-x snap-x snap-mandatory py-1 md:px-14">
+                <div class="flex-shrink-0 navbar-link-destination w-80 snap-center md:w-auto md:flex-1 p-6 border rounded-2xl flex items-center bg-white">
+                    <div class="w-2/5 rounded-xl overflow-hidden mr-4">
+                        <img src="https://ekladata.com/oQ4tP8guOYov6gu9iB2fDcYCUMo.png" alt="International Jazz Day" class="w-full h-full object-cover">
+                    </div>
+                    <div class="w-3/5">
+                        <h3 class="text-green-700 text-2xl font-bold mb-1">Concert</h3>
+                        <p class="font-bold text-gray-900 mb-1">Mendjangs</p>
+                        <p class="text-gray-500 text-sm mb-1">Scène libre</p>
+                        <p class="text-gray-500 text-sm mb-1">Entrée libre</p>
+                        <p class="text-gray-500 text-sm mt-2">Avec le KGC band</p>
+                        <p class="text-green-700 text-sm">Ifc de Yaoundé : 20 octobre 2024</p>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 navbar-link-destination w-80 snap-center md:w-auto md:flex-1 p-6 border rounded-2xl flex items-center bg-white">
+                    <div class="w-2/5 rounded-xl overflow-hidden mr-4">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq-S14nlnIjL9gVqB6_zwJ2DoPj61c_LYIXQ&s" alt="Festival de musique" class="w-full h-full object-cover">
+                    </div>
+                    <div class="w-3/5">
+                        <h3 class="text-green-700 text-2xl font-bold mb-1">Festival</h3>
+                        <p class="font-bold text-gray-900 mb-1">Festival des Arts</p>
+                        <p class="text-gray-500 text-sm mb-1">Expositions</p>
+                        <p class="text-gray-500 text-sm mb-1">Concerts</p>
+                        <p class="text-gray-500 text-sm mt-2">Avec des artistes locaux</p>
+                        <p class="text-green-700 text-sm">Place de l'indépendance : 15 novembre 2024</p>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 navbar-link-destination w-80 snap-center md:w-auto md:flex-1 p-6 border rounded-2xl flex items-center bg-white">
+                    <div class="w-2/5 rounded-xl overflow-hidden mr-4">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZVZH0d5ZaMtAOWI2nYa9n8Uw28w4P-_rlAw&s" alt="Marché artisanal" class="w-full h-full object-cover">
+                    </div>
+                    <div class="w-3/5">
+                        <h3 class="text-green-700 text-2xl font-bold mb-1">Marché</h3>
+                        <p class="font-bold text-gray-900 mb-1">Marché du Terroir</p>
+                        <p class="text-gray-500 text-sm mb-1">Produits locaux</p>
+                        <p class="text-gray-500 text-sm mb-1">Artisanat</p>
+                        <p class="text-gray-500 text-sm mt-2">Dégustations gratuites</p>
+                        <p class="text-green-700 text-sm">Marché central : 5 décembre 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Section publicitaire -->
+    <div class="bg-white my-20">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center">
+                <div class="w-full">
+                    <img 
+                        src="pubEyalane.png" 
+                        alt="Publicité Eyalane" 
+                        class="w-full md:h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
                         loading="lazy"
                     >
                 </div>
@@ -1086,69 +441,117 @@ footer a:hover::before {
 
 
 
-    <!-- Section LE KIOSQUE -->
-<section class="kiosque-section">
-    <div class="kiosque-container">
-        <div class="kiosque-left">
-            <h2 class="kiosque-title">LE KIOSQUE</h2>
-            <p class="kiosque-description">
-                Retrouvez ici toutes les publications de Fougères Agglomération.
-            </p>
-            <a href="#" class="kiosque-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.16.21 2.34.21 3.5 0 5.16-1 9-5.45 9-11V7l-10-5z"/>
-                </svg>
-                Les comptes-rendus du Conseil
-            </a>
-        </div>
-        
-        <div class="magazines-carousel">
-            <div class="magazines-track" id="magazines-track">
-                <div class="magazine-card">
-                    <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=280&h=380&fit=crop" 
-                         alt="Magazine EYALANE" class="magazine-cover">
-                    <div class="magazine-overlay">
-                        <div class="magazine-title">Mag' Agglomération</div>
-                        <div class="magazine-date">Janvier 2025</div>
+     <!-- Section Événements -->
+    <section id="coupcoeur-section" class="mx-15">
+        <div class="event-background px-14">
+            <div class="justify-between md:px-14 py-8 container items-center flex">
+                <div>
+                    <h2 class="text-3xl md:text-3xl text-green-900 font-bold">Coup de coeur éyalane</h2>
+                    <p class="text-1xl md:text-2xl text-black font-semibold">Découvrez la sélection coup de coeur éyalane, qui réunis tout les établisseents recommandé par éyalane</p>
+                </div>
+               <h3 class="navbar-link-destination text-2xl md:text-2xl text-green-900 font-bold underline">Tout voir</h3> 
+            </div>
+            
+            <div class="events-grid md:px-14">
+                <div class="navbar-link-destination">
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=400&h=200&fit=crop" alt="Festival" class="event-image">
+                        <div class="event-content">
+                            <span class="event-date-coeur">❤ Coup de coeur</span>
+                            <h3 class="event-title">Festival des Arts du Sud</h3>
+                            <p class="event-description">Célébration annuelle des traditions artistiques de la région avec danse, musique et artisanat local.</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="magazine-card">
-                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=280&h=380&fit=crop" 
-                         alt="L'Agglo Solidaire" class="magazine-cover">
-                    <div class="magazine-overlay">
-                        <div class="magazine-title">L'Agglo Solidaire</div>
-                        <div class="magazine-date">Décembre 2024</div>
+                <div class="navbar-link-destination">
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=200&fit=crop" alt="Marché" class="event-image">
+                        <div class="event-content">
+                            <span class="event-date-coeur">❤ Coup de coeur</span>
+                            <h3 class="event-title">Grand Marché du Terroir</h3>
+                            <p class="event-description">Découvrez les produits locaux et spécialités culinaires dans une ambiance festive au cœur.</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="magazine-card">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=280&h=380&fit=crop" 
-                         alt="Guide Pratique" class="magazine-cover">
-                    <div class="magazine-overlay">
-                        <div class="magazine-title">Guide Pratique</div>
-                        <div class="magazine-date">Novembre 2024</div>
-                    </div>
-                </div>
-                
-                <div class="magazine-card">
-                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=280&h=380&fit=crop" 
-                         alt="Magazine Culture" class="magazine-cover">
-                    <div class="magazine-overlay">
-                        <div class="magazine-title">Culture & Vous</div>
-                        <div class="magazine-date">Octobre 2024</div>
+                <div class="navbar-link-destination">
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop" alt="Concert" class="event-image">
+                        <div class="event-content">
+                            <span class="event-date-coeur">❤ Coup de coeur</span>
+                            <h3 class="event-title">Concert au Bord du Nyong</h3>
+                            <p class="event-description">Soirée musicale exceptionnelle avec des artistes locaux sur les rives du fleuve Nyong.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>       
+
     
-    <div class="carousel-controls">
-        <button class="carousel-btn" id="prev-mag" onclick="scrollMagazines(-1)">‹</button>
-        <div class="carousel-indicator" id="mag-indicator">1</div>
-        <button class="carousel-btn" id="next-mag" onclick="scrollMagazines(1)">›</button>
-    </div>
-</section>
+
+    <!-- Section LE KIOSQUE -->
+    <section class="kiosque-section">
+        <div class="kiosque-container">
+            <div class="kiosque-left">
+                <h2 class="kiosque-title">LE KIOSQUE</h2>
+                <p class="kiosque-description">
+                    Téléchargez ici tout les numéros du magasine éyalane en version pdf pour une découverte hors ligne de vos villes préférées.
+                </p>
+                <a href="#" class="navbar-link kiosque-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.16.21 2.34.21 3.5 0 5.16-1 9-5.45 9-11V7l-10-5z"/>
+                    </svg>
+                    C'est quoi le magasine éyalane ?
+                </a>
+            </div>
+            
+            <div class="magazines-carousel">
+                <div class="magazines-track" id="magazines-track">
+                    <div class="magazine-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7lLdE4ZjqRAwTXVpSk59qtmSHL15Zx-K9oc5Vmd272mwlxz_Hi7fNwZfjVYqjNgBx5Ek&usqp=CAU" 
+                            alt="Magazine EYALANE" class="magazine-cover">
+                        <div class="magazine-overlay">
+                            <div class="magazine-title">Sangmélima</div>
+                            <div class="magazine-date">Janvier 2025</div>
+                        </div>
+                    </div>
+                    
+                    <div class="magazine-card">
+                        <img src="https://cover.viapresse.com/3332/0/200" 
+                            alt="L'Agglo Solidaire" class="magazine-cover">
+                        <div class="magazine-overlay">
+                            <div class="magazine-title">Yaoundé</div>
+                            <div class="magazine-date">Décembre 2024</div>
+                        </div>
+                    </div>
+                    
+                    <div class="magazine-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1CEjf_S2UNkMsaC_kB0EtvFSAW2NWqqS8pA&s" 
+                            alt="Guide Pratique" class="magazine-cover">
+                        <div class="magazine-overlay">
+                            <div class="magazine-title">Douala</div>
+                            <div class="magazine-date">Novembre 2024</div>
+                        </div>
+                    </div>
+                    
+                    <div class="magazine-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI2gFaQSLDHthibxvrmaTuL_Q8cZn8DWTi5Sbrck8cmfU5jexte_Dd1ZilyslLIIGZppY&usqp=CAU" 
+                            alt="Magazine Culture" class="magazine-cover">
+                        <div class="magazine-overlay">
+                            <div class="magazine-title">Ebolowa</div>
+                            <div class="magazine-date">Octobre 2024</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="carousel-controls">
+            <button class="carousel-btn" id="prev-mag" onclick="scrollMagazines(-1)">‹</button>
+            <div class="carousel-indicator-explorer" id="mag-indicator">1</div>
+            <button class="carousel-btn" id="next-mag" onclick="scrollMagazines(1)">›</button>
+        </div>
+    </section>
 
 
 
@@ -1178,8 +581,6 @@ footer a:hover::before {
         </div>
         <div class="newsletter-decoration"></div>
     </section>
-
-
 
     <!-- Modale de confirmation -->
     <div class="newsletter-modal" id="newsletter-modal">
@@ -1323,29 +724,29 @@ footer a:hover::before {
     </footer>
 
 
-
+    
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         // Données des villes par région
-        const citiesData = {
+         const citiesData = {
             "Sud": [
                 {
                     name: "Sangmélima",
                     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s",
                     followers: 1247,
-                    description: "Capitale de la région du Sud, riche en culture et tradition"
+                    description: "Capitale de la région du Sud, riche en culture et tradition Capitale de la région du Sud, riche en culture et traditionCapitale de la région du Sud, riche en culture et tradition"
                 },
                 {
                     name: "Ebolowa",
                     image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                     followers: 892,
-                    description: "Ville dynamique au cœur de la forêt équatoriale"
+                    description: "Ville dynamique au cœur de la forêt équatoriale Ville dynamique au cœur de la forêt équatoriale"
                 },
                 {
                     name: "Kribi",
                     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrsnoKsWYGVwFPXjiNXUHlnNSm0EjAFgpu3g&s",
                     followers: 2156,
-                    description: "Station balnéaire aux plages magnifiques"
+                    description: "Station balnéaire aux plages magnifiques Ville dynamique au cœur de la forêt équatoriale Ville dynamique au cœur de la forêt équatoriale"
                 }
             ],
             "Centre": [
@@ -1441,17 +842,46 @@ footer a:hover::before {
         };
 
 
-
         // Carousel d'images
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-        setInterval(nextSlide, 5000);
+        document.addEventListener("DOMContentLoaded", function() {
+            let currentSlide = 0;
+            const track = document.querySelector('.carousel-track');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const slideWidth = slides[0].clientWidth;
+            const indicatorsContainer = document.querySelector('.carousel-indicators-container');
+
+            // 1. Crée les indicateurs
+            function createIndicators() {
+                slides.forEach((slide, index) => {
+                    const indicator = document.createElement('div');
+                    indicator.classList.add('carousel-indicator');
+                    if (index === 0) {
+                        indicator.classList.add('active');
+                    }
+                    indicatorsContainer.appendChild(indicator);
+                });
+            }
+
+            // 2. Met à jour l'indicateur actif
+            function updateIndicators() {
+                const indicators = document.querySelectorAll('.carousel-indicator');
+                indicators.forEach(indicator => {
+                    indicator.classList.remove('active');
+                });
+                indicators[currentSlide].classList.add('active');
+            }
+
+            // 3. Fonction de défilement
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+                updateIndicators(); 
+            }
+
+            // Lance le carrousel
+            createIndicators();
+            setInterval(nextSlide, 5000);
+        });
 
 
 
@@ -1478,10 +908,8 @@ footer a:hover::before {
                 "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80", // Femme brune
                 "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80"  // Homme casual
             ];
-            
             const avatars = [];
             const maxAvatars = Math.min(count > 1000 ? 5 : 3, realAvatars.length);
-            
             for (let i = 0; i < maxAvatars; i++) {
                 avatars.push(realAvatars[i]);
             }
@@ -1499,7 +927,6 @@ footer a:hover::before {
         }
 
 
-
         // Fonction pour scroller vers la section des villes
         function scrollToCities() {
             document.getElementById('cities-section').scrollIntoView({
@@ -1507,90 +934,18 @@ footer a:hover::before {
                 block: 'start'
             });
         }
-
-
-
-        // Gestion des boutons de région
-        document.querySelectorAll('.region-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Retirer la classe active de tous les boutons
-                document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
-                // Ajouter la classe active au bouton cliqué
-                btn.classList.add('active');
-                
-                const region = btn.dataset.region;
-                loadCities(region);
-            });
-        });
-
-
-
-        // Gestion du dropdown de navigation
-        document.querySelectorAll('.region-dropdown-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const region = btn.dataset.region;
-                
-                // Mettre à jour le bouton actif
-                document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
-                document.querySelector(`[data-region="${region}"]`).classList.add('active');
-                
-                // Charger les villes et scroller
-                loadCities(region);
-                scrollToCities();
-            });
-        });
-
-
-
-        // Fonction de recherche
-        function searchCities(query) {
-            const allCities = [];
-            Object.values(citiesData).forEach(regionCities => {
-                allCities.push(...regionCities);
-            });
-            
-            return allCities.filter(city => 
-                city.name.toLowerCase().includes(query.toLowerCase())
-            );
-        }
-
-
+ 
 
         // Gestion de la barre de recherche
         const searchInput = document.getElementById('search-input');
         const searchSuggestions = document.getElementById('search-suggestions');
-        
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.trim();
-            
-            if (query.length > 0) {
-                const results = searchCities(query);
-                
-                if (results.length > 0) {
-                    searchSuggestions.innerHTML = results.map(city => `
-                        <div class="suggestion-item" data-city="${city.name}">
-                            <div class="font-semibold">${city.name}</div>
-                            <div class="text-sm text-gray-500">${city.description}</div>
-                        </div>
-                    `).join('');
-                    searchSuggestions.classList.add('show');
-                } else {
-                    searchSuggestions.innerHTML = '<div class="suggestion-item">Aucune ville trouvée</div>';
-                    searchSuggestions.classList.add('show');
-                }
-            } else {
-                searchSuggestions.classList.remove('show');
-            }
-        });
-
-
 
         // Gestion des suggestions
         searchSuggestions.addEventListener('click', (e) => {
             const suggestionItem = e.target.closest('.suggestion-item');
             if (suggestionItem && suggestionItem.dataset.city) {
                 const cityName = suggestionItem.dataset.city;
-                
+
                 // Trouver la région de la ville
                 let targetRegion = null;
                 for (const [region, cities] of Object.entries(citiesData)) {
@@ -1599,24 +954,21 @@ footer a:hover::before {
                         break;
                     }
                 }
-                
                 if (targetRegion) {
+
                     // Mettre à jour le bouton actif
                     document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
                     document.querySelector(`[data-region="${targetRegion}"]`).classList.add('active');
-                    
                     // Charger les villes et scroller
                     loadCities(targetRegion);
                     scrollToCities();
                 }
-                
+
                 // Fermer les suggestions
                 searchSuggestions.classList.remove('show');
                 searchInput.value = '';
             }
         });
-
-
 
         // Fermer les suggestions quand on clique ailleurs
         document.addEventListener('click', (e) => {
@@ -1625,83 +977,79 @@ footer a:hover::before {
             }
         });
 
-
-
-        // Gestion du menu mobile
+        
+       // Gestion du menu mobile
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.createElement('div');
         mobileMenu.className = 'md:hidden bg-white shadow-lg absolute top-full left-0 right-0 z-50';
         mobileMenu.style.display = 'none';
         mobileMenu.innerHTML = `
-            <div class="px-4 py-2">
-                <div class="space-y-2">
-                    <div class="py-2">
-                        <span class="font-semibold text-blue-800">Destinations</span>
-                        <div class="ml-4 mt-2 space-y-1">
-                            ${Object.keys(citiesData).map(region => `
-                                <button class="mobile-region-btn block w-full text-left py-1 px-2 hover:bg-gray-100" data-region="${region}">${region}</button>
-                            `).join('')}
-                        </div>
+            <div class="p-4">
+                <div class="mb-4">
+                    <h3 class="font-semibold text-gray-800 mb-2">Destinations</h3>
+                    <div class="space-y-1">
+                        ${Object.keys(citiesData).map(region => `
+                            <a href="#${region.toLowerCase()}" class="block py-2 px-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded region-link" data-region="${region}">
+                                ${region}
+                            </a>
+                        `).join('')}
                     </div>
-                    <a href="explorer.html" class="block py-2 text-blue-800">Explorer</a>
-                    <a href="lifestyle.html" class="block py-2 text-blue-800">Lifestyle</a>
                 </div>
+                <a href="#" class="block py-2 px-3 text-gray-600 hover:text-blue-600">Explorer</a>
+                <a href="#" class="block py-2 px-3 text-gray-600 hover:text-blue-600">Lifestyle</a>
             </div>
         `;
-        
         document.querySelector('nav .container').appendChild(mobileMenu);
 
+        // Fonction pour fermer le menu mobile
+        function closeMobileMenu() {
+            if (mobileMenu.style.display === 'block') {
+                mobileMenu.style.display = 'none';
+            }
+        }
 
-
-        // Toggle menu mobile
+        // Gestion du clic sur le bouton de menu mobile
         if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', () => {
                 if (mobileMenu.style.display === 'none' || mobileMenu.style.display === '') {
                     mobileMenu.style.display = 'block';
-                    mobileMenu.style.animation = 'fadeInUp 0.3s ease';
+                    mobileMenu.style.animation = 'fadeInUp 0.5s ease';
                 } else {
-                    mobileMenu.style.display = 'none';
+                    closeMobileMenu();
                 }
             });
         }
 
-
-
-        // Gestion des boutons de région mobile
-        document.querySelectorAll('.mobile-region-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const region = btn.dataset.region;
-                
-                // Mettre à jour le bouton actif
-                document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
-                document.querySelector(`[data-region="${region}"]`).classList.add('active');
-                
-                // Charger les villes et scroller
-                loadCities(region);
-                scrollToCities();
-                
-                // Fermer le menu mobile
-                mobileMenu.style.display = 'none';
-            });
-        });
-
-
-
-        // Fermer le menu mobile quand on clique ailleurs
-        document.addEventListener('click', (e) => {
-            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileMenu.style.display = 'none';
+        // Fermer le menu lors du clic sur une région
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target.classList.contains('region-link')) {
+                closeMobileMenu();
+                // Le comportement de navigation vers la région sera géré par le code existant
             }
         });
 
+        // Fermer le menu lors du redimensionnement de la fenêtre (passage en vue tablette/desktop)
+        window.addEventListener('resize', () => {
+            // Fermer le menu si on passe en vue tablette/desktop (largeur >= 768px)
+            if (window.innerWidth >= 768) {
+                closeMobileMenu();
+            }
+        });
+
+        // Fermer le menu lors du clic à l'extérieur
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
 
 
         // Gestion de la recherche avec autocomplétion avancée
         function createSearchSuggestion(city, region) {
             return `
-                <div class="suggestion-item" data-city="${city.name}" data-region="${region}">
-                    <div class="flex items-center space-x-3">
-                        <img src="${city.image}" alt="${city.name}" class="w-12 h-12 rounded-full object-cover">
+                   <div class="flex items-center space-x-3">
+                  <div class="suggestion-item" data-city="${city.name}" data-region="${region}">
+                       <img src="${city.image}" alt="${city.name}" class="w-12 h-12 rounded-full object-cover">
                         <div>
                             <div class="font-semibold text-gray-800">${city.name}</div>
                             <div class="text-sm text-gray-500">${region} • ${city.followers.toLocaleString()} followers</div>
@@ -1710,7 +1058,6 @@ footer a:hover::before {
                 </div>
             `;
         }
-
 
 
         // Mise à jour de la fonction de recherche
@@ -1728,11 +1075,9 @@ footer a:hover::before {
         }
 
 
-
         // Mise à jour du gestionnaire d'événements pour la recherche
         searchInput.addEventListener('input', (e) => {
             const query = e.target.value.trim();
-            
             if (query.length > 0) {
                 const results = searchCities(query);
                 
@@ -1758,7 +1103,6 @@ footer a:hover::before {
         });
 
 
-
         // Animation des cartes de ville au scroll
         function animateCardsOnScroll() {
             const cards = document.querySelectorAll('.city-card');
@@ -1770,7 +1114,6 @@ footer a:hover::before {
                     }
                 });
             }, { threshold: 0.1 });
-
             cards.forEach(card => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(50px)';
@@ -1780,24 +1123,20 @@ footer a:hover::before {
         }
 
 
-
         // Fonction pour générer un nombre aléatoire de followers
         function generateRandomFollowers() {
             return Math.floor(Math.random() * 3000) + 500;
         }
 
 
-
         // Mise à jour de la fonction createCityCard avec animations
        function createCityCardWithAnimation(city, delay = 0) {
     const avatars = generateFollowerAvatars(city.followers);
-    
     return `
-        <a href="sangmelima.html" class="navbar-link">
+        <a href="sangmelima.html" class="navbar-link-destination">
         <div class="restaurant-card fade-in" style="animation-delay: ${delay}ms">
             <div class="restaurant-image-container">
                 <img src="${city.image}" alt="${city.name}" class="restaurant-image" loading="lazy">
-                
                 <!-- Location pin overlay -->
                 <div class="location-overlay">
                     <div class="location-pin">
@@ -1809,28 +1148,12 @@ footer a:hover::before {
                     </div>
                 </div>
             </div>
-
             <!-- City info overlay at bottom -->
             <div class="restaurant-info-overlay">
                 <div class="restaurant-details">
                     <h3 class="restaurant-name">${city.name}</h3>
                     <p class="city-description">${city.description}</p>
-                    <div class="followers-info">
-                         <div class="reviewer-avatars">
-                        ${avatars.slice(0, 3).map((avatar, index) => 
-                            `<img src="${avatar}" alt="Follower" class="reviewer-avatar" 
-                                  style="z-index: ${3-index}; margin-left: ${index * -8}px">`
-                        ).join('')}
-                    </div>
-                        <span class="followers-count">${city.followers.toLocaleString()} followers</span>
-                    </div>
                 </div>
-                
-                <button class="favorite-btn follow-btn" data-city="${city.name}">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"/>
-                    </svg>
-                </button>
             </div>
         </div>
         </a>
@@ -1838,25 +1161,20 @@ footer a:hover::before {
 }
 
 
-
         // Mise à jour de la fonction loadCities avec animations
         function loadCities(region) {
             const citiesGrid = document.getElementById('cities-grid');
             const cities = citiesData[region] || [];
-            
             // Animation de sortie
             citiesGrid.style.opacity = '0';
             citiesGrid.style.transform = 'translateY(20px)';
-            
             setTimeout(() => {
                 citiesGrid.innerHTML = cities.map((city, index) => 
                     createCityCardWithAnimation(city, index * 100)
                 ).join('');
-                
                 // Animation d'entrée
                 citiesGrid.style.opacity = '1';
                 citiesGrid.style.transform = 'translateY(0)';
-                
                 // Animer les cartes individuellement
                 setTimeout(() => {
                     animateCardsOnScroll();
@@ -1866,48 +1184,14 @@ footer a:hover::before {
         }
 
 
-
-        // Gestion des boutons "Suivre"
-        function setupFollowButtons() {
-            document.querySelectorAll('.follow-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const cityName = btn.dataset.city;
-                    
-                    if (btn.textContent === 'Suivre') {
-                        btn.textContent = 'Suivi';
-                        btn.classList.add('bg-green-600', 'hover:bg-green-700');
-                        btn.classList.remove('bg-blue-800', 'hover:bg-blue-700');
-                        
-                        // Animation de succès
-                        btn.style.transform = 'scale(0.95)';
-                        setTimeout(() => {
-                            btn.style.transform = 'scale(1)';
-                        }, 150);
-                        
-                        console.log(`Vous suivez maintenant ${cityName}`);
-                    } else {
-                        btn.textContent = 'Suivre';
-                        btn.classList.remove('bg-green-600', 'hover:bg-green-700');
-                        btn.classList.add('bg-blue-800', 'hover:bg-blue-700');
-                        console.log(`Vous ne suivez plus ${cityName}`);
-                    }
-                });
-            });
-        }
-
-
-
         // Fonction de recherche avec filtrage en temps réel
         function filterCitiesRealTime(query) {
             const allCards = document.querySelectorAll('.city-card');
             let visibleCount = 0;
-            
             allCards.forEach(card => {
                 const cityName = card.querySelector('h3').textContent.toLowerCase();
                 const cityDesc = card.querySelector('p').textContent.toLowerCase();
                 const searchTerm = query.toLowerCase();
-                
                 if (cityName.includes(searchTerm) || cityDesc.includes(searchTerm)) {
                     card.style.display = 'block';
                     card.style.animation = 'fadeInUp 0.4s ease';
@@ -1916,13 +1200,11 @@ footer a:hover::before {
                     card.style.display = 'none';
                 }
             });
-            
 
 
             // Afficher un message si aucune ville trouvée
             const citiesGrid = document.getElementById('cities-grid');
             let noResultsMsg = document.querySelector('.no-results-message');
-            
             if (visibleCount === 0 && query.length > 0) {
                 if (!noResultsMsg) {
                     noResultsMsg = document.createElement('div');
@@ -1941,74 +1223,52 @@ footer a:hover::before {
         }
 
 
-
         // Initialisation
         document.addEventListener('DOMContentLoaded', () => {
             // Charger les villes par défaut (Sud)
             loadCities('Sud');
-            
             // Configuration des transitions CSS
             document.getElementById('cities-grid').style.transition = 'all 0.3s ease';
-            
             console.log('EYALANE plateforme initialisée avec succès!');
         });
 
 
-
-        // Gestion du redimensionnement de la fenêtre
-        window.addEventListener('resize', () => {
-            // Réajuster le carousel si nécessaire
-            const heroSection = document.querySelector('.hero-carousel');
-            if (window.innerWidth < 768) {
-                heroSection.style.height = '50vh';
-            } else {
-                heroSection.style.height = '70vh';
-            }
-        });
-
-
-
+        // Gestion du défilement des magazines
         let currentMagIndex = 0;
-const totalMagazines = 4;
-
-function scrollMagazines(direction) {
-    const track = document.getElementById('magazines-track');
-    const indicator = document.getElementById('mag-indicator');
-    const cardWidth = 300; // 280px + 20px margin
-    
-    currentMagIndex += direction;
-    
-    if (currentMagIndex < 0) currentMagIndex = totalMagazines - 1;
-    if (currentMagIndex >= totalMagazines) currentMagIndex = 0;
-    
-    track.style.transform = `translateX(-${currentMagIndex * cardWidth}px)`;
-    indicator.textContent = currentMagIndex + 1;
-}
+        const totalMagazines = 4;
+        function scrollMagazines(direction) {
+            const track = document.getElementById('magazines-track');
+            const indicator = document.getElementById('mag-indicator');
+            const cardWidth = 300; // 280px + 20px margin
+            currentMagIndex += direction;
+            if (currentMagIndex < 0) currentMagIndex = totalMagazines - 1;
+            if (currentMagIndex >= totalMagazines) currentMagIndex = 0;
+            track.style.transform = `translateX(-${currentMagIndex * cardWidth}px)`;
+            indicator.textContent = currentMagIndex + 1;
+        }
 
 
+        // Configuration EmailJS
+        const EMAILJS_CONFIG = {
+            publicKey: "kNI6EJbQQRNksClFW", // Remplacer par votre clé publique EmailJS
+            serviceId: "service_mesdt3p", // Remplacer par votre service ID
+            templateId: "template_g4fhvw7" // Remplacer par votre template ID
+        };
 
-// Système Newsletter avec EmailJS - Version corrigée
-// Configuration EmailJS
-const EMAILJS_CONFIG = {
-    publicKey: "kNI6EJbQQRNksClFW", // Remplacer par votre clé publique EmailJS
-    serviceId: "service_mesdt3p", // Remplacer par votre service ID
-    templateId: "template_g4fhvw7" // Remplacer par votre template ID
-};
 
-// Stockage en mémoire des abonnements (remplace localStorage)
-let newsletterSubscriptions = [];
+        // Stockage en mémoire des abonnements (remplace localStorage)
+        let newsletterSubscriptions = [];
+        // Attendre que le DOM soit chargé avant d'initialiser
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Initialisation du système newsletter...');
+            // Initialiser EmailJS si configuré
+            if (EMAILJS_CONFIG.publicKey !== "YOUR_PUBLIC_KEY") {
+                emailjs.init(EMAILJS_CONFIG.publicKey);
+                console.log('EmailJS initialisé');
+            } else {
+                console.warn('EmailJS non configuré - mode simulation activé');
+            }
 
-// Attendre que le DOM soit chargé avant d'initialiser
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Initialisation du système newsletter...');
-    
-    // Initialiser EmailJS si configuré
-    if (EMAILJS_CONFIG.publicKey !== "YOUR_PUBLIC_KEY") {
-        emailjs.init(EMAILJS_CONFIG.publicKey);
-        console.log('EmailJS initialisé');
-    } else {
-        console.warn('EmailJS non configuré - mode simulation activé');
-    }
 
     // Vérifier que tous les éléments existent
     const form = document.getElementById('newsletter-form');
@@ -2032,37 +1292,33 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Élément .newsletter-btn non trouvé');
         return;
     }
-
     // Gestion du formulaire newsletter
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         handleNewsletterSubmission();
     });
 
+
+    // Fonction pour verifier si email est deja inscrit
     function handleNewsletterSubmission() {
         const email = emailInput.value.trim();
-        
         console.log('Tentative d\'inscription avec l\'email:', email);
-        
         // Validation de l'email
         if (!email || !isValidEmail(email)) {
             console.error('Email invalide:', email);
             alert('Veuillez entrer une adresse email valide');
             return;
         }
-
         // Vérifier si déjà inscrit
         if (isAlreadySubscribed(email)) {
             console.warn('Email déjà inscrit:', email);
             alert('Cette adresse email est déjà inscrite à notre newsletter');
             return;
         }
-
         // Désactiver le bouton et afficher le loader
         submitBtn.disabled = true;
         const originalContent = submitBtn.innerHTML;
         submitBtn.innerHTML = '<div class="loader"></div>';
-        
         // Style du loader
         if (!document.getElementById('loader-style')) {
             const style = document.createElement('style');
@@ -2084,13 +1340,11 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             document.head.appendChild(style);
         }
-
         // Fonction de réinitialisation du bouton
         function resetButton() {
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalContent;
         }
-
         // Envoyer l'email selon la configuration
         if (EMAILJS_CONFIG.publicKey !== "YOUR_PUBLIC_KEY") {
             sendEmailWithEmailJS(email, resetButton);
@@ -2099,6 +1353,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+
+    // Fonction pour gérer l'envoi
     function sendEmailWithEmailJS(email, resetButton) {
         const templateParams = {
             to_email: email,
@@ -2122,6 +1378,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
+
+    // Fonction pour simuler l'envoi
     function simulateEmailSending(email, resetButton) {
         console.log('Mode simulation - envoi d\'email pour:', email);
         
@@ -2132,26 +1390,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1500);
     }
 
+
+    // Fonction pour gérer le processus d'abonnement
     function handleSuccessfulSubmission(email) {
         console.log('Traitement du succès pour:', email);
-        
         // Sauvegarder l'abonnement
         saveSubscription(email);
-        
         // Afficher la modale de succès
         showSuccessModal(email);
-        
         // Reset du formulaire
         form.reset();
-        
         console.log('Inscription finalisée avec succès');
     }
+
 
     // Fonction de validation email
     function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
+
 
     // Vérifier si l'email est déjà inscrit
     function isAlreadySubscribed(email) {
@@ -2160,6 +1418,7 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
 
+
     // Sauvegarder l'abonnement en mémoire
     function saveSubscription(email) {
         const subscription = {
@@ -2167,22 +1426,20 @@ document.addEventListener('DOMContentLoaded', function() {
             date: new Date().toISOString(),
             status: 'active'
         };
-        
         newsletterSubscriptions.push(subscription);
         console.log('Abonnement sauvegardé:', subscription);
         console.log('Total abonnements:', newsletterSubscriptions.length);
     }
 
+
     // Afficher la modale de succès
     function showSuccessModal(email) {
         console.log('Affichage de la modale pour:', email);
-        
         if (confirmEmail) {
             confirmEmail.textContent = email;
         } else {
             console.warn('Élément #confirm-email non trouvé');
         }
-        
         if (modal) {
             modal.classList.add('show');
         } else {
@@ -2192,50 +1449,173 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Fermer la modale
-    function closeModal() {
-        if (modal) {
-            modal.classList.remove('show');
-            console.log('Modale fermée');
-        }
-    }
 
-    // Gestion des événements de la modale (avec vérification d'existence)
-    if (modalClose) {
-        modalClose.addEventListener('click', closeModal);
-    }
-    
-    if (modalOk) {
-        modalOk.addEventListener('click', closeModal);
-    }
-    
-    if (modal) {
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
+        // Fermer la modale
+        function closeModal() {
+            if (modal) {
+                modal.classList.remove('show');
+                console.log('Modale fermée');
+            }
+        }
+
+        // Gestion des événements de la modale (avec vérification d'existence)
+        if (modalClose) {
+            modalClose.addEventListener('click', closeModal);
+        }
+        if (modalOk) {
+            modalOk.addEventListener('click', closeModal);
+        }
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        }
+
+        // Fermer la modale avec la touche Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal && modal.classList.contains('show')) {
                 closeModal();
             }
         });
-    }
 
-    // Fermer la modale avec la touche Escape
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal && modal.classList.contains('show')) {
-            closeModal();
-        }
+        console.log('Système newsletter initialisé avec succès');
     });
 
-    console.log('Système newsletter initialisé avec succès');
+
+    function clearNewsletterSubscriptions() {
+        newsletterSubscriptions = [];
+        console.log('Abonnements effacés');
+    }
+</script>
+
+
+<script>
+// JavaScript pour la gestion des régions
+// JavaScript pour la gestion des clics sur les régions
+document.addEventListener('DOMContentLoaded', function() {
+    const regionLinks = document.querySelectorAll('.region-link');
+    
+    regionLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const region = this.dataset.region;
+            
+            // Mettre à jour le lien actif
+            regionLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Charger les villes de la région (utilise la fonction existante)
+            if (typeof loadCities === 'function') {
+                loadCities(region);
+                
+                // Scroller vers la section des villes
+                if (typeof scrollToCities === 'function') {
+                    scrollToCities();
+                }
+            } else {
+                console.warn('Fonction loadCities non trouvée');
+            }
+            
+            console.log(`Région sélectionnée: ${region}`);
+        });
+    });
+    
+    // Support du scroll horizontal avec la molette de souris
+    const scrollContainer = document.querySelector('.regions-scroll');
+    
+    if (scrollContainer) {
+        scrollContainer.addEventListener('wheel', function(e) {
+            // Si c'est un scroll horizontal naturel, on laisse faire
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+                return;
+            }
+            
+            // Convertir scroll vertical en horizontal si Shift est pressé
+            if (e.shiftKey) {
+                e.preventDefault();
+                scrollContainer.scrollBy({ left: e.deltaY, behavior: 'auto' });
+            }
+        });
+    }
 });
+</script>
 
-// Fonctions utilitaires pour le débogage (accessibles dans la console)
-function getNewsletterSubscriptions() {
-    return newsletterSubscriptions;
-}
-
-function clearNewsletterSubscriptions() {
-    newsletterSubscriptions = [];
-    console.log('Abonnements effacés');
-}
-    </script>
+<script>
+// JavaScript pour la gestion des régions
+document.addEventListener('DOMContentLoaded', function() {
+    // Gestion du scroll des régions
+    const regionsScroll = document.querySelector('.regions-scroll');
+    const scrollLeftBtn = document.getElementById('scroll-left');
+    const scrollRightBtn = document.getElementById('scroll-right');
+    
+    if (scrollLeftBtn && scrollRightBtn && regionsScroll) {
+        scrollLeftBtn.addEventListener('click', () => {
+            regionsScroll.scrollBy({ left: -150, behavior: 'smooth' });
+        });
+        
+        scrollRightBtn.addEventListener('click', () => {
+            regionsScroll.scrollBy({ left: 150, behavior: 'smooth' });
+        });
+    }
+    
+    // Gestion des clics sur les boutons de région
+    const regionBtns = document.querySelectorAll('.region-btn');
+    
+    regionBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const region = this.dataset.region;
+            
+            // Animation de sélection
+            this.classList.add('selecting');
+            setTimeout(() => {
+                this.classList.remove('selecting');
+            }, 300);
+            
+            // Mettre à jour le bouton actif
+            regionBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Charger les villes de la région (utilise la fonction existante)
+            if (typeof loadCities === 'function') {
+                loadCities(region);
+                // Scroller vers la section des villes
+                if (typeof scrollToCities === 'function') {
+                    scrollToCities();
+                }
+            } else {
+                console.warn('Fonction loadCities non trouvée');
+            }
+            
+            console.log(`Région sélectionnée: ${region}`);
+        });
+    });
+    
+    // Effet de parallaxe subtil au scroll
+    let ticking = false;
+    
+    function updateRegionsOnScroll() {
+        const scrollTop = window.pageYOffset;
+        const regionsContainer = document.querySelector('.regions-container');
+        
+        if (regionsContainer) {
+            const translateY = scrollTop * 0.1;
+            regionsContainer.style.transform = `translateY(${translateY}px)`;
+        }
+        
+        ticking = false;
+    }
+    
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateRegionsOnScroll);
+            ticking = true;
+        }
+    });
+});
+</script>
 </body>
 </html>

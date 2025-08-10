@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Restaurant Le Palmier - Sangmélima</title>
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #ffffff;
+        }
+
+        /* STYLES NAVBAR */
+        nav.custom-navbar {
+            background: white !important;
+            padding: 1rem !important;
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 50 !important;
+        }
+
+        nav.custom-navbar .navbar-container {
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+        }
+
+        nav.custom-navbar .navbar-logo {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+        }
+
+        nav.custom-navbar .navbar-logo span {
+            font-size: 1.875rem !important;
+            color: #111827 !important;
+        }
+
+        nav.custom-navbar .navbar-menu {
+            display: none !important;
+            align-items: center !important;
+            gap: 1.5rem !important;
+        }
+
+        @media (min-width: 768px) {
+            nav.custom-navbar .navbar-menu {
+                display: flex !important;
+            }
+        }
+
+        nav.custom-navbar .navbar-dropdown {
+            position: relative !important;
+        }
+
+        nav.custom-navbar .navbar-link {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.25rem !important;
+            color: #374151 !important;
+            text-decoration: none !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 0.375rem !important;
+            transition: all 0.3s ease !important;
+            cursor: pointer !important;
+            background: none !important;
+            border: none !important;
+            font-size: 1rem !important;
+        }
+
+        nav.custom-navbar .navbar-link:hover {
+            background-color: #f3f4f6 !important;
+            color: #111827 !important;
+        }
+
+        nav.custom-navbar .dropdown-menu {
+            position: absolute !important;
+            top: 100% !important;
+            left: 0 !important;
+            margin-top: 0.5rem !important;
+            width: 12rem !important;
+            background: white !important;
+            border-radius: 0.5rem !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transform: translateY(-10px) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        nav.custom-navbar .navbar-dropdown:hover .dropdown-menu {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+        }
+
+        nav.custom-navbar .dropdown-menu .dropdown-content {
+            padding: 0.5rem 0 !important;
+        }
+
+        nav.custom-navbar .region-dropdown-btn {
+            display: block !important;
+            width: 100% !important;
+            text-align: left !important;
+            padding: 0.5rem 1rem !important;
+            color: #374151 !important;
+            background: none !important;
+            border: none !important;
+            cursor: pointer !important;
+            transition: background-color 0.3s ease !important;
+            font-size: 0.875rem !important;
+        }
+
+        nav.custom-navbar .region-dropdown-btn:hover {
+            background-color: #f3f4f6 !important;
+        }
+
+        nav.custom-navbar .mobile-menu-btn {
+            display: block !important;
+            color: #1e40af !important;
+            background: none !important;
+            border: none !important;
+            cursor: pointer !important;
+            padding: 0.5rem !important;
+        }
+
+        @media (min-width: 768px) {
+            nav.custom-navbar .mobile-menu-btn {
+                display: none !important;
+            }
+        }
+
+        nav.custom-navbar .mobile-menu-btn svg {
+            width: 1.5rem !important;
+            height: 1.5rem !important;
+        }
+
+        .header {
+            background: white;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title {
+            color: #292e2c;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .rating-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .rating-badge {
+            color: rgb(34, 32, 32);
+            padding: 4px;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .stars {
+            color: #029b63;
+            font-size: 20px;
+        }
+
+        .reviews {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .ranking {
+            color: rgb(61, 59, 59);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #444343;
+            font-size: 16px;
+        }
+
+        .contact-item a {
+            color: #464343;
+            text-decoration: underline;
+        }
+
+        .main-content {
+            display: flex;
+            gap: 5px;
+        }
+
+        .image-section {
+            position: relative;
+        }
+
+        .main-image {
+            width: 1000px;
+            height: 400px;
+            object-fit: cover;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .photo-count {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .award-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #00aa6c;
+            color: white;
+            padding: 8px;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .sidebar-card {
+            background: white;
+            border-bottom-right-radius: 8px;
+            border-top-right-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+            height: 130px;
+            width: 200px;
+        }
+
+        .sidebar-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar-overlay {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            font-weight: bold;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+        }
+
+        .sidebar-title {
+            font-size: 14px;
+        }
+
+        .sidebar-count {
+            font-size: 16px;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .header {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .title {
+                font-size: 24px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+
+        .map-section {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .map-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .map-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .map-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .map-btn {
+            padding: 8px 15px;
+            border: 1px solid #3d3f3e;
+            background: white;
+            color: #3d3f3e;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .map-btn:hover {
+            background: #00aa6c;
+            color: white;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #e0e0e0;
+        }
+
+        .map-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .map-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .location-details h4 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .location-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .nearby-places h4 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nearby-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f8f8f8;
+            font-size: 14px;
+        }
+
+        .nearby-name {
+            color: #333;
+        }
+
+        .nearby-distance {
+            color: #3b3d3d;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .map-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .map-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            
+            .map-info {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation avec classes personnalisées -->
+    <nav class="custom-navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <span>éyalane explorer</span>
+            </div>
+            
+            <!-- Menu principal -->
+            <div class="navbar-menu">
+                <!-- Dropdown Destinations -->
+                <div class="navbar-dropdown">
+                    <button class="navbar-link">
+                        <span>Explorer</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                            <button class="region-dropdown-btn" data-region="Adamaoua">Adamaoua</button>
+                            <button class="region-dropdown-btn" data-region="Centre">Centre</button>
+                            <button class="region-dropdown-btn" data-region="Est">Est</button>
+                            <button class="region-dropdown-btn" data-region="Extrême-Nord">Extrême-Nord</button>
+                            <button class="region-dropdown-btn" data-region="Littoral">Littoral</button>
+                            <button class="region-dropdown-btn" data-region="Nord">Nord</button>
+                            <button class="region-dropdown-btn" data-region="Nord-Ouest">Nord-Ouest</button>
+                            <button class="region-dropdown-btn" data-region="Ouest">Ouest</button>
+                            <button class="region-dropdown-btn" data-region="Sud">Sud</button>
+                            <button class="region-dropdown-btn" data-region="Sud-Ouest">Sud-Ouest</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navbar-dropdown">
+                    <button class="navbar-link">
+                        <span>Lifestyle</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                            <button class="region-dropdown-btn" data-region="Adamaoua">Adamaoua</button>
+                            <button class="region-dropdown-btn" data-region="Centre">Centre</button>
+                            <button class="region-dropdown-btn" data-region="Est">Est</button>
+                            <button class="region-dropdown-btn" data-region="Extrême-Nord">Extrême-Nord</button>
+                            <button class="region-dropdown-btn" data-region="Littoral">Littoral</button>
+                            <button class="region-dropdown-btn" data-region="Nord">Nord</button>
+                            <button class="region-dropdown-btn" data-region="Nord-Ouest">Nord-Ouest</button>
+                            <button class="region-dropdown-btn" data-region="Ouest">Ouest</button>
+                            <button class="region-dropdown-btn" data-region="Sud">Sud</button>
+                            <button class="region-dropdown-btn" data-region="Sud-Ouest">Sud-Ouest</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Menu mobile -->
+            <div class="mobile-menu-btn">
+                <button id="mobile-menu-btn">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header">
+        <div class="header-top">
+            <h1 class="title">Journée porte ouverte a l'univertsité inter-états Congo Cameroun de sangmelima</h1>
+        </div>
+        
+        <div class="rating-section">
+            <span class="rating-badge">4.8</span>
+            <span class="stars">●●●●●</span>
+            <span class="reviews">(245 avis)</span>
+            <span class="ranking">N°1 sur 12 restaurants à Sangmélima</span>
+        </div>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                Avenue Principale, Centre-ville, Sangmélima Sud Cameroun
+            </div>
+            <div class="contact-item">
+                📞 <a href="tel:+237675123456">+237 675 123 456</a>
+            </div>
+            <div class="contact-item">
+                ✉️ <a href="mailto:contact@lepalmier.cm">Contactez le restaurant</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+        <div class="image-section">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=400&fit=crop" alt="Salle principale du restaurant" class="main-image">
+            <div class="award-badge">2025</div>
+            <div class="image-overlay">Salle principale</div>
+            <div class="photo-count">
+                📷 24 photos
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="sidebar-card">
+                <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400&h=120&fit=crop" alt="Terrasse" class="sidebar-image">
+                <div class="sidebar-overlay">
+                    <div class="sidebar-title">Terrasse</div>
+                    <div class="sidebar-count">85</div>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <img src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=400&h=120&fit=crop" alt="Cuisine traditionnelle" class="sidebar-image">
+                <div class="sidebar-overlay">
+                    <div class="sidebar-title">Spécialités locales</div>
+                    <div class="sidebar-count">42</div>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=120&fit=crop" alt="Vidéos" class="sidebar-image">
+                <div class="sidebar-overlay">
+                    <div class="sidebar-title">📹 Vidéos</div>
+                    <div class="sidebar-count">6</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+<div class="map-section">
+    <div class="map-header">
+        <h2 class="map-title">
+            Localisation
+        </h2>
+        <div class="map-actions">
+            <a href="#" class="map-btn" onclick="getDirections()">Itinéraire</a>
+            <a href="#" class="map-btn" onclick="viewFullMap()">Voir en plein écran</a>
+        </div>
+    </div>
+    
+    <div class="map-container">
+        <iframe 
+            class="map-iframe"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31661.123456789!2d12.7022!3d2.9344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bcf8b2e0d7d7d%3A0x123456789abcdef!2sSangm%C3%A9lima%2C%20Cameroon!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+    
+    <div class="map-info">
+        <div class="location-details">
+            <h4>Adresse et accès</h4>
+            <div class="location-item">
+                <div>
+                    <strong>Avenue Principale, Centre-ville</strong><br>
+                    Sangmélima, Région du Sud<br>
+                    Cameroun
+                </div>
+            </div>
+            <div class="location-item">
+                <div>
+                    <strong>Accès en voiture:</strong><br>
+                    Parking gratuit disponible
+                </div>
+            </div>
+            <div class="location-item">
+                <div>
+                    <strong>Transport public:</strong><br>
+                    Arrêt de bus à 100m
+                </div>
+            </div>
+        </div>
+        
+        <div class="nearby-places">
+            <h4>Points d'intérêt à proximité</h4>
+            <div class="nearby-item">
+                <span class="nearby-name">Mairie de Sangmélima</span>
+                <span class="nearby-distance">200m</span>
+            </div>
+            <div class="nearby-item">
+                <span class="nearby-name">Hôpital de District</span>
+                <span class="nearby-distance">500m</span>
+            </div>
+            <div class="nearby-item">
+                <span class="nearby-name">Marché Central</span>
+                <span class="nearby-distance">300m</span>
+            </div>
+            <div class="nearby-item">
+                <span class="nearby-name">Station Total</span>
+                <span class="nearby-distance">150m</span>
+            </div>
+            <div class="nearby-item">
+                <span class="nearby-name">Banque BICEC</span>
+                <span class="nearby-distance">250m</span>
+            </div>
+            <div class="nearby-item">
+                <span class="nearby-name">Piste d'atterrissage</span>
+                <span class="nearby-distance">2.5km</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Footer -->
+    <footer class="bg-white py-8 border-t border-gray-200">
+    <!-- Section principale du footer -->
+        <div class="container mx-auto px-6 py-8">
+            <!-- Logo et description -->
+            <div class="flex flex-col lg:flex-row justify-between items-start space-y-8 lg:space-y-0">
+                <div class="lg:w-1/3">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <!-- Logo EYALANE avec icône -->
+                        <div class="bg-gradient-to-r from-blue-800 to-blue-600 p-2 rounded-full">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <span class="text-2xl text-green">éyalane explorer</span>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        EYALANE ne garantit pas la disponibilité des prix affichés sur nos sites et applications. 
+                        Des conditions et restrictions telles que, entre autres, des durées de voyage imposées ou 
+                        des dates de fermeture peuvent...
+                    </p>
+                    <button class="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center space-x-1 transition-colors">
+                        <span>Plus</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Liens et sélecteurs -->
+                <div class="lg:w-2/3 flex flex-col space-y-6">
+                    <!-- Sélecteurs de devise et pays -->
+                    <div class="flex flex-wrap gap-4 justify-start lg:justify-end">
+                        <!-- Sélecteur de devise -->
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 text-sm font-medium text-gray-700 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer">
+                                <option value="eur">FCFA</option>
+                                <option value="usd">$ USD</option>
+                            </select>
+                            <svg class="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        
+                        <!-- Sélecteur de pays -->
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 text-sm font-medium text-gray-700 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer">
+                                <option value="cm">🇨🇲 Cameroun</option>
+                            </select>
+                            <svg class="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <!-- Liens légaux -->
+                    <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm justify-start lg:justify-end">
+                        <a href="/conditions" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Conditions d'utilisation
+                        </a>
+                        <a href="/confidentialite" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Confidentialité et utilisation des cookies
+                        </a>
+                        <a href="/accord-cookies" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Accord d'utilisation des cookies
+                        </a>
+                        <a href="/plan-du-site" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Plan du site
+                        </a>
+                        <a href="/fonctionnement" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Fonctionnement du site
+                        </a>
+                        <a href="/contact" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Contactez-nous
+                        </a>
+                        <a href="/accessibilite" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Politique d'accessibilité
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Barre de copyright -->
+        <div class="bg-gray-50 border-t border-gray-200">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="flex items-center space-x-4">
+                        <p class="text-sm text-gray-600">
+                            © 2025 Eyalane LLC Tous droits réservés.
+                        </p>
+                    </div>
+                    
+                    <!-- Réseaux sociaux -->
+                    <div class="flex items-center space-x-4">
+                        <span class="text-sm text-gray-500">Suivez-nous :</span>
+                        <a href="https://facebook.com/eyalane" target="_blank" 
+                        class="text-gray-600 hover:text-blue-600 transition-colors p-2 rounded-full hover:bg-blue-50">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com/eyalane" target="_blank" 
+                        class="text-gray-600 hover:text-pink-600 transition-colors p-2 rounded-full hover:bg-pink-50">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987c6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.348-1.051-2.348-2.348s1.051-2.348 2.348-2.348 2.348 1.051 2.348 2.348S9.746 16.988 8.449 16.988zM12.017 16.988c-1.297 0-2.348-1.051-2.348-2.348s1.051-2.348 2.348-2.348 2.348 1.051 2.348 2.348S13.314 16.988 12.017 16.988zM15.585 16.988c-1.297 0-2.348-1.051-2.348-2.348s1.051-2.348 2.348-2.348 2.348 1.051 2.348 2.348S16.882 16.988 15.585 16.988z"/>
+                            </svg>
+                        </a>
+                        <a href="https://tiktok.com/@eyalane" target="_blank" 
+                        class="text-gray-600 hover:text-black transition-colors p-2 rounded-full hover:bg-gray-100">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function checkAvailability() {
+            alert('Fonctionnalité de réservation - À implémenter avec votre système de réservation');
+        }
+
+        function writeReview() {
+            alert('Formulaire d\'avis - À implémenter');
+        }
+
+
+        // Responsive menu toggle (pour les versions mobiles)
+        let isMenuOpen = false;
+        function toggleMobileMenu() {
+            const actionButtons = document.querySelector('.action-buttons');
+            if (window.innerWidth <= 768) {
+                if (!isMenuOpen) {
+                    actionButtons.style.display = 'flex';
+                    isMenuOpen = true;
+                } else {
+                    actionButtons.style.display = 'none';
+                    isMenuOpen = false;
+                }
+            }
+        }
+
+        // Adaptation responsive
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.querySelector('.action-buttons').style.display = 'flex';
+                isMenuOpen = false;
+            }
+        });
+
+
+
+
+        function showAward() {
+    alert('Récompense Travellers\' Choice Best of the Best 2025 - Félicitations !');
+}
+
+function improvePlace() {
+    alert('Formulaire d\'amélioration - À implémenter');
+}
+
+function showMoreAmenities() {
+    alert('Afficher plus d\'équipements - À implémenter');
+}
+
+function showMoreRoomAmenities() {
+    alert('Afficher plus d\'équipements de chambre - À implémenter');
+}
+
+
+
+
+function getDirections() {
+    const address = "Avenue Principale, Centre-ville, Sangmélima, Cameroun";
+    const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
+    window.open(googleMapsUrl, '_blank');
+}
+
+function viewFullMap() {
+    const address = "Avenue Principale, Centre-ville, Sangmélima, Cameroun";
+    const googleMapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(address)}`;
+    window.open(googleMapsUrl, '_blank');
+}
+
+
+
+
+function scrollPhotos(direction) {
+    const container = document.getElementById('photosContainer');
+    const scrollAmount = 220; // largeur d'une photo + gap
+    
+    if (direction === 'left') {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+}
+
+
+function addPhotos() {
+    alert('Fonctionnalité d\'ajout de photos - À implémenter avec upload de fichiers');
+}
+
+// Gestion du scroll automatique des boutons
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('photosContainer');
+    const leftBtn = document.querySelector('.scroll-btn-left');
+    const rightBtn = document.querySelector('.scroll-btn-right');
+    
+    function updateScrollButtons() {
+        if (container) {
+            leftBtn.style.opacity = container.scrollLeft > 0 ? '1' : '0.5';
+            rightBtn.style.opacity = 
+                container.scrollLeft < (container.scrollWidth - container.clientWidth) ? '1' : '0.5';
+        }
+    }
+    
+    if (container) {
+        container.addEventListener('scroll', updateScrollButtons);
+        updateScrollButtons(); // Initial state
+    }
+});
+
+
+
+ // --- JavaScript pour le menu mobile (toujours présent) ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+
+        if (mobileMenuButton && mobileMenu && mobileMenuOverlay && closeMobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenuOverlay.classList.remove('hidden');
+            });
+
+            closeMobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenuOverlay.classList.add('hidden');
+            });
+
+            mobileMenuOverlay.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenuOverlay.classList.add('hidden');
+            });
+        }
+    </script>
+</body>
+</html>
