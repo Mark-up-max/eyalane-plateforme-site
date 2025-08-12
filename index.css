@@ -508,6 +508,7 @@
             .hero-carousel {
             margin-left: 0px;
             margin-right: 0px;
+            height: 75vh;
         }
         }
         .group:hover .group-hover\:opacity-100 {
