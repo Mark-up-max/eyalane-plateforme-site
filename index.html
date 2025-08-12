@@ -66,33 +66,75 @@
 
 
 
+    <section class="py-4 md:py-8">
+    <div class="container mx-auto px-6">
+        <nav class="flex items-center gap-6 md:gap-8 overflow-x-auto whitespace-nowrap border-b border-gray-300">
+            <a href="#" class="text-green-800 font-bold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-green-800">
+                Hôtels
+            </a>
+            
+            <a href="#" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
+                Activités
+            </a>
+            
+            <a href="#" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
+                Restaurants
+            </a>
+            
+            <a href="#" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
+                Vols
+            </a>
+            
+            <a href="#" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
+                Locations de vacances
+            </a>
+            
+            <a href="#" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
+                Croisières
+            </a>
+            
+            <a href="#" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
+                Forums
+            </a>
+        </nav>
+    </div>
+</section>
+
+
+
     <!-- Hero Section avec Carousel -->
     <section class="hero-carousel">
         <div class="carousel-track"> 
-            <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s');">
-                <div class="city-name-overlay">Sangmélima</div>
+            <div class="carousel-slide active" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s');">
+                <div class="city-name-overlay">Gastronomie</div>
             </div>
             <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwTlPYQ3CVxPIsJcddITkgW0RaY2vJ_RVxzw&s');">
-                <div class="city-name-overlay">Yaoundé</div>
+                <div class="city-name-overlay">Immobilier</div>
             </div>
             <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s');">
-                <div class="city-name-overlay">Douala</div>
+                <div class="city-name-overlay">Activités</div>
             </div>
             <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s');">
-                <div class="city-name-overlay">Bafoussam</div>
+                <div class="city-name-overlay">Evènementiel</div>
             </div>
-            <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s');">
-                <div class="city-name-overlay"></div>
-            </div>
+        </div>
+
+        <!-- Navigation arrows -->
+        <button class="carousel-nav prev" onclick="previousSlide()">‹</button>
+        <button class="carousel-nav next" onclick="nextSlide()">›</button>
+
+        <!-- Progress bar -->
+        <div class="carousel-progress">
+            <div class="carousel-progress-bar"></div>
         </div>
 
         <div class="carousel-indicators-container"></div>
         
         <div class="absolute inset-0 flex items-center justify-center">
             <div class="text-center text-white px-6">
-                <h1 class="text-4xl md:text-7xl mb-8 fade-in">
+                <h1 class="text-4xl mb-8 fade-in">
                     Trouvez le
-                    <span class="font-bold font-poppins">bon endroit</span>
+                    <span class="text-green-700 font-bold">bon endroit</span>
                      , au 
                      <span class="text-orange-700 font-bold">bon moment</span>
                 </h1>
@@ -103,7 +145,7 @@
                         type="text" 
                         id="search-input" 
                         placeholder="Rechercher une ville..." 
-                        class="search-input text-green-700"
+                        class="search-input"
                         autocomplete="on"
                     >
                     <div id="search-suggestions" class="search-suggestions"></div>
@@ -111,7 +153,6 @@
             </div>
         </div>
     </section>
-
 
 
     <!-- Section des régions et villes -->
@@ -129,7 +170,7 @@
     </section>
 
 
-
+<!--
     <section class="mb-16 md:mb-20">
         <h2 class="text-3xl md:text-4xl text-center mb-8 text-green-700 font-bold">
             Découvrir par catégorie
@@ -167,6 +208,7 @@
             </div>
         </div>
     </section>
+    -->
 
 
 
@@ -190,231 +232,337 @@
 
 
      <section class="">
-            <div class="container mx-auto px-6">
-                <div class="justify-between md:px-14 py-8 container items-center flex">
-                    <div>
-                        <h2 class="text-3xl md:text-3xl text-green-900 font-bold">A la une</h2>
-                        <p class="text-1xl md:text-2xl text-black font-semibold">Découvrez la sélection coup de coeur éyalane, qui réunis tout les établisseents recommandé par éyalane</p>
-                    </div>
-                    <h3 class="navbar-link-destination text-2xl md:text-2xl text-green-900 font-bold underline">Tout voir</h3> 
+        <div class="container mx-auto px-6">
+            <!-- En-tête responsive -->
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center px-4 md:px-14 py-8 gap-4">
+                <div class="flex-1">
+                    <h2 class="text-2xl md:text-3xl text-green-900 font-bold mb-2">A la une</h2>
+                    <p class="text-sm md:text-lg lg:text-xl text-black font-semibold leading-relaxed">
+                        Découvrez la sélection coup de cœur éyalane, qui réunit tous les établissements recommandés par éyalane
+                    </p>
                 </div>
-                
-                <div class="flex flex-col md:flex-row gap-2 px-14">
-                    <div class="navbar-link-destination flex-1 w-full rounded-lg relative">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOeiBwqvk5Wp_OcTbovw9z7Ia0Wb5cZ12tCw&s" alt="Ikos Dassia" class="w-full h-72 object-cover">
-                        <div class="p-4 bg-white">
-                            <h3 class="text-lg font-bold text-gray-800">Ikos Dassia</h3>
-                            <div class="flex items-center mt-1">
+                <div class="flex-shrink-0">
+                    <h3 class="navbar-link-destination text-lg md:text-2xl text-green-900 font-bold underline cursor-pointer hover:text-green-700 transition-colors">
+                        Tout voir
+                    </h3>
+                </div>
+            </div>
+            
+            <!-- Container avec scroll horizontal -->
+            <div class="px-4 md:px-14">
+                <div class="scroll-container flex gap-4 md:gap-6 overflow-x-auto pb-4">
+                    <!-- Card 1 -->
+                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
+                        <div class="overflow-hidden rounded-t-lg">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOeiBwqvk5Wp_OcTbovw9z7Ia0Wb5cZ12tCw&s" 
+                                 alt="Ikos Dassia" 
+                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Ikos Dassia</h3>
+                            <div class="flex items-center">
                                 <span class="text-green-600 font-bold mr-2">4,9</span>
-                                <div class="flex">
-                                    <span class="text-green-500">★★★★★</span>
-                                    <span class="text-gray-400 text-sm">(4296)</span>
+                                <div class="flex items-center">
+                                    <span class="text-green-500 text-sm">★★★★★</span>
+                                    <span class="text-gray-400 text-sm ml-1">(4296)</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="navbar-link-destination flex-1 w-full rounded-lg relativeg">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB7cYBgsteFKcZGtCtwx8TszJfYOlE7C611w&s" alt="Voyage Sorgun" class="w-full h-72 object-cover">
-                        <div class="p-4 bg-white">
-                            <h3 class="text-lg font-bold text-gray-800">Voyage Sorgun</h3>
-                            <div class="flex items-center mt-1">
+                    <!-- Card 2 -->
+                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
+                        <div class="overflow-hidden rounded-t-lg">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB7cYBgsteFKcZGtCtwx8TszJfYOlE7C611w&s" 
+                                 alt="Voyage Sorgun" 
+                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Voyage Sorgun</h3>
+                            <div class="flex items-center">
                                 <span class="text-green-600 font-bold mr-2">4,8</span>
-                                <div class="flex">
-                                    <span class="text-green-500">★★★★★</span>
-                                    <span class="text-gray-400 text-sm">(10347)</span>
+                                <div class="flex items-center">
+                                    <span class="text-green-500 text-sm">★★★★★</span>
+                                    <span class="text-gray-400 text-sm ml-1">(10347)</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="navbar-link-destination flex-1 w-full rounded-lg relative">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSylxBVi11C6u3NRBjgIGWF4o_g5AJBJOCkZw&s" alt="Voyage Belek Golf & Spa" class="w-full h-72 object-cover">
-                        <div class="p-4 bg-white">
-                            <h3 class="text-lg font-bold text-gray-800">Voyage Belek Golf & Spa</h3>
-                            <div class="flex items-center mt-1">
+                    <!-- Card 3 -->
+                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
+                        <div class="overflow-hidden rounded-t-lg">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSylxBVi11C6u3NRBjgIGWF4o_g5AJBJOCkZw&s" 
+                                 alt="Voyage Belek Golf & Spa" 
+                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Voyage Belek Golf & Spa</h3>
+                            <div class="flex items-center">
                                 <span class="text-green-600 font-bold mr-2">4,8</span>
-                                <div class="flex">
-                                    <span class="text-green-500">★★★★★</span>
-                                    <span class="text-gray-400 text-sm">(15477)</span>
+                                <div class="flex items-center">
+                                    <span class="text-green-500 text-sm">★★★★★</span>
+                                    <span class="text-gray-400 text-sm ml-1">(15477)</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-
-
-
-         <section class="">
-            <div class="container mx-auto px-6">
-                <div class="justify-between md:px-14 py-8 container items-center flex">
-                <div>
-                    <h2 class="text-3xl md:text-3xl text-green-900 font-bold">Offres spéciales</h2>
-                    <p class="text-1xl md:text-2xl text-black font-semibold">Découvrez la sélection coup de coeur éyalane, qui réunis tout les établisseents recommandé par éyalane</p>
-                </div>
-               <h3 class="navbar-link-destination text-2xl md:text-2xl text-green-900 font-bold underline">Tout voir</h3> 
-            </div>
-                
-                <div class="flex flex-col md:flex-row gap-2 px-14">
-                    <div class="navbar-link-destination flex-1 w-full rounded-lg relative">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOeiBwqvk5Wp_OcTbovw9z7Ia0Wb5cZ12tCw&s" alt="Ikos Dassia" class="w-full h-72 object-cover">
-                        <div class="p-4 bg-white">
-                            <h3 class="text-lg font-bold text-gray-800">Ikos Dassia</h3>
-                            <div class="flex items-center mt-1">
-                                <span class="text-green-600 font-bold mr-2">4,9</span>
-                                <div class="flex">
-                                    <span class="text-green-500">★★★★★</span>
-                                    <span class="text-gray-400 text-sm">(4296)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="navbar-link-destination flex-1 w-full rounded-lg relativeg">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB7cYBgsteFKcZGtCtwx8TszJfYOlE7C611w&s" alt="Voyage Sorgun" class="w-full h-72 object-cover">
-                        <div class="p-4 bg-white">
-                            <h3 class="text-lg font-bold text-gray-800">Voyage Sorgun</h3>
-                            <div class="flex items-center mt-1">
-                                <span class="text-green-600 font-bold mr-2">4,8</span>
-                                <div class="flex">
-                                    <span class="text-green-500">★★★★★</span>
-                                    <span class="text-gray-400 text-sm">(10347)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="navbar-link-destination flex-1 w-full rounded-lg relative">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSylxBVi11C6u3NRBjgIGWF4o_g5AJBJOCkZw&s" alt="Voyage Belek Golf & Spa" class="w-full h-72 object-cover">
-                        <div class="p-4 bg-white">
-                            <h3 class="text-lg font-bold text-gray-800">Voyage Belek Golf & Spa</h3>
-                            <div class="flex items-center mt-1">
-                                <span class="text-green-600 font-bold mr-2">4,8</span>
-                                <div class="flex">
-                                    <span class="text-green-500">★★★★★</span>
-                                    <span class="text-gray-400 text-sm">(15477)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-
-         <section class="">
-            <div class="container mx-auto px-6">
-                <div class="justify-between md:px-14 py-8 container items-center flex">
-                    <div>
-                        <h2 class="text-3xl md:text-3xl text-green-900 font-bold">Vous aimerez sûrement</h2>
-                        <p class="text-1xl md:text-2xl text-black font-semibold">Découvrez la sélection coup de coeur éyalane, qui réunis tout les établisseents recommandé par éyalane</p>
-                    </div>
-                    <h3 class="navbar-link-destination text-2xl md:text-2xl text-green-900 font-bold underline">Tout voir</h3> 
-                </div>
-                
-                <div class="flex gap-2 overflow-x snap-x snap-mandatory py-1 md:px-14">
-                    <div class="navbar-link-destination flex-1 w-full rounded-lg relative">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOeiBwqvk5Wp_OcTbovw9z7Ia0Wb5cZ12tCw&s" alt="Ikos Dassia" class="w-full h-72 object-cover">
-                        <div class="p-4 bg-white">
-                            <h3 class="text-lg font-bold text-gray-800">Ikos Dassia</h3>
-                            <div class="flex items-center mt-1">
-                                <span class="text-green-600 font-bold mr-2">4,9</span>
-                                <div class="flex">
-                                    <span class="text-green-500">★★★★★</span>
-                                    <span class="text-gray-400 text-sm">(4296)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="navbar-link-destination flex-1 w-full rounded-lg relativeg">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB7cYBgsteFKcZGtCtwx8TszJfYOlE7C611w&s" alt="Voyage Sorgun" class="w-full h-72 object-cover">
-                        <div class="p-4 bg-white">
-                            <h3 class="text-lg font-bold text-gray-800">Voyage Sorgun</h3>
-                            <div class="flex items-center mt-1">
-                                <span class="text-green-600 font-bold mr-2">4,8</span>
-                                <div class="flex">
-                                    <span class="text-green-500">★★★★★</span>
-                                    <span class="text-gray-400 text-sm">(10347)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="navbar-link-destination flex-1 w-full rounded-lg relative">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSylxBVi11C6u3NRBjgIGWF4o_g5AJBJOCkZw&s" alt="Voyage Belek Golf & Spa" class="w-full h-72 object-cover">
-                        <div class="p-4 bg-white">
-                            <h3 class="text-lg font-bold text-gray-800">Voyage Belek Golf & Spa</h3>
-                            <div class="flex items-center mt-1">
-                                <span class="text-green-600 font-bold mr-2">4,8</span>
-                                <div class="flex">
-                                    <span class="text-green-500">★★★★★</span>
-                                    <span class="text-gray-400 text-sm">(15477)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
 
 
     <section class="">
         <div class="container mx-auto px-6">
-            <div class="justify-between md:px-14 py-8 container items-center flex">
-                <div>
-                    <h2 class="text-3xl md:text-3xl text-green-900 font-bold">Evènements à venir</h2>
-                    <p class="text-1xl md:text-2xl text-black font-semibold">Découvrez la sélection coup de coeur éyalane, qui réunis tout les établisseents recommandé par éyalane</p>
+            <!-- En-tête responsive -->
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center px-4 md:px-14 py-8 gap-4">
+                <div class="flex-1">
+                    <h2 class="text-2xl md:text-3xl text-green-900 font-bold mb-2">Offres spéciales</h2>
+                    <p class="text-sm md:text-lg lg:text-xl text-black font-semibold leading-relaxed">
+                        Découvrez la sélection coup de cœur éyalane, qui réunit tous les établissements recommandés par éyalane
+                    </p>
                 </div>
-                <h3 class="navbar-link-destination text-2xl md:text-2xl text-green-900 font-bold underline">Tout voir</h3> 
+                <div class="flex-shrink-0">
+                    <h3 class="navbar-link-destination text-lg md:text-2xl text-green-900 font-bold underline cursor-pointer hover:text-green-700 transition-colors">
+                        Tout voir
+                    </h3>
+                </div>
+            </div>
+            
+            <!-- Container avec scroll horizontal -->
+            <div class="px-4 md:px-14">
+                <div class="scroll-container flex gap-4 md:gap-6 overflow-x-auto pb-4">
+                    <!-- Card 1 -->
+                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
+                        <div class="overflow-hidden rounded-t-lg">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOeiBwqvk5Wp_OcTbovw9z7Ia0Wb5cZ12tCw&s" 
+                                 alt="Ikos Dassia" 
+                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Ikos Dassia</h3>
+                            <div class="flex items-center">
+                                <span class="text-green-600 font-bold mr-2">4,9</span>
+                                <div class="flex items-center">
+                                    <span class="text-green-500 text-sm">★★★★★</span>
+                                    <span class="text-gray-400 text-sm ml-1">(4296)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
+                        <div class="overflow-hidden rounded-t-lg">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB7cYBgsteFKcZGtCtwx8TszJfYOlE7C611w&s" 
+                                 alt="Voyage Sorgun" 
+                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Voyage Sorgun</h3>
+                            <div class="flex items-center">
+                                <span class="text-green-600 font-bold mr-2">4,8</span>
+                                <div class="flex items-center">
+                                    <span class="text-green-500 text-sm">★★★★★</span>
+                                    <span class="text-gray-400 text-sm ml-1">(10347)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
+                        <div class="overflow-hidden rounded-t-lg">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSylxBVi11C6u3NRBjgIGWF4o_g5AJBJOCkZw&s" 
+                                 alt="Voyage Belek Golf & Spa" 
+                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Voyage Belek Golf & Spa</h3>
+                            <div class="flex items-center">
+                                <span class="text-green-600 font-bold mr-2">4,8</span>
+                                <div class="flex items-center">
+                                    <span class="text-green-500 text-sm">★★★★★</span>
+                                    <span class="text-gray-400 text-sm ml-1">(15477)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="">
+        <div class="container mx-auto px-6">
+            <!-- En-tête responsive -->
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center px-4 md:px-14 py-8 gap-4">
+                <div class="flex-1">
+                    <h2 class="text-2xl md:text-3xl text-green-900 font-bold mb-2">Vous aimerez sûrement</h2>
+                    <p class="text-sm md:text-lg lg:text-xl text-black font-semibold leading-relaxed">
+                        Découvrez la sélection coup de cœur éyalane, qui réunit tous les établissements recommandés par éyalane
+                    </p>
+                </div>
+                <div class="flex-shrink-0">
+                    <h3 class="navbar-link-destination text-lg md:text-2xl text-green-900 font-bold underline cursor-pointer hover:text-green-700 transition-colors">
+                        Tout voir
+                    </h3>
+                </div>
+            </div>
+            
+            <!-- Container avec scroll horizontal -->
+            <div class="px-4 md:px-14">
+                <div class="scroll-container flex gap-4 md:gap-6 overflow-x-auto pb-4">
+                    <!-- Card 1 -->
+                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
+                        <div class="overflow-hidden rounded-t-lg">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOeiBwqvk5Wp_OcTbovw9z7Ia0Wb5cZ12tCw&s" 
+                                 alt="Ikos Dassia" 
+                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Ikos Dassia</h3>
+                            <div class="flex items-center">
+                                <span class="text-green-600 font-bold mr-2">4,9</span>
+                                <div class="flex items-center">
+                                    <span class="text-green-500 text-sm">★★★★★</span>
+                                    <span class="text-gray-400 text-sm ml-1">(4296)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
+                        <div class="overflow-hidden rounded-t-lg">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB7cYBgsteFKcZGtCtwx8TszJfYOlE7C611w&s" 
+                                 alt="Voyage Sorgun" 
+                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Voyage Sorgun</h3>
+                            <div class="flex items-center">
+                                <span class="text-green-600 font-bold mr-2">4,8</span>
+                                <div class="flex items-center">
+                                    <span class="text-green-500 text-sm">★★★★★</span>
+                                    <span class="text-gray-400 text-sm ml-1">(10347)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
+                        <div class="overflow-hidden rounded-t-lg">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSylxBVi11C6u3NRBjgIGWF4o_g5AJBJOCkZw&s" 
+                                 alt="Voyage Belek Golf & Spa" 
+                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Voyage Belek Golf & Spa</h3>
+                            <div class="flex items-center">
+                                <span class="text-green-600 font-bold mr-2">4,8</span>
+                                <div class="flex items-center">
+                                    <span class="text-green-500 text-sm">★★★★★</span>
+                                    <span class="text-gray-400 text-sm ml-1">(15477)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+     <section class="">
+        <div class="container mx-auto px-6">
+            <!-- En-tête responsive -->
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center px-4 md:px-14 py-8 gap-4">
+                <div class="flex-1">
+                    <h2 class="text-2xl md:text-3xl text-green-900 font-bold mb-2">Événements à venir</h2>
+                    <p class="text-sm md:text-lg lg:text-xl text-black font-semibold leading-relaxed">
+                        Découvrez la sélection coup de cœur éyalane, qui réunit tous les établissements recommandés par éyalane
+                    </p>
+                </div>
+                <div class="flex-shrink-0">
+                    <h3 class="navbar-link-destination text-lg md:text-2xl text-green-900 font-bold underline cursor-pointer hover:text-green-700 transition-colors">
+                        Tout voir
+                    </h3>
+                </div>
             </div>
 
-            <div class="flex gap-2 overflow-x snap-x snap-mandatory py-1 md:px-14">
-                <div class="flex-shrink-0 navbar-link-destination w-80 snap-center md:w-auto md:flex-1 p-6 border rounded-2xl flex items-center bg-white">
-                    <div class="w-2/5 rounded-xl overflow-hidden mr-4">
-                        <img src="https://ekladata.com/oQ4tP8guOYov6gu9iB2fDcYCUMo.png" alt="International Jazz Day" class="w-full h-full object-cover">
+            <!-- Container avec scroll horizontal -->
+            <div class="px-4 md:px-14">
+                <div class="events-scroll-container flex gap-2 md:gap-2 overflow-x-auto pb-4">
+                    <!-- Événement 1 -->
+                    <div class="event-card bg-white border border-gray-200 rounded-2xl cursor-pointer">
+                        <div class="navbar-link-destination event-card-padding flex items-center h-full">
+                            <div class="w-2/5 rounded-xl overflow-hidden mr-4 flex-shrink-0">
+                                <img src="https://ekladata.com/oQ4tP8guOYov6gu9iB2fDcYCUMo.png" 
+                                     alt="International Jazz Day" 
+                                     class="event-image w-full h-24 md:h-28 lg:h-32 object-cover">
+                            </div>
+                            <div class="w-3/5 flex-1 min-w-0">
+                                <h3 class="event-title text-green-700 font-bold mb-1 line-clamp-1">Concert</h3>
+                                <p class="font-bold text-gray-900 mb-1 text-sm md:text-base line-clamp-1">Mendjangs</p>
+                                <p class="text-gray-500 text-xs md:text-sm mb-1 line-clamp-1">Scène libre</p>
+                                <p class="text-gray-500 text-xs md:text-sm mb-1 line-clamp-1">Entrée libre</p>
+                                <p class="text-gray-500 text-xs md:text-sm mt-2 line-clamp-1">Avec le KGC band</p>
+                                <p class="text-green-700 text-xs md:text-sm font-medium mt-2 line-clamp-2">
+                                    Ifc de Yaoundé : 20 octobre 2024
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="w-3/5">
-                        <h3 class="text-green-700 text-2xl font-bold mb-1">Concert</h3>
-                        <p class="font-bold text-gray-900 mb-1">Mendjangs</p>
-                        <p class="text-gray-500 text-sm mb-1">Scène libre</p>
-                        <p class="text-gray-500 text-sm mb-1">Entrée libre</p>
-                        <p class="text-gray-500 text-sm mt-2">Avec le KGC band</p>
-                        <p class="text-green-700 text-sm">Ifc de Yaoundé : 20 octobre 2024</p>
-                    </div>
-                </div>
 
-                <div class="flex-shrink-0 navbar-link-destination w-80 snap-center md:w-auto md:flex-1 p-6 border rounded-2xl flex items-center bg-white">
-                    <div class="w-2/5 rounded-xl overflow-hidden mr-4">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq-S14nlnIjL9gVqB6_zwJ2DoPj61c_LYIXQ&s" alt="Festival de musique" class="w-full h-full object-cover">
+                    <!-- Événement 2 -->
+                    <div class="event-card navbar-link-destination bg-white border border-gray-200 rounded-2xl cursor-pointer">
+                        <div class="event-card-padding flex items-center h-full">
+                            <div class="w-2/5 rounded-xl overflow-hidden mr-4 flex-shrink-0">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq-S14nlnIjL9gVqB6_zwJ2DoPj61c_LYIXQ&s" 
+                                     alt="Festival de musique" 
+                                     class="event-image w-full h-24 md:h-28 lg:h-32 object-cover">
+                            </div>
+                            <div class="w-3/5 flex-1 min-w-0">
+                                <h3 class="event-title text-green-700 font-bold mb-1 line-clamp-1">Festival</h3>
+                                <p class="font-bold text-gray-900 mb-1 text-sm md:text-base line-clamp-1">Festival des Arts</p>
+                                <p class="text-gray-500 text-xs md:text-sm mb-1 line-clamp-1">Expositions</p>
+                                <p class="text-gray-500 text-xs md:text-sm mb-1 line-clamp-1">Concerts</p>
+                                <p class="text-gray-500 text-xs md:text-sm mt-2 line-clamp-1">Avec des artistes locaux</p>
+                                <p class="text-green-700 text-xs md:text-sm font-medium mt-2 line-clamp-2">
+                                    Place de l'indépendance : 15 novembre 2024
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="w-3/5">
-                        <h3 class="text-green-700 text-2xl font-bold mb-1">Festival</h3>
-                        <p class="font-bold text-gray-900 mb-1">Festival des Arts</p>
-                        <p class="text-gray-500 text-sm mb-1">Expositions</p>
-                        <p class="text-gray-500 text-sm mb-1">Concerts</p>
-                        <p class="text-gray-500 text-sm mt-2">Avec des artistes locaux</p>
-                        <p class="text-green-700 text-sm">Place de l'indépendance : 15 novembre 2024</p>
-                    </div>
-                </div>
 
-                <div class="flex-shrink-0 navbar-link-destination w-80 snap-center md:w-auto md:flex-1 p-6 border rounded-2xl flex items-center bg-white">
-                    <div class="w-2/5 rounded-xl overflow-hidden mr-4">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZVZH0d5ZaMtAOWI2nYa9n8Uw28w4P-_rlAw&s" alt="Marché artisanal" class="w-full h-full object-cover">
-                    </div>
-                    <div class="w-3/5">
-                        <h3 class="text-green-700 text-2xl font-bold mb-1">Marché</h3>
-                        <p class="font-bold text-gray-900 mb-1">Marché du Terroir</p>
-                        <p class="text-gray-500 text-sm mb-1">Produits locaux</p>
-                        <p class="text-gray-500 text-sm mb-1">Artisanat</p>
-                        <p class="text-gray-500 text-sm mt-2">Dégustations gratuites</p>
-                        <p class="text-green-700 text-sm">Marché central : 5 décembre 2024</p>
+                    <!-- Événement 3 -->
+                    <div class="event-card navbar-link-destination bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-lg cursor-pointer">
+                        <div class="event-card-padding flex items-center h-full">
+                            <div class="w-2/5 rounded-xl overflow-hidden mr-4 flex-shrink-0">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZVZH0d5ZaMtAOWI2nYa9n8Uw28w4P-_rlAw&s" 
+                                     alt="Marché artisanal" 
+                                     class="event-image w-full h-24 md:h-28 lg:h-32 object-cover">
+                            </div>
+                            <div class="w-3/5 flex-1 min-w-0">
+                                <h3 class="event-title text-green-700 font-bold mb-1 line-clamp-1">Marché</h3>
+                                <p class="font-bold text-gray-900 mb-1 text-sm md:text-base line-clamp-1">Marché du Terroir</p>
+                                <p class="text-gray-500 text-xs md:text-sm mb-1 line-clamp-1">Produits locaux</p>
+                                <p class="text-gray-500 text-xs md:text-sm mb-1 line-clamp-1">Artisanat</p>
+                                <p class="text-gray-500 text-xs md:text-sm mt-2 line-clamp-1">Dégustations gratuites</p>
+                                <p class="text-green-700 text-xs md:text-sm font-medium mt-2 line-clamp-2">
+                                    Marché central : 5 décembre 2024
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -843,12 +991,16 @@
 
 
         // Carousel d'images
+        // Carousel d'images moderne
         document.addEventListener("DOMContentLoaded", function() {
             let currentSlide = 0;
-            const track = document.querySelector('.carousel-track');
             const slides = document.querySelectorAll('.carousel-slide');
-            const slideWidth = slides[0].clientWidth;
             const indicatorsContainer = document.querySelector('.carousel-indicators-container');
+            const progressBar = document.querySelector('.carousel-progress-bar');
+            let autoSlideInterval;
+            let progressInterval;
+            const slideInterval = 6000; // 6 secondes
+            let isPaused = false;
 
             // 1. Crée les indicateurs
             function createIndicators() {
@@ -858,6 +1010,7 @@
                     if (index === 0) {
                         indicator.classList.add('active');
                     }
+                    indicator.addEventListener('click', () => goToSlide(index));
                     indicatorsContainer.appendChild(indicator);
                 });
             }
@@ -865,34 +1018,93 @@
             // 2. Met à jour l'indicateur actif
             function updateIndicators() {
                 const indicators = document.querySelectorAll('.carousel-indicator');
-                indicators.forEach(indicator => {
+                indicators.forEach((indicator, index) => {
                     indicator.classList.remove('active');
+                    if (index === currentSlide) {
+                        indicator.classList.add('active');
+                    }
                 });
-                indicators[currentSlide].classList.add('active');
             }
 
-            // 3. Fonction de défilement
+            // 3. Va à une slide spécifique
+            function goToSlide(index) {
+                // Retire la classe active de la slide actuelle
+                slides[currentSlide].classList.remove('active');
+                
+                currentSlide = index;
+                
+                // Active la nouvelle slide
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active', 'next', 'prev');
+                    if (i === currentSlide) {
+                        slide.classList.add('active');
+                    }
+                });
+                
+                updateIndicators();
+                resetProgress();
+            }
+
+            // 4. Slide suivante
             function nextSlide() {
-                currentSlide = (currentSlide + 1) % slides.length;
-                track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
-                updateIndicators(); 
+                const nextIndex = (currentSlide + 1) % slides.length;
+                goToSlide(nextIndex);
             }
 
-            // Lance le carrousel
+            // 5. Slide précédente  
+            function previousSlide() {
+                const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+                goToSlide(prevIndex);
+            }
+
+            // 6. Gestion de la barre de progression
+            function startProgress() {
+                progressBar.style.width = '0%';
+                progressBar.style.transition = `width ${slideInterval}ms linear`;
+                setTimeout(() => {
+                    if (!isPaused) {
+                        progressBar.style.width = '100%';
+                    }
+                }, 50);
+            }
+
+            function resetProgress() {
+                progressBar.style.transition = 'none';
+                progressBar.style.width = '0%';
+                setTimeout(startProgress, 50);
+            }
+
+            // 7. Auto-slide avec pause au hover
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(() => {
+                    if (!isPaused) {
+                        nextSlide();
+                    }
+                }, slideInterval);
+            }
+
+            // 8. Pause au hover
+            const carousel = document.querySelector('.hero-carousel');
+            carousel.addEventListener('mouseenter', () => {
+                isPaused = true;
+                progressBar.style.animationPlayState = 'paused';
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                isPaused = false;
+                progressBar.style.animationPlayState = 'running';
+                resetProgress();
+            });
+
+            // Initialisation
             createIndicators();
-            setInterval(nextSlide, 5000);
+            startProgress();
+            startAutoSlide();
+
+            // Fonctions globales pour les boutons de navigation
+            window.nextSlide = nextSlide;
+            window.previousSlide = previousSlide;
         });
-
-
-
-        // Fonction pour générer les avatars des followers
-        function generateFollowerAvatars(count) {
-            const avatars = [];
-            for (let i = 0; i < Math.min(count, 5); i++) {
-                avatars.push(`https://images.unsplash.com/photo-${1500000000000 + i * 1000000}?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80`);
-            }
-            return avatars;
-        }
 
 
 

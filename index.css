@@ -32,95 +32,294 @@
         .hero-carousel {
             position: relative;
             height: 85vh;
-            overflow: hidden; /* Masque les images qui sont hors de vue */
+            overflow: hidden;
             margin: 0px 25px 0px 25px;
-            border-radius: 10px;
+            border-radius: 20px;
         }
         
         .carousel-slide {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            transform: translateX(0);
-            transition: transform 2s ease-in-out;
             background-size: cover;
             background-position: center;
-            flex-shrink: 0; /* Empêche les images de rétrécir */
+            opacity: 0;
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: scale(1.05);
         }
         
         .carousel-slide.active {
             opacity: 1;
+            transform: scale(1);
+        }
+        
+        .carousel-slide.next {
+            opacity: 0;
+            transform: translateX(100%) scale(1.05);
+        }
+        
+        .carousel-slide.prev {
+            opacity: 0;
+            transform: translateX(-100%) scale(1.05);
         }
 
         .carousel-track {
-            display: flex;
-            width: 100%; /* 5 images * 100% par image */
+            width: 100%;
             height: 100%;
-            transition: transform 2s ease-in-out;
+            position: relative;
+        }
+
+        /* Overlay gradient pour améliorer la lisibilité */
+        .carousel-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 0, 0, 0.4) 0%,
+                rgba(0, 0, 0, 0.1) 50%,
+                rgba(0, 0, 0, 0.3) 100%
+            );
+            z-index: 1;
         }
 
         /* Styles pour le nom de la ville */
         .city-name-overlay {
             position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background-color: rgba(125, 128, 125, 0.5); /* Fond semi-transparent */
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        /* Styles pour les indicateurs */
-        .carousel-indicator {
-            width: 20px;
-            height: 4px;
-            background: #038b0a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 18px;
             font-weight: 600;
+            z-index: 2;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
+        .carousel-slide.active .city-name-overlay {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: 0.3s;
+        }
+
+        /* Styles pour les indicateurs modernes */
         .carousel-indicators-container {
             position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 30px;
+            right: 30px;
             display: flex;
-            gap: 5px;
+            gap: 12px;
+            z-index: 2;
+        }
+
+        .carousel-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-indicator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: white;
+            transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .carousel-indicator.active {
-            background-color: hsl(0, 0%, 100%); /* Couleur du trait vert pour l'image active */
+            background: white;
+            transform: scale(1.3);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
         }
-        
-         /* Styles de la barre de recherche */
+
+        .carousel-indicator:hover {
+            background: rgba(255, 255, 255, 0.7);
+            transform: scale(1.1);
+        }
+
+        /* Navigation arrows */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 3;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .carousel-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+            opacity: 1;
+        }
+
+        .carousel-nav.prev {
+            left: 30px;
+        }
+
+        .carousel-nav.next {
+            right: 30px;
+        }
+
+        /* Progress bar */
+        .carousel-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 2;
+            width: 100%;
+        }
+
+        .carousel-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #038b0a, #4ade80);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* Contenu central */
+        .absolute {
+            position: absolute;
+        }
+
+        .inset-0 {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-white {
+            color: white;
+        }
+
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .text-4xl {
+            font-size: 2.25rem;
+        }
+
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .text-orange-700 {
+            color: #c2410c;
+        }
+
+        /* Styles de la barre de recherche améliorée */
         .search-container {
             position: relative;
             max-width: 500px;
             margin: 0 auto;
+            z-index: 2;
         }
         
         .search-input {
             width: 100%;
-            padding: 1rem 1.5rem;
+            padding: 1.2rem 2rem;
             font-size: 1.1rem;
             border: none;
-            border-radius: 2rem;
+            border-radius: 50px;
             outline: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            color: #065f46;
         }
         
         .search-input:focus {
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-            transform: translateY(-2px);
-
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 1);
         }
+
+        .mt-8 {
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .text-4xl {
+                font-size: 4.5rem;
+            }
+        }
+
+        /* Animation de pause au hover */
+        .hero-carousel:hover .carousel-progress-bar {
+            animation-play-state: paused;
+        }
+
         
         /* Suggestions en overlay - CHANGEMENT PRINCIPAL ICI */
         .search-suggestions {
@@ -1046,7 +1245,7 @@ footer a:hover::before {
             text-decoration: none;
             color: #6b7280;
             padding: 8px 16px;
-            border-radius: 20px;
+            border-radius: 10px;
             background: #f3f4f6;
             white-space: nowrap;
             transition: all 0.3s ease;
@@ -1194,8 +1393,6 @@ footer a:hover::before {
                 background: white;
                 border-radius: 12px;
                 overflow: hidden;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
                 max-height: 500px;
             }
 
@@ -1252,5 +1449,143 @@ footer a:hover::before {
                 background: rgb(62, 210, 255);
 
             }
+
+
+
+
+            /* CSS pour le scroll de a partie A LA UNE */
+        .scroll-container {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* Internet Explorer 10+ */
+        }
+        
+        .scroll-container::-webkit-scrollbar {
+            display: none; /* Safari et Chrome */
+        }
+        
+        /* Amélioration du scroll tactile sur mobile */
+        .scroll-container {
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
+        
+        /* Largeur fixe pour les cartes pour maintenir la cohérence */
+        .card-item {
+            min-width: 280px;
+            max-width: 320px;
+            flex-shrink: 0;
+        }
+        
+        /* Responsive pour les cartes */
+        @media (max-width: 640px) {
+            .card-item {
+                min-width: 250px;
+                max-width: 280px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .card-item {
+                min-width: 300px;
+                max-width: 350px;
+            }
+        }
+        
+        /* Animation de hover pour les cartes */
+        .card-item {
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .card-item:hover {
+            transform: translateY(-4px);
+        }
+
+
+
+
+         /* Scroll horizontal personnalisé */
+        .events-scroll-container {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* Internet Explorer 10+ */
+        }
+        
+        .events-scroll-container::-webkit-scrollbar {
+            display: none; /* Safari et Chrome */
+        }
+        
+        /* Amélioration du scroll tactile */
+        .events-scroll-container {
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
+        
+        /* Largeurs responsives pour les cartes d'événements */
+        .event-card {
+            min-width: 320px;
+            max-width: 380px;
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 640px) {
+            .event-card {
+                min-width: 280px;
+                max-width: 320px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .event-card {
+                min-width: 350px;
+                max-width: 400px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .event-card {
+                min-width: 380px;
+                max-width: 420px;
+            }
+        }
+        
+        /* Animation hover pour les cartes d'événements */
+        .event-card {
+            transition: all 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-2px);
+ 
+        }
+        
+        /* Effet sur les images */
+        .event-image {
+            transition: transform 0.3s ease;
+        }
+        
+        .event-card:hover .event-image {
+            transform: scale(1.05);
+        }
+        
+        /* Responsive pour le texte du titre */
+        .event-title {
+            font-size: 1.25rem;
+        }
+        
+        @media (min-width: 768px) {
+            .event-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Padding responsive pour les cartes */
+        .event-card-padding {
+            padding: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .event-card-padding {
+                padding: 1.5rem;
+            }
+        }
 
            
