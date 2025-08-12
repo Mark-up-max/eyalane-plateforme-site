@@ -468,57 +468,144 @@
         }
         
         .cities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .fade-in {
-            animation: fadeInUp 0.6s ease;
-        }
-        
-        @media (max-width: 768px) {
-            
-            .cities-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .region-selector {
-                flex-direction: row;
-                align-items: center;
-            }
-            
-            .category-nav {
-                flex-direction: column;
-                align-items: center;
-            }
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
 
-            .hero-carousel {
-            margin-left: 0px;
-            margin-right: 0px;
-            height: 65vh;
-        }
-        }
-        .group:hover .group-hover\:opacity-100 {
-        opacity: 1 !important;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.6s ease;
+}
+
+@media (max-width: 768px) {
+    .cities-grid {
+        /* Transformation en défilement horizontal pour mobile */
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 1rem;
+        margin-top: 1rem;
+        padding: 0 1rem 1rem 1rem;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+    }
+    
+    .cities-grid > * {
+        /* Chaque carte devient flexible */
+        flex: 0 0 280px; /* largeur fixe pour les cartes */
+        scroll-snap-align: start;
+    }
+    
+    /* Style de la scrollbar pour mobile */
+    .cities-grid::-webkit-scrollbar {
+        height: 4px;
+    }
+    
+    .cities-grid::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 2px;
+        margin: 0 1rem;
+    }
+    
+    .cities-grid::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 2px;
+    }
+    
+    .cities-grid::-webkit-scrollbar-thumb:hover {
+        background: #a1a1a1;
+    }
+    
+    /* Indicateur visuel de défilement */
+    .cities-grid::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 20px;
+        width: 20px;
+        background: linear-gradient(to left, rgba(248,249,250,0.8), transparent);
+        pointer-events: none;
+        z-index: 1;
+    }
+    
+    /* Container parent pour gérer l'indicateur */
+    .cities-grid {
+        position: relative;
+    }
+    
+    .region-selector {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .category-nav {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .group:hover .group-hover\:visible {
-        visibility: visible !important;
+    .hero-carousel {
+        margin-left: 0px;
+        margin-right: 0px;
+        height: 65vh;
     }
+}
 
+/* Amélioration pour très petits écrans */
+@media (max-width: 480px) {
+    .cities-grid {
+        padding: 0 0.5rem 1rem 0.5rem;
+    }
+    
+    .cities-grid > * {
+        flex: 0 0 250px; /* cartes plus petites sur très petits écrans */
+    }
+}
+
+/* Styles pour améliorer l'expérience utilisateur */
+@media (max-width: 768px) {
+    /* Animation d'entrée modifiée pour le défilement horizontal */
+    @keyframes slideInFromRight {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    .cities-grid .fade-in {
+        animation: slideInFromRight 0.6s ease;
+    }
+    
+    /* Espacement entre les cartes optimisé */
+    .cities-grid {
+        gap: 0.75rem;
+    }
+}
+
+.group:hover .group-hover\:opacity-100 {
+    opacity: 1 !important;
+}
+
+.group:hover .group-hover\:visible {
+    visibility: visible !important;
+}
 
 
 
@@ -1590,3 +1677,4 @@ footer a:hover::before {
         }
 
            
+        
