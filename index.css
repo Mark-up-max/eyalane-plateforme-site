@@ -723,7 +723,7 @@ footer a:hover::before {
 }
 
 .carousel-btn:hover {
-    background: #0984e3;
+    background: green;
     color: white;
 }
 
@@ -735,7 +735,7 @@ footer a:hover::before {
 @media (max-width: 768px) {
     .kiosque-container {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1rem;
     }
     
     .kiosque-title {
@@ -751,6 +751,18 @@ footer a:hover::before {
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 1rem;
+    }
+
+    .kiosque-section {
+        width: 100%;
+        background: white;
+    }
+
+    .magazines-carousel {
+        position: relative;
+        height: 300px;
+        overflow: hidden;
     }
 }
 
