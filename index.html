@@ -250,7 +250,7 @@
             
             <!-- Container avec scroll horizontal -->
             <div class="px-4 md:px-14">
-                <div class="scroll-container flex gap-4 md:gap-4 overflow-x-auto pb-4">
+                <div class="scroll-container flex gap-2 md:gap-4 overflow-x-auto pb-4">
                     <!-- Card 1 -->
                     <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
                         <div class="overflow-hidden rounded-t-lg">
@@ -334,7 +334,7 @@
             
             <!-- Container avec scroll horizontal -->
             <div class="px-4 md:px-14">
-                <div class="scroll-container flex gap-4 md:gap-6 overflow-x-auto pb-4">
+                <div class="scroll-container flex gap-2 md:gap-4 overflow-x-auto pb-4">
                     <!-- Card 1 -->
                     <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
                         <div class="overflow-hidden rounded-t-lg">
@@ -418,7 +418,7 @@
             
             <!-- Container avec scroll horizontal -->
             <div class="px-4 md:px-14">
-                <div class="scroll-container flex gap-4 md:gap-6 overflow-x-auto pb-4">
+                <div class="scroll-container flex gap-2 md:gap-4 overflow-x-auto pb-4">
                     <!-- Card 1 -->
                     <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
                         <div class="overflow-hidden rounded-t-lg">
@@ -501,7 +501,7 @@
 
             <!-- Container avec scroll horizontal -->
             <div class="px-4 md:px-14">
-                <div class="navbar-link-destination events-scroll-container flex gap-2 md:gap-2 overflow-x-auto pb-4">
+                <div class="navbar-link-destination events-scroll-container flex gap-1 md:gap-2 overflow-x-auto pb-4">
                     <!-- Événement 1 -->
                     <div class="event-card navbar-link-destination bg-white border border-gray-200 rounded-2xl cursor-pointer">
                         <div class="event-card-padding flex items-center h-full">
@@ -590,50 +590,86 @@
 
 
      <!-- Section Événements -->
-    <section id="coupcoeur-section" class="mx-15">
-        <div class="event-background px-14">
-            <div class="justify-between md:px-14 py-8 container items-center flex">
-                <div>
-                    <h2 class="text-3xl md:text-3xl text-green-900 font-bold">Coup de coeur éyalane</h2>
-                    <p class="text-1xl md:text-2xl text-black font-semibold">Découvrez la sélection coup de coeur éyalane, qui réunis tout les établisseents recommandé par éyalane</p>
+    <section id="coupcoeur-section" class="px-4 sm:px-6 lg:px-8 py-8">
+        <div class="event-background">
+            <!-- Header Section -->
+            <div class="px-4 sm:px-6 lg:px-14 py-6 sm:py-8">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+                    <div class="flex-1">
+                        <h2 class="text-3xl lg:text-3xl text-green-900 font-bold mb-2 sm:mb-3">
+                            Coup de coeur éyalane
+                        </h2>
+                        <p class="text-lg lg:text-xl text-gray-700 font-medium leading-relaxed">
+                            Découvrez la sélection coup de coeur éyalane, qui réunit tous les établissements recommandés par éyalane
+                        </p>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <h3 class="navbar-link-destination text-lg sm:text-xl lg:text-2xl text-green-900 font-bold underline hover:text-green-700 transition-colors cursor-pointer">
+                            Tout voir
+                        </h3>
+                    </div>
                 </div>
-               <h3 class="navbar-link-destination text-2xl md:text-2xl text-green-900 font-bold underline">Tout voir</h3> 
             </div>
             
-            <div class="events-grid md:px-14">
-                <div class="navbar-link-destination">
-                    <div class="event-card">
-                        <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=400&h=200&fit=crop" alt="Festival" class="event-image">
-                        <div class="event-content">
-                            <span class="event-date-coeur">❤ Coup de coeur</span>
-                            <h3 class="event-title">Festival des Arts du Sud</h3>
-                            <p class="event-description">Célébration annuelle des traditions artistiques de la région avec danse, musique et artisanat local.</p>
+            <!-- Cards Grid -->
+            <div class="px-4 sm:px-6 lg:px-14 pb-6 sm:pb-8">
+                <div class="events-grid">
+                    <!-- Card 1 -->
+                    <div class="navbar-link-destination">
+                        <div class="event-card">
+                            <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=400&h=200&fit=crop" 
+                                 alt="Festival des Arts du Sud" 
+                                 class="event-image">
+                            <div class="event-content">
+                                <span class="event-date-coeur">❤ Coup de coeur</span>
+                                <h3 class="event-title">Festival des Arts du Sud</h3>
+                                <p class="event-description">
+                                    Célébration annuelle des traditions artistiques de la région avec danse, musique et artisanat local.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="navbar-link-destination">
+                        <div class="event-card">
+                            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=200&fit=crop" 
+                                 alt="Grand Marché du Terroir" 
+                                 class="event-image">
+                            <div class="event-content">
+                                <span class="event-date-coeur">❤ Coup de coeur</span>
+                                <h3 class="event-title">Grand Marché du Terroir</h3>
+                                <p class="event-description">
+                                    Découvrez les produits locaux et spécialités culinaires dans une ambiance festive au cœur de la ville.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3 -->
+                    <div class="navbar-link-destination">
+                        <div class="event-card">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop" 
+                                 alt="Concert au Bord du Nyong" 
+                                 class="event-image">
+                            <div class="event-content">
+                                <span class="event-date-coeur">❤ Coup de coeur</span>
+                                <h3 class="event-title">Concert au Bord du Nyong</h3>
+                                <p class="event-description">
+                                    Soirée musicale exceptionnelle avec des artistes locaux sur les rives du fleuve Nyong.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="navbar-link-destination">
-                    <div class="event-card">
-                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=200&fit=crop" alt="Marché" class="event-image">
-                        <div class="event-content">
-                            <span class="event-date-coeur">❤ Coup de coeur</span>
-                            <h3 class="event-title">Grand Marché du Terroir</h3>
-                            <p class="event-description">Découvrez les produits locaux et spécialités culinaires dans une ambiance festive au cœur.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="navbar-link-destination">
-                    <div class="event-card">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop" alt="Concert" class="event-image">
-                        <div class="event-content">
-                            <span class="event-date-coeur">❤ Coup de coeur</span>
-                            <h3 class="event-title">Concert au Bord du Nyong</h3>
-                            <p class="event-description">Soirée musicale exceptionnelle avec des artistes locaux sur les rives du fleuve Nyong.</p>
-                        </div>
-                    </div>
+                
+                <!-- Indicateur de défilement pour mobile -->
+                <div class="scroll-indicator sm:hidden">
+                    ← Faites glisser pour voir plus →
                 </div>
             </div>
         </div>
-    </section>       
+    </section>    
 
     
 
