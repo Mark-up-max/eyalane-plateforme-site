@@ -751,7 +751,6 @@ footer a:hover::before {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 0.5rem;
     }
 }
 
@@ -761,10 +760,9 @@ footer a:hover::before {
 
     /* Section Newsletter */
 .newsletter-section {
-    width: 80%;
-    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+    width: 100%;
+    background: linear-gradient(135deg, rgb(255, 255, 255) 10%, rgb(239, 241, 239) 100%);
     padding: 3rem 2rem;
-    margin: 0rem 10% 3rem 10%;
     border-radius: 12px;
     position: relative;
     overflow: hidden;
@@ -786,10 +784,11 @@ footer a:hover::before {
 
 .newsletter-title {
     font-size: 2rem;
-    font-weight: 800;
+    font-weight: 500;
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: black;
 }
 
 .newsletter-description {
@@ -797,12 +796,14 @@ footer a:hover::before {
     line-height: 1.5;
     opacity: 0.95;
     margin-bottom: 0;
+    color: black;
 }
 
 .newsletter-form {
     display: flex;
     gap: 0;
     max-width: 400px;
+    border: green;
 }
 
 .newsletter-input {
@@ -978,8 +979,8 @@ footer a:hover::before {
     }
 
     .newsletter-section {
-        width: 80%;
-        background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        width: 100%;
+        background: linear-gradient(135deg, rgb(255, 255, 255) 10%, rgb(239, 241, 239) 100%);
         border-radius: 12px;
         position: relative;
         overflow: hidden;
