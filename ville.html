@@ -208,18 +208,23 @@
         <div class="flex items-center justify-between">
             <h2 class="text-3xl text-green-900 font-bold mb-2">Explorez Sangmélima</h2>
         </div>
-        <p class="text-lg lg:text-xl text-black font-semibold pb-4 md:pb-8">
-            Bienvenue à Sangmélima, le joyau du Sud Cameroun ! Connue pour ses paysages verdoyants, sa culture vibrante et l'hospitalité de ses habitants, Sangmélima est une invitation à la découverte. Laissez-vous charmer par les rives paisibles du Nyong, l'effervescence de ses marchés colorés et la richesse de son patrimoine. Que vous soyez en quête d'aventure, de détente ou d'immersion culturelle, Sangmélima a tant à offrir.
-        </p>
-        <p class="">
-            <a href="#" class="navbar-link text-lg md:text-xl leading-relaxed">Comment venir à Sangmélima ?</a>
+        <div class="text-container">
+            <p class="text-lg lg:text-xl text-black font-semibold clamp-4" id="text-to-clamp">
+                Bienvenue à Sangmélima, le joyau du Sud Cameroun ! Connue pour ses paysages verdoyants, sa culture vibrante et l'hospitalité de ses habitants, Sangmélima est une invitation à la découverte. Laissez-vous charmer par les rives paisibles du Nyong, l'effervescence de ses marchés colorés et la richesse de son patrimoine. Que vous soyez en quête d'aventure, de détente ou d'immersion culturelle, Sangmélima a tant à offrir. Bienvenue à Sangmélima, le joyau du Sud Cameroun ! Connue pour ses paysages verdoyants, sa culture vibrante et l'hospitalité de ses habitants, Sangmélima est une invitation à la découverte. Laissez-vous charmer par les rives paisibles du Nyong, l'effervescence de ses marchés colorés et la richesse de son patrimoine. Que vous soyez en quête d'aventure, de détente ou d'immersion culturelle, Sangmélima a tant à offrir.
+            </p>
+            <button id="show-more-btn" class="text-green-800 underline font-semibold focus:outline-none pb-4 md:pb-8">
+                Afficher plus
+            </button>
+        </div>
+        <p>
+            <a href="#" id="google-maps-link" class="navbar-link text-lg md:text-xl leading-relaxed">Comment venir à Sangmélima ?</a>
         </p>
     </section>
 
 
 
      <!-- Section Événements -->
-    <section id="histoire" class="events-agenda-section mx-auto md:px-0 px-4 explore-sangmelima-section py-6">
+    <section id="histoire" class="events-agenda-sectione mx-auto md:px-0 px-4 explore-sangmelima-section py-6">
         <!-- Agenda -->
         <div class="flex-1">
             <h2 class="text-3xl text-green-900 font-bold mb-2">Les grandes dates de la ville de Sangmélima</h2>
@@ -1256,7 +1261,6 @@
         mobileMenu.style.display = 'none';
         mobileMenu.innerHTML = `
             <div class="p-4 max-h-96 overflow-y-auto">
-                
                 <!-- Menu Explorer mobile avec sous-menus -->
                 <div class="mb-4">
                     <button class="navbar-link mobile-dropdown-trigger w-full flex justify-between items-center py-2 px-3 text-green-700 hover:text-gray-600 font-semibold" type="button">
@@ -1979,6 +1983,53 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
+</script>
+
+
+<script>
+    // fonction pour afficher plus de texte
+    document.addEventListener('DOMContentLoaded', () => {
+        const textElement = document.getElementById('text-to-clamp');
+        const showMoreBtn = document.getElementById('show-more-btn');
+        const googleMapsLink = document.getElementById('google-maps-link');
+        const destination = 'Yaounde, Cameroun';
+
+        // Fonctionnalité "Plus" / "Moins"
+        showMoreBtn.addEventListener('click', () => {
+            textElement.classList.toggle('clamp-4');
+            if (textElement.classList.contains('clamp-4')) {
+                showMoreBtn.textContent = 'Afficher plus';
+            } else {
+                showMoreBtn.textContent = 'Afficher moins';
+            }
+        });
+
+        // Fonctionnalité Google Maps
+        googleMapsLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+                        const googleMapsUrl = `https://www.google.com/maps/dir/${lat},${lng}/${destination}`;
+                        window.open(googleMapsUrl, '_blank');
+                    },
+                    (error) => {
+                        console.error("Erreur de géolocalisation:", error);
+                        alert("Impossible d'obtenir votre position. Redirection vers un itinéraire vers Yaoundé.");
+                        const fallbackUrl = `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
+                        window.open(fallbackUrl, '_blank');
+                    }
+                );
+            } else {
+                alert("Votre navigateur ne supporte pas la géolocalisation. Redirection vers un itinéraire vers Yaoundé.");
+                const fallbackUrl = `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
+                window.open(fallbackUrl, '_blank');
+            }
+        });
+    });
 </script>
 </body>
 </html>

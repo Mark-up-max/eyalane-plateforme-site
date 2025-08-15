@@ -1840,41 +1840,8 @@ footer a:hover::before {
 
 
         /* Styles pour les sections événements et agenda PAGE VILLE.HTML*/
-            .events-agenda-section {
+            .events-agenda-sectione {
                 max-width: 1200px;
-            }
-
-            .section-title {
-                font-size: 2rem;
-                font-weight: 700;
-                color: #1a4d2e;
-                margin-bottom: 1.5rem;
-            }
-
-            .events-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                gap: 1.5rem;
-                margin-bottom: 2rem;
-            }
-
-            .event-card {
-                background: white;
-                border-radius: 1rem;
-                overflow: hidden;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-
-            .event-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
-            }
-
-            .event-image {
-                width: 100%;
-                height: 200px;
-                object-fit: cover;
             }
 
             .event-content {
@@ -1890,29 +1857,6 @@ footer a:hover::before {
                 font-weight: 600;
                 display: inline-block;
                 margin-bottom: 1rem;
-            }
-
-            .event-date-coeur {
-                background-color: #df4721;
-                color: white;
-                padding: 0.5rem 1rem;
-                border-radius: 9999px;
-                font-size: 0.875rem;
-                font-weight: 600;
-                display: inline-block;
-                margin-bottom: 1rem;
-            }
-
-            .event-title {
-                font-size: 1.25rem;
-                font-weight: 600;
-                color: #333;
-                margin-bottom: 0.5rem;
-            }
-
-            .event-description {
-                color: #666;
-                line-height: 1.6;
             }
 
             .agenda-container {
@@ -1962,4 +1906,13 @@ footer a:hover::before {
             .agenda-event-time {
                 font-size: 0.875rem;
                 color: #666;
+            }
+
+
+
+            .clamp-4 {
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
             }
