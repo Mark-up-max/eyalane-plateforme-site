@@ -1784,4 +1784,182 @@ footer a:hover::before {
             background: linear-gradient(90deg, #f8fafc 0%, #e2e8f0 100%);
             padding-left: 1.5rem;
         }
+
+
+
+
+        /* Styles pour la section "Explorez Sangmélima" de LA PAGE VILLE.HTML*/
+        .explore-sangmelima-section {
+            max-width: 1200px;
+        }
+
+        .explore-sangmelima-section h2 {
+            color: #1a4d2e; /* Couleur verte foncée comme dans l'image */
+            font-size: 2rem; /* Grande taille de texte */
+            font-weight: 700;
+            display: inline-block; /* Permet au bouton "Enregistrer" de s'aligner */
+        }
+
+        .save-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.5rem;
+            border: 1px solid #1a4d2e; /* Bordure verte foncée */
+            border-radius: 9999px; /* Forme pilule */
+            color: #1a4d2e;
+            font-weight: 500;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .save-button:hover {
+            background-color: #1a4d2e;
+            color: #ffffff;
+        }
+
+        .save-button svg {
+            margin-right: 0.2rem;
+        }
+
+        .explore-sangmelima-section p {
+            color: #555;
+        }
+
+        .explore-sangmelima-section .read-more-link {
+            color: #1a4d2e; /* Couleur verte foncée */
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .explore-sangmelima-section .read-more-link:hover {
+            text-decoration: underline;
+        }
+
         
+
+
+        /* Styles pour les sections événements et agenda PAGE VILLE.HTML*/
+            .events-agenda-section {
+                max-width: 1200px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                font-weight: 700;
+                color: #1a4d2e;
+                margin-bottom: 1.5rem;
+            }
+
+            .events-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .event-card {
+                background: white;
+                border-radius: 1rem;
+                overflow: hidden;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .event-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+            }
+
+            .event-image {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+
+            .event-content {
+                padding: 1.5rem;
+            }
+
+            .event-date {
+                background-color: #1a4d2e;
+                color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 9999px;
+                font-size: 0.875rem;
+                font-weight: 600;
+                display: inline-block;
+                margin-bottom: 1rem;
+            }
+
+            .event-date-coeur {
+                background-color: #df4721;
+                color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 9999px;
+                font-size: 0.875rem;
+                font-weight: 600;
+                display: inline-block;
+                margin-bottom: 1rem;
+            }
+
+            .event-title {
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: #333;
+                margin-bottom: 0.5rem;
+            }
+
+            .event-description {
+                color: #666;
+                line-height: 1.6;
+            }
+
+            .agenda-container {
+                background: white;
+                border-radius: 1rem;
+                
+            }
+
+            .agenda-item {
+                display: flex;
+                padding: 1rem 0;
+                border-bottom: 1px solid #e5e7eb;
+            }
+
+            .agenda-item:last-child {
+                border-bottom: none;
+            }
+
+            .agenda-date {
+                min-width: 80px;
+                text-align: center;
+                margin-right: 1.5rem;
+            }
+
+            .agenda-day {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #1a4d2e;
+            }
+
+            .agenda-month {
+                font-size: 0.875rem;
+                color: #666;
+                text-transform: uppercase;
+            }
+
+            .agenda-content {
+                flex: 1;
+            }
+
+            .agenda-event-title {
+                font-weight: 600;
+                color: #333;
+                margin-bottom: 0.25rem;
+            }
+
+            .agenda-event-time {
+                font-size: 0.875rem;
+                color: #666;
+            }

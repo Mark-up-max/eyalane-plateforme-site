@@ -18,35 +18,6 @@
                 <span class="text-3xl md:text-4xl text-green-800 font-bold">éyalane explorer</span>
             </div>
 
-            <!-- Menu principal -->
-            <div class="regions-navigation">
-                <!-- Bouton de scroll gauche (externe) -->
-                <button class="scroll-btn" id="scroll-left" title="Défiler vers la gauche">
-                    ‹
-                </button>
-                
-                <!-- Conteneur de scroll -->
-                <div class="regions-scroll-container">
-                    <div class="regions-scroll" id="regions-scroll">
-                        <a href="#" class="navbar-link region-link active" data-region="Sud">Sud</a>
-                        <a href="#" class="navbar-link region-link" data-region="Nord">Nord</a>
-                        <a href="#" class="navbar-link region-link" data-region="Est">Est</a>
-                        <a href="#" class="navbar-link region-link" data-region="Ouest">Ouest</a>
-                        <a href="#" class="navbar-link region-link" data-region="Adamaoua">Adamaoua</a>
-                        <a href="#" class="navbar-link region-link" data-region="Nord-Ouest">Nord-Ouest</a>
-                        <a href="#" class="navbar-link region-link" data-region="Sud-Ouest">Sud-Ouest</a>
-                        <a href="#" class="navbar-link region-link" data-region="Littoral">Littoral</a>
-                        <a href="#" class="navbar-link region-link" data-region="Centre">Centre</a>
-                        <a href="#" class="navbar-link region-link" data-region="Extrême-Nord">Extrême-Nord</a>
-                    </div>
-                </div>
-                
-                <!-- Bouton de scroll droite (externe) -->
-                <button class="scroll-btn" id="scroll-right" title="Défiler vers la droite">
-                    ›
-                </button>
-            </div>
-
             <div class="hidden md:flex items-center space-x-6">
                 <!-- Menu Explorer avec dropdown -->
                 <div class="relative dropdown-container">
@@ -95,26 +66,43 @@
 
 
     <section class="md:py-6 py-4">
-        <div class="container mx-auto px-6">
+        <div class="page-navigation-tabs container mx-auto px-6">
             <nav class="flex items-center gap-6 md:gap-8 overflow-x-auto whitespace-nowrap border-b border-gray-300">
-                <a href="#" class="text-green-800 font-bold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-green-800">
+                <div class="bg-white flex">
+                    <svg class="w-5 h-1O text-green-800" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <a href="#apropos" class="text-green-800 font-bold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-green-800">
+                        Sangmélima
+                    </a>
+                </div>
+
+                <a href="#histoire" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
+                    Histoire
+                </a>
+
+                <a href="#alaune" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
+                    A la une
+                </a>
+
+                <a href="#restaurants" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
                     Gastronomie
                 </a>
                 
-                <a href="#" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
+                <a href="#activites" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
                     Activités
                 </a>
                 
-                <a href="#" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
+                <a href="#hotels" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
                     Immobilier
                 </a>
                 
-                <a href="#" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
+                <a href="#evenements" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
                     Evènementiels
                 </a>
                 
-                <a href="#" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
-                    Blog
+                <a href="#coupcoeur-section" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
+                    Coup de coeur
                 </a>
             </nav>
         </div>
@@ -123,8 +111,8 @@
 
 
     <!-- Hero Section avec Carousel -->
-    <section class="hero-carousel mb-6 md:mb-16">
-        <div class="carousel-track"> 
+    <section class="hero-carousel mb-6">
+        <div class="carousel-track">
             <div class="carousel-slide active" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s');">
                 <div class="city-name-overlay">Gastronomie</div>
             </div>
@@ -153,10 +141,8 @@
         <div class="absolute inset-0 flex items-center justify-center">
             <div class="text-center text-white px-6">
                 <h1 class="text-4xl mb-8 fade-in">
-                    Trouvez le
-                    <span class="text-green-700 font-bold">bon endroit</span>
-                     , au 
-                     <span class="text-orange-700 font-bold">bon moment</span>
+                    La belle dans 
+                    <span class="text-orange-700 font-bold">tout ses états</span>
                 </h1>
                 
                 <!-- Barre de recherche -->
@@ -164,7 +150,7 @@
                     <input 
                         type="text" 
                         id="search-input" 
-                        placeholder="Rechercher une ville..." 
+                        placeholder="Rechercher un restaurant, hôtel, activité..." 
                         class="search-input"
                         autocomplete="on"
                     >
@@ -173,22 +159,6 @@
             </div>
         </div>
     </section>
-
-
-    <!-- Section des régions et villes -->
-    <section id="cities-section" class="mb-6 mx-auto md:mb-20 bg-white z-30">
-        <div class="container mx-auto md:px-6">
-            <h2 class="text-3xl md:text-4xl text-center mb-auto text-green-700 font-bold">
-                Découvrir par ville
-            </h2>
-            
-            <!-- Grille des villes -->
-            <div id="cities-grid" class="cities-grid items-center md:px-0 px-2">
-                <!-- Les villes seront chargées dynamiquement -->
-            </div>
-        </div>
-    </section>
-
 
 <!--
     <section class="mb-16 md:mb-20">
@@ -232,8 +202,72 @@
 
 
 
+
+    <!-- Nouvelle Section "Explorez Sangmélima" -->
+    <section id="apropos" class="mx-auto md:px-0 px-4 explore-sangmelima-section py-6">
+        <div class="flex items-center justify-between">
+            <h2 class="text-3xl text-green-900 font-bold mb-2">Explorez Sangmélima</h2>
+        </div>
+        <p class="text-lg lg:text-xl text-black font-semibold pb-4 md:pb-8">
+            Bienvenue à Sangmélima, le joyau du Sud Cameroun ! Connue pour ses paysages verdoyants, sa culture vibrante et l'hospitalité de ses habitants, Sangmélima est une invitation à la découverte. Laissez-vous charmer par les rives paisibles du Nyong, l'effervescence de ses marchés colorés et la richesse de son patrimoine. Que vous soyez en quête d'aventure, de détente ou d'immersion culturelle, Sangmélima a tant à offrir.
+        </p>
+        <p class="">
+            <a href="#" class="navbar-link text-lg md:text-xl leading-relaxed">Comment venir à Sangmélima ?</a>
+        </p>
+    </section>
+
+
+
+     <!-- Section Événements -->
+    <section id="histoire" class="events-agenda-section mx-auto md:px-0 px-4 explore-sangmelima-section py-6">
+        <!-- Agenda -->
+        <div class="flex-1">
+            <h2 class="text-3xl text-green-900 font-bold mb-2">Les grandes dates de la ville de Sangmélima</h2>
+            <p class="text-lg lg:text-xl text-black font-semibold leading-relaxed">
+                Découvrez la ville de Sangmélima au travers des dates les plus marquantes de son histoire.
+            </p>
+        </div>
+        <div class="agenda-container">
+            <div class="agenda-item">
+                <div class="agenda-date">
+                    <div class="agenda-day">19</div>
+                    <div class="agenda-month">Juil</div>
+                </div>
+                <div class="agenda-content">
+                    <div class="agenda-event-title">Tournoi de Football Local</div>
+                    <div class="agenda-event-time">15h30 - Stade Municipal</div>
+                </div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-date">
+                    <div class="agenda-day">20</div>
+                    <div class="agenda-month">Juil</div>
+                </div>
+                <div class="agenda-content">
+                    <div class="agenda-event-title">Marché Hebdomadaire</div>
+                    <div class="agenda-event-time">06h00 - 18h00 - Centre-ville</div>
+                </div>
+            </div>
+            <div class="agenda-item mb-6">
+                <div class="agenda-date">
+                    <div class="agenda-day">21</div>
+                    <div class="agenda-month">Juil</div>
+                </div>
+                <div class="agenda-content">
+                    <div class="agenda-event-title">Réunion Conseil Municipal</div>
+                    <div class="agenda-event-time">10h00 - Hôtel de Ville</div>
+                </div>
+            </div>
+            <p class="">
+                <a href="#" class="navbar-link text-lg md:text-xl leading-relaxed">Voir toutes les dates</a>
+            </p>
+        </div>
+    </section>
+
+
+
     <!-- Section publicitaire -->
-    <div class="bg-white mb-6 md:mb-20">
+    <div class="bg-white md:py-14">
         <div class="container mx-auto px-6">
             <div class="flex justify-center">
                 <div class="w-full">
@@ -251,12 +285,12 @@
 
 
 
-     <section class="mx-auto mb-6">
+     <section id="alaune" class="mx-auto py-6">
         <div class="container md:px-6">
             <!-- En-tête responsive -->
             <div class="flex flex-col md:flex-row md:justify-between md:items-center px-4 md:px-14 gap-4 mb-4">
                 <div class="flex-1">
-                    <h2 class="text-3xl text-green-900 font-bold mb-2">A la une</h2>
+                    <h2 class="text-3xl text-green-900 font-bold mb-2">A la une à Sangmélima</h2>
                     <p class="text-lg lg:text-xl text-black font-semibold leading-relaxed">
                         Découvrez la sélection coup de cœur éyalane, qui réunit tous les établissements recommandés par éyalane, inclant vos villes et vos endroits préférés.
                     </p>
@@ -335,12 +369,12 @@
 
 
 
-    <section class="mx-auto mb-6">
+    <section id="restaurants" class="mx-auto py-6">
         <div class="container md:px-6">
             <!-- En-tête responsive -->
             <div class="flex flex-col md:flex-row md:justify-between md:items-center px-4 md:px-14 gap-4 mb-4">
                 <div class="flex-1">
-                    <h2 class="text-3xl text-green-900 font-bold mb-2">Offres spéciales</h2>
+                    <h2 class="text-3xl text-green-900 font-bold mb-2">Où manger ?</h2>
                     <p class="text-lg lg:text-xl text-black font-semibold leading-relaxed">
                         Découvrez la sélection coup de cœur éyalane, qui réunit tous les établissements recommandés par éyalane
                     </p>
@@ -419,12 +453,12 @@
 
 
 
-    <section class="mx-auto mb-6">
+    <section id="hotels" class="mx-auto py-6">
         <div class="container md:px-6">
             <!-- En-tête responsive -->
             <div class="flex flex-col md:flex-row md:justify-between md:items-center px-4 md:px-14 gap-4 mb-4">
                 <div class="flex-1">
-                    <h2 class="text-3xl text-green-900 font-bold mb-2">Vous aimerez sûrement</h2>
+                    <h2 class="text-3xl text-green-900 font-bold mb-2">Où dormir ?</h2>
                     <p class="text-lg lg:text-xl text-black font-semibold leading-relaxed">
                         Découvrez la sélection coup de cœur éyalane, qui réunit tous les établissements recommandés par éyalane et tout les membres de sa magnifique communauté
                     </p>
@@ -502,12 +536,95 @@
 
 
 
-     <section class="mb-6 md:mb-20 mx-auto items-center">
+    <section id="activites" class="mx-auto py-6">
         <div class="container md:px-6">
             <!-- En-tête responsive -->
             <div class="flex flex-col md:flex-row md:justify-between md:items-center px-4 md:px-14 gap-4 mb-4">
                 <div class="flex-1">
-                    <h2 class="text-3xl text-green-900 font-bold mb-2">Événements à venir</h2>
+                    <h2 class="text-3xl text-green-900 font-bold mb-2">Où se divertir ?</h2>
+                    <p class="text-lg lg:text-xl text-black font-semibold leading-relaxed">
+                        Découvrez la sélection coup de cœur éyalane, qui réunit tous les établissements recommandés par éyalane et tout les membres de sa magnifique communauté
+                    </p>
+                </div>
+                <div class="flex-shrink-0">
+                    <h3 class="navbar-link-destination text-lg md:text-2xl text-green-900 font-bold underline cursor-pointer hover:text-green-700 transition-colors">
+                        Tout voir
+                    </h3>
+                </div>
+            </div>
+            
+            <!-- Container avec scroll horizontal -->
+            <div class="px-4 md:px-14">
+                <div class="scroll-container flex gap-2 md:gap-4 overflow-x-auto pb-4">
+                    <!-- Card 1 -->
+                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
+                        <div class="overflow-hidden rounded-t-lg">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOeiBwqvk5Wp_OcTbovw9z7Ia0Wb5cZ12tCw&s" 
+                                 alt="Ikos Dassia" 
+                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Ikos Dassia</h3>
+                            <div class="flex items-center">
+                                <span class="text-green-600 font-bold mr-2">4,9</span>
+                                <div class="flex items-center">
+                                    <span class="text-green-500 text-sm">★★★★★</span>
+                                    <span class="text-gray-400 text-sm ml-1">(4296)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
+                        <div class="overflow-hidden rounded-t-lg">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB7cYBgsteFKcZGtCtwx8TszJfYOlE7C611w&s" 
+                                 alt="Voyage Sorgun" 
+                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Voyage Sorgun</h3>
+                            <div class="flex items-center">
+                                <span class="text-green-600 font-bold mr-2">4,8</span>
+                                <div class="flex items-center">
+                                    <span class="text-green-500 text-sm">★★★★★</span>
+                                    <span class="text-gray-400 text-sm ml-1">(10347)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
+                        <div class="overflow-hidden rounded-t-lg">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSylxBVi11C6u3NRBjgIGWF4o_g5AJBJOCkZw&s" 
+                                 alt="Voyage Belek Golf & Spa" 
+                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Voyage Belek Golf & Spa</h3>
+                            <div class="flex items-center">
+                                <span class="text-green-600 font-bold mr-2">4,8</span>
+                                <div class="flex items-center">
+                                    <span class="text-green-500 text-sm">★★★★★</span>
+                                    <span class="text-gray-400 text-sm ml-1">(15477)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+     <section id="evenements" class="py-6 mx-auto items-center">
+        <div class="container md:px-6">
+            <!-- En-tête responsive -->
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center px-4 md:px-14 gap-4 mb-4">
+                <div class="flex-1">
+                    <h2 class="text-3xl text-green-900 font-bold mb-2">Événements à venir à Sangmélima</h2>
                     <p class="text-lg lg:text-xl text-black font-semibold leading-relaxed">
                         Découvrez la sélection coup de cœur éyalane, qui réunit tous les établissements recommandés par éyalane et ses consultants avisés
                     </p>
@@ -592,7 +709,7 @@
 
 
     <!-- Section publicitaire -->
-    <div class="bg-white mb-6 md:mb-20">
+    <div class="bg-white py-6 md:py-14">
         <div class="container mx-auto px-6">
             <div class="flex justify-center">
                 <div class="w-full">
@@ -610,7 +727,7 @@
 
 
      <!-- Section Événements -->
-    <section id="coupcoeur-section" class="mx-auto sm:mx-4 lg:mx-4 mb-6 md:mb-20">
+    <section id="coupcoeur-section" class="mx-auto sm:mx-4 lg:mx-4 py-6">
         <div class="event-background">
             <!-- Header Section -->
             <div class="px-4 sm:px-6 lg:px-14 py-6 sm:py-8">
@@ -690,120 +807,6 @@
             </div>
         </div>
     </section>    
-
-    
-
-    <!-- Section LE KIOSQUE -->
-    <section class="kiosque-section py-0">
-        <div class="kiosque-container">
-            <div class="kiosque-left">
-                <h2 class="kiosque-title">LE KIOSQUE</h2>
-                <p class="kiosque-description">
-                    Téléchargez ici tout les numéros du magasine éyalane en version pdf pour une découverte hors ligne de vos villes préférées.
-                </p>
-                <a href="#" class="navbar-link kiosque-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.16.21 2.34.21 3.5 0 5.16-1 9-5.45 9-11V7l-10-5z"/>
-                    </svg>
-                    C'est quoi le magasine éyalane ?
-                </a>
-            </div>
-            
-            <div class="magazines-carousel">
-                <div class="magazines-track" id="magazines-track">
-                    <div class="magazine-card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7lLdE4ZjqRAwTXVpSk59qtmSHL15Zx-K9oc5Vmd272mwlxz_Hi7fNwZfjVYqjNgBx5Ek&usqp=CAU" 
-                            alt="Magazine EYALANE" class="magazine-cover">
-                        <div class="magazine-overlay">
-                            <div class="magazine-title">Sangmélima</div>
-                            <div class="magazine-date">Janvier 2025</div>
-                        </div>
-                    </div>
-                    
-                    <div class="magazine-card">
-                        <img src="https://cover.viapresse.com/3332/0/200" 
-                            alt="L'Agglo Solidaire" class="magazine-cover">
-                        <div class="magazine-overlay">
-                            <div class="magazine-title">Yaoundé</div>
-                            <div class="magazine-date">Décembre 2024</div>
-                        </div>
-                    </div>
-                    
-                    <div class="magazine-card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1CEjf_S2UNkMsaC_kB0EtvFSAW2NWqqS8pA&s" 
-                            alt="Guide Pratique" class="magazine-cover">
-                        <div class="magazine-overlay">
-                            <div class="magazine-title">Douala</div>
-                            <div class="magazine-date">Novembre 2024</div>
-                        </div>
-                    </div>
-                    
-                    <div class="magazine-card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI2gFaQSLDHthibxvrmaTuL_Q8cZn8DWTi5Sbrck8cmfU5jexte_Dd1ZilyslLIIGZppY&usqp=CAU" 
-                            alt="Magazine Culture" class="magazine-cover">
-                        <div class="magazine-overlay">
-                            <div class="magazine-title">Ebolowa</div>
-                            <div class="magazine-date">Octobre 2024</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="carousel-controls">
-            <button class="carousel-btn" id="prev-mag" onclick="scrollMagazines(-1)">‹</button>
-            <div class="carousel-indicator-explorer" id="mag-indicator">1</div>
-            <button class="carousel-btn" id="next-mag" onclick="scrollMagazines(1)">›</button>
-        </div>
-    </section>
-
-
-
- <!-- Section Newsletter -->
-    <section class="newsletter-section w-full my-12 items-center">
-        <div class="newsletter-container">
-            <div class="newsletter-content">
-                <h2 class="newsletter-title">LETTRE D'INFORMATION</h2>
-                <p class="newsletter-description">
-                    Inscrivez-vous à notre newsletter pour rester informé de l'actualité de Fougères Agglomération.
-                </p>
-            </div>
-            <form class="newsletter-form" id="newsletter-form">
-                <input 
-                    type="email" 
-                    class="newsletter-input" 
-                    placeholder="Votre adresse email"
-                    id="newsletter-email"
-                    required
-                >
-                <button type="submit" class="newsletter-btn">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-                </button>
-            </form>
-        </div>
-        <div class="newsletter-decoration"></div>
-    </section>
-
-    <!-- Modale de confirmation -->
-    <div class="newsletter-modal" id="newsletter-modal">
-        <div class="modal-newsletter-content">
-            <button class="modal-close" id="modal-close">&times;</button>
-            <div class="success-icon">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-            </div>
-            <h3 class="modal-title">Inscription réussie !</h3>
-            <p class="modal-text">
-                Merci pour votre inscription à notre newsletter. Un email de confirmation vous a été envoyé à l'adresse <strong id="confirm-email"></strong>.
-                <br><br>
-                Vous recevrez bientôt nos dernières actualités et événements de Sangmélima.
-            </p>
-            <button class="modal-btn" id="modal-ok">Parfait !</button>
-        </div>
-    </div>
 
 
 
@@ -1253,16 +1256,6 @@
         mobileMenu.style.display = 'none';
         mobileMenu.innerHTML = `
             <div class="p-4 max-h-96 overflow-y-auto">
-                <div class="mb-4">
-                    <h3 class="navbar-link font-semibold text-green-700 mb-2">Destinations</h3>
-                    <div class="space-y-1">
-                        ${Object.keys(citiesData).map(region => `
-                            <a href="#${region.toLowerCase()}" class="block py-2 px-3 text-gray-600 hover:text-green-700 hover:bg-gray-50 rounded region-link" data-region="${region}">
-                                ${region}
-                            </a>
-                        `).join('')}
-                    </div>
-                </div>
                 
                 <!-- Menu Explorer mobile avec sous-menus -->
                 <div class="mb-4">
@@ -1959,6 +1952,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+</script>
+
+
+
+<script>
+    // --- JavaScript pour la navigation par onglets (défilement vers les sections) ---
+        document.querySelectorAll('.page-navigation-tabs a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelectorAll('.page-navigation-tabs a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    window.scrollTo({
+                        top: offsetTop - 70, // Soustraire la hauteur de la barre de navigation sticky
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
 </script>
 </body>
 </html>
