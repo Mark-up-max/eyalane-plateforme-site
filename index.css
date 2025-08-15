@@ -516,7 +516,7 @@
             .hero-carousel {
                 margin-left: 0px;
                 margin-right: 0px;
-                height: 75vh;
+                height: 73vh;
             }
         }
         .group:hover .group-hover\:opacity-100 {
@@ -1740,5 +1740,48 @@ footer a:hover::before {
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
+        }
+        
+
+
+        /* Styles pour les dropdowns - Version corrigée */
+        .dropdown-container {
+            position: relative;
+        }
+
+        .dropdown-container:hover .dropdown-menu,
+        .dropdown-menu:hover {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-trigger {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .dropdown-trigger:hover {
+            color: green;
+        }
+
+        .dropdown-menu {
+            min-width: 200px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a {
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: linear-gradient(90deg, #f8fafc 0%, #e2e8f0 100%);
+            padding-left: 1.5rem;
         }
         
