@@ -1504,7 +1504,7 @@ footer a:hover::before {
         @media (max-width: 640px) {
             .card-item {
                 min-width: 250px;
-                max-width: 280px;
+                max-width: 380px;
             }
         }
         
@@ -1541,27 +1541,6 @@ footer a:hover::before {
         .events-scroll-container {
             -webkit-overflow-scrolling: touch;
             scroll-behavior: smooth;
-        }
-        
-        /* Largeurs responsives pour les cartes d'événements */
-        .event-card {
-            min-width: 320px;
-            max-width: 380px;
-            flex-shrink: 0;
-        }
-        
-        @media (max-width: 640px) {
-            .event-card {
-                min-width: 280px;
-                max-width: 320px;
-            }
-        }
-        
-        @media (min-width: 768px) {
-            .event-card {
-                min-width: 350px;
-                max-width: 400px;
-            }
         }
         
         @media (min-width: 1024px) {
