@@ -1543,11 +1543,11 @@ footer a:hover::before {
             scroll-behavior: smooth;
         }
         
-        @media (min-width: 1024px) {
-            .event-card {
-                min-width: 380px;
-                max-width: 420px;
-            }
+        /* Largeurs responsives pour les cartes d'événements */
+        .event-card {
+            min-width: 320px;
+            max-width: 380px;
+            flex-shrink: 0;
         }
         
         /* Animation hover pour les cartes d'événements */
