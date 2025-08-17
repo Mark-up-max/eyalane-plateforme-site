@@ -1910,9 +1910,37 @@ footer a:hover::before {
 
 
 
+            /* Styles pour couper le texte du a propos*/
             .clamp-4 {
                 display: -webkit-box;
                 -webkit-line-clamp: 4;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
+            }
+
+
+
+
+            /* Styles pour la page des dates*/
+            .dropdown-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+            
+            .dropdown-content.expanded {
+                max-height: 1000px;
+                transition: max-height 0.5s ease-in;
+            }
+            
+            .rotate-180 {
+                transform: rotate(180deg);
+            }
+            
+            .article-image {
+                transition: transform 0.3s ease;
+            }
+            
+            .article-image:hover {
+                transform: scale(1.02);
             }
