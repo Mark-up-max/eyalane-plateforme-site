@@ -558,7 +558,7 @@
 
 
 
-
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
         <script>
             // Fonction pour gérer les dropdowns d'articles
             function toggleArticle(articleId) {
@@ -620,17 +620,55 @@
 
             window.addEventListener('scroll', handleScroll);
 
+
             // Gestion du menu mobile (si nécessaire)
-            document.addEventListener('DOMContentLoaded', function() {
-                const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-                const mobileMenu = document.getElementById('mobile-menu');
-                
-                if (mobileMenuBtn && mobileMenu) {
-                    mobileMenuBtn.addEventListener('click', function() {
-                        mobileMenu.classList.toggle('hidden');
-                    });
+           document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Fonction pour basculer le menu mobile
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+        
+        // Gestion des dropdowns dans le menu mobile
+        const mobileDropdownTriggers = document.querySelectorAll('.mobile-dropdown-trigger');
+
+        mobileDropdownTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const content = trigger.nextElementSibling;
+                const arrow = trigger.querySelector('.mobile-dropdown-arrow');
+
+                if (content && content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    if (arrow) arrow.style.transform = 'rotate(180deg)';
+                } else if (content) {
+                    content.classList.add('hidden');
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
                 }
             });
+        });
+
+        // Fermer le menu mobile lors du redimensionnement de la fenêtre (passage en vue desktop)
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Fermer le menu lors du clic à l'extérieur
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    });
         </script>
     </body>
     </html>
