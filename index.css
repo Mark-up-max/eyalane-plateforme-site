@@ -1550,6 +1550,27 @@ footer a:hover::before {
             flex-shrink: 0;
         }
         
+        @media (max-width: 640px) {
+            .event-card {
+                min-width: 280px;
+                max-width: 320px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .event-card {
+                min-width: 350px;
+                max-width: 500px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .event-card {
+                min-width: 380px;
+                max-width: 420px;
+            }
+        }
+        
         /* Animation hover pour les cartes d'événements */
         .event-card {
             transition: all 0.3s ease;
