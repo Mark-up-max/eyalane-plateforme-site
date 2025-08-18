@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EYALANE - Ville de Sangmélima</title>
+    <link href="index.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="bg-white p-6 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center md:px-14">
+            <div class="flex items-center">
+                <span class="text-3xl md:text-4xl text-green-800 font-bold">éyalane explorer</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <div class="relative dropdown-container">
+                    <button class="navbar-link dropdown-trigger flex items-center border-none cursor-pointer">
+                        Explorer
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu absolute top-full left-0 bg-white shadow-lg rounded-lg border border-gray-200 mt-2 py-2 w-48 opacity-0 invisible transform translate-y-2 transition-all duration-300 z-50">
+                        <a href="destinations.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-green-700">Qui sommes nous</a>
+                        <a href="activites.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-green-700">Notre vision</a>
+                        <a href="circuits.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-green-700">Nos produits</a>
+                        <a href="guide.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-green-700">Nos partenaires</a>
+                        <a href="guide.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-green-700">Devenir partenaire</a>
+                    </div>
+                </div>
+                <div class="relative dropdown-container">
+                    <button class="navbar-link dropdown-trigger flex items-center border-none cursor-pointer">
+                        Lifestyle
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu absolute top-full left-0 bg-white shadow-lg rounded-lg border border-gray-200 mt-2 py-2 w-48 opacity-0 invisible transform translate-y-2 transition-all duration-300 z-50">
+                        <a href="culture.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-green-700">Histoire</a>
+                        <a href="gastronomie.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-green-700">Géographie</a>
+                        <a href="artisanat.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-green-700">Galérie</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-orange-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute top-full left-0 right-0 z-40 hidden">
+            <div class="p-4 max-h-96 overflow-y-auto">
+                <div class="mb-4">
+                    <button class="navbar-link mobile-dropdown-trigger w-full flex justify-between items-center py-2 px-3 text-green-700 hover:text-gray-600 font-semibold" type="button">
+                        Explorer
+                        <svg class="w-4 h-4 transform transition-transform mobile-dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown-content hidden pl-4 space-y-1 mt-2">
+                        <a href="destinations.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Qui sommes nous</a>
+                        <a href="activites.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Notre vision</a>
+                        <a href="circuits.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Nos produits</a>
+                        <a href="guide.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Nos partenaires</a>
+                        <a href="guide.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Devenir partenaire</a>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <button class="navbar-link mobile-dropdown-trigger w-full flex justify-between items-center py-2 px-3 text-green-700 hover:text-gray-600 font-semibold" type="button">
+                        Lifestyle
+                        <svg class="w-4 h-4 transform transition-transform mobile-dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown-content hidden pl-4 space-y-1 mt-2">
+                        <a href="culture.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Histoire</a>
+                        <a href="gastronomie.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Géographie</a>
+                        <a href="artisanat.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Galérie</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+     <section class="md:py-6 py-4">
+        <div class="page-navigation-tabs container mx-auto px-6">
+            <nav class="flex items-center gap-6 md:gap-8 overflow-x-auto whitespace-nowrap border-b border-gray-300">
+                <div class="bg-white flex">
+                    <svg class="w-5 h-1O text-green-800" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <a href="#apropos" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
+                        Sangmélima
+                    </a>
+                </div>
+
+                <a href="#histoire" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
+                    Activités
+                </a>
+
+                <a href="#alaune" class="text-green-800 font-bold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-green-800">
+                    Journée porte ouverte à l'université...
+                </a>
+            </nav>
+        </div>
+    </section>
+    
+
+
+    <!-- Hero Section avec Carousel -->
+    <section class="hero-carousel mb-6">
+        <div class="carousel-track">
+            <div class="carousel-slide active" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s');">
+            </div>
+            <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwTlPYQ3CVxPIsJcddITkgW0RaY2vJ_RVxzw&s');">
+            </div>
+            <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s');">
+            </div>
+            <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s');">
+            </div>
+        </div>
+
+        <!-- Navigation arrows -->
+        <button class="carousel-nav prev" onclick="previousSlide()">‹</button>
+        <button class="carousel-nav next" onclick="nextSlide()">›</button>
+
+        <!-- Progress bar -->
+        <div class="carousel-progress">
+            <div class="carousel-progress-bar"></div>
+        </div>
+
+        <div class="carousel-indicators-container"></div>
+    </section>
+
+
+<!--
+    <section class="headerCarousel">
+        
+            <div class="main-content">
+                
+                <div class="image-section" onclick="openGallery()">
+                    <div class="main-image-container">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=400&fit=crop" alt="Salle principale du restaurant" class="main-image">
+                    </div>
+                    <div class="sidebar-overlay">
+                        <div class="image-overlay">Salle principale</div>
+                    <div class="photo-count">📷 24 photos</div>
+                    </div>
+                </div>
+
+                
+                <div class="sidebar">
+                    <div class="sidebar-card" onclick="openGallery()">
+                        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400&h=120&fit=crop" alt="Terrasse" class="sidebar-image">
+                        <div class="sidebar-overlay">
+                            <div class="sidebar-title">Terrasse</div>
+                            <div class="sidebar-count">85</div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card" onclick="openGallery()">
+                        <img src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=400&h=120&fit=crop" alt="Cuisine traditionnelle" class="sidebar-image">
+                        <div class="sidebar-overlay">
+                            <div class="sidebar-title">Spécialités locales</div>
+                            <div class="sidebar-count">42</div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card" onclick="openGallery()">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=120&fit=crop" alt="Vidéos" class="sidebar-image">
+                        <div class="sidebar-overlay">
+                            <div class="sidebar-title">📹 Vidéos</div>
+                            <div class="sidebar-count">6</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             
+            <div class="mobile-carousel">
+                <div class="carousel-container" id="carousel">
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=400&fit=crop" alt="Salle principale">
+                        <div class="image-overlay">Salle principale</div>
+                        <div class="photo-count">📷 24 photos</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&h=400&fit=crop" alt="Terrasse">
+                        <div class="image-overlay">Terrasse</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=800&h=400&fit=crop" alt="Spécialités locales">
+                        <div class="image-overlay">Spécialités locales</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=400&fit=crop" alt="Vidéos">
+                        <div class="image-overlay">📹 Vidéos</div>
+                    </div>
+                </div>
+                
+                <button class="carousel-nav carousel-prev" onclick="prevSlide()">‹</button>
+                <button class="carousel-nav carousel-next" onclick="nextSlide()">›</button>
+                
+                <div class="carousel-controls">
+                    <div class="carousel-dot active" onclick="goToSlide(0)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(1)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(2)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(3)"></div>
+                </div>
+            </div>
+    </section>
+-->
+
+
+    <section>
+        <!-- Contenu principal avec titre et images améliorées -->
+        <div class="header">
+            <h1 class="text-3xl text-green-900 font-bold mb-4">Journée porte ouverte à l'université inter-états Congo Cameroun de Sangmélima</h1>
+            
+            <div class="mb-2">
+                <span class="text-3xl text-green-900 font-bold mb-2">4.8</span>
+                <span class="text-3xl text-green-900 font-bold mb-2">●●●●</span>
+                <span class="text-lg lg:text-xl text-black leading-relaxed">(245 avis d'après l'app mobile éyalane),</span>
+                <span class="text-lg lg:text-xl text-black font-semibold leading-relaxed">N°1 sur 12 restaurants à Sangmélima</span>
+            </div>
+            
+            <div class="contact-info">
+                <div class="text-lg lg:text-xl text-black leading-relaxed">
+                    Avenue Principale, Centre-ville, Sangmélima Sud Cameroun
+                </div>
+                <div class="text-lg lg:text-xl text-black leading-relaxed">
+                    <a href="tel:+237675123456">+237 675 123 456</a>
+                </div>
+                <div class="text-lg lg:text-xl text-black leading-relaxed">
+                    <a href="mailto:contact@lepalmier.cm">Contactez le restaurant par mail</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Modal de Galerie -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="gallery-content">
+            <div class="gallery-header">
+                <div class="gallery-title">Galerie Photos - Université Sangmélima</div>
+                <button class="gallery-close" onclick="closeGallery()">×</button>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=400&fit=crop" alt="Salle principale">
+                    <div class="gallery-item-overlay">Salle principale</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=400&fit=crop" alt="Terrasse">
+                    <div class="gallery-item-overlay">Terrasse</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=400&h=400&fit=crop" alt="Spécialités">
+                    <div class="gallery-item-overlay">Spécialités</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=400&fit=crop" alt="Ambiance">
+                    <div class="gallery-item-overlay">Ambiance</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=400&h=400&fit=crop" alt="Extérieur">
+                    <div class="gallery-item-overlay">Extérieur</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1587574293340-e0011c4e8ecf?w=400&h=400&fit=crop" alt="Décoration">
+                    <div class="gallery-item-overlay">Décoration</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1592861956120-e524fc739696?w=400&h=400&fit=crop" alt="Cuisine">
+                    <div class="gallery-item-overlay">Cuisine</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1590599046-3c4ccbddacaa?w=400&h=400&fit=crop" alt="Service">
+                    <div class="gallery-item-overlay">Service</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+
+     <!-- Section À propos avec informations détaillées -->
+    <section class="about-section md:px-20 px-4">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Colonne À propos -->
+                <div class="lg:col-span-2">
+                    <h2 class="text-3xl text-green-900 font-bold mb-2">À propos de l'activité</h2>
+                    
+                    <!-- Barres de chargement simulées -->
+                    <div class="space-y-3 mb-8">
+                        <p class="text-lg lg:text-xl text-black leading-relaxed">
+                            Una visita ricchissima in un luogo che pur non essendo tra i più antichi (a Parigi lo stesso Louvre è una reggia ed è più grande) è indubitabilmente uno dei siti più interessanti e imperdibili per qualunque turista si rechi in Francia e/o a Parigi.
+                        Il biglietto totale (palazzo più parco + fontane + trianons) ha un prezzo irrisorio quindi il consiglio è di prendersi la giornata e fare tutto il giro.
+                        Merita. 
+                        </p>
+                    </div>
+                    
+                    <!-- Informations détaillées -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <div class="info-item">
+                                <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                                </svg>
+                                <span class="text-gray-700">Âge 0-99, 20 pers. maximum par groupe</span>
+                            </div>
+                            
+                            <div class="info-item">
+                                <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                <span class="text-gray-700">Durée : 180-210 minutes</span>
+                            </div>
+                            
+                            <div class="info-item">
+                                <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                </svg>
+                                <span class="text-gray-700">Horaire de début : 08h00</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="info-item">
+                                <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                <span class="text-gray-700">Horaire de de fin : 18h30</span>
+                            </div>
+                            
+                            <div class="info-item">
+                                <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                <span class="text-gray-700">Cadre bilingue</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Colonne Tarification -->
+                <div class="lg:col-span-1">
+                    <div class="price-section">
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-1">À partir de 2500 fcfa</h3>
+                            <p class="text-gray-600 text-sm mb-4">par adulte</p>
+                            <p class="text-gray-700 underline font-semibold">Ce qui est compris</p>
+                        </div>
+                        
+                        <!-- Fonctionnalités -->
+                        <div class="space-y-4">
+                            <div class="feature-item">
+                                <div class="feature-icon feature-yellow">
+                                    <span class="text-white text-sm">🍔</span>
+                                </div>
+                                <div class="text-sm">
+                                    <strong>Casse croûte gratuite</strong> • Remboursement intégral en cas d'annulation jusqu'à 24 heures avant le début de l'expérience (heure locale).
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon feature-yellow">
+                                    <span class="text-white text-sm">🍻</span>
+                                </div>
+                                <div class="text-sm">
+                                    <strong>Boisson gratuite</strong> • Garantissez votre place tout en restant flexible.
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon feature-green">
+                                    <span class="text-white text-sm">✓</span>
+                                </div>
+                                <div class="text-sm">
+                                    <strong>Equipement fourni</strong> • Cette expérience est réservée en moyenne 49 jours à l'avance.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+      <!-- Section Localisation -->
+    <section class="location-section py-12 border-gray-200">
+        <div class="container mx-auto px-12">
+            <div class="flex-1">
+                    <h2 class="text-3xl text-green-900 font-bold mb-2">Localisation de l'activté</h2>
+                    <p class="text-lg lg:text-xl text-black font-semibold leading-relaxed mb-6">
+                        Découvrez la sélection coup de cœur éyalane, qui réunit tous les établissements recommandés par éyalane, inclant vos villes et vos endroits préférés.
+                    </p>
+                </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Carte -->
+                <div class="map-container">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden h-80">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63424.45678!2d11.9167!3d2.9167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSangm%C3%A9lima!5e0!3m2!1sen!2scm!4v1234567890"
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    
+                    <!-- Bouton Itinéraire -->
+                    <div class="mt-4">
+                        <a href="https://maps.google.com/?q=Sangmélima,Cameroun" 
+                           target="_blank"
+                           class="inline-flex items-center text-black px-6 py-3 rounded-lg font-semibold transition-colors">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            Obtenir l'itinéraire
+                        </a>
+                    </div>
+
+                    <!-- Informations supplémentaires -->
+                    <div class="rounded-xl p-6">
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Bon à savoir</h4>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Entrée principale face à l'avenue</li>
+                                    <li>• Accès handicapés disponible</li>
+                                    <li>• Point de repère : en face de la pharmacie centrale</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Informations de localisation -->
+                <div class="location-info space-y-6">
+                    <!-- Moyens de transport -->
+                    <div class="bg-white rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Comment s'y rendre</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="transport-item flex items-center p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="bg-green-100 p-2 rounded-lg mr-4">
+                                    <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">En voiture</p>
+                                    <p class="text-gray-600 text-sm">15 min depuis le centre de Sangmélima</p>
+                                    <p class="text-gray-600 text-sm">Parking gratuit disponible</p>
+                                </div>
+                            </div>
+                            
+                            <div class="transport-item flex items-center p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="bg-blue-100 p-2 rounded-lg mr-4">
+                                    <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Transport en commun</p>
+                                    <p class="text-gray-600 text-sm">Bus ligne 3 - Arrêt "Université"</p>
+                                    <p class="text-gray-600 text-sm">Taxi-moto disponible</p>
+                                </div>
+                            </div>
+                            
+                            <div class="transport-item flex items-center p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="bg-orange-100 p-2 rounded-lg mr-4">
+                                    <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L5 8.3V13h2V9.6l1.8-.7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">À pied</p>
+                                    <p class="text-gray-600 text-sm">25 min depuis la gare routière</p>
+                                    <p class="text-gray-600 text-sm">10 min depuis l'hôtel de ville</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 border-t border-gray-200">
+    <!-- Section principale du footer -->
+        <div class="container mx-auto px-6 py-8">
+            <!-- Logo et description -->
+            <div class="flex flex-col lg:flex-row justify-between items-start space-y-8 lg:space-y-0">
+                <div class="lg:w-1/3">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <!-- Logo EYALANE avec icône -->
+                        <div class="bg-gradient-to-r from-blue-800 to-blue-600 p-2 rounded-full">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <span class="text-2xl text-green">éyalane explorer</span>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        EYALANE ne garantit pas la disponibilité des prix affichés sur nos sites et applications. 
+                        Des conditions et restrictions telles que, entre autres, des durées de voyage imposées ou 
+                        des dates de fermeture peuvent
+                </div>
+                
+                <!-- Liens et sélecteurs -->
+                <div class="lg:w-2/3 flex flex-col space-y-6">
+                    <!-- Sélecteurs de devise et pays -->
+                    <div class="flex flex-wrap gap-4 justify-start lg:justify-end">
+                        <!-- Sélecteur de devise -->
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 text-sm font-medium text-gray-700 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer">
+                                <option value="eur">FCFA</option>
+                            </select>
+                            <svg class="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        
+                        <!-- Sélecteur de pays -->
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 text-sm font-medium text-gray-700 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer">
+                                <option value="cm">🇨🇲 Cameroun</option>
+                            </select>
+                            <svg class="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <!-- Liens légaux -->
+                    <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm justify-start lg:justify-end">
+                        <a href="/conditions" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Qui sommes nous
+                        </a>
+                        <a href="/confidentialite" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Notre vision
+                        </a>
+                        <a href="/accord-cookies" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Nos produits
+                        </a>
+                        <a href="/plan-du-site" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Nos partenaires
+                        </a>
+                        <a href="/fonctionnement" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Devenir partenaire
+                        </a>
+                        <a href="/contact" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Historique
+                        </a>
+                        <a href="/accessibilite" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Géographie
+                        </a>
+                        <a href="/accessibilite" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Galérie
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Barre de copyright -->
+        <div class="bg-gray-50 border-t border-gray-200">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="flex items-center space-x-4">
+                        <p class="text-sm text-gray-600">
+                            © 2025 Eyalane LLC Tous droits réservés.
+                        </p>
+                    </div>
+                    
+                    <!-- Réseaux sociaux -->
+                    <div class="flex items-center space-x-4">
+                        <span class="text-sm text-gray-500">Suivez-nous :</span>
+                        <a href="https://facebook.com/eyalane" target="_blank" 
+                        class="text-gray-600 hover:text-blue-600 transition-colors p-2 rounded-full hover:bg-blue-50">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com/eyalane" target="_blank" 
+                        class="text-gray-600 hover:text-pink-600 transition-colors p-2 rounded-full hover:bg-pink-50">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987c6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.348-1.051-2.348-2.348s1.051-2.348 2.348-2.348 2.348 1.051 2.348 2.348S9.746 16.988 8.449 16.988zM12.017 16.988c-1.297 0-2.348-1.051-2.348-2.348s1.051-2.348 2.348-2.348 2.348 1.051 2.348 2.348S13.314 16.988 12.017 16.988zM15.585 16.988c-1.297 0-2.348-1.051-2.348-2.348s1.051-2.348 2.348-2.348 2.348 1.051 2.348 2.348S16.882 16.988 15.585 16.988z"/>
+                            </svg>
+                        </a>
+                        <a href="https://tiktok.com/@eyalane" target="_blank" 
+                        class="text-gray-600 hover:text-black transition-colors p-2 rounded-full hover:bg-gray-100">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Fonction pour basculer le menu mobile
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+            
+            // Gestion des dropdowns dans le menu mobile
+            const mobileDropdownTriggers = document.querySelectorAll('.mobile-dropdown-trigger');
+
+            mobileDropdownTriggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const content = trigger.nextElementSibling;
+                    const arrow = trigger.querySelector('.mobile-dropdown-arrow');
+
+                    if (content && content.classList.contains('hidden')) {
+                        content.classList.remove('hidden');
+                        if (arrow) arrow.style.transform = 'rotate(180deg)';
+                    } else if (content) {
+                        content.classList.add('hidden');
+                        if (arrow) arrow.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+
+            // Fermer le menu mobile lors du redimensionnement de la fenêtre (passage en vue desktop)
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+
+            // Fermer le menu lors du clic à l'extérieur
+            document.addEventListener('click', (e) => {
+                if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+
+            // Auto-carrousel (optionnel)
+                setInterval(() => {
+                    if (window.innerWidth <= 768) { // Seulement sur mobile
+                        nextSlide();
+                    }
+                }, 5000);
+        });
+
+
+
+      // Variables globales pour le carrousel
+        let currentSlide = 0;
+        const totalSlides = 4;
+
+        // Fonction pour aller au slide suivant
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        // Fonction pour aller au slide précédent
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        // Fonction pour aller à un slide spécifique
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        // Fonction pour mettre à jour le carrousel
+        function updateCarousel() {
+            const carousel = document.getElementById('carousel');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            if (carousel) {
+                carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+            
+            // Mettre à jour les dots
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Fonction pour ouvrir la galerie
+        function openGallery() {
+            const modal = document.getElementById('galleryModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Fonction pour fermer la galerie
+        function closeGallery() {
+            const modal = document.getElementById('galleryModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+
+
+        // Gestion du redimensionnement de la fenêtre
+        window.addEventListener('resize', function() {
+            // Réinitialiser le carrousel si on passe du mobile au desktop
+            if (window.innerWidth > 768) {
+                currentSlide = 0;
+                updateCarousel();
+            }
+        });
+</script>
+
+<script>
+        // Carousel d'images moderne
+        document.addEventListener("DOMContentLoaded", function() {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.carousel-slide');
+            const indicatorsContainer = document.querySelector('.carousel-indicators-container');
+            const progressBar = document.querySelector('.carousel-progress-bar');
+            let autoSlideInterval;
+            let progressInterval;
+            const slideInterval = 6000; // 6 secondes
+            let isPaused = false;
+
+            // 1. Crée les indicateurs
+            function createIndicators() {
+                slides.forEach((slide, index) => {
+                    const indicator = document.createElement('div');
+                    indicator.classList.add('carousel-indicator');
+                    if (index === 0) {
+                        indicator.classList.add('active');
+                    }
+                    indicator.addEventListener('click', () => goToSlide(index));
+                    indicatorsContainer.appendChild(indicator);
+                });
+            }
+
+            // 2. Met à jour l'indicateur actif
+            function updateIndicators() {
+                const indicators = document.querySelectorAll('.carousel-indicator');
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.remove('active');
+                    if (index === currentSlide) {
+                        indicator.classList.add('active');
+                    }
+                });
+            }
+
+            // 3. Va à une slide spécifique
+            function goToSlide(index) {
+                // Retire la classe active de la slide actuelle
+                slides[currentSlide].classList.remove('active');
+                
+                currentSlide = index;
+                
+                // Active la nouvelle slide
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active', 'next', 'prev');
+                    if (i === currentSlide) {
+                        slide.classList.add('active');
+                    }
+                });
+                
+                updateIndicators();
+                resetProgress();
+            }
+
+            // 4. Slide suivante
+            function nextSlide() {
+                const nextIndex = (currentSlide + 1) % slides.length;
+                goToSlide(nextIndex);
+            }
+
+            // 5. Slide précédente  
+            function previousSlide() {
+                const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+                goToSlide(prevIndex);
+            }
+
+            // 6. Gestion de la barre de progression
+            function startProgress() {
+                progressBar.style.width = '0%';
+                progressBar.style.transition = `width ${slideInterval}ms linear`;
+                setTimeout(() => {
+                    if (!isPaused) {
+                        progressBar.style.width = '100%';
+                    }
+                }, 50);
+            }
+
+            function resetProgress() {
+                progressBar.style.transition = 'none';
+                progressBar.style.width = '0%';
+                setTimeout(startProgress, 50);
+            }
+
+            // 7. Auto-slide avec pause au hover
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(() => {
+                    if (!isPaused) {
+                        nextSlide();
+                    }
+                }, slideInterval);
+            }
+
+            // 8. Pause au hover
+            const carousel = document.querySelector('.hero-carousel');
+            carousel.addEventListener('mouseenter', () => {
+                isPaused = true;
+                progressBar.style.animationPlayState = 'paused';
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                isPaused = false;
+                progressBar.style.animationPlayState = 'running';
+                resetProgress();
+            });
+
+            // Initialisation
+            createIndicators();
+            startProgress();
+            startAutoSlide();
+
+            // Fonctions globales pour les boutons de navigation
+            window.nextSlide = nextSlide;
+            window.previousSlide = previousSlide;
+        });
+
+
+
+        // Fonction pour créer une carte de ville
+        function generateFollowerAvatars(count) {
+            const realAvatars = [
+                "https://images.unsplash.com/photo-1494790108755-2616b612b977?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80", // Femme souriante
+                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80", // Homme avec barbe
+                "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80", // Femme blonde
+                "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80", // Homme en costume
+                "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80", // Femme cheveux courts
+                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80", // Homme souriant
+                "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80", // Femme brune
+                "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80"  // Homme casual
+            ];
+            const avatars = [];
+            const maxAvatars = Math.min(count > 1000 ? 5 : 3, realAvatars.length);
+            for (let i = 0; i < maxAvatars; i++) {
+                avatars.push(realAvatars[i]);
+            }
+            return avatars;
+        }
+
+
+
+        // Fonction pour charger les villes d'une région
+        function loadCities(region) {
+            const citiesGrid = document.getElementById('cities-grid');
+            const cities = citiesData[region] || [];
+            
+            citiesGrid.innerHTML = cities.map(city => createCityCard(city)).join('');
+        }
+
+
+        // Fonction pour scroller vers la section des villes
+        function scrollToCities() {
+            document.getElementById('cities-section').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+ 
+
+        // Gestion de la barre de recherche
+        const searchInput = document.getElementById('search-input');
+        const searchSuggestions = document.getElementById('search-suggestions');
+
+        // Gestion des suggestions
+        searchSuggestions.addEventListener('click', (e) => {
+            const suggestionItem = e.target.closest('.suggestion-item');
+            if (suggestionItem && suggestionItem.dataset.city) {
+                const cityName = suggestionItem.dataset.city;
+
+                // Trouver la région de la ville
+                let targetRegion = null;
+                for (const [region, cities] of Object.entries(citiesData)) {
+                    if (cities.some(city => city.name === cityName)) {
+                        targetRegion = region;
+                        break;
+                    }
+                }
+                if (targetRegion) {
+
+                    // Mettre à jour le bouton actif
+                    document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelector(`[data-region="${targetRegion}"]`).classList.add('active');
+                    // Charger les villes et scroller
+                    loadCities(targetRegion);
+                    scrollToCities();
+                }
+
+                // Fermer les suggestions
+                searchSuggestions.classList.remove('show');
+                searchInput.value = '';
+            }
+        });
+
+        // Fermer les suggestions quand on clique ailleurs
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchSuggestions.contains(e.target)) {
+                searchSuggestions.classList.remove('show');
+            }
+        });
+
+
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'md:hidden bg-white shadow-lg absolute top-full left-0 right-0 z-50';
+        mobileMenu.style.display = 'none';
+        mobileMenu.innerHTML = `
+            <div class="p-4 max-h-96 overflow-y-auto">
+                <!-- Menu Explorer mobile avec sous-menus -->
+                <div class="mb-4">
+                    <button class="navbar-link mobile-dropdown-trigger w-full flex justify-between items-center py-2 px-3 text-green-700 hover:text-gray-600 font-semibold" type="button">
+                        Explorer
+                        <svg class="w-4 h-4 transform transition-transform mobile-dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown-content hidden pl-4 space-y-1 mt-2">
+                        <a href="destinations.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Qui sommes nous</a>
+                        <a href="activites.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Notre vision</a>
+                        <a href="circuits.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Nos produits</a>
+                        <a href="guide.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Nos partenaires</a>
+                        <a href="guide.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Devenir partenaire</a>
+                    </div>
+                </div>
+
+                <!-- Menu Lifestyle mobile avec sous-menus -->
+                <div class="mb-4">
+                    <button class="navbar-link mobile-dropdown-trigger w-full flex justify-between items-center py-2 px-3 text-green-700 hover:text-gray-600 font-semibold" type="button">
+                        Lifestyle
+                        <svg class="w-4 h-4 transform transition-transform mobile-dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown-content hidden pl-4 space-y-1 mt-2">
+                        <a href="culture.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Histoire</a>
+                        <a href="gastronomie.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Géographie</a>
+                        <a href="artisanat.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Galérie</a>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.querySelector('nav .container').appendChild(mobileMenu);
+
+        // Fonction pour fermer le menu mobile
+        function closeMobileMenu() {
+            if (mobileMenu.style.display === 'block') {
+                mobileMenu.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Fonction pour ouvrir le menu mobile
+        function openMobileMenu() {
+            mobileMenu.style.display = 'block';
+            mobileMenu.style.animation = 'fadeInUp 0.5s ease';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Gestion du clic sur le bouton de menu mobile principal
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (mobileMenu.style.display === 'none' || mobileMenu.style.display === '') {
+                    openMobileMenu();
+                } else {
+                    closeMobileMenu();
+                }
+            });
+        }
+
+        // Gestion des dropdowns dans le menu mobile - NOUVEAU CODE CORRIGÉ
+        mobileMenu.addEventListener('click', (e) => {
+            // Gérer les dropdowns mobiles
+            if (e.target.closest('.mobile-dropdown-trigger')) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const trigger = e.target.closest('.mobile-dropdown-trigger');
+                const content = trigger.nextElementSibling;
+                const arrow = trigger.querySelector('.mobile-dropdown-arrow');
+                
+                console.log('Dropdown clicked!', trigger, content); // Pour debug
+                
+                if (content && content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    if (arrow) arrow.style.transform = 'rotate(180deg)';
+                } else if (content) {
+                    content.classList.add('hidden');
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
+                }
+                return;
+            }
+            
+            // Fermer le menu si on clique sur une région
+            if (e.target.classList.contains('region-link')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Fermer le menu lors du redimensionnement de la fenêtre
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                closeMobileMenu();
+            }
+        });
+
+        // Fermer le menu lors du clic à l'extérieur
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+        
+       
+
+        // Fermer le menu lors du redimensionnement de la fenêtre (passage en vue tablette/desktop)
+        window.addEventListener('resize', () => {
+            // Fermer le menu si on passe en vue tablette/desktop (largeur >= 768px)
+            if (window.innerWidth >= 768) {
+                closeMobileMenu();
+            }
+        });
+
+        // Fermer le menu lors du clic à l'extérieur
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+
+
+        // Gestion de la recherche avec autocomplétion avancée
+        function createSearchSuggestion(city, region) {
+            return `
+                   <div class="flex items-center space-x-3">
+                  <div class="suggestion-item" data-city="${city.name}" data-region="${region}">
+                       <img src="${city.image}" alt="${city.name}" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <div class="font-semibold text-gray-800">${city.name}</div>
+                            <div class="text-sm text-gray-500">${region} • ${city.followers.toLocaleString()} followers</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+
+        // Mise à jour de la fonction de recherche
+        function searchCities(query) {
+            const results = [];
+            Object.entries(citiesData).forEach(([region, cities]) => {
+                cities.forEach(city => {
+                    if (city.name.toLowerCase().includes(query.toLowerCase()) || 
+                        city.description.toLowerCase().includes(query.toLowerCase())) {
+                        results.push({ city, region });
+                    }
+                });
+            });
+            return results;
+        }
+
+
+        // Mise à jour du gestionnaire d'événements pour la recherche
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.trim();
+            if (query.length > 0) {
+                const results = searchCities(query);
+                
+                if (results.length > 0) {
+                    searchSuggestions.innerHTML = results.map(({ city, region }) => 
+                        createSearchSuggestion(city, region)
+                    ).join('');
+                    searchSuggestions.classList.add('show');
+                } else {
+                    searchSuggestions.innerHTML = `
+                        <div class="suggestion-item">
+                            <div class="text-center py-4">
+                                <div class="text-gray-500">Aucune ville trouvée pour "${query}"</div>
+                                <div class="text-sm text-gray-400 mt-1">Essayez avec un autre terme</div>
+                            </div>
+                        </div>
+                    `;
+                    searchSuggestions.classList.add('show');
+                }
+            } else {
+                searchSuggestions.classList.remove('show');
+            }
+        });
+
+
+        // Animation des cartes de ville au scroll
+        function animateCardsOnScroll() {
+            const cards = document.querySelectorAll('.city-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        }
+
+
+        // Fonction pour générer un nombre aléatoire de followers
+        function generateRandomFollowers() {
+            return Math.floor(Math.random() * 3000) + 500;
+        }
+
+
+        // Mise à jour de la fonction createCityCard avec animations
+       function createCityCardWithAnimation(city, delay = 0) {
+    const avatars = generateFollowerAvatars(city.followers);
+    return `
+        <a href="sangmelima.html" class="navbar-link-destination">
+        <div class="restaurant-card fade-in" style="animation-delay: ${delay}ms">
+            <div class="restaurant-image-container">
+                <img src="${city.image}" alt="${city.name}" class="restaurant-image" loading="lazy">
+                <!-- Location pin overlay -->
+                <div class="location-overlay">
+                    <div class="location-pin">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="currentColor"/>
+                            <circle cx="12" cy="9" r="2.5" fill="white"/>
+                        </svg>
+                        <span class="location-text">${city.name}</span>
+                    </div>
+                </div>
+            </div>
+            <!-- City info overlay at bottom -->
+            <div class="restaurant-info-overlay">
+                <div class="restaurant-details">
+                    <h3 class="restaurant-name">${city.name}</h3>
+                    <p class="city-description">${city.description}</p>
+                </div>
+            </div>
+        </div>
+        </a>
+    `;
+}
+
+
+        // Mise à jour de la fonction loadCities avec animations
+        function loadCities(region) {
+            const citiesGrid = document.getElementById('cities-grid');
+            const cities = citiesData[region] || [];
+            // Animation de sortie
+            citiesGrid.style.opacity = '0';
+            citiesGrid.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                citiesGrid.innerHTML = cities.map((city, index) => 
+                    createCityCardWithAnimation(city, index * 100)
+                ).join('');
+                // Animation d'entrée
+                citiesGrid.style.opacity = '1';
+                citiesGrid.style.transform = 'translateY(0)';
+                // Animer les cartes individuellement
+                setTimeout(() => {
+                    animateCardsOnScroll();
+                    setupFollowButtons();
+                }, 100);
+            }, 300);
+        }
+
+
+        // Fonction de recherche avec filtrage en temps réel
+        function filterCitiesRealTime(query) {
+            const allCards = document.querySelectorAll('.city-card');
+            let visibleCount = 0;
+            allCards.forEach(card => {
+                const cityName = card.querySelector('h3').textContent.toLowerCase();
+                const cityDesc = card.querySelector('p').textContent.toLowerCase();
+                const searchTerm = query.toLowerCase();
+                if (cityName.includes(searchTerm) || cityDesc.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeInUp 0.4s ease';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+
+            // Afficher un message si aucune ville trouvée
+            const citiesGrid = document.getElementById('cities-grid');
+            let noResultsMsg = document.querySelector('.no-results-message');
+            if (visibleCount === 0 && query.length > 0) {
+                if (!noResultsMsg) {
+                    noResultsMsg = document.createElement('div');
+                    noResultsMsg.className = 'no-results-message col-span-full text-center py-12';
+                    noResultsMsg.innerHTML = `
+                        <div class="text-6xl mb-4">🔍</div>
+                        <h3 class="text-2xl font-semibold text-gray-600 mb-2">Aucune ville trouvée</h3>
+                        <p class="text-gray-500">Essayez avec un autre terme de recherche</p>
+                    `;
+                    citiesGrid.appendChild(noResultsMsg);
+                }
+                noResultsMsg.style.display = 'block';
+            } else if (noResultsMsg) {
+                noResultsMsg.style.display = 'none';
+            }
+        }
+
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            // Charger les villes par défaut (Sud)
+            loadCities('Sud');
+            // Configuration des transitions CSS
+            document.getElementById('cities-grid').style.transition = 'all 0.3s ease';
+            console.log('EYALANE plateforme initialisée avec succès!');
+        });
+
+
+        // Gestion du défilement des magazines
+        let currentMagIndex = 0;
+        const totalMagazines = 4;
+        function scrollMagazines(direction) {
+            const track = document.getElementById('magazines-track');
+            const indicator = document.getElementById('mag-indicator');
+            const cardWidth = 300; // 280px + 20px margin
+            currentMagIndex += direction;
+            if (currentMagIndex < 0) currentMagIndex = totalMagazines - 1;
+            if (currentMagIndex >= totalMagazines) currentMagIndex = 0;
+            track.style.transform = `translateX(-${currentMagIndex * cardWidth}px)`;
+            indicator.textContent = currentMagIndex + 1;
+        }
+
+
+        // Configuration EmailJS
+        const EMAILJS_CONFIG = {
+            publicKey: "kNI6EJbQQRNksClFW", // Remplacer par votre clé publique EmailJS
+            serviceId: "service_mesdt3p", // Remplacer par votre service ID
+            templateId: "template_g4fhvw7" // Remplacer par votre template ID
+        };
+
+
+        // Stockage en mémoire des abonnements (remplace localStorage)
+        let newsletterSubscriptions = [];
+        // Attendre que le DOM soit chargé avant d'initialiser
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Initialisation du système newsletter...');
+            // Initialiser EmailJS si configuré
+            if (EMAILJS_CONFIG.publicKey !== "YOUR_PUBLIC_KEY") {
+                emailjs.init(EMAILJS_CONFIG.publicKey);
+                console.log('EmailJS initialisé');
+            } else {
+                console.warn('EmailJS non configuré - mode simulation activé');
+            }
+
+
+    // Vérifier que tous les éléments existent
+    const form = document.getElementById('newsletter-form');
+    const emailInput = document.getElementById('newsletter-email');
+    const submitBtn = document.querySelector('.newsletter-btn');
+    const modal = document.getElementById('newsletter-modal');
+    const confirmEmail = document.getElementById('confirm-email');
+    const modalClose = document.getElementById('modal-close');
+    const modalOk = document.getElementById('modal-ok');
+
+    // Vérification des éléments critiques
+    if (!form) {
+        console.error('Élément #newsletter-form non trouvé');
+        return;
+    }
+    if (!emailInput) {
+        console.error('Élément #newsletter-email non trouvé');
+        return;
+    }
+    if (!submitBtn) {
+        console.error('Élément .newsletter-btn non trouvé');
+        return;
+    }
+    // Gestion du formulaire newsletter
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        handleNewsletterSubmission();
+    });
+
+
+    // Fonction pour verifier si email est deja inscrit
+    function handleNewsletterSubmission() {
+        const email = emailInput.value.trim();
+        console.log('Tentative d\'inscription avec l\'email:', email);
+        // Validation de l'email
+        if (!email || !isValidEmail(email)) {
+            console.error('Email invalide:', email);
+            alert('Veuillez entrer une adresse email valide');
+            return;
+        }
+        // Vérifier si déjà inscrit
+        if (isAlreadySubscribed(email)) {
+            console.warn('Email déjà inscrit:', email);
+            alert('Cette adresse email est déjà inscrite à notre newsletter');
+            return;
+        }
+        // Désactiver le bouton et afficher le loader
+        submitBtn.disabled = true;
+        const originalContent = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<div class="loader"></div>';
+        // Style du loader
+        if (!document.getElementById('loader-style')) {
+            const style = document.createElement('style');
+            style.id = 'loader-style';
+            style.textContent = `
+                .loader {
+                    width: 20px;
+                    height: 20px;
+                    border: 2px solid #e67e22;
+                    border-top: 2px solid transparent;
+                    border-radius: 50%;
+                    animation: spin 1s linear infinite;
+                    margin: 0 auto;
+                }
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        // Fonction de réinitialisation du bouton
+        function resetButton() {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalContent;
+        }
+        // Envoyer l'email selon la configuration
+        if (EMAILJS_CONFIG.publicKey !== "YOUR_PUBLIC_KEY") {
+            sendEmailWithEmailJS(email, resetButton);
+        } else {
+            simulateEmailSending(email, resetButton);
+        }
+    }
+
+
+    // Fonction pour gérer l'envoi
+    function sendEmailWithEmailJS(email, resetButton) {
+        const templateParams = {
+            to_email: email,
+            user_name: email.split('@')[0],
+            message: 'Bienvenue dans notre newsletter EYALANE ! Vous recevrez désormais toutes nos actualités sur Sangmélima.'
+        };
+
+        emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, templateParams)
+            .then(function(response) {
+                console.log('Email envoyé avec succès!', response.status, response.text);
+                handleSuccessfulSubmission(email);
+            })
+            .catch(function(error) {
+                console.error('Erreur lors de l\'envoi de l\'email:', error);
+                // En cas d'échec EmailJS, continuer quand même (comme dans votre code original)
+                console.log('Simulation du succès malgré l\'erreur EmailJS');
+                handleSuccessfulSubmission(email);
+            })
+            .finally(function() {
+                resetButton();
+            });
+    }
+
+
+    // Fonction pour simuler l'envoi
+    function simulateEmailSending(email, resetButton) {
+        console.log('Mode simulation - envoi d\'email pour:', email);
+        
+        // Simuler un délai d'envoi
+        setTimeout(() => {
+            handleSuccessfulSubmission(email);
+            resetButton();
+        }, 1500);
+    }
+
+
+    // Fonction pour gérer le processus d'abonnement
+    function handleSuccessfulSubmission(email) {
+        console.log('Traitement du succès pour:', email);
+        // Sauvegarder l'abonnement
+        saveSubscription(email);
+        // Afficher la modale de succès
+        showSuccessModal(email);
+        // Reset du formulaire
+        form.reset();
+        console.log('Inscription finalisée avec succès');
+    }
+
+
+    // Fonction de validation email
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+
+    // Vérifier si l'email est déjà inscrit
+    function isAlreadySubscribed(email) {
+        return newsletterSubscriptions.some(subscription => 
+            subscription.email.toLowerCase() === email.toLowerCase()
+        );
+    }
+
+
+    // Sauvegarder l'abonnement en mémoire
+    function saveSubscription(email) {
+        const subscription = {
+            email: email,
+            date: new Date().toISOString(),
+            status: 'active'
+        };
+        newsletterSubscriptions.push(subscription);
+        console.log('Abonnement sauvegardé:', subscription);
+        console.log('Total abonnements:', newsletterSubscriptions.length);
+    }
+
+
+    // Afficher la modale de succès
+    function showSuccessModal(email) {
+        console.log('Affichage de la modale pour:', email);
+        if (confirmEmail) {
+            confirmEmail.textContent = email;
+        } else {
+            console.warn('Élément #confirm-email non trouvé');
+        }
+        if (modal) {
+            modal.classList.add('show');
+        } else {
+            console.warn('Élément #newsletter-modal non trouvé');
+            // Fallback avec alert si la modale n'existe pas
+            alert(`Inscription réussie ! Email confirmé : ${email}`);
+        }
+    }
+
+
+        // Fermer la modale
+        function closeModal() {
+            if (modal) {
+                modal.classList.remove('show');
+                console.log('Modale fermée');
+            }
+        }
+
+        // Gestion des événements de la modale (avec vérification d'existence)
+        if (modalClose) {
+            modalClose.addEventListener('click', closeModal);
+        }
+        if (modalOk) {
+            modalOk.addEventListener('click', closeModal);
+        }
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        }
+
+        // Fermer la modale avec la touche Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal && modal.classList.contains('show')) {
+                closeModal();
+            }
+        });
+
+        console.log('Système newsletter initialisé avec succès');
+    });
+
+
+    function clearNewsletterSubscriptions() {
+        newsletterSubscriptions = [];
+        console.log('Abonnements effacés');
+    }
+</script>
+</body>
+</html>

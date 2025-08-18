@@ -345,11 +345,13 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(233, 221, 221, 0.7);
-            backdrop-filter: blur(8px);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 2;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 0, 0, 0.4) 0%,
+                rgba(0, 0, 0, 0.1) 50%,
+                rgba(0, 0, 0, 0.3) 100%
+            );
+            z-index: 1;
         }
         
         .image-hover-effect:hover::before {
