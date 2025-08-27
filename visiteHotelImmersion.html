@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visite Virtuelle - Grand Hôtel</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        #container { position: relative; width: 100vw; height: 100vh; }
+        #canvas { position: absolute; top: 0; left: 0; }
+        .hotspot {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: 3px solid #3b82f6;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #3b82f6;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            z-index: 10;
+        }
+        .hotspot:hover {
+            transform: scale(1.2);
+            background: #3b82f6;
+            color: white;
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+            50% { box-shadow: 0 0 0 20px rgba(59, 130, 246, 0); }
+        }
+        .control-panel {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+        }
+        .room-info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 20;
+        }
+        .navigation {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 20;
+        }
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 30;
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+    <div id="container">
+        <canvas id="canvas"></canvas>
+        
+        <!-- Loading -->
+        <div id="loading" class="loading">
+            <div class="bg-white rounded-lg p-6 text-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                <p class="text-gray-700">Chargement de la visite virtuelle...</p>
+            </div>
+        </div>
+
+        <!-- Info de la pièce -->
+        <div class="room-info bg-black bg-opacity-60 text-white p-4 rounded-lg backdrop-blur-sm">
+            <h2 id="roomTitle" class="text-xl font-bold mb-2">Hall d'Accueil</h2>
+            <p id="roomDescription" class="text-sm opacity-90">Découvrez l'élégance de notre hall d'accueil avec sa décoration raffinée.</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation">
+            <div class="bg-black bg-opacity-60 rounded-lg p-3 backdrop-blur-sm">
+                <div class="flex flex-col space-y-2">
+                    <button onclick="changeRoom('lobby')" class="text-white hover:text-blue-300 text-sm transition-colors">Hall</button>
+                    <button onclick="changeRoom('room')" class="text-white hover:text-blue-300 text-sm transition-colors">Chambre</button>
+                    <button onclick="changeRoom('restaurant')" class="text-white hover:text-blue-300 text-sm transition-colors">Restaurant</button>
+                    <button onclick="changeRoom('spa')" class="text-white hover:text-blue-300 text-sm transition-colors">Spa</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contrôles -->
+        <div class="control-panel">
+            <div class="flex items-center space-x-4 bg-black bg-opacity-60 rounded-full px-6 py-3 backdrop-blur-sm">
+                <button id="soundToggle" onclick="toggleSound()" class="text-white hover:text-blue-300 text-xl transition-colors">🔊</button>
+                <button onclick="resetView()" class="text-white hover:text-blue-300 text-sm transition-colors">↻ Réinitialiser la vue</button>
+                <button onclick="toggleFullscreen()" class="text-white hover:text-blue-300 text-sm transition-colors">⛶ Plein écran</button>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div id="instructions" class="absolute bottom-20 left-1/2 transform -translate-x-1/2 text-white text-center text-sm opacity-75">
+            <p>🖱️ Cliquez et faites glisser pour regarder autour • 📱 Sur mobile : touchez et faites glisser</p>
+        </div>
+    </div>
+
+    <script>
+        let scene, camera, renderer, sphere, controls;
+        let currentRoom = 'lobby';
+        let isMouseDown = false;
+        let mouseX = 0, mouseY = 0;
+        let currentAudio = null;
+        let soundEnabled = true;
+
+        // Configuration des pièces avec images 360° réelles d'hôtels
+        const rooms = {
+            lobby: {
+                title: "Hall d'Accueil",
+                description: "Découvrez l'élégance de notre hall d'accueil avec sa décoration raffinée et son ambiance chaleureuse.",
+                image: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=2048&h=1024&fit=crop",
+                sound: "$NOT_-_GOSHA_(Official_Music_Video)(128k).mp3"
+            },
+            room: {
+                title: "Suite de Luxe",
+                description: "Une chambre spacieuse et élégante avec une vue imprenable et tout le confort moderne.",
+                image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=2048&h=1024&fit=crop",
+                sound: "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav"
+            },
+            restaurant: {
+                title: "Restaurant Gastronomique",
+                description: "Savourez une cuisine raffinée dans notre restaurant avec vue panoramique.",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA1W8__ZPpJWLy6sV371eWg4XPCFS2CpsaGg&s",
+                sound: "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav"
+            },
+            spa: {
+                title: "Espace Bien-être",
+                description: "Détendez-vous dans notre spa luxueux avec piscine et soins relaxants.",
+                image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=2048&h=1024&fit=crop",
+                sound: "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav"
+            }
+        };
+
+        function init() {
+            // Scene
+            scene = new THREE.Scene();
+            
+            // Camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+            
+            // Renderer
+            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas'), antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            
+            // Sphere pour la vue 360°
+            const geometry = new THREE.SphereGeometry(500, 60, 40);
+            geometry.scale(-1, 1, 1); // Inverser pour voir l'intérieur
+            
+            const material = new THREE.MeshBasicMaterial();
+            sphere = new THREE.Mesh(geometry, material);
+            scene.add(sphere);
+            
+            // Charger la première pièce
+            loadRoom('lobby');
+            
+            // Event listeners
+            setupEventListeners();
+            
+            // Démarrer le rendu
+            animate();
+            
+            // Masquer le loading
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('instructions').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('instructions').style.opacity = '0';
+                }, 5000);
+            }, 2000);
+        }
+
+        function loadRoom(roomId) {
+            const room = rooms[roomId];
+            if (!room) return;
+
+            currentRoom = roomId;
+            
+            // Mettre à jour les infos
+            document.getElementById('roomTitle').textContent = room.title;
+            document.getElementById('roomDescription').textContent = room.description;
+            
+            // Charger la texture
+            const loader = new THREE.TextureLoader();
+            loader.load(room.image, (texture) => {
+                sphere.material.map = texture;
+                sphere.material.needsUpdate = true;
+            });
+            
+            // Jouer le son d'ambiance
+            if (soundEnabled) {
+                playAmbientSound(room.sound);
+            }
+        }
+
+        function playAmbientSound(soundUrl) {
+            if (currentAudio) {
+                currentAudio.pause();
+            }
+            
+            // Simuler des sons d'ambiance (car les URLs de sons réels peuvent ne pas être disponibles)
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            
+            // Créer un son d'ambiance synthétique basé sur la pièce
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            // Fréquences différentes selon la pièce
+            const frequencies = {
+                lobby: 220,
+                room: 330,
+                restaurant: 440,
+                spa: 165
+            };
+            
+            oscillator.frequency.value = frequencies[currentRoom] || 220;
+            oscillator.type = 'sine';
+            gainNode.gain.value = 0.02; // Volume très bas
+            
+            oscillator.start();
+            
+            // Arrêter après 3 secondes
+            setTimeout(() => {
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+                oscillator.stop(audioContext.currentTime + 1);
+            }, 3000);
+        }
+
+        function setupEventListeners() {
+            const canvas = document.getElementById('canvas');
+            
+            // Souris
+            canvas.addEventListener('mousedown', onMouseDown);
+            canvas.addEventListener('mousemove', onMouseMove);
+            canvas.addEventListener('mouseup', onMouseUp);
+            canvas.addEventListener('wheel', onMouseWheel);
+            
+            // Touch
+            canvas.addEventListener('touchstart', onTouchStart);
+            canvas.addEventListener('touchmove', onTouchMove);
+            canvas.addEventListener('touchend', onTouchEnd);
+            
+            // Redimensionnement
+            window.addEventListener('resize', onWindowResize);
+        }
+
+        function onMouseDown(event) {
+            isMouseDown = true;
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+        }
+
+        function onMouseMove(event) {
+            if (!isMouseDown) return;
+            
+            const deltaX = event.clientX - mouseX;
+            const deltaY = event.clientY - mouseY;
+            
+            camera.rotation.y -= deltaX * 0.01;
+            camera.rotation.x -= deltaY * 0.01;
+            
+            // Limiter la rotation verticale
+            camera.rotation.x = Math.max(-Math.PI/2, Math.min(Math.PI/2, camera.rotation.x));
+            
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+        }
+
+        function onMouseUp() {
+            isMouseDown = false;
+        }
+
+        function onMouseWheel(event) {
+            camera.fov += event.deltaY * 0.05;
+            camera.fov = Math.max(10, Math.min(120, camera.fov));
+            camera.updateProjectionMatrix();
+        }
+
+        function onTouchStart(event) {
+            if (event.touches.length === 1) {
+                mouseX = event.touches[0].clientX;
+                mouseY = event.touches[0].clientY;
+                isMouseDown = true;
+            }
+        }
+
+        function onTouchMove(event) {
+            if (event.touches.length === 1 && isMouseDown) {
+                event.preventDefault();
+                
+                const deltaX = event.touches[0].clientX - mouseX;
+                const deltaY = event.touches[0].clientY - mouseY;
+                
+                camera.rotation.y -= deltaX * 0.01;
+                camera.rotation.x -= deltaY * 0.01;
+                
+                camera.rotation.x = Math.max(-Math.PI/2, Math.min(Math.PI/2, camera.rotation.x));
+                
+                mouseX = event.touches[0].clientX;
+                mouseY = event.touches[0].clientY;
+            }
+        }
+
+        function onTouchEnd() {
+            isMouseDown = false;
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+
+        // Fonctions de contrôle
+        function changeRoom(roomId) {
+            loadRoom(roomId);
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const button = document.getElementById('soundToggle');
+            button.textContent = soundEnabled ? '🔊' : '🔇';
+            
+            if (!soundEnabled && currentAudio) {
+                currentAudio.pause();
+            }
+        }
+
+        function resetView() {
+            camera.rotation.set(0, 0, 0);
+            camera.fov = 75;
+            camera.updateProjectionMatrix();
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Initialisation
+        init();
+    </script>
+</body>
+</html>

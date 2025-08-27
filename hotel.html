@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EYALANE - Boussole du tourisme au Cameroun</title>
+    <title>EYALANE - Ville de Sangmélima</title>
     <link href="index.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 
 <body class="antialiased">
     <!-- Navigation -->
@@ -17,38 +16,7 @@
             <div class="flex items-center">
                 <span class="text-3xl md:text-4xl text-green-800 font-bold">éyalane explorer</span>
             </div>
-
-            <!-- Menu principal -->
-            <div class="regions-navigation">
-                <!-- Bouton de scroll gauche (externe) -->
-                <button class="scroll-btn" id="scroll-left" title="Défiler vers la gauche">
-                    ‹
-                </button>
-                
-                <!-- Conteneur de scroll -->
-                <div class="regions-scroll-container">
-                    <div class="regions-scroll" id="regions-scroll">
-                        <a href="#" class="navbar-link region-link active" data-region="Sud">Sud</a>
-                        <a href="#" class="navbar-link region-link" data-region="Nord">Nord</a>
-                        <a href="#" class="navbar-link region-link" data-region="Est">Est</a>
-                        <a href="#" class="navbar-link region-link" data-region="Ouest">Ouest</a>
-                        <a href="#" class="navbar-link region-link" data-region="Adamaoua">Adamaoua</a>
-                        <a href="#" class="navbar-link region-link" data-region="Nord-Ouest">Nord-Ouest</a>
-                        <a href="#" class="navbar-link region-link" data-region="Sud-Ouest">Sud-Ouest</a>
-                        <a href="#" class="navbar-link region-link" data-region="Littoral">Littoral</a>
-                        <a href="#" class="navbar-link region-link" data-region="Centre">Centre</a>
-                        <a href="#" class="navbar-link region-link" data-region="Extrême-Nord">Extrême-Nord</a>
-                    </div>
-                </div>
-                
-                <!-- Bouton de scroll droite (externe) -->
-                <button class="scroll-btn" id="scroll-right" title="Défiler vers la droite">
-                    ›
-                </button>
-            </div>
-
             <div class="hidden md:flex items-center space-x-6">
-                <!-- Menu Explorer avec dropdown -->
                 <div class="relative dropdown-container">
                     <button class="navbar-link dropdown-trigger flex items-center border-none cursor-pointer">
                         Explorer
@@ -64,8 +32,6 @@
                         <a href="guide.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-green-700">Devenir partenaire</a>
                     </div>
                 </div>
-                
-                <!-- Menu Lifestyle avec dropdown -->
                 <div class="relative dropdown-container">
                     <button class="navbar-link dropdown-trigger flex items-center border-none cursor-pointer">
                         Lifestyle
@@ -80,8 +46,7 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Menu mobile -->
+
             <div class="md:hidden">
                 <button id="mobile-menu-btn" class="text-orange-700 focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -90,52 +55,83 @@
                 </button>
             </div>
         </div>
+
+        <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute top-full left-0 right-0 z-40 hidden">
+            <div class="p-4 max-h-96 overflow-y-auto">
+                <div class="mb-4">
+                    <button class="navbar-link mobile-dropdown-trigger w-full flex justify-between items-center py-2 px-3 text-green-700 hover:text-gray-600 font-semibold" type="button">
+                        Explorer
+                        <svg class="w-4 h-4 transform transition-transform mobile-dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown-content hidden pl-4 space-y-1 mt-2">
+                        <a href="destinations.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Qui sommes nous</a>
+                        <a href="activites.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Notre vision</a>
+                        <a href="circuits.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Nos produits</a>
+                        <a href="guide.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Nos partenaires</a>
+                        <a href="guide.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Devenir partenaire</a>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <button class="navbar-link mobile-dropdown-trigger w-full flex justify-between items-center py-2 px-3 text-green-700 hover:text-gray-600 font-semibold" type="button">
+                        Lifestyle
+                        <svg class="w-4 h-4 transform transition-transform mobile-dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown-content hidden pl-4 space-y-1 mt-2">
+                        <a href="culture.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Histoire</a>
+                        <a href="gastronomie.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Géographie</a>
+                        <a href="artisanat.html" class="block py-2 px-3 text-gray-600 hover:text-green-700">Galérie</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </nav>
 
 
 
-    <section class="md:py-6 py-4">
-        <div class="container mx-auto px-6">
+     <section class="md:py-6 py-4">
+        <div class="page-navigation-tabs container mx-auto px-6">
             <nav class="flex items-center gap-6 md:gap-8 overflow-x-auto whitespace-nowrap border-b border-gray-300">
-                <a href="#" class="text-green-800 font-bold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-green-800">
-                    Gastronomie
-                </a>
-                
-                <a href="#" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
+                <div class="bg-white flex">
+                    <svg class="w-5 h-1O text-green-800" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <a href="#apropos" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
+                        Sangmélima
+                    </a>
+                </div>
+
+                <a href="#histoire" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
                     Activités
                 </a>
-                
-                <a href="#" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
-                    Immobilier
-                </a>
-                
-                <a href="#" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
-                    Evènementiels
-                </a>
-                
-                <a href="#" class="text-gray-600 hover:text-green-800 font-semibold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-transparent hover:after:bg-green-800">
-                    Blog
+
+                <a href="#alaune" class="text-green-800 font-bold text-lg md:text-xl relative after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[3px] after:bg-green-800">
+                    Journée porte ouverte à l'université...
                 </a>
             </nav>
         </div>
     </section>
-
+    
 
 
     <!-- Hero Section avec Carousel -->
-    <section class="hero-carousel mb-6 md:mb-16">
-        <div class="carousel-track"> 
+    <section class="hero-carousel mb-4 md:mb-6">
+        <div class="carousel-track">
             <div class="carousel-slide active" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s');">
-                <div class="city-name-overlay">Gastronomie</div>
+                <div class="city-name-overlay">Hall d'entrée</div>
             </div>
             <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwTlPYQ3CVxPIsJcddITkgW0RaY2vJ_RVxzw&s');">
-                <div class="city-name-overlay">Activités</div>
-            </div>
-            <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA7QnO9uhlFifA-yxVve695C7DKryOG3yKOA&s');">
-                <div class="city-name-overlay">Immobilier</div>
+                <div class="city-name-overlay">Chambre couple</div>
             </div>
             <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s');">
-                <div class="city-name-overlay">Evènementiel</div>
+                <div class="city-name-overlay">Chambre simple</div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s');">
+                <div class="city-name-overlay">Chambre double</div>
             </div>
         </div>
 
@@ -149,180 +145,211 @@
         </div>
 
         <div class="carousel-indicators-container"></div>
-        
-        <div class="absolute inset-0 flex items-center justify-center">
-            <div class="text-center text-white px-6">
-                <h1 class="text-4xl mb-8 fade-in">
-                    Trouvez le
-                    <span class="text-green-700 font-bold">bon endroit</span>
-                     , au 
-                     <span class="text-orange-700 font-bold">bon moment</span>
-                </h1>
-                
-                <!-- Barre de recherche -->
-                <div class="search-container mt-8">
-                    <input 
-                        type="text" 
-                        id="search-input" 
-                        placeholder="Rechercher une ville..." 
-                        class="search-input"
-                        autocomplete="on"
-                    >
-                    <div id="search-suggestions" class="search-suggestions"></div>
-                </div>
-            </div>
-        </div>
     </section>
 
+    <p class="px-4 md:px-20 md:mb-6 mb-4">
+        <a href="galerie.html" id="" class="navbar-link text-lg md:text-xl leading-relaxed">Voir la galerie</a>
+        <a href="visiteHotelImmersion.html" id="" class="navbar-link text-lg md:text-xl leading-relaxed">Visite immersive</a>
+    </p>
 
-    <!-- Section des régions et villes -->
-    <section id="cities-section" class="mb-6 mx-auto md:mb-20 bg-white z-30">
-        <div class="container mx-auto md:px-6">
-            <h2 class="text-3xl md:text-4xl text-center mb-auto text-green-700 font-bold">
-                Découvrir par ville
-            </h2>
+
+    <section>
+        <!-- Contenu principal avec titre et images améliorées -->
+        <div class="header mb-4 md:mb-6">
+            <h1 class="text-3xl text-green-900 font-bold mb-4 md:mb-6">CHIK EDEN</h1>
             
-            <!-- Grille des villes -->
-            <div id="cities-grid" class="cities-grid items-center md:px-0 px-2">
-                <!-- Les villes seront chargées dynamiquement -->
+            <div class="mb-2">
+                <span class="text-3xl text-green-900 font-bold mb-2">4.8</span>
+                <span class="text-3xl text-green-900 font-bold mb-2">●●●●</span>
+                <span class="text-lg lg:text-xl text-black leading-relaxed">(245 avis d'après l'app mobile éyalane),</span>
+                <span class="text-lg lg:text-xl text-black font-semibold leading-relaxed">N°1 sur 12 sur les rstaurants de Sangmélima</span>
+            </div>
+            
+            <div class="contact-info">
+                <div class="text-lg lg:text-xl text-black leading-relaxed">
+                    Avenue Principale, Centre-ville, Sangmélima, Sud, Cameroun
+                </div>
+                <div class="text-lg lg:text-xl text-black leading-relaxed">
+                    <a href="tel:+237675123456">+237 675 123 456</a>
+                </div>
+                <div class="text-lg lg:text-xl text-black leading-relaxed">
+                    <a href="mailto:contact@lepalmier.cm">Contactez le restaurant par email</a>
+                </div>
             </div>
         </div>
     </section>
 
 
-<!--
-    <section class="mb-16 md:mb-20">
-        <h2 class="text-3xl md:text-4xl text-center mb-8 text-green-700 font-bold">
-            Découvrir par catégorie
-        </h2>
 
-        <div class="container mx-auto px-6 md:w-3/4">
-            <div class="flex gap-2 overflow-x">
-                <div class="flex-shrink-0 navbar-link-destination md:flex-1 md:w-full w-60 h-60 rounded-lg relative">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSueu453MTIDPsXCaAZpbUZr_wTh0cN43tcVQ&s" alt="Meilleures expériences" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-end p-6">
-                        <h3 class="text-white text-2xl font-bold">Activités</h3>
-                    </div>
-                </div>
-                
-                <div class="flex-shrink-0 navbar-link-destination md:flex-1 md:w-full w-60 w-60 h-60 rounded-lg relative">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTToatGn7lQSEyXXFtfIy4OjczZRmr9blQbfw&s" alt="Meilleures attractions" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-end p-6">
-                        <h3 class="text-white text-2xl font-bold">Gastronomie</h3>
-                    </div>
-                </div>
-
-                <div class="flex-shrink-0 navbar-link-destination md:flex-1 md:w-full w-60 h-60 rounded-lg relative shadow-lg">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpNskHuMYQGNYs2LhD89ekED-YKPjwz4rg6Q&s" alt="Expériences d'une vie" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-end p-6">
-                        <h3 class="text-white text-2xl font-bold">Evènementiels</h3>
-                    </div>
-                </div>
-
-                <div class="flex-shrink-0 navbar-link-destination md:flex-1 md:w-full w-60 h-60 rounded-lg relative shadow-lg">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTreSQH_FAF3MiqGvlAAnGw1O1GVdxYFpKHBg&s" alt="Histoire et culture" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-end p-6">
-                        <h3 class="text-white text-2xl font-bold">Immobilier</h3>
-                    </div>
-                </div>
+    <section class="location-section border-gray-200 mb-6 md:mb-12">
+        <div class="container mx-auto px-4 md:px-12">
+            <div class="flex-1">
+                <h2 class="text-3xl text-green-900 font-bold mb-2">Prix des chambres et équipements</h2>
+                <p class="text-lg lg:text-xl text-black font-semibold leading-relaxed mb-6">
+                    Découvrez la sélection coup de cœur éyalane, qui réunit tous les établissements recommandés par éyalane, inclant vos villes et vos endroits préférés.
+                </p>
             </div>
-        </div>
-    </section>
-    -->
-
-
-
-    <!-- Section publicitaire -->
-    <div class="bg-white mb-6 md:mb-20">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-center">
-                <div class="w-full">
-                    <img 
-                        src="pubEyalane.png" 
-                        alt="Publicité Eyalane" 
-                        class="w-full h-full rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-                        loading="lazy"
-                    >
+            <div class="details-section">
+                <div class="amenity-group">
+                    <h3 class="font-semibold">Catégories de chambres basées sur l'occupation et le type de lit</h3>
+                    <div class="amenity-list">
+                        <div class="amenity-item">Chambre Simple</div>
+                        <div class="amenity-item">25000 FCFA</div>
+                        <div class="amenity-item">Chambre Double</div>
+                        <div class="amenity-item">25000 FCFA</div>
+                        <div class="amenity-item">Chambre Familiale</div>
+                        <div class="amenity-item">25000 FCFA</div>
+                        <div class="amenity-item">Chambre Communicante</div>
+                        <div class="amenity-item">25000 FCFA</div>
+                    </div>
                 </div>
-            </div>
+
+                <div class="amenity-group">
+                    <h3 class="font-semibold">Catégories de chambres basées sur le luxe, la taille et les équipements</h3>
+                    <div class="amenity-list">
+                        <div class="amenity-item">Chambre Standard</div>
+                        <div class="amenity-item">25000 FCFA</div>
+                        <div class="amenity-item">Chambre Deluxe</div>
+                        <div class="amenity-item">25000 FCFA</div>
+                        <div class="amenity-item">Studio</div>
+                        <div class="amenity-item">25000 FCFA</div>
+                        <div class="amenity-item">Suite</div>
+                        <div class="amenity-item">25000 FCFA</div>
+                    </div>
+                </div>
         </div>
-    </div>
-    
+
+         <div class="details-section">
+                <div class="amenity-group">
+                    <h3 class="font-semibold">Equipements de l'établissement</h3>
+                    <div class="amenity-list">
+                        <div class="amenity-item">Internet haut debit gratuit (WIFI)</div>
+                        <div class="amenity-item">Parking spacieux</div>
+                        <div class="amenity-item">Sécurité 24/24</div>
+                        <div class="amenity-item">Réception 24/24</div>
+                        <div class="amenity-item">Service de taxi</div>
+                        <div class="amenity-item">Salle de conférence</div>
+                        <div class="amenity-item">Piscine</div>
+                        <div class="amenity-item"></div>
+                    </div>
+                </div>
+
+                <div class="amenity-group">
+                    <h3 class="font-semibold">Equipements des chambres</h3>
+                    <div class="amenity-list">
+                        <div class="amenity-item">Climatisation</div>
+                        <div class="amenity-item">Chambre hypoallergénique</div>
+                        <div class="amenity-item">Rideaux occulants</div>
+                        <div class="amenity-item">Service de ménage</div>
+                        <div class="amenity-item">Télévision à écran plat</div>
+                        <div class="amenity-item">Baignoire/douche</div>
+                        <div class="amenity-item">Cafétièe/théière</div>
+                        <div class="amenity-item">Bureau</div>
+                    </div>
+                </div>
+        </div>
+     </section>
 
 
 
-     <section class="mx-auto mb-6">
-        <div class="container md:px-6">
-            <!-- En-tête responsive -->
-            <div class="flex flex-col md:flex-row md:justify-between md:items-center px-4 md:px-14 gap-4 mb-4">
-                <div class="flex-1">
-                    <h2 class="text-3xl text-green-900 font-bold mb-2">A la une</h2>
-                    <p class="text-lg lg:text-xl text-black font-semibold leading-relaxed">
+      <!-- Section Localisation -->
+    <section class="location-section border-gray-200 mb-6 md:mb-12">
+        <div class="container mx-auto px-4 md:px-12">
+            <div class="flex-1">
+                    <h2 class="text-3xl text-green-900 font-bold mb-2">Localisation de l'hotel</h2>
+                    <p class="text-lg lg:text-xl text-black font-semibold leading-relaxed mb-6">
                         Découvrez la sélection coup de cœur éyalane, qui réunit tous les établissements recommandés par éyalane, inclant vos villes et vos endroits préférés.
                     </p>
                 </div>
-                <div class="flex-shrink-0">
-                    <h3 class="navbar-link-destination text-lg md:text-2xl text-green-900 font-bold underline cursor-pointer hover:text-green-700 transition-colors">
-                        <a href="alaune.html">Tout voir</a>
-                    </h3>
-                </div>
-            </div>
             
-            <!-- Container avec scroll horizontal -->
-            <div class="px-4 md:px-14">
-                <div class="scroll-container flex gap-2 md:gap-4 overflow-x-auto pb-4">
-                    <!-- Card 1 -->
-                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
-                        <div class="overflow-hidden rounded-t-lg">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOeiBwqvk5Wp_OcTbovw9z7Ia0Wb5cZ12tCw&s" 
-                                 alt="Ikos Dassia" 
-                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Ikos Dassia</h3>
-                            <div class="flex items-center">
-                                <span class="text-green-600 font-bold mr-2">4,9</span>
-                                <div class="flex items-center">
-                                    <span class="text-green-500 text-sm">★★★★★</span>
-                                    <span class="text-gray-400 text-sm ml-1">(4296)</span>
-                                </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Carte -->
+                <div class="map-container">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden h-80">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63424.45678!2d11.9167!3d2.9167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSangm%C3%A9lima!5e0!3m2!1sen!2scm!4v1234567890"
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    
+                    <!-- Bouton Itinéraire -->
+                    <div class="mt-4">
+                        <a href="https://maps.google.com/?q=Sangmélima,Cameroun" 
+                           target="_blank"
+                           class="navbar-link text-lg md:text-xl inline-flex items-center px-6 py-3 rounded-lg transition-colors">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            Obtenir l'itinéraire
+                        </a>
+                    </div>
+
+                    <!-- Informations supplémentaires -->
+                    <div class=" flex-row p-4 md:p-6">
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Bon à savoir</h4>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Entrée principale face à l'avenue</li>
+                                    <li>• Accès handicapés disponible</li>
+                                    <li>• Point de repère : en face de la pharmacie centrale</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Card 2 -->
-                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
-                        <div class="overflow-hidden rounded-t-lg">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB7cYBgsteFKcZGtCtwx8TszJfYOlE7C611w&s" 
-                                 alt="Voyage Sorgun" 
-                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Voyage Sorgun</h3>
-                            <div class="flex items-center">
-                                <span class="text-green-600 font-bold mr-2">4,8</span>
-                                <div class="flex items-center">
-                                    <span class="text-green-500 text-sm">★★★★★</span>
-                                    <span class="text-gray-400 text-sm ml-1">(10347)</span>
+                </div>
+                
+                <!-- Informations de localisation -->
+                <div class="location-info md:space-y-6 space-y-2">
+                    <!-- Moyens de transport -->
+                    <div class="bg-white rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Comment s'y rendre</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="transport-item flex items-center p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="bg-green-100 p-2 rounded-lg mr-4">
+                                    <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">En voiture</p>
+                                    <p class="text-gray-600 text-sm">15 min depuis le centre de Sangmélima</p>
+                                    <p class="text-gray-600 text-sm">Parking gratuit disponible</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
-                        <div class="overflow-hidden rounded-t-lg">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSylxBVi11C6u3NRBjgIGWF4o_g5AJBJOCkZw&s" 
-                                 alt="Voyage Belek Golf & Spa" 
-                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Voyage Belek Golf & Spa</h3>
-                            <div class="flex items-center">
-                                <span class="text-green-600 font-bold mr-2">4,8</span>
-                                <div class="flex items-center">
-                                    <span class="text-green-500 text-sm">★★★★★</span>
-                                    <span class="text-gray-400 text-sm ml-1">(15477)</span>
+                            
+                            <div class="transport-item flex items-center p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="bg-blue-100 p-2 rounded-lg mr-4">
+                                    <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Transport en commun</p>
+                                    <p class="text-gray-600 text-sm">Bus ligne 3 - Arrêt "Université"</p>
+                                    <p class="text-gray-600 text-sm">Taxi-moto disponible</p>
+                                </div>
+                            </div>
+                            
+                            <div class="transport-item flex items-center p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="bg-orange-100 p-2 rounded-lg mr-4">
+                                    <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L5 8.3V13h2V9.6l1.8-.7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">À pied</p>
+                                    <p class="text-gray-600 text-sm">25 min depuis la gare routière</p>
+                                    <p class="text-gray-600 text-sm">10 min depuis l'hôtel de ville</p>
                                 </div>
                             </div>
                         </div>
@@ -334,97 +361,12 @@
 
 
 
-
     <section class="mx-auto mb-6">
         <div class="container md:px-6">
             <!-- En-tête responsive -->
             <div class="flex flex-col md:flex-row md:justify-between md:items-center px-4 md:px-14 gap-4 mb-4">
                 <div class="flex-1">
-                    <h2 class="text-3xl text-green-900 font-bold mb-2">Offres spéciales</h2>
-                    <p class="text-lg lg:text-xl text-black font-semibold leading-relaxed">
-                        Découvrez la sélection coup de cœur éyalane, qui réunit tous les établissements recommandés par éyalane
-                    </p>
-                </div>
-                <div class="flex-shrink-0">
-                    <h3 class="navbar-link-destination text-lg md:text-2xl text-green-900 font-bold underline cursor-pointer hover:text-green-700 transition-colors">
-                        <a href="offreSpecial.html">Tout voir</a>
-                    </h3>
-                </div>
-            </div>
-            
-            <!-- Container avec scroll horizontal -->
-            <div class="px-4 md:px-14">
-                <div class="scroll-container flex gap-2 md:gap-4 overflow-x-auto pb-4">
-                    <!-- Card 1 -->
-                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
-                        <div class="overflow-hidden rounded-t-lg">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOeiBwqvk5Wp_OcTbovw9z7Ia0Wb5cZ12tCw&s" 
-                                 alt="Ikos Dassia" 
-                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Ikos Dassia</h3>
-                            <div class="flex items-center">
-                                <span class="text-green-600 font-bold mr-2">4,9</span>
-                                <div class="flex items-center">
-                                    <span class="text-green-500 text-sm">★★★★★</span>
-                                    <span class="text-gray-400 text-sm ml-1">(4296)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
-                        <div class="overflow-hidden rounded-t-lg">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB7cYBgsteFKcZGtCtwx8TszJfYOlE7C611w&s" 
-                                 alt="Voyage Sorgun" 
-                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Voyage Sorgun</h3>
-                            <div class="flex items-center">
-                                <span class="text-green-600 font-bold mr-2">4,8</span>
-                                <div class="flex items-center">
-                                    <span class="text-green-500 text-sm">★★★★★</span>
-                                    <span class="text-gray-400 text-sm ml-1">(10347)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="card-item navbar-link-destination bg-white rounded-lg hover:shadow-lg cursor-pointer">
-                        <div class="overflow-hidden rounded-t-lg">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSylxBVi11C6u3NRBjgIGWF4o_g5AJBJOCkZw&s" 
-                                 alt="Voyage Belek Golf & Spa" 
-                                 class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Voyage Belek Golf & Spa</h3>
-                            <div class="flex items-center">
-                                <span class="text-green-600 font-bold mr-2">4,8</span>
-                                <div class="flex items-center">
-                                    <span class="text-green-500 text-sm">★★★★★</span>
-                                    <span class="text-gray-400 text-sm ml-1">(15477)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-    <section class="mx-auto mb-6">
-        <div class="container md:px-6">
-            <!-- En-tête responsive -->
-            <div class="flex flex-col md:flex-row md:justify-between md:items-center px-4 md:px-14 gap-4 mb-4">
-                <div class="flex-1">
-                    <h2 class="text-3xl text-green-900 font-bold mb-2">Vous aimerez sûrement</h2>
+                    <h2 class="text-3xl text-green-900 font-bold mb-2">Vous aimerez sûrement les hotels suivants</h2>
                     <p class="text-lg lg:text-xl text-black font-semibold leading-relaxed">
                         Découvrez la sélection coup de cœur éyalane, qui réunit tous les établissements recommandés par éyalane et tout les membres de sa magnifique communauté
                     </p>
@@ -449,9 +391,9 @@
                         <div class="p-4">
                             <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Ikos Dassia</h3>
                             <div class="flex items-center">
-                                <span class="text-green-600 font-bold mr-2">4,9</span>
+                                <span class="text-green-800 font-bold mr-2">4,9</span>
                                 <div class="flex items-center">
-                                    <span class="text-green-500 text-sm">★★★★★</span>
+                                    <span class="text-green-800 text-sm">●●●●</span>
                                     <span class="text-gray-400 text-sm ml-1">(4296)</span>
                                 </div>
                             </div>
@@ -468,9 +410,9 @@
                         <div class="p-4">
                             <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Voyage Sorgun</h3>
                             <div class="flex items-center">
-                                <span class="text-green-600 font-bold mr-2">4,8</span>
+                                <span class="text-green-800 font-bold mr-2">4,8</span>
                                 <div class="flex items-center">
-                                    <span class="text-green-500 text-sm">★★★★★</span>
+                                    <span class="text-green-800 text-sm">●●●●</span>
                                     <span class="text-gray-400 text-sm ml-1">(10347)</span>
                                 </div>
                             </div>
@@ -487,9 +429,9 @@
                         <div class="p-4">
                             <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">Voyage Belek Golf & Spa</h3>
                             <div class="flex items-center">
-                                <span class="text-green-600 font-bold mr-2">4,8</span>
+                                <span class="text-green-800 font-bold mr-2">4,8</span>
                                 <div class="flex items-center">
-                                    <span class="text-green-500 text-sm">★★★★★</span>
+                                    <span class="text-green-800 text-sm">●●●●</span>
                                     <span class="text-gray-400 text-sm ml-1">(15477)</span>
                                 </div>
                             </div>
@@ -499,311 +441,6 @@
             </div>
         </div>
     </section>
-
-
-
-     <section class="mb-6 md:mb-20 mx-auto items-center">
-        <div class="container md:px-6">
-            <!-- En-tête responsive -->
-            <div class="flex flex-col md:flex-row md:justify-between md:items-center px-4 md:px-14 gap-4 mb-4">
-                <div class="flex-1">
-                    <h2 class="text-3xl text-green-900 font-bold mb-2">Événements à venir</h2>
-                    <p class="text-lg lg:text-xl text-black font-semibold leading-relaxed">
-                        Découvrez la sélection coup de cœur éyalane, qui réunit tous les établissements recommandés par éyalane et ses consultants avisés
-                    </p>
-                </div>
-                <div class="flex-shrink-0">
-                    <h3 class="navbar-link-destination text-lg md:text-2xl text-green-900 font-bold underline cursor-pointer hover:text-green-700 transition-colors">
-                        <a href="evenement.html">Tout voir</a>
-                    </h3>
-                </div>
-            </div>
-
-            <!-- Container avec scroll horizontal -->
-            <div class="px-4 md:px-14">
-                <div class="events-scroll-container flex gap-1 md:gap-2 overflow-x-auto pb-4">
-                    <!-- Événement 1 -->
-                    <div class="event-card navbar-link-destination bg-white border border-gray-200 rounded-2xl cursor-pointer">
-                        <div class="event-card-padding flex items-center h-full">
-                            <div class="w-2/5 rounded-xl overflow-hidden mr-4 flex-shrink-0">
-                                <img src="https://ekladata.com/oQ4tP8guOYov6gu9iB2fDcYCUMo.png" 
-                                     alt="International Jazz Day" 
-                                     class="event-image w-full h-24 md:h-28 lg:h-32 object-cover">
-                            </div>
-                            <div class="w-3/5 flex-1 min-w-0">
-                                <h3 class="event-title text-green-700 font-bold mb-1 line-clamp-1">Concert</h3>
-                                <p class="font-bold text-gray-900 mb-1 text-sm md:text-base line-clamp-1">Mendjangs</p>
-                                <p class="text-gray-500 text-xs md:text-sm mb-1 line-clamp-1">Scène libre</p>
-                                <p class="text-gray-500 text-xs md:text-sm mb-1 line-clamp-1">Entrée libre</p>
-                                <p class="text-gray-500 text-xs md:text-sm mt-2 line-clamp-1">Avec le KGC band</p>
-                                <p class="text-green-700 text-xs md:text-sm font-medium mt-2 line-clamp-2">
-                                    Ifc de Yaoundé : 20 octobre 2024
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Événement 2 -->
-                    <div class="event-card bg-white border border-gray-200 rounded-2xl cursor-pointer">
-                        <div class="event-card-padding flex items-center h-full">
-                            <div class="w-2/5 rounded-xl overflow-hidden mr-4 flex-shrink-0">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq-S14nlnIjL9gVqB6_zwJ2DoPj61c_LYIXQ&s" 
-                                     alt="Festival de musique" 
-                                     class="event-image w-full h-24 md:h-28 lg:h-32 object-cover">
-                            </div>
-                            <div class="w-3/5 flex-1 min-w-0">
-                                <h3 class="event-title text-green-700 font-bold mb-1 line-clamp-1">Festival</h3>
-                                <p class="font-bold text-gray-900 mb-1 text-sm md:text-base line-clamp-1">Festival des Arts</p>
-                                <p class="text-gray-500 text-xs md:text-sm mb-1 line-clamp-1">Expositions</p>
-                                <p class="text-gray-500 text-xs md:text-sm mb-1 line-clamp-1">Concerts</p>
-                                <p class="text-gray-500 text-xs md:text-sm mt-2 line-clamp-1">Avec des artistes locaux</p>
-                                <p class="text-green-700 text-xs md:text-sm font-medium mt-2 line-clamp-2">
-                                    Place de l'indépendance : 15 novembre 2024
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Événement 3 -->
-                    <div class="event-card bg-white border border-gray-200 rounded-2xl cursor-pointer">
-                        <div class="event-card-padding flex items-center h-full">
-                            <div class="w-2/5 rounded-xl overflow-hidden mr-4 flex-shrink-0">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZVZH0d5ZaMtAOWI2nYa9n8Uw28w4P-_rlAw&s" 
-                                     alt="Marché artisanal" 
-                                     class="event-image w-full h-24 md:h-28 lg:h-32 object-cover">
-                            </div>
-                            <div class="w-3/5 flex-1 min-w-0">
-                                <h3 class="event-title text-green-700 font-bold mb-1 line-clamp-1">Marché</h3>
-                                <p class="font-bold text-gray-900 mb-1 text-sm md:text-base line-clamp-1">Marché du Terroir</p>
-                                <p class="text-gray-500 text-xs md:text-sm mb-1 line-clamp-1">Produits locaux</p>
-                                <p class="text-gray-500 text-xs md:text-sm mb-1 line-clamp-1">Artisanat</p>
-                                <p class="text-gray-500 text-xs md:text-sm mt-2 line-clamp-1">Dégustations gratuites</p>
-                                <p class="text-green-700 text-xs md:text-sm font-medium mt-2 line-clamp-2">
-                                    Marché central : 5 décembre 2024
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Section publicitaire -->
-    <div class="bg-white mb-6 md:mb-20">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-center">
-                <div class="w-full">
-                    <img 
-                        src="pubEyalane.png" 
-                        alt="Publicité Eyalane" 
-                        class="w-full md:h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-                        loading="lazy"
-                    >
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-     <!-- Section Événements -->
-    <section id="coupcoeur-section" class="mx-auto sm:mx-4 lg:mx-4 mb-6 md:mb-20">
-        <div class="event-background">
-            <!-- Header Section -->
-            <div class="px-4 sm:px-6 lg:px-14 py-6 sm:py-8">
-                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-                    <div class="flex-1">
-                        <h2 class="text-3xl lg:text-3xl text-green-900 font-bold mb-2 sm:mb-3">
-                            Coup de coeur éyalane
-                        </h2>
-                        <p class="text-lg lg:text-xl text-gray-700 font-medium leading-relaxed">
-                            Découvrez la sélection coup de coeur éyalane, qui réunit tous les établissements recommandés par éyalane, les coups de coeur de notre plateforme suite a une investigation dans les divers établissements de notre plateforme multicanal éyalane.
-                        </p>
-                    </div>
-                    <div class="flex-shrink-0">
-                        <h3 class="navbar-link-destination text-lg sm:text-xl lg:text-2xl text-green-900 font-bold underline hover:text-green-700 transition-colors cursor-pointer">
-                            <a href="coupCoeur.html">Tout voir</a>
-                        </h3>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Cards Grid -->
-            <div class="px-4 sm:px-6 lg:px-14 pb-6 sm:pb-8">
-                <div class="events-grid">
-                    <!-- Card 1 -->
-                    <div class="navbar-link-destination">
-                        <div class="event-card">
-                            <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=400&h=200&fit=crop" 
-                                 alt="Festival des Arts du Sud" 
-                                 class="event-image">
-                            <div class="event-content">
-                                <span class="event-date-coeur">❤ Coup de coeur</span>
-                                <h3 class="event-title">Festival des Arts du Sud</h3>
-                                <p class="event-description">
-                                    Célébration annuelle des traditions artistiques de la région avec danse, musique et artisanat local.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Card 2 -->
-                    <div class="navbar-link-destination">
-                        <div class="event-card">
-                            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=200&fit=crop" 
-                                 alt="Grand Marché du Terroir" 
-                                 class="event-image">
-                            <div class="event-content">
-                                <span class="event-date-coeur">❤ Coup de coeur</span>
-                                <h3 class="event-title">Grand Marché du Terroir</h3>
-                                <p class="event-description">
-                                    Découvrez les produits locaux et spécialités culinaires dans une ambiance festive au cœur de la ville.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Card 3 -->
-                    <div class="navbar-link-destination">
-                        <div class="event-card">
-                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop" 
-                                 alt="Concert au Bord du Nyong" 
-                                 class="event-image">
-                            <div class="event-content">
-                                <span class="event-date-coeur">❤ Coup de coeur</span>
-                                <h3 class="event-title">Concert au Bord du Nyong</h3>
-                                <p class="event-description">
-                                    Soirée musicale exceptionnelle avec des artistes locaux sur les rives du fleuve Nyong.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Indicateur de défilement pour mobile -->
-                <div class="scroll-indicator sm:hidden">
-                    ← Faites glisser pour voir plus →
-                </div>
-            </div>
-        </div>
-    </section>    
-
-    
-
-    <!-- Section LE KIOSQUE -->
-    <section class="kiosque-section py-0">
-        <div class="kiosque-container">
-            <div class="kiosque-left">
-                <h2 class="kiosque-title">LE KIOSQUE</h2>
-                <p class="kiosque-description">
-                    Téléchargez ici tout les numéros du magasine éyalane en version pdf pour une découverte hors ligne de vos villes préférées.
-                </p>
-                <a href="magasineEyalane.html" class="navbar-link kiosque-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.16.21 2.34.21 3.5 0 5.16-1 9-5.45 9-11V7l-10-5z"/>
-                    </svg>
-                    C'est quoi le magasine éyalane ?
-                </a>
-            </div>
-            
-            <div class="magazines-carousel">
-                <div class="magazines-track" id="magazines-track">
-                    <div class="magazine-card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7lLdE4ZjqRAwTXVpSk59qtmSHL15Zx-K9oc5Vmd272mwlxz_Hi7fNwZfjVYqjNgBx5Ek&usqp=CAU" 
-                            alt="Magazine EYALANE" class="magazine-cover">
-                        <div class="magazine-overlay">
-                            <div class="magazine-title">Sangmélima</div>
-                            <div class="magazine-date">Janvier 2025</div>
-                        </div>
-                    </div>
-                    
-                    <div class="magazine-card">
-                        <img src="https://cover.viapresse.com/3332/0/200" 
-                            alt="L'Agglo Solidaire" class="magazine-cover">
-                        <div class="magazine-overlay">
-                            <div class="magazine-title">Yaoundé</div>
-                            <div class="magazine-date">Décembre 2024</div>
-                        </div>
-                    </div>
-                    
-                    <div class="magazine-card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1CEjf_S2UNkMsaC_kB0EtvFSAW2NWqqS8pA&s" 
-                            alt="Guide Pratique" class="magazine-cover">
-                        <div class="magazine-overlay">
-                            <div class="magazine-title">Douala</div>
-                            <div class="magazine-date">Novembre 2024</div>
-                        </div>
-                    </div>
-                    
-                    <div class="magazine-card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI2gFaQSLDHthibxvrmaTuL_Q8cZn8DWTi5Sbrck8cmfU5jexte_Dd1ZilyslLIIGZppY&usqp=CAU" 
-                            alt="Magazine Culture" class="magazine-cover">
-                        <div class="magazine-overlay">
-                            <div class="magazine-title">Ebolowa</div>
-                            <div class="magazine-date">Octobre 2024</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="carousel-controls">
-            <button class="carousel-btn" id="prev-mag" onclick="scrollMagazines(-1)">‹</button>
-            <div class="carousel-indicator-explorer" id="mag-indicator">1</div>
-            <button class="carousel-btn" id="next-mag" onclick="scrollMagazines(1)">›</button>
-        </div>
-    </section>
-
-
-
- <!-- Section Newsletter -->
-    <section class="newsletter-section w-full my-12 items-center">
-        <div class="newsletter-container">
-            <div class="newsletter-content">
-                <h2 class="newsletter-title">LETTRE D'INFORMATION</h2>
-                <p class="newsletter-description">
-                    Inscrivez-vous à notre newsletter pour rester informé de l'actualité de Fougères Agglomération.
-                </p>
-            </div>
-            <form class="newsletter-form" id="newsletter-form">
-                <input 
-                    type="email" 
-                    class="newsletter-input" 
-                    placeholder="Votre adresse email"
-                    id="newsletter-email"
-                    required
-                >
-                <button type="submit" class="newsletter-btn">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-                </button>
-            </form>
-        </div>
-        <div class="newsletter-decoration"></div>
-    </section>
-
-    <!-- Modale de confirmation -->
-    <div class="newsletter-modal" id="newsletter-modal">
-        <div class="modal-newsletter-content">
-            <button class="modal-close" id="modal-close">&times;</button>
-            <div class="success-icon">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-            </div>
-            <h3 class="modal-title">Inscription réussie !</h3>
-            <p class="modal-text">
-                Merci pour votre inscription à notre newsletter. Un email de confirmation vous a été envoyé à l'adresse <strong id="confirm-email"></strong>.
-                <br><br>
-                Vous recevrez bientôt nos dernières actualités et événements de Sangmélima.
-            </p>
-            <button class="modal-btn" id="modal-ok">Parfait !</button>
-        </div>
-    </div>
 
 
 
@@ -826,14 +463,7 @@
                     <p class="text-gray-600 text-sm leading-relaxed mb-4">
                         EYALANE ne garantit pas la disponibilité des prix affichés sur nos sites et applications. 
                         Des conditions et restrictions telles que, entre autres, des durées de voyage imposées ou 
-                        des dates de fermeture peuvent...
-                    </p>
-                    <button class="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center space-x-1 transition-colors">
-                        <span>Plus</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
+                        des dates de fermeture peuvent
                 </div>
                 
                 <!-- Liens et sélecteurs -->
@@ -844,7 +474,6 @@
                         <div class="relative">
                             <select class="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 text-sm font-medium text-gray-700 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer">
                                 <option value="eur">FCFA</option>
-                                <option value="usd">$ USD</option>
                             </select>
                             <svg class="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -865,25 +494,28 @@
                     <!-- Liens légaux -->
                     <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm justify-start lg:justify-end">
                         <a href="/conditions" class="text-gray-600 hover:text-blue-800 transition-colors underline">
-                            Conditions d'utilisation
+                            Qui sommes nous
                         </a>
                         <a href="/confidentialite" class="text-gray-600 hover:text-blue-800 transition-colors underline">
-                            Confidentialité et utilisation des cookies
+                            Notre vision
                         </a>
                         <a href="/accord-cookies" class="text-gray-600 hover:text-blue-800 transition-colors underline">
-                            Accord d'utilisation des cookies
+                            Nos produits
                         </a>
                         <a href="/plan-du-site" class="text-gray-600 hover:text-blue-800 transition-colors underline">
-                            Plan du site
+                            Nos partenaires
                         </a>
                         <a href="/fonctionnement" class="text-gray-600 hover:text-blue-800 transition-colors underline">
-                            Fonctionnement du site
+                            Devenir partenaire
                         </a>
                         <a href="/contact" class="text-gray-600 hover:text-blue-800 transition-colors underline">
-                            Contactez-nous
+                            Historique
                         </a>
                         <a href="/accessibilite" class="text-gray-600 hover:text-blue-800 transition-colors underline">
-                            Politique d'accessibilité
+                            Géographie
+                        </a>
+                        <a href="/accessibilite" class="text-gray-600 hover:text-blue-800 transition-colors underline">
+                            Galérie
                         </a>
                     </div>
                 </div>
@@ -931,122 +563,135 @@
     
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        // Données des villes par région
-         const citiesData = {
-            "Sud": [
-                {
-                    name: "Sangmélima",
-                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxLty8n8kG1B6qJcvnFmOioiG9AaDCUz7qw&s",
-                    followers: 1247,
-                    description: "Capitale de la région du Sud, riche en culture et tradition Capitale de la région du Sud, riche en culture et traditionCapitale de la région du Sud, riche en culture et tradition"
-                },
-                {
-                    name: "Ebolowa",
-                    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    followers: 892,
-                    description: "Ville dynamique au cœur de la forêt équatoriale Ville dynamique au cœur de la forêt équatoriale"
-                },
-                {
-                    name: "Kribi",
-                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrsnoKsWYGVwFPXjiNXUHlnNSm0EjAFgpu3g&s",
-                    followers: 2156,
-                    description: "Station balnéaire aux plages magnifiques Ville dynamique au cœur de la forêt équatoriale Ville dynamique au cœur de la forêt équatoriale"
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Fonction pour basculer le menu mobile
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+            
+            // Gestion des dropdowns dans le menu mobile
+            const mobileDropdownTriggers = document.querySelectorAll('.mobile-dropdown-trigger');
+
+            mobileDropdownTriggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const content = trigger.nextElementSibling;
+                    const arrow = trigger.querySelector('.mobile-dropdown-arrow');
+
+                    if (content && content.classList.contains('hidden')) {
+                        content.classList.remove('hidden');
+                        if (arrow) arrow.style.transform = 'rotate(180deg)';
+                    } else if (content) {
+                        content.classList.add('hidden');
+                        if (arrow) arrow.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+
+            // Fermer le menu mobile lors du redimensionnement de la fenêtre (passage en vue desktop)
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    mobileMenu.classList.add('hidden');
                 }
-            ],
-            "Centre": [
-                {
-                    name: "Yaoundé",
-                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQAudOk1Z4SsENi9WfB2rQeepH-7YyWdcbMg&s",
-                    followers: 5432,
-                    description: "Capitale politique aux sept collines"
-                },
-                {
-                    name: "Mbalmayo",
-                    image: "https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    followers: 678,
-                    description: "Ville paisible aux portes de la forêt"
+            });
+
+            // Fermer le menu lors du clic à l'extérieur
+            document.addEventListener('click', (e) => {
+                if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
                 }
-            ],
-            "Littoral": [
-                {
-                    name: "Douala",
-                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnfjdWMkeEZEKlNHcTS7yTj1ioer7hplpitA&s",
-                    followers: 6789,
-                    description: "Capitale économique et port principal"
-                },
-                {
-                    name: "Limbe",
-                    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    followers: 1543,
-                    description: "Ville balnéaire aux plages de sable noir"
-                }
-            ],
-            "Ouest": [
-                {
-                    name: "Bafoussam",
-                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFSL-5nbhkVQThydz_PKQLHY0Mtn5343TexQ&s",
-                    followers: 2341,
-                    description: "Centre des hauts plateaux de l'Ouest"
-                },
-                {
-                    name: "Dschang",
-                    image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    followers: 1876,
-                    description: "Ville universitaire au climat tempéré"
-                }
-            ],
-            "Nord-Ouest": [
-                {
-                    name: "Bamenda",
-                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMoJBMuwtdMmHPG_HJd609PI4kMz1vjMifjA&s",
-                    followers: 3214,
-                    description: "Ville aux mille collines"
-                }
-            ],
-            "Sud-Ouest": [
-                {
-                    name: "Buea",
-                    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    followers: 2567,
-                    description: "Ville aux pieds du Mont Cameroun"
-                }
-            ],
-            "Est": [
-                {
-                    name: "Bertoua",
-                    image: "https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    followers: 1432,
-                    description: "Porte d'entrée vers la forêt équatoriale"
-                }
-            ],
-            "Adamaoua": [
-                {
-                    name: "Ngaoundéré",
-                    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    followers: 1987,
-                    description: "Ville des hauts plateaux de l'Adamaoua"
-                }
-            ],
-            "Nord": [
-                {
-                    name: "Garoua",
-                    image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    followers: 2234,
-                    description: "Capitale du Grand Nord"
-                }
-            ],
-            "Extrême-Nord": [
-                {
-                    name: "Maroua",
-                    image: "https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    followers: 1654,
-                    description: "Ville aux traditions ancestrales"
-                }
-            ]
-        };
+            });
+
+            // Auto-carrousel (optionnel)
+                setInterval(() => {
+                    if (window.innerWidth <= 768) { // Seulement sur mobile
+                        nextSlide();
+                    }
+                }, 5000);
+        });
 
 
-        // Carousel d'images
+
+      // Variables globales pour le carrousel
+        let currentSlide = 0;
+        const totalSlides = 4;
+
+        // Fonction pour aller au slide suivant
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        // Fonction pour aller au slide précédent
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        // Fonction pour aller à un slide spécifique
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        // Fonction pour mettre à jour le carrousel
+        function updateCarousel() {
+            const carousel = document.getElementById('carousel');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            if (carousel) {
+                carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+            
+            // Mettre à jour les dots
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Fonction pour ouvrir la galerie
+        function openGallery() {
+            const modal = document.getElementById('galleryModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Fonction pour fermer la galerie
+        function closeGallery() {
+            const modal = document.getElementById('galleryModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+
+
+        // Gestion du redimensionnement de la fenêtre
+        window.addEventListener('resize', function() {
+            // Réinitialiser le carrousel si on passe du mobile au desktop
+            if (window.innerWidth > 768) {
+                currentSlide = 0;
+                updateCarousel();
+            }
+        });
+</script>
+
+<script>
         // Carousel d'images moderne
         document.addEventListener("DOMContentLoaded", function() {
             let currentSlide = 0;
@@ -1253,17 +898,6 @@
         mobileMenu.style.display = 'none';
         mobileMenu.innerHTML = `
             <div class="p-4 max-h-96 overflow-y-auto">
-                <div class="mb-4">
-                    <h3 class="navbar-link font-semibold text-green-700 mb-2">Destinations</h3>
-                    <div class="space-y-1">
-                        ${Object.keys(citiesData).map(region => `
-                            <a href="#${region.toLowerCase()}" class="block py-2 px-3 text-gray-600 hover:text-green-700 hover:bg-gray-50 rounded region-link" data-region="${region}">
-                                ${region}
-                            </a>
-                        `).join('')}
-                    </div>
-                </div>
-                
                 <!-- Menu Explorer mobile avec sous-menus -->
                 <div class="mb-4">
                     <button class="navbar-link mobile-dropdown-trigger w-full flex justify-between items-center py-2 px-3 text-green-700 hover:text-gray-600 font-semibold" type="button">
@@ -1476,7 +1110,7 @@
        function createCityCardWithAnimation(city, delay = 0) {
     const avatars = generateFollowerAvatars(city.followers);
     return `
-        <a href="ville.html" class="navbar-link-destination">
+        <a href="sangmelima.html" class="navbar-link-destination">
         <div class="restaurant-card fade-in" style="animation-delay: ${delay}ms">
             <div class="restaurant-image-container">
                 <img src="${city.image}" alt="${city.name}" class="restaurant-image" loading="lazy">
@@ -1831,134 +1465,6 @@
         newsletterSubscriptions = [];
         console.log('Abonnements effacés');
     }
-</script>
-
-
-<script>
-// JavaScript pour la gestion des régions
-// JavaScript pour la gestion des clics sur les régions
-document.addEventListener('DOMContentLoaded', function() {
-    const regionLinks = document.querySelectorAll('.region-link');
-    
-    regionLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const region = this.dataset.region;
-            
-            // Mettre à jour le lien actif
-            regionLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Charger les villes de la région (utilise la fonction existante)
-            if (typeof loadCities === 'function') {
-                loadCities(region);
-                
-                // Scroller vers la section des villes
-                if (typeof scrollToCities === 'function') {
-                    scrollToCities();
-                }
-            } else {
-                console.warn('Fonction loadCities non trouvée');
-            }
-            
-            console.log(`Région sélectionnée: ${region}`);
-        });
-    });
-    
-    // Support du scroll horizontal avec la molette de souris
-    const scrollContainer = document.querySelector('.regions-scroll');
-    
-    if (scrollContainer) {
-        scrollContainer.addEventListener('wheel', function(e) {
-            // Si c'est un scroll horizontal naturel, on laisse faire
-            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-                return;
-            }
-            
-            // Convertir scroll vertical en horizontal si Shift est pressé
-            if (e.shiftKey) {
-                e.preventDefault();
-                scrollContainer.scrollBy({ left: e.deltaY, behavior: 'auto' });
-            }
-        });
-    }
-});
-</script>
-
-<script>
-// JavaScript pour la gestion des régions
-document.addEventListener('DOMContentLoaded', function() {
-    // Gestion du scroll des régions
-    const regionsScroll = document.querySelector('.regions-scroll');
-    const scrollLeftBtn = document.getElementById('scroll-left');
-    const scrollRightBtn = document.getElementById('scroll-right');
-    
-    if (scrollLeftBtn && scrollRightBtn && regionsScroll) {
-        scrollLeftBtn.addEventListener('click', () => {
-            regionsScroll.scrollBy({ left: -150, behavior: 'smooth' });
-        });
-        
-        scrollRightBtn.addEventListener('click', () => {
-            regionsScroll.scrollBy({ left: 150, behavior: 'smooth' });
-        });
-    }
-    
-    // Gestion des clics sur les boutons de région
-    const regionBtns = document.querySelectorAll('.region-btn');
-    
-    regionBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const region = this.dataset.region;
-            
-            // Animation de sélection
-            this.classList.add('selecting');
-            setTimeout(() => {
-                this.classList.remove('selecting');
-            }, 300);
-            
-            // Mettre à jour le bouton actif
-            regionBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Charger les villes de la région (utilise la fonction existante)
-            if (typeof loadCities === 'function') {
-                loadCities(region);
-                // Scroller vers la section des villes
-                if (typeof scrollToCities === 'function') {
-                    scrollToCities();
-                }
-            } else {
-                console.warn('Fonction loadCities non trouvée');
-            }
-            
-            console.log(`Région sélectionnée: ${region}`);
-        });
-    });
-    
-    // Effet de parallaxe subtil au scroll
-    let ticking = false;
-    
-    function updateRegionsOnScroll() {
-        const scrollTop = window.pageYOffset;
-        const regionsContainer = document.querySelector('.regions-container');
-        
-        if (regionsContainer) {
-            const translateY = scrollTop * 0.1;
-            regionsContainer.style.transform = `translateY(${translateY}px)`;
-        }
-        
-        ticking = false;
-    }
-    
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(updateRegionsOnScroll);
-            ticking = true;
-        }
-    });
-});
 </script>
 </body>
 </html>
