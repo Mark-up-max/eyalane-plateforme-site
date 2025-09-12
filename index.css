@@ -91,8 +91,8 @@
         /* Styles pour le nom de la ville */
         .city-name-overlay {
             position: absolute;
-            bottom: 30px;
-            left: 30px;
+            bottom: 25px;
+            left: 1%;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -101,7 +101,7 @@
             border-radius: 50px;
             font-size: 18px;
             font-weight: 600;
-            z-index: 2;
+            z-index: 12;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             transform: translateY(20px);
             opacity: 0;
@@ -281,7 +281,6 @@
             position: relative;
             max-width: 500px;
             margin: 0 auto;
-            z-index: 2;
         }
         
         .search-input {
@@ -1239,7 +1238,7 @@ footer a:hover::before {
             display: flex;
             align-items: center;
             gap: 12px;
-            max-width: 40%;
+            max-width: 90%;
             margin: 0 auto;
         }
 
@@ -1248,7 +1247,7 @@ footer a:hover::before {
             flex: 1;
             overflow: hidden;
             border-radius: 8px;
-            background: white;
+            background: transparent;
         }
 
         .regions-scroll {
@@ -1387,11 +1386,7 @@ footer a:hover::before {
             }
             
             .regions-navigation {
-                gap: 8px;
-            }
-
-            .regions-navigation {
-                display: none;
+                gap: 2px;
             }
         }
 
@@ -2289,6 +2284,10 @@ footer a:hover::before {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
                 max-height: 50vh;
             }
+
+            .carousel-nav {
+                display: none;
+        }
         }
         
         @media (max-width: 480px) {
@@ -2505,3 +2504,9 @@ footer a:hover::before {
                 padding-right: 6px;
             }
         }
+
+
+
+
+
+        
