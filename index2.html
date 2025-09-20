@@ -9,6 +9,18 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
         <style>
+            /* Style pour la longueur de la section hero */
+            .long {
+                height: 110vh;
+            }
+
+                @media (max-width: 768px) {
+                    .long {
+                    height: 90vh;
+                }
+            }
+
+
             /* Styles du carrousel */
             .carousel-track {
                 position: absolute;
@@ -225,7 +237,7 @@
         
         <!-- Section Hero avec image de fond couvrant tout -->
         <!-- Section Hero redimensionnée pour occuper 2/3 de l'écran -->
-        <div class="relative w-full h-screen bg-cover bg-center overflow-hidden">
+        <div class="relative w-full long bg-cover bg-center overflow-hidden">
             
             <div class="carousel-track"> 
                 <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1546026423-cc4642628d2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80');" data-legend="">
@@ -2309,21 +2321,30 @@
         });
         </script>
         
-        
+
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
-            const btn = document.getElementById('scroll-nav');
-            window.addEventListener('scroll', function () {
-                if (window.scrollY > 300) {
-                    btn.classList.add('hidden');
-                } else {
-                    btn.classList.remove('hidden');
-                }
+            document.addEventListener('DOMContentLoaded', () => {
+                const scrollNav = document.getElementById('scroll-nav');
+                let lastScrollY = window.scrollY;
+
+                window.addEventListener('scroll', () => {
+                    const currentScrollY = window.scrollY;
+                    
+                    // Si la position de défilement actuelle est supérieure à 200px...
+                    if (currentScrollY > 350) {
+                        // ... la barre de navigation est affichée.
+                        scrollNav.classList.remove('transform', '-translate-y-full', 'opacity-0');
+                        scrollNav.classList.add('transform', 'translate-y-0', 'opacity-100');
+                    } else {
+                        // ... sinon, elle est cachée.
+                        scrollNav.classList.remove('transform', 'translate-y-0', 'opacity-100');
+                        scrollNav.classList.add('transform', '-translate-y-full', 'opacity-0');
+                    }
+
+                    // Mettre à jour la dernière position de défilement
+                    lastScrollY = currentScrollY;
+                });
             });
-            btn.addEventListener('click', function () {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
         </script>
 
         <script src="carousel.js"></script>
