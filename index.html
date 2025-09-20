@@ -1250,14 +1250,6 @@
 
 
 
-        // Fonction pour charger les villes d'une région
-        function loadCities(region) {
-            const citiesGrid = document.getElementById('cities-grid');
-            const cities = citiesData[region] || [];
-            
-            citiesGrid.innerHTML = cities.map(city => createCityCard(city)).join('');
-        }
-
 
         // Fonction pour scroller vers la section des villes
         function scrollToCities() {
