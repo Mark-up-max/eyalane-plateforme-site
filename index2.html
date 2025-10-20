@@ -16,7 +16,19 @@
 
                 @media (max-width: 768px) {
                     .long {
-                    height: 80vh;
+                    height: 120vh;
+                }
+            }
+
+            @media (max-width: 568px) {
+                    .long {
+                    height: 130vh;
+                }
+            }
+
+            @media (max-width: 400px) {
+                    .long {
+                    height: 140vh;
                 }
             }
 
@@ -363,7 +375,7 @@
             </div>
 
             <!-- Section de recherche et régions en bas -->
-            <div id="search-section" class="relative px-4 sm:px-6 lg:px-8 pb-4 sm:pb-6 lg:pb-8">
+            <div id="search-section" class="relative px-4 sm:px-1 lg:px-8 pb-4 sm:pb-6 lg:pb-8">
                 <!-- Titre "Où allez-vous ?" -->
                 <div class="mb-1 sm:mb-1 lg:mb-2 text-center">
                     <h2 class="text-xl sm:text-xl lg:text-2xl text-white font-semibold">Où allez-vous ?</h2>
@@ -1558,13 +1570,6 @@
                         observer.observe(card);
                     });
                 }
-
-
-                // Fonction pour générer un nombre aléatoire de followers
-                function generateRandomFollowers() {
-                    return Math.floor(Math.random() * 3000) + 500;
-                }
-
 
                 // Mise à jour de la fonction createCityCard avec animations
                 function createCityCardWithAnimation(city, delay = 0) {
